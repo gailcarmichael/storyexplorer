@@ -6,7 +6,7 @@ public enum Terrain
 	Coast,
 	Forest,
 	Plains,
-	Mountainous,
-	Hilly,
+	Mountains,
+	Hills,
 	Swamp
 }

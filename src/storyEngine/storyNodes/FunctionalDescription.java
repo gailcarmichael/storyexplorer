@@ -10,7 +10,7 @@ import storyEngine.storyNodes.elements.Weather;
 
 public class FunctionalDescription
 {
-	@ElementList(name="elementProminencies", required=false, inline=true)
+	@ElementList(required=false, inline=true)
 	protected ArrayList<ElementProminence> m_elementProminencies;
 	
 	@ElementList(name="terrains", inline=true, required=false)
@@ -22,7 +22,9 @@ public class FunctionalDescription
 	
 	public FunctionalDescription()
 	{
-		this(null, null, null);
+		m_elementProminencies = new ArrayList<ElementProminence>();
+		m_terrains = new ArrayList<Terrain>();
+		m_weather = new ArrayList<Weather>();
 	}
 	
 	public FunctionalDescription(
@@ -30,8 +32,33 @@ public class FunctionalDescription
 			ArrayList<Terrain> terrains,
 			ArrayList<Weather> weather)
 	{
-		m_elementProminencies = prominencies;
-		m_terrains = terrains;
-		m_weather = weather;
+		this();
+		m_elementProminencies.addAll(prominencies);
+		m_terrains.addAll(terrains);
+		m_weather.addAll(weather);
+	}
+	
+	public void add(ElementProminence ep)
+	{
+		if (ep != null)
+		{
+			m_elementProminencies.add(ep);
+		}
+	}
+	
+	public void add(Terrain t)
+	{
+		if (t != null)
+		{
+			m_terrains.add(t);
+		}
+	}
+	
+	public void add(Weather w)
+	{
+		if (w != null)
+		{
+			m_weather.add(w);
+		}
 	}
 }

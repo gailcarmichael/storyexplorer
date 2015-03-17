@@ -5,10 +5,10 @@ import org.simpleframework.xml.Text;
 
 public class ElementProminence
 {
-	@Attribute(name="element")
-	protected StoryElements m_element;
-	
 	@Attribute(name="name")
+	protected StoryElement m_element;
+	
+	@Attribute(name="specifier", required=false)
 	protected String m_name;
 	
 	@Text
@@ -16,12 +16,19 @@ public class ElementProminence
 	
 	
 	public ElementProminence(
-			@Attribute(name="element") StoryElements element, 
-			@Attribute(name="name") String name,
+			@Attribute(name="name") StoryElement element, 
+			@Attribute(name="specifier") String name,
 			@Text int prominence)
 	{
 		m_element = element;
 		m_name = name;
 		m_prominence = prominence;
+	}
+	
+	public ElementProminence(
+			@Attribute(name="name") StoryElement element, 
+			@Text int prominence)
+	{
+		this(element, null, prominence);
 	}
 }

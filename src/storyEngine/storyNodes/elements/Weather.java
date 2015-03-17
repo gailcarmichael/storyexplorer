@@ -2,9 +2,9 @@ package storyEngine.storyNodes.elements;
 
 public enum Weather
 {
-	Rainy,
 	Sunny,
 	Cloudy,
+	Rainy,
 	Windy,
 	Snowing,
 	Hailing
