@@ -12,10 +12,9 @@ import storyEngine.storyNodes.FunctionalDescription;
 import storyEngine.storyNodes.Outcome;
 import storyEngine.storyNodes.Prerequisite;
 import storyEngine.storyNodes.StoryNode;
-import storyEngine.storyNodes.elements.ElementProminence;
+import storyEngine.storyNodes.elements.ElementType;
 import storyEngine.storyNodes.elements.StoryElement;
-import storyEngine.storyNodes.elements.Terrain;
-import storyEngine.storyNodes.elements.Weather;
+import storyEngine.storyNodes.elements.StoryElementCollection;
 
 public class TestSimpleXML
 {
@@ -23,9 +22,52 @@ public class TestSimpleXML
 	{
 		Serializer serializer = new Persister();
 		
+		//////////////////////////////////////////////////////////////////
+		
+		StoryElementCollection elements = new StoryElementCollection();
+		
+		elements.add(new StoryElement("heroTheme", "themes", "heroism", ElementType.Quantifiable));
+		elements.add(new StoryElement("friendshipTheme", "themes", "friendship", ElementType.Quantifiable));
+
+		elements.add(new StoryElement("dawgCharacter", "characters", "dawg", ElementType.Quantifiable));
+		elements.add(new StoryElement("kittyCharacter", "characters", "kitty", ElementType.Quantifiable));
+
+		elements.add(new StoryElement("tension", "tension", "tension", ElementType.QuantifiableStoryStateOnly));
+
+		elements.add(new StoryElement("openWaterTerrain", "terrains", "openWater", ElementType.Taggable));
+		elements.add(new StoryElement("mountainTerrain", "terrains", "mountains", ElementType.Taggable));
+
+		elements.add(new StoryElement("sunnyWeather", "weather", "sunny", ElementType.Taggable));
+		elements.add(new StoryElement("rainyWeather", "weather", "rainy", ElementType.Taggable));
+
+		
+		//////////////////////////////////////////////////////////////////
+		
+		try
+		{
+			File result = new File(".\\testOutput\\testStoryElements.xml");
+			
+			serializer.write(elements, result);
+			
+			StoryElementCollection readStoryElements = 
+					serializer.read(StoryElementCollection.class, result);
+			
+			readStoryElements.printStoryElements();
+			
+			File result2 = new File(".\\testOutput\\testStoryElements2.xml");
+			
+			serializer.write(readStoryElements, result2);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		//////////////////////////////////////////////////////////////////
+		
 		Outcome o = new Outcome("outcome text");
-		o.add(new Outcome.ElementModifier(StoryElement.Character, "Dawg", false, -1));
-		o.add(new Outcome.WeatherModifier(Weather.Cloudy, Outcome.Action.add));
+		o.add(new Outcome.QuantifiableModifier("dawgCharacter", false, -1));
+		o.add(new Outcome.TaggableModifier("sunnyWeather", Outcome.TagAction.add));
 		
 		ArrayList<Choice> choices = new ArrayList<Choice>();
 		Choice c1 = new Choice("choice text");
@@ -33,17 +75,17 @@ public class TestSimpleXML
 		choices.add(c1);
 		
 		FunctionalDescription funcDesc = new FunctionalDescription();
-		funcDesc.add(new ElementProminence(StoryElement.Character, "Dawg", 3));
-		funcDesc.add(new ElementProminence(StoryElement.Tension, 5));
-		funcDesc.add(Weather.Snowing);
-		funcDesc.add(Weather.Windy);
-		funcDesc.add(Terrain.Coast);
+		funcDesc.add(elements, "dawgCharacter", 3);
+		funcDesc.add(elements, "sunnyWeather");
 		
 		Prerequisite prereq = new Prerequisite();
-		prereq.add(new Prerequisite.ElementRequirement(
-				StoryElement.Character, "Hot",  Prerequisite.BinaryRestriction.greaterThan, 4));
-		prereq.add(new Prerequisite.WeatherRequirement(
-				Weather.Hailing, Prerequisite.ListRestriction.contains));
+		
+		prereq.add(new Prerequisite.QuantifiableElementRequirement(
+				"kittyCharacter",  Prerequisite.BinaryRestriction.greaterThan, 4));
+		
+		prereq.add(new Prerequisite.TagRequirement(
+				"rainyWeather", Prerequisite.ListRestriction.contains));
+		
 		prereq.add(new Prerequisite.SceneRequirement(
 				"FirstScene", Prerequisite.SceneRestriction.sceneNotSeen));
 		
@@ -54,6 +96,8 @@ public class TestSimpleXML
 		nodes.add(new StoryNode("node3", "node 2 teaser", "node 3 event", funcDesc, choices));
 		
 		Story story = new Story(nodes);
+		
+		//////////////////////////////////////////////////////////////////
 		
 		try
 		{
@@ -68,7 +112,7 @@ public class TestSimpleXML
 				System.out.println(n.getID());
 			}
 			
-			File result2 = new File("example2.xml");
+			File result2 = new File(".\\testOutput\\testSimple2.xml");
 			
 			serializer.write(readStory, result2);
 		}
@@ -76,5 +120,7 @@ public class TestSimpleXML
 		{
 			e.printStackTrace();
 		}
+		
+		//////////////////////////////////////////////////////////////////
 	}
 }

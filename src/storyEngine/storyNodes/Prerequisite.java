@@ -4,10 +4,7 @@ import java.util.ArrayList;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
-
-import storyEngine.storyNodes.elements.StoryElement;
-import storyEngine.storyNodes.elements.Terrain;
-import storyEngine.storyNodes.elements.Weather;
+import org.simpleframework.xml.Root;
 
 // Each story node can have zero or one prerequisites. A
 // prerequisite contains a collection of requirements, each
@@ -16,13 +13,10 @@ public class Prerequisite
 {
 	
 	@ElementList(inline=true, required=false)
-	protected ArrayList<ElementRequirement> m_elementRequirements;
+	protected ArrayList<QuantifiableElementRequirement> m_quantifiableRequirements;
 	
 	@ElementList(inline=true, required=false)
-	protected ArrayList<TerrainRequirement> m_terrainRequirements;
-	
-	@ElementList(inline=true, required=false)
-	protected ArrayList<WeatherRequirement> m_weatherRequirements;
+	protected ArrayList<TagRequirement> m_tagRequirements;
 	
 	@ElementList(inline=true, required=false)
 	protected ArrayList<SceneRequirement> m_sceneRequirements;
@@ -30,39 +24,31 @@ public class Prerequisite
 	
 	public Prerequisite()
 	{
-		m_elementRequirements = new ArrayList<ElementRequirement>();
-		m_terrainRequirements = new ArrayList<TerrainRequirement>();
-		m_weatherRequirements = new ArrayList<WeatherRequirement>();
+		m_quantifiableRequirements = new ArrayList<QuantifiableElementRequirement>();
+		m_tagRequirements = new ArrayList<TagRequirement>();
 		m_sceneRequirements = new ArrayList<SceneRequirement>();
 	}
 	
 	public Prerequisite(
-			ArrayList<ElementRequirement> elementRequirements,
-			ArrayList<TerrainRequirement> terrainRequirements,
-			ArrayList<WeatherRequirement> weatherRequirements,
+			ArrayList<QuantifiableElementRequirement> qRequirements,
+			ArrayList<TagRequirement> tagRequirements,
 			ArrayList<SceneRequirement> sceneRequirements)
 	{
 		this();
-		if (elementRequirements != null) m_elementRequirements.addAll(elementRequirements);
-		if (terrainRequirements != null) m_terrainRequirements.addAll(terrainRequirements);
-		if (weatherRequirements != null) m_weatherRequirements.addAll(weatherRequirements);
+		if (qRequirements != null) m_quantifiableRequirements.addAll(qRequirements);
+		if (tagRequirements != null) m_tagRequirements.addAll(tagRequirements);
 		if (sceneRequirements != null) m_sceneRequirements.addAll(sceneRequirements);
 	}
 	
 	
-	public void add(ElementRequirement r)
+	public void add(QuantifiableElementRequirement r)
 	{
-		m_elementRequirements.add(r);
+		m_quantifiableRequirements.add(r);
 	}
 	
-	public void add(TerrainRequirement r)
+	public void add(TagRequirement r)
 	{
-		m_terrainRequirements.add(r);
-	}
-	
-	public void add(WeatherRequirement r)
-	{
-		m_weatherRequirements.add(r);
+		m_tagRequirements.add(r);
 	}
 	
 	public void add(SceneRequirement r)
@@ -97,13 +83,11 @@ public class Prerequisite
 
 	//////////////////////////////////////////////////////////////////////////////////////
 
-	public static class ElementRequirement
+	@Root(name="quantReq")
+	public static class QuantifiableElementRequirement
 	{
-		@Attribute(name="name")
-		protected StoryElement m_element;
-
-		@Attribute(name="specifier", required=false)
-		protected String m_name;
+		@Attribute(name="id")
+		protected String m_elementID;
 
 		@Attribute(name="operator")
 		protected BinaryRestriction m_operator;
@@ -112,69 +96,41 @@ public class Prerequisite
 		protected int m_compareTo;
 
 
-		public ElementRequirement(
-				@Attribute(name="name") StoryElement element,
-				@Attribute(name="specifier", required=false) String name,
+		public QuantifiableElementRequirement(
+				@Attribute(name="id") String id,
 				@Attribute(name="operator") BinaryRestriction operator,
 				@Attribute(name="compareTo") int compareTo)
 		{
-			m_element = element;
-			m_name = name;
+			m_elementID = id;
 			m_operator = operator;
 			m_compareTo = compareTo;
 		}
-
-		public ElementRequirement(
-				@Attribute(name="name") StoryElement element,
-				@Attribute(name="operator") BinaryRestriction operator,
-				@Attribute(name="compareTo") int compareTo)
-		{
-			this(element, null, operator, compareTo);
-		}
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////
 
-	public static class TerrainRequirement
+	@Root(name="tagReq")
+	public static class TagRequirement
 	{
-		@Attribute(name="name")
-		protected Terrain m_terrain;
+		@Attribute(name="id")
+		protected String m_elementID;
 
 		@Attribute(name="operator")
 		protected ListRestriction m_operator;
 
 
-		public TerrainRequirement(
-				@Attribute(name="name") Terrain terrain,
+		public TagRequirement(
+				@Attribute(name="id") String id,
 				@Attribute(name="operator") ListRestriction operator)
 		{
-			m_terrain = terrain;
+			m_elementID = id;
 			m_operator = operator;
 		}
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////
 
-	public static class WeatherRequirement
-	{
-		@Attribute(name="name")
-		protected Weather m_weather;
-
-		@Attribute(name="operator")
-		protected ListRestriction m_operator;
-
-
-		public WeatherRequirement(
-				@Attribute(name="name") Weather weather,
-				@Attribute(name="operator") ListRestriction operator)
-		{
-			m_weather = weather;
-			m_operator = operator;
-		}
-	}
-
-	//////////////////////////////////////////////////////////////////////////////////////
-
+	@Root(name="sceneReq")
 	public static class SceneRequirement
 	{
 		@Attribute(name="name")

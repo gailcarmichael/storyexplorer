@@ -2,6 +2,7 @@ package storyEngine.storyNodes;
 
 import java.util.ArrayList;
 
+import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
@@ -15,7 +16,7 @@ import org.simpleframework.xml.Root;
 @Root
 public class StoryNode
 {
-	@Element(name="id")
+	@Attribute(name="id")
 	protected String m_id;
 
 	@Element(name="teaserText")
@@ -35,7 +36,7 @@ public class StoryNode
 
 
 	public StoryNode(
-			@Element(name="id") String id, 
+			@Attribute(name="id") String id, 
 			@Element(name="teaserText") String teaserText, 
 			@Element(name="eventText") String eventText,
 			@Element(name="functionalDescription") FunctionalDescription funcDesc,
@@ -46,7 +47,7 @@ public class StoryNode
 
 
 	public StoryNode(
-			@Element(name="id") String id, 
+			@Attribute(name="id") String id, 
 			@Element(name="teaserText") String teaserText, 
 			@Element(name="eventText") String eventText,
 			@Element(name="prerequisite", required=false) Prerequisite prerequisite,
@@ -57,7 +58,7 @@ public class StoryNode
 
 
 	public StoryNode(
-			@Element(name="id") String id, 
+			@Attribute(name="id") String id, 
 			@Element(name="teaserText") String teaserText, 
 			@Element(name="eventText") String eventText,
 			@ElementList(name="choices", inline=true) ArrayList<Choice> choices)
@@ -67,7 +68,7 @@ public class StoryNode
 
 
 	public StoryNode(
-			@Element(name="id") String id, 
+			@Attribute(name="id") String id, 
 			@Element(name="teaserText") String teaserText, 
 			@Element(name="eventText") String eventText,
 			@Element(name="functionalDescription") FunctionalDescription funcDesc,
