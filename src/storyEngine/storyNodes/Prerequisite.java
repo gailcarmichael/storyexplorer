@@ -6,6 +6,9 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
+import storyEngine.storyElements.ElementType;
+import storyEngine.storyElements.StoryElementCollection;
+
 // Each story node can have zero or one prerequisites. A
 // prerequisite contains a collection of requirements, each
 // of which must pass for the prerequisite to pass.
@@ -57,6 +60,55 @@ public class Prerequisite
 	}
 	
 	
+	public boolean isValid(StoryElementCollection elements)
+	{
+		boolean isValid = true;
+		
+		// A prerequisite is valid if the quantifiable requirements
+		// have ids for either type of quantifiable elements, and the
+		// tag requirements have ids for taggable elements.
+		
+		// Currently, there are no checks for the scene ids.
+		
+		for (QuantifiableElementRequirement req : m_quantifiableRequirements)
+		{
+			if (!elements.hasElementWithID(req.getID()))
+			{
+				System.err.println("Prerequisite is not valid because element" +
+						" with id " + req.getID() + "  is not part of the element collection.");
+				isValid = false;
+			}
+			else if (elements.getElementWithID(req.getID()).getType() != ElementType.quantifiable &&
+					elements.getElementWithID(req.getID()).getType() != ElementType.quantifiableStoryStateOnly)
+			{
+				System.err.println("Prerequisite is not valid because element" +
+						" with id " + req.getID() + "  has type " + 
+						elements.getElementWithID(req.getID()).getType());
+				isValid = false;
+			}
+		}
+		
+		for (TagRequirement req : m_tagRequirements)
+		{
+			if (!elements.hasElementWithID(req.getID()))
+			{
+				System.err.println("Prerequisite is not valid because element" +
+						" with id " + req.getID() + "  is not part of the element collection.");
+				isValid = false;
+			}
+			else if (elements.getElementWithID(req.getID()).getType() != ElementType.taggable)
+			{
+				System.err.println("Prerequisite is not valid because element" +
+						" with id " + req.getID() + "  has type " + 
+						elements.getElementWithID(req.getID()).getType());
+				isValid = false;
+			}
+		}
+		
+		return isValid;
+	}
+	
+	
 
 	//////////////////////////////////////////////////////////////////////////////////////
 
@@ -77,8 +129,8 @@ public class Prerequisite
 
 	public static enum SceneRestriction
 	{
-		sceneSeen,
-		sceneNotSeen
+		seen,
+		notSeen
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////
@@ -105,6 +157,10 @@ public class Prerequisite
 			m_operator = operator;
 			m_compareTo = compareTo;
 		}
+		
+		public String getID() { return m_elementID; }
+		public BinaryRestriction getOperator() { return m_operator; }
+		public int getCompareValue() { return m_compareTo; }
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////
@@ -126,6 +182,9 @@ public class Prerequisite
 			m_elementID = id;
 			m_operator = operator;
 		}
+		
+		public String getID() { return m_elementID; }
+		public ListRestriction getOperator() { return m_operator; }
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////
@@ -147,5 +206,8 @@ public class Prerequisite
 			m_sceneID = sceneID;
 			m_operator = operator;
 		}
+		
+		public String getSceneID() { return m_sceneID; }
+		public SceneRestriction getOperator() { return m_operator; }
 	}
 }

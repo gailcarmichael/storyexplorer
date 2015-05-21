@@ -1,4 +1,4 @@
-package storyEngine.storyNodes.elements;
+package storyEngine.storyElements;
 
 import java.util.ArrayList;
 
@@ -14,7 +14,8 @@ public class StoryElementCollection
 	
 	
 	// Used to easily retrieve elements involved with priority
-	// calculations
+	// calculations (contains references to some of the elements
+	// in m_storyElements)
 	protected ArrayList<StoryElement> m_storyElementsPriorityCalc;
 	
 	
@@ -44,6 +45,12 @@ public class StoryElementCollection
 	}
 	
 	
+	public boolean hasElementWithID(String id)
+	{
+		return getElementWithID(id) != null;
+	}
+	
+	
 	public StoryElement getElementWithID(String id)
 	{
 		StoryElement elementWithID = null;
@@ -61,6 +68,26 @@ public class StoryElementCollection
 	}
 	
 	
+	public ArrayList<String> getIDs()
+	{
+		ArrayList<String> ids = new ArrayList<String>();
+		
+		for (StoryElement el : m_storyElements)
+		{
+			if (ids.contains(el.getID()))
+			{
+				System.err.println("getIDs found duplicate story element id: " + el.getID());
+			}
+			else
+			{
+				ids.add(el.getID());
+			}
+		}
+		
+		return ids;
+	}
+	
+	
 	public boolean add(StoryElement e)
 	{
 		boolean success = false;
@@ -69,7 +96,7 @@ public class StoryElementCollection
 		{
 			m_storyElements.add(e);
 			
-			if (e.getType() == ElementType.Quantifiable)
+			if (e.getType() == ElementType.quantifiable)
 			{
 				m_storyElementsPriorityCalc.add(e);
 			}

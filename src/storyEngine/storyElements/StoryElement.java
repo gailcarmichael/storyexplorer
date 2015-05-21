@@ -1,4 +1,4 @@
-package storyEngine.storyNodes.elements;
+package storyEngine.storyElements;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;

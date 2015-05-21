@@ -2,6 +2,8 @@ package storyEngine.storyNodes;
 
 import org.simpleframework.xml.Element;
 
+import storyEngine.storyElements.StoryElementCollection;
+
 public class Choice
 {
 	@Element(name="text")
@@ -28,6 +30,14 @@ public class Choice
 	public void setOutcome(Outcome o)
 	{
 		m_outcome = o;
+	}
+	
+	
+	public boolean isValid(StoryElementCollection elements)
+	{
+		boolean isValid = true;
+		
+		return isValid;
 	}
 }
 	

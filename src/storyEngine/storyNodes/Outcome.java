@@ -20,20 +20,20 @@ public class Outcome
 	protected ArrayList<QuantifiableModifier> m_quantifiableModifiers;
 
 	@ElementList(inline=true, required=false)
-	protected ArrayList<TaggableModifier> m_taggableModifiers;
+	protected ArrayList<TagModifier> m_taggableModifiers;
 
 
 	public Outcome(String outcomeText)
 	{
 		m_outcomeText = outcomeText;
 		m_quantifiableModifiers = new ArrayList<QuantifiableModifier>();
-		m_taggableModifiers = new ArrayList<TaggableModifier>();	
+		m_taggableModifiers = new ArrayList<TagModifier>();	
 	}
 
 	public Outcome(
 			@Element(name="text") String outcomeText,
 			@ElementList(inline=true, required=false) ArrayList<QuantifiableModifier> quantModifiers,
-			@ElementList(inline=true, required=false) ArrayList<TaggableModifier> taggableModifiers)
+			@ElementList(inline=true, required=false) ArrayList<TagModifier> taggableModifiers)
 	{
 		this(outcomeText);
 		if (quantModifiers != null) m_quantifiableModifiers.addAll(quantModifiers);
@@ -49,7 +49,7 @@ public class Outcome
 		}
 	}
 
-	public void add(TaggableModifier m)
+	public void add(TagModifier m)
 	{
 		if (m != null)
 		{
@@ -94,7 +94,7 @@ public class Outcome
 	//////////////////////////////////////////////////////////////////////////////////////
 
 	@Root(name="tagModifier")
-	static public class TaggableModifier
+	static public class TagModifier
 	{
 		@Attribute(name="id")
 		protected String m_elementID;
@@ -103,7 +103,7 @@ public class Outcome
 		protected TagAction m_action;
 
 
-		public TaggableModifier(
+		public TagModifier(
 				@Attribute(name="id") String id,
 				@Text TagAction action)
 		{
