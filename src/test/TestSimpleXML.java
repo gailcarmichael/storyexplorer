@@ -8,6 +8,7 @@ import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
 import storyEngine.Story;
+import storyEngine.StoryState;
 import storyEngine.storyElements.ElementType;
 import storyEngine.storyElements.StoryElement;
 import storyEngine.storyElements.StoryElementCollection;
@@ -17,7 +18,6 @@ import storyEngine.storyNodes.NodeType;
 import storyEngine.storyNodes.Outcome;
 import storyEngine.storyNodes.Prerequisite;
 import storyEngine.storyNodes.StoryNode;
-import storyEngine.storyState.StoryState;
 
 public class TestSimpleXML
 {
@@ -48,7 +48,7 @@ public class TestSimpleXML
 		
 		try
 		{
-			File result = new File(".\\testOutput\\testStoryElements.xml");
+			File result = new File(".\\testData\\testSimpleXML\\testStoryElements.xml");
 			
 			serializer.write(elements, result);
 			
@@ -57,7 +57,7 @@ public class TestSimpleXML
 			
 			readStoryElements.printStoryElements();
 			
-			File result2 = new File(".\\testOutput\\testStoryElements2.xml");
+			File result2 = new File(".\\testData\\testSimpleXML\\testStoryElements2.xml");
 			
 			serializer.write(readStoryElements, result2);
 		}
@@ -71,13 +71,13 @@ public class TestSimpleXML
 		HashMap<String, Integer> values = new HashMap<String, Integer>();
 		values.put("tension", 3);
 		
-		HashMap<String, Integer> desires = new HashMap<String, Integer>();
-		desires.put("heroTheme", 1);
-		desires.put("friendshipTheme", 1);
-		desires.put("dawgCharacter", 1);
-		desires.put("kittyCharacter", 1);
+		HashMap<String, Float> desires = new HashMap<String, Float>();
+		desires.put("heroTheme", 1.0f);
+		desires.put("friendshipTheme", 1.0f);
+		desires.put("dawgCharacter", 1.0f);
+		desires.put("kittyCharacter", 1.0f);
 		
-		StoryState initStoryState = new StoryState(values, desires);
+		StoryState initStoryState = new StoryState(values, desires, new ArrayList<String>());
 		
 		//////////////////////////////////////////////////////////////////
 		
@@ -107,19 +107,19 @@ public class TestSimpleXML
 		
 		
 		ArrayList<StoryNode> nodes = new ArrayList<StoryNode>();
-		nodes.add(new StoryNode("node1", NodeType.kernel, "node 1 teaser", "node 1 event", funcDesc, prereq, choices));
+		nodes.add(new StoryNode("node1", NodeType.kernel, "node 1 teaser", "node 1 event", funcDesc, prereq, null));
 		nodes.add(new StoryNode("node2", NodeType.satellite, "node 2 teaser", "node 3 event", funcDesc, choices));
 		nodes.add(new StoryNode("node3", NodeType.satellite, "node 2 teaser", "node 3 event", funcDesc, choices));
 		
-		Story story = new Story(nodes, initStoryState);
+		Story story = new Story(5, nodes, null, initStoryState);
 		
-		System.out.println("Test story is valid: " + story.storyIsValid(elements));
+		System.out.println("Test story is valid: " + story.isValid(elements));
 		
 		//////////////////////////////////////////////////////////////////
 		
 		try
 		{
-			File result = new File(".\\testOutput\\testSimple.xml");
+			File result = new File(".\\testData\\testSimpleXML\\testSimple.xml");
 			
 			serializer.write(story, result);
 			
@@ -130,7 +130,7 @@ public class TestSimpleXML
 				System.out.println(n.getID());
 			}
 			
-			File result2 = new File(".\\testOutput\\testSimple2.xml");
+			File result2 = new File(".\\testData\\testSimpleXML\\testSimple2.xml");
 			
 			serializer.write(readStory, result2);
 		}

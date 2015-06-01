@@ -1,0 +1,102 @@
+<story numTopScenesForUser="3">
+	
+	<startingNode id="kernel1" type="kernel">
+		<teaserText>A new addition</teaserText>
+		<eventText>One day, Mama brought home something new. It was an adorable little kitten, and the dog of the house was none too pleased.</eventText>
+		<functionalDescription>
+		</functionalDescription>
+	</startingNode>
+
+	<storyNodes>
+
+		<!-- Kernels -->
+
+		<storyNode id="kernel2" type="kernel">
+			<teaserText>The trick</teaserText>
+			<eventText>The dog tricked the kitten to go outside through the doggy door, then blocked it so she couldn't get back in.</eventText>
+			<functionalDescription>
+				<prominence id="dogCharacter">3</prominence>
+				<prominence id="betrayalTheme">3</prominence>
+			</functionalDescription>
+		</storyNode>
+
+		<storyNode id="kernel3" type="kernel">
+			<teaserText>The trick</teaserText>
+			<eventText>The kitten was scared, and didn't know what to do, so she ran out of the yard. Unfortunately, a car passed by on the street right as she ran into it.</eventText>
+			<prerequisite>
+				<sceneReq name="kernel2" operator="seen" />
+			</prerequisite>
+			<functionalDescription>
+				<prominence id="kittyCharacter">2</prominence>
+			</functionalDescription>
+		</storyNode>
+
+		<!-- Satellites -->
+		
+		<storyNode id="satellite1" type="satellite">
+			<teaserText>On guard</teaserText>
+			<eventText>The dog suddenly heard a noise outside. Fearful that it could be an intruder, his ears perked up and his barking grew steadily.</eventText>
+			<functionalDescription>
+				<prominence id="dogCharacter">3</prominence>
+			</functionalDescription>
+		</storyNode>
+		
+		<storyNode id="satellite2" type="satellite">
+			<teaserText>Playful</teaserText>
+			<eventText>The kitten found a dustball floating around, and couldn't help but pounce and play.</eventText>
+			<prerequisite>
+				<quantReq id="kittyCharacter" operator="greaterThan" compareTo="1"/>
+			</prerequisite>
+			<functionalDescription>
+				<prominence id="kittyCharacter">2</prominence>
+			</functionalDescription>
+		</storyNode>
+		
+		<storyNode id="satellite3" type="satellite">
+			<teaserText>Super Playful</teaserText>
+			<eventText>The kitten spent hours jumping, spinning, and playing.</eventText>
+			<prerequisite>
+				<quantReq id="kittyCharacter" operator="greaterThan" compareTo="2"/>
+			</prerequisite>
+			<functionalDescription>
+				<prominence id="kittyCharacter">3</prominence>
+			</functionalDescription>
+		</storyNode>
+		
+		<storyNode id="satellite4" type="satellite">
+			<teaserText>Skittish</teaserText>
+			<eventText>When mama opened the door of the bedroom, the kitten startled and ran to hide under the couch.</eventText>
+			<functionalDescription>
+				<prominence id="kittyCharacter">2</prominence>
+			</functionalDescription>
+		</storyNode>
+		
+		<storyNode id="satellite5" type="satellite">
+			<teaserText>Spooked</teaserText>
+			<eventText>The kitten heard a terrible noise from the kitchen, and cowered under the coffee table.  It continued for much longer than it ought to have, until finally mama called the kitten for her dinner.</eventText>
+			<functionalDescription>
+				<prominence id="kittyCharacter">3</prominence>
+			</functionalDescription>
+		</storyNode>
+		
+		<storyNode id="satellite6" type="satellite">
+			<teaserText>Loyal</teaserText>
+			<eventText>Mama smiled as the dog followed her into the kitchen and lay at her feet.</eventText>
+			<functionalDescription>
+				<prominence id="dogCharacter">2</prominence>
+			</functionalDescription>
+		</storyNode>
+
+
+
+	</storyNodes>
+	
+	<initialStoryState>
+		<value id="tension">3</value>
+		<desire id="friendshipTheme">1.0</desire>
+		<desire id="kittyCharacter">2.0</desire>
+		<desire id="dogCharacter">1.0</desire>
+		<desire id="heroTheme">1.0</desire>
+		<desire id="betrayalTheme">2.0</desire>
+	</initialStoryState>
+</story>

@@ -1,0 +1,38 @@
+<storyElementCollection>
+   <storyElement id="heroTheme" type="quantifiable">
+      <category>themes</category>
+      <name>heroism</name>
+   </storyElement>
+   <storyElement id="friendshipTheme" type="quantifiable">
+      <category>themes</category>
+      <name>friendship</name>
+   </storyElement>
+   <storyElement id="dawgCharacter" type="quantifiable">
+      <category>characters</category>
+      <name>dawg</name>
+   </storyElement>
+   <storyElement id="kittyCharacter" type="quantifiable">
+      <category>characters</category>
+      <name>kitty</name>
+   </storyElement>
+   <storyElement id="tension" type="quantifiableStoryStateOnly">
+      <category>tension</category>
+      <name>tension</name>
+   </storyElement>
+   <storyElement id="openWaterTerrain" type="taggable">
+      <category>terrains</category>
+      <name>openWater</name>
+   </storyElement>
+   <storyElement id="mountainTerrain" type="taggable">
+      <category>terrains</category>
+      <name>mountains</name>
+   </storyElement>
+   <storyElement id="sunnyWeather" type="taggable">
+      <category>weather</category>
+      <name>sunny</name>
+   </storyElement>
+   <storyElement id="rainyWeather" type="taggable">
+      <category>weather</category>
+      <name>rainy</name>
+   </storyElement>
+</storyElementCollection>

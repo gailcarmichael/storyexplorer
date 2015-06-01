@@ -7,6 +7,7 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.ElementMap;
 
+import storyEngine.Story;
 import storyEngine.storyElements.ElementType;
 import storyEngine.storyElements.StoryElement;
 import storyEngine.storyElements.StoryElementCollection;
@@ -83,6 +84,9 @@ public class FunctionalDescription
 	}
 	
 	
+	////////////////////////////////////////////////////////////////
+	
+	
 	public boolean isValid(StoryElementCollection elements)
 	{
 		boolean isValid = true;
@@ -130,6 +134,47 @@ public class FunctionalDescription
 		}
 		
 		return isValid;
+	}
+	
+	
+	////////////////////////////////////////////////////////////////
+	
+	
+	public float calculatePriorityScore(Story story, StoryElementCollection elementCol)
+	{
+		float nodeScore = 0;
+		
+		// Walk through each element in the description. Check whether the element
+		// has a desire value in the story state.  If so, multiply the desire by
+		// the element's prominence in the node.  Keep track of the highest score
+		// in each element category.  Sum the highest scores together.
+		
+		HashMap<String, Float> categoryScores = new HashMap<String, Float>();
+		
+		for (String id : m_elementProminences.keySet())
+		{
+			StoryElement el = elementCol.getElementWithID(id);
+			
+			if (el != null && el.hasDesireValue())
+			{
+				float elementScore = m_elementProminences.get(id) *
+						             story.getDesireForElement(id);
+				
+				if (!categoryScores.containsKey(el.getCategory()) || 
+					categoryScores.get(el.getCategory()) < elementScore)
+				{
+					categoryScores.put(el.getCategory(), elementScore);
+				}
+				
+			}
+		}
+		
+		for (Float categoryScore : categoryScores.values())
+		{
+			nodeScore += categoryScore;
+		}
+		
+		return nodeScore;
 	}
 	
 }

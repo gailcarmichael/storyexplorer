@@ -7,6 +7,8 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
+import storyEngine.Story;
+import storyEngine.StoryState;
 import storyEngine.storyElements.StoryElementCollection;
 
 
@@ -36,8 +38,10 @@ public class StoryNode
 	@Element(name="prerequisite", required=false)
 	protected Prerequisite m_prerequisite;
 
-	@ElementList(name="choices", inline=true)
+	@ElementList(name="choices", inline=true, required=false)
 	protected ArrayList<Choice> m_choices;
+	
+	protected boolean m_consumed;
 
 
 	public StoryNode(
@@ -91,12 +95,44 @@ public class StoryNode
 		m_functionalDesc = funcDesc;
 		m_prerequisite = prerequisite;
 		m_choices = choices;
+		
+		m_consumed = false;
 	}
 
 
 	public String getID() { return m_id; }
 	public String getTeaserText() { return m_teaserText; }
 	public String getEventText() { return m_eventText; }
+	
+	public boolean isKernel() { return m_type == NodeType.kernel; }
+	public boolean isSatellite() { return m_type == NodeType.satellite; }
+	
+	public boolean isConsumed() { return m_consumed; }
+	
+	
+	public String toString()
+	{
+		return m_id + ": " + m_teaserText;
+	}
+	
+	
+	////////////////////////////////////////////////////////////////
+	
+	
+	public boolean passesPrerequisite(StoryState storyState)
+	{
+		if (m_prerequisite == null)
+		{
+			return true;
+		}
+		else
+		{
+			return m_prerequisite.passes(storyState);
+		}
+	}
+	
+	
+	////////////////////////////////////////////////////////////////
 	
 	
 	public boolean isValid(StoryElementCollection elements)
@@ -118,14 +154,33 @@ public class StoryNode
 			isValid = false;
 		}
 		
-		for (Choice c : m_choices)
+		if (m_choices != null)
 		{
-			if (!c.isValid(elements))
+			for (Choice c : m_choices)
 			{
-				isValid = false;
+				if (!c.isValid(elements))
+				{
+					isValid = false;
+				}
 			}
 		}
 		
 		return isValid;
+	}
+	
+	
+	////////////////////////////////////////////////////////////////
+	
+	
+	public float calculatePriorityScore(Story story, StoryElementCollection elementCol)
+	{
+		float score = 0;
+		
+		if (m_functionalDesc != null)
+		{
+			score = m_functionalDesc.calculatePriorityScore(story, elementCol);
+		}
+		
+		return score;
 	}
 }

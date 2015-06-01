@@ -6,7 +6,7 @@ import storyEngine.storyElements.StoryElementCollection;
 
 public class Choice
 {
-	@Element(name="text")
+	@Element(name="text", required=false)
 	protected String m_text;
 	
 	@Element(name="outcome", required=false)
@@ -15,14 +15,24 @@ public class Choice
 	
 	public Choice(String text)
 	{
-		m_text = text;
+		this(text, null);
+	}
+	
+	public Choice(Outcome outcome)
+	{
+		this(null, outcome);
+	}
+	
+	public Choice()
+	{
+		this(null, null);
 	}
 	
 	public Choice(
-			@Element(name="text") String text,
+			@Element(name="text", required=false) String text,
 			@Element(name="outcome", required=false) Outcome outcome)
 	{
-		this(text);
+		m_text = text;
 		m_outcome = outcome;
 	}
 	

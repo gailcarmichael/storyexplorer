@@ -1,0 +1,57 @@
+<story>
+   <storyNodes>
+      <storyNode id="node1" type="kernel">
+         <teaserText>node 1 teaser</teaserText>
+         <eventText>node 1 event</eventText>
+         <functionalDescription>
+            <prominence id="dawgCharacter">3</prominence>
+            <tag id="sunnyWeather"/>
+         </functionalDescription>
+         <prerequisite>
+            <quantReq id="kittyCharacter" operator="greaterThan" compareTo="4"/>
+            <tagReq id="rainyWeather" operator="contains"/>
+            <sceneReq name="FirstScene" operator="notSeen"/>
+         </prerequisite>
+      </storyNode>
+      <storyNode id="node2" type="satellite">
+         <teaserText>node 2 teaser</teaserText>
+         <eventText>node 3 event</eventText>
+         <functionalDescription>
+            <prominence id="dawgCharacter">3</prominence>
+            <tag id="sunnyWeather"/>
+         </functionalDescription>
+         <choice>
+            <text>choice text</text>
+            <outcome>
+               <text>outcome text</text>
+               <quantModifier id="dawgCharacter" absolute="false">-1</quantModifier>
+               <tagModifier id="sunnyWeather">add</tagModifier>
+            </outcome>
+         </choice>
+      </storyNode>
+      <storyNode id="node3" type="satellite">
+         <teaserText>node 2 teaser</teaserText>
+         <eventText>node 3 event</eventText>
+         <functionalDescription>
+            <prominence id="dawgCharacter">3</prominence>
+            <tag id="sunnyWeather"/>
+         </functionalDescription>
+         <choice>
+            <text>choice text</text>
+            <outcome>
+               <text>outcome text</text>
+               <quantModifier id="dawgCharacter" absolute="false">-1</quantModifier>
+               <tagModifier id="sunnyWeather">add</tagModifier>
+            </outcome>
+         </choice>
+      </storyNode>
+   </storyNodes>
+   <numTopScenesForUser>5</numTopScenesForUser>
+   <initialStoryState>
+      <value id="tension">3</value>
+      <desire id="friendshipTheme">1.0</desire>
+      <desire id="kittyCharacter">1.0</desire>
+      <desire id="dawgCharacter">1.0</desire>
+      <desire id="heroTheme">1.0</desire>
+   </initialStoryState>
+</story>

@@ -51,17 +51,12 @@ public class StoryElement
 	public String getName() { return m_name; }
 	
 	
+	public boolean hasDesireValue() { return getType() == ElementType.quantifiable; }
+	
+	
 	public String toString()
 	{
 		return "StoryElement with ID " + m_id;
 	}
 }
 
-/*public enum StoryElement
-{
-	Theme,
-	Character,
-	Setting,
-	Tension,
-	Heroism,
-}*/

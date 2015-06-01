@@ -6,6 +6,7 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
+import storyEngine.StoryState;
 import storyEngine.storyElements.ElementType;
 import storyEngine.storyElements.StoryElementCollection;
 
@@ -60,6 +61,9 @@ public class Prerequisite
 	}
 	
 	
+	//////////////////////////////////////////////////////////////////////////////////////
+	
+	
 	public boolean isValid(StoryElementCollection elements)
 	{
 		boolean isValid = true;
@@ -108,6 +112,55 @@ public class Prerequisite
 		return isValid;
 	}
 	
+	
+	//////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	public boolean passes(StoryState storyState)
+	{
+		boolean passes = true;
+		
+		// Quantifiable prerequisites
+		if (passes)
+		{
+			for (QuantifiableElementRequirement req : m_quantifiableRequirements)
+			{
+				if (!req.passes(storyState))
+				{
+					passes = false;
+					break;
+				}
+			}
+		}
+		
+		// Tag prerequisites
+		if (passes)
+		{
+			for (TagRequirement req : m_tagRequirements)
+			{
+				if (!req.passes(storyState))
+				{
+					passes = false;
+					break;
+				}
+			}
+		}
+		
+		// Scene prerequisites
+		if (passes)
+		{
+			for (SceneRequirement req : m_sceneRequirements)
+			{
+				if (!req.passes(storyState))
+				{
+					passes = false;
+					break;
+				}
+			}
+		}
+		
+		return passes;
+	}
 	
 
 	//////////////////////////////////////////////////////////////////////////////////////
@@ -161,6 +214,42 @@ public class Prerequisite
 		public String getID() { return m_elementID; }
 		public BinaryRestriction getOperator() { return m_operator; }
 		public int getCompareValue() { return m_compareTo; }
+		
+		
+		boolean passes(StoryState storyState)
+		{
+			boolean passes = false;
+			
+			float stateValue = storyState.getValueForElement(m_elementID);
+			
+			switch (m_operator)
+			{
+				case equal:
+					passes = (stateValue == m_compareTo);
+					break;
+
+				case lessThan:
+					passes = (stateValue < m_compareTo);
+					break;
+
+				case greaterThan:
+					passes = (stateValue > m_compareTo);
+					break;
+
+				case lessThanOrEqual:
+					passes = (stateValue <= m_compareTo);
+					break;
+
+				case greaterThanOrEqual:
+					passes = (stateValue >= m_compareTo);
+					break;
+
+				default:
+					break;
+			}
+			
+			return passes;
+		}
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////
@@ -185,6 +274,14 @@ public class Prerequisite
 		
 		public String getID() { return m_elementID; }
 		public ListRestriction getOperator() { return m_operator; }
+		
+		
+		boolean passes(StoryState storyState)
+		{
+			return (m_operator == ListRestriction.contains) ?
+						storyState.taggedWithElement(m_elementID) :
+						!storyState.taggedWithElement(m_elementID);
+		}
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////
@@ -209,5 +306,13 @@ public class Prerequisite
 		
 		public String getSceneID() { return m_sceneID; }
 		public SceneRestriction getOperator() { return m_operator; }
+		
+		
+		boolean passes(StoryState storyState)
+		{
+			return (m_operator == SceneRestriction.seen) ?
+					storyState.seenScene(m_sceneID) :
+					!storyState.seenScene(m_sceneID);
+		}
 	}
 }

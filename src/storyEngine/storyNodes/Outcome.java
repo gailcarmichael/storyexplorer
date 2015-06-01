@@ -13,7 +13,7 @@ import org.simpleframework.xml.Text;
 // an outcome change the story's state in some way.
 public class Outcome
 {
-	@Element(name="text")
+	@Element(name="text", required=false)
 	protected String m_outcomeText;
 
 	@ElementList(inline=true, required=false)
@@ -22,21 +22,28 @@ public class Outcome
 	@ElementList(inline=true, required=false)
 	protected ArrayList<TagModifier> m_taggableModifiers;
 
+	
+	public Outcome()
+	{
+		this(null);
+	}
 
 	public Outcome(String outcomeText)
 	{
-		m_outcomeText = outcomeText;
-		m_quantifiableModifiers = new ArrayList<QuantifiableModifier>();
-		m_taggableModifiers = new ArrayList<TagModifier>();	
+		this(outcomeText, new ArrayList<QuantifiableModifier>(), new ArrayList<TagModifier>());	
 	}
 
 	public Outcome(
-			@Element(name="text") String outcomeText,
-			@ElementList(inline=true, required=false) ArrayList<QuantifiableModifier> quantModifiers,
-			@ElementList(inline=true, required=false) ArrayList<TagModifier> taggableModifiers)
+			String outcomeText,
+			ArrayList<QuantifiableModifier> quantModifiers,
+			ArrayList<TagModifier> taggableModifiers)
 	{
-		this(outcomeText);
+		m_outcomeText = outcomeText;
+		
+		m_quantifiableModifiers = new ArrayList<Outcome.QuantifiableModifier>();
 		if (quantModifiers != null) m_quantifiableModifiers.addAll(quantModifiers);
+		
+		m_taggableModifiers = new ArrayList<Outcome.TagModifier>();
 		if (taggableModifiers != null) m_taggableModifiers.addAll(taggableModifiers);
 	}
 
