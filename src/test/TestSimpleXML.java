@@ -68,8 +68,8 @@ public class TestSimpleXML
 		
 		//////////////////////////////////////////////////////////////////
 		
-		HashMap<String, Integer> values = new HashMap<String, Integer>();
-		values.put("tension", 3);
+		HashMap<String, Float> values = new HashMap<String, Float>();
+		values.put("tension", 3.0f);
 		
 		HashMap<String, Float> desires = new HashMap<String, Float>();
 		desires.put("heroTheme", 1.0f);

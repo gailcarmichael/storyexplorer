@@ -1,6 +1,6 @@
-<story>
+<story numTopScenesForUser="5">
    <storyNodes>
-      <storyNode id="node1" type="kernel">
+      <storyNode id="node1" type="kernel" lastNode="false">
          <teaserText>node 1 teaser</teaserText>
          <eventText>node 1 event</eventText>
          <functionalDescription>
@@ -13,7 +13,7 @@
             <sceneReq name="FirstScene" operator="notSeen"/>
          </prerequisite>
       </storyNode>
-      <storyNode id="node2" type="satellite">
+      <storyNode id="node2" type="satellite" lastNode="false">
          <teaserText>node 2 teaser</teaserText>
          <eventText>node 3 event</eventText>
          <functionalDescription>
@@ -29,7 +29,7 @@
             </outcome>
          </choice>
       </storyNode>
-      <storyNode id="node3" type="satellite">
+      <storyNode id="node3" type="satellite" lastNode="false">
          <teaserText>node 2 teaser</teaserText>
          <eventText>node 3 event</eventText>
          <functionalDescription>
@@ -46,9 +46,8 @@
          </choice>
       </storyNode>
    </storyNodes>
-   <numTopScenesForUser>5</numTopScenesForUser>
    <initialStoryState>
-      <value id="tension">3</value>
+      <value id="tension">3.0</value>
       <desire id="friendshipTheme">1.0</desire>
       <desire id="kittyCharacter">1.0</desire>
       <desire id="dawgCharacter">1.0</desire>

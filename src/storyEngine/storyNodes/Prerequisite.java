@@ -311,8 +311,8 @@ public class Prerequisite
 		boolean passes(StoryState storyState)
 		{
 			return (m_operator == SceneRestriction.seen) ?
-					storyState.seenScene(m_sceneID) :
-					!storyState.seenScene(m_sceneID);
+					storyState.haveSeenScene(m_sceneID) :
+					!storyState.haveSeenScene(m_sceneID);
 		}
 	}
 }

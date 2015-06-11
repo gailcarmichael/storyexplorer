@@ -8,6 +8,10 @@ import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 import org.simpleframework.xml.Text;
 
+import storyEngine.StoryState;
+import storyEngine.storyElements.ElementType;
+import storyEngine.storyElements.StoryElementCollection;
+
 // An outcome specifies what happens after a choice is made in 
 // a story node.  There is one outcome per choice.  Modifiers in
 // an outcome change the story's state in some way.
@@ -46,6 +50,12 @@ public class Outcome
 		m_taggableModifiers = new ArrayList<Outcome.TagModifier>();
 		if (taggableModifiers != null) m_taggableModifiers.addAll(taggableModifiers);
 	}
+	
+	
+	public String getOutcomeText() { return m_outcomeText; }
+	
+
+	//////////////////////////////////////////////////////////////////////////////////////
 
 
 	public void add(QuantifiableModifier m)
@@ -63,9 +73,102 @@ public class Outcome
 			m_taggableModifiers.add(m);
 		}
 	}
+	
+
+	//////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	public boolean isValid(StoryElementCollection elements)
+	{
+		boolean isValid = true;
+		
+		// Check quantifiable modifiers
+		if (m_quantifiableModifiers != null)
+		{
+			for (QuantifiableModifier modifier : m_quantifiableModifiers)
+			{
+				if (!elements.hasElementWithID(modifier.getID()))
+				{
+					System.err.println("Quantifiable modifier is not valid because element" +
+							" with id " + modifier.getID() + "  is not part of the element collection.");
+					isValid = false;
+				}
+				else if (elements.getElementWithID(modifier.getID()).getType() != ElementType.quantifiable &&
+						elements.getElementWithID(modifier.getID()).getType() != ElementType.quantifiableStoryStateOnly)
+				{
+					System.err.println("Quantifiable modifier is not valid because element" +
+							" with id " + modifier.getID() + "  has type " + 
+							elements.getElementWithID(modifier.getID()).getType());
+					isValid = false;
+				}
+			}
+		}
+		
+		
+		// Check tag modifiers
+		if (m_taggableModifiers != null)
+		{
+			for (TagModifier modifier : m_taggableModifiers)
+			{
+				if (!elements.hasElementWithID(modifier.getID()))
+				{
+					System.err.println("Taggable modifier is not valid because element" +
+							" with id " + modifier.getID() + "  is not part of the element collection.");
+					isValid = false;
+				}
+				else if (elements.getElementWithID(modifier.getID()).getType() != ElementType.taggable)
+				{
+					System.err.println("Taggable modifier is not valid because element" +
+							" with id " + modifier.getID() + "  has type " + 
+							elements.getElementWithID(modifier.getID()).getType());
+					isValid = false;
+				}
+			}
+		}
+		
+		
+		return isValid;
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	void applyOutcome(StoryState state)
+	{
+		for (QuantifiableModifier modifier : m_quantifiableModifiers)
+		{
+			float value = state.getValueForElement(modifier.getID());
+			
+			if (modifier.getAbsolute())
+			{
+				value = modifier.getDelta();
+			}
+			else
+			{
+				value += modifier.getDelta();
+			}
+			
+			state.setValueForElement(modifier.getID(), value);
+		}
+		
+		
+		for (TagModifier modifier : m_taggableModifiers)
+		{
+			if (modifier.getAction() == TagAction.add)
+			{
+				state.addTag(modifier.getID());
+			}
+			else if (modifier.getAction() == TagAction.remove)
+			{
+				state.removeTag(modifier.getID());
+			}
+		}
+	}
+	
 
 	//////////////////////////////////////////////////////////////////////////////////////
 
+	
 	@Root(name="quantModifier")
 	static public class QuantifiableModifier
 	{
@@ -88,9 +191,16 @@ public class Outcome
 			m_absolute = absolute;
 			m_delta = delta;
 		}
+		
+		
+		String getID() { return m_elementID; }
+		boolean getAbsolute() { return m_absolute; }
+		int getDelta() { return m_delta; }
 	}
 
+	
 	//////////////////////////////////////////////////////////////////////////////////////
+	
 	
 	public static enum TagAction
 	{
@@ -98,8 +208,10 @@ public class Outcome
 		remove
 	}
 
+	
 	//////////////////////////////////////////////////////////////////////////////////////
 
+	
 	@Root(name="tagModifier")
 	static public class TagModifier
 	{
@@ -117,5 +229,9 @@ public class Outcome
 			m_elementID = id;
 			m_action = action;
 		}
+		
+		
+		String getID() { return m_elementID; }
+		TagAction getAction() { return m_action; }
 	}
 }

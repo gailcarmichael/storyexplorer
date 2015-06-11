@@ -25,6 +25,9 @@ public class StoryNode
 	
 	@Attribute(name="type")
 	protected NodeType m_type;
+	
+	@Attribute(name="lastNode", required=false)
+	protected boolean m_lastNode;
 
 	@Element(name="teaserText")
 	protected String m_teaserText;
@@ -42,7 +45,7 @@ public class StoryNode
 	protected ArrayList<Choice> m_choices;
 	
 	protected boolean m_consumed;
-
+	protected int m_selectedChoiceIndex;
 
 	public StoryNode(
 			@Attribute(name="id") String id, 
@@ -52,33 +55,10 @@ public class StoryNode
 			@Element(name="functionalDescription") FunctionalDescription funcDesc,
 			@ElementList(name="choices", inline=true) ArrayList<Choice> choices)
 	{
-		this(id, type, teaserText, eventText, funcDesc, null, choices);
+		this(id, type, false, teaserText, eventText, funcDesc, null, choices);
 	}
-
-
-	public StoryNode(
-			@Attribute(name="id") String id,  
-			@Attribute(name="type") NodeType type,
-			@Element(name="teaserText") String teaserText, 
-			@Element(name="eventText") String eventText,
-			@Element(name="prerequisite", required=false) Prerequisite prerequisite,
-			@ElementList(name="choices", inline=true) ArrayList<Choice> choices)
-	{
-		this(id, type, teaserText, eventText, null, prerequisite, choices);
-	}
-
-
-	public StoryNode(
-			@Attribute(name="id") String id,  
-			@Attribute(name="type") NodeType type,
-			@Element(name="teaserText") String teaserText, 
-			@Element(name="eventText") String eventText,
-			@ElementList(name="choices", inline=true) ArrayList<Choice> choices)
-	{
-		this(id, type, teaserText, eventText, null, null, choices);
-	}
-
-
+	
+	
 	public StoryNode(
 			@Attribute(name="id") String id,  
 			@Attribute(name="type") NodeType type,
@@ -88,21 +68,38 @@ public class StoryNode
 			@Element(name="prerequisite", required=false) Prerequisite prerequisite,
 			@ElementList(name="choices", inline=true) ArrayList<Choice> choices)
 	{
+		this(id, type, false, teaserText, eventText, funcDesc, prerequisite, choices);
+	}
+
+
+	public StoryNode(
+			@Attribute(name="id") String id,  
+			@Attribute(name="type") NodeType type,
+			@Attribute(name="lastNode", required=false) boolean lastNode,
+			@Element(name="teaserText") String teaserText, 
+			@Element(name="eventText") String eventText,
+			@Element(name="functionalDescription") FunctionalDescription funcDesc,
+			@Element(name="prerequisite", required=false) Prerequisite prerequisite,
+			@ElementList(name="choices", inline=true) ArrayList<Choice> choices)
+	{
 		m_id = id;
 		m_type = type;
+		m_lastNode = false;
 		m_teaserText = teaserText;
 		m_eventText = eventText;
 		m_functionalDesc = funcDesc;
 		m_prerequisite = prerequisite;
 		m_choices = choices;
 		
-		m_consumed = false;
+		resetNode();
 	}
 
 
 	public String getID() { return m_id; }
 	public String getTeaserText() { return m_teaserText; }
 	public String getEventText() { return m_eventText; }
+	
+	public boolean isLastNode() { return m_lastNode; }
 	
 	public boolean isKernel() { return m_type == NodeType.kernel; }
 	public boolean isSatellite() { return m_type == NodeType.satellite; }
@@ -182,5 +179,104 @@ public class StoryNode
 		}
 		
 		return score;
+	}
+	
+	
+	////////////////////////////////////////////////////////////////
+	
+	
+	public int getNumChoices()
+	{
+		int numChoices = 0;
+		
+		if (m_choices != null)
+		{
+			numChoices = m_choices.size();
+		}
+		
+		return numChoices;
+	}
+	
+	
+	public String getTextForChoice(int index)
+	{
+		String text = null;
+		
+		if (m_choices != null && index < m_choices.size())
+		{
+			text = m_choices.get(index).getText();
+		}
+		
+		return text;
+	}
+	
+	
+	public int getSelectedChoice() { return m_selectedChoiceIndex; }
+	
+	
+	public void setSelectedChoice(int choiceIndex)
+	{ 
+		m_selectedChoiceIndex = Math.max(0, choiceIndex); 
+	}
+	
+	public boolean selectedChoiceIsValid()
+	{
+		return
+			(m_choices == null && m_selectedChoiceIndex < 0) ||
+			(m_choices != null && m_selectedChoiceIndex >= 0
+							   && m_selectedChoiceIndex < m_choices.size());
+	}
+	
+	
+	////////////////////////////////////////////////////////////////
+	
+	
+	public String getOutcomeTextForSelectedChoice()
+	{
+		String text = null;
+		
+		if (m_choices != null && selectedChoiceIsValid())
+		{
+			text = m_choices.get(getSelectedChoice()).getText();
+		}
+		
+		return text;
+	}
+	
+	
+	public void applyOutcomeForSelectedChoice(StoryState state)
+	{
+		// Node-specific changes
+		m_consumed = true;
+		state.addNodeToScenesSeen(this);
+		
+		// Apply the outcome for the selected choice
+		if (m_choices != null && selectedChoiceIsValid())
+		{
+			Outcome outcome = m_choices.get(getSelectedChoice()).getOutcome();
+			if (outcome != null)
+			{
+				outcome.applyOutcome(state);
+			}
+		}
+	}
+	
+	public void resetRelevantDesireValuesInStoryState(StoryState state)
+	{
+		// Reset desire values in state that appear in the functional description
+		if (m_functionalDesc != null)
+		{
+			m_functionalDesc.resetDesireValues(state);
+		}
+	}
+	
+	
+	////////////////////////////////////////////////////////////////
+	
+	
+	public void resetNode()
+	{
+		m_consumed = false;
+		m_selectedChoiceIndex = -1;
 	}
 }

@@ -19,9 +19,14 @@ import storyEngine.storyNodes.StoryNode;
 
 public class StoryState
 {
+	
+	protected final static int RESET_DESIRE_VALUE = 0;
+	protected final static float DESIRE_RATE_INCREASE = 1.0f; // this may end up being data-driven eventually
+	
+	
 	// Elements of type QuantifiableStoryStateOnly
 	@ElementMap(required=false, inline=true, entry="value", key="id", attribute=true)
-	protected HashMap<String, Integer> m_elementValues;
+	protected HashMap<String, Float> m_elementValues;
 	
 	// Elements of type Quantifiable
 	@ElementMap(required=false, inline=true, entry="desire", key="id", attribute=true)
@@ -35,7 +40,7 @@ public class StoryState
 	
 	
 	public StoryState(
-			@ElementMap(required=false, inline=true, entry="value", key="id", attribute=true) HashMap<String, Integer> elementValues,
+			@ElementMap(required=false, inline=true, entry="value", key="id", attribute=true) HashMap<String, Float> elementValues,
 			@ElementMap(required=false, inline=true, entry="desire", key="id", attribute=true) HashMap<String, Float> elementDesires,
 			@ElementList(required=false, inline=true) ArrayList<String> tagList)
 	{
@@ -43,7 +48,16 @@ public class StoryState
 		m_elementDesires = elementDesires;
 		m_tagList = tagList;
 		m_scenesSeen = new ArrayList<StoryNode>();
+		
+		if (m_elementValues == null) m_elementValues = new HashMap<String, Float>();
+		if (m_elementDesires == null) m_elementDesires = new HashMap<String, Float>();
 	}
+	
+	
+	public boolean isDesireValue(String id) { return m_elementDesires.containsKey(id); }
+	
+	
+	///////////////////////////////////////////////////////////////
 	
 	
 	public float getValueForElement(String id)
@@ -58,24 +72,74 @@ public class StoryState
 		}
 		else
 		{
-			System.err.println("StoryState has no element with id " + id);
+			System.err.println("StoryState has no quantifiable element with id " + id);
 			return -1;
 		}
 	}
+	
+	
+	public void setValueForElement(String id, float value)
+	{
+		if (m_elementValues.containsKey(id))
+		{
+			m_elementValues.put(id, value);
+		}
+		else if (m_elementDesires.containsKey(id))
+		{
+			m_elementDesires.put(id, value);
+		}
+		else
+		{
+			System.err.println("StoryState has no quantifiable element with id " + id);
+		}
+	}
+	
 	
 	public boolean taggedWithElement(String id)
 	{
 		return m_tagList.contains(id);
 	}
 	
+	
+	public void removeTag(String id)
+	{
+		if (m_tagList.remove(id))
+		{
+			m_tagList.remove(id);
+		}
+		else
+		{
+			System.err.println("StoryState has no taggable element with id " + id);
+		}
+	}
+	
+	
+	public void addTag(String id)
+	{
+		if (!m_tagList.contains(id))
+		{
+			m_tagList.add(id);
+		}
+	}
+	
+	
 	///////////////////////////////////////////////////////////////
+	
+	
+	public int getNumScenesSeen() { return m_scenesSeen.size(); }
+	public ArrayList<StoryNode> getScenesSeen() { return m_scenesSeen; }
+	
 	
 	public void addNodeToScenesSeen(StoryNode n)
 	{
-		m_scenesSeen.add(n);
+		if (!m_scenesSeen.contains(n))
+		{
+			m_scenesSeen.add(n);
+		}
 	}
 	
-	public boolean seenScene(String sceneID)
+	
+	public boolean haveSeenScene(String sceneID)
 	{
 		boolean seenScene = false;
 		
@@ -91,7 +155,31 @@ public class StoryState
 		return seenScene;
 	}
 	
+	
 	///////////////////////////////////////////////////////////////
+	
+	
+	public void resetDesireValue(String id)
+	{
+		if (m_elementDesires.containsKey(id))
+		{
+			m_elementDesires.put(id, (float) RESET_DESIRE_VALUE);
+		}
+	}
+	
+	
+	void increaseDesireValues()
+	{
+		for (String id : m_elementDesires.keySet())
+		{
+			float value = m_elementDesires.get(id);
+			m_elementDesires.put(id, value += DESIRE_RATE_INCREASE);
+		}
+	}
+	
+	
+	///////////////////////////////////////////////////////////////
+	
 	
 	public boolean isValid(StoryElementCollection elements)
 	{
@@ -153,6 +241,7 @@ public class StoryState
 		
 		return isValid;
 	}
+	
 	
 	///////////////////////////////////////////////////////////////
 }

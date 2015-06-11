@@ -8,6 +8,7 @@ import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.ElementMap;
 
 import storyEngine.Story;
+import storyEngine.StoryState;
 import storyEngine.storyElements.ElementType;
 import storyEngine.storyElements.StoryElement;
 import storyEngine.storyElements.StoryElementCollection;
@@ -175,6 +176,21 @@ public class FunctionalDescription
 		}
 		
 		return nodeScore;
+	}
+	
+	
+	////////////////////////////////////////////////////////////////
+	
+	
+	void resetDesireValues(StoryState state)
+	{
+		for (String id : m_elementProminences.keySet())
+		{
+			if (state.isDesireValue(id))
+			{
+				state.resetDesireValue(id);
+			}
+		}
 	}
 	
 }

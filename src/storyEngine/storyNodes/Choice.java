@@ -37,15 +37,27 @@ public class Choice
 	}
 	
 	
+	String getText() { return m_text; }
+	
+	Outcome getOutcome() { return m_outcome; }
+	
 	public void setOutcome(Outcome o)
 	{
 		m_outcome = o;
 	}
+
+	
+	//////////////////////////////////////////////////////////////////////////////////////
 	
 	
 	public boolean isValid(StoryElementCollection elements)
 	{
 		boolean isValid = true;
+		
+		if (m_outcome != null)
+		{
+			isValid = m_outcome.isValid(elements);
+		}
 		
 		return isValid;
 	}

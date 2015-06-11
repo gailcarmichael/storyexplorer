@@ -27,7 +27,9 @@ public class Story
 	@Element(name="initialStoryState")
 	protected StoryState m_storyState;
 	
+	// Stuff used for managing story progression
 	protected NodePrioritizer m_nodePrioritizer;
+	protected StoryNode m_nodeBeingConsumed;
 	
 	
 	public Story(
@@ -42,10 +44,13 @@ public class Story
 		m_storyState = initStoryState;
 		
 		m_nodePrioritizer = new NodePrioritizer(this);
+		
+		m_nodeBeingConsumed = m_startingNode; // could be null
 	}
 	
 	
 	public ArrayList<StoryNode> getNodes() { return m_nodes; }
+	public StoryNode getStartingNode() { return m_startingNode; }
 	
 	public int getNumTopScenesForUser() { return m_numTopScenesForUser; }
 	
@@ -55,6 +60,11 @@ public class Story
 	public float getDesireForElement(String id)
 	{
 		return m_storyState.getValueForElement(id);
+	}
+	
+	public ArrayList<StoryNode> getScenesSeen()
+	{
+		return m_storyState.getScenesSeen();
 	}
 	
 	
@@ -88,13 +98,59 @@ public class Story
 	/////////////////////////////////////////////////////////////
 	
 	
-	/* The story is driven forward with this class.  A node will be presented
-	 * to a user, who will make choices if necessary; then the node's outcome
-	 * will be applied to the story state. After a node is consumed, the top
-	 * priority nodes will be recalculated, ready to be presented to the user.
-	 */
+	////
+	// The story is driven forward with this class.  A node will be presented
+	// to a user, who will make choices if necessary; then the node's outcome
+	// will be applied to the story state. After a node is consumed, the top
+	// priority nodes will be recalculated, ready to be presented to the user.
+	////
 	
 	
+	// Could be null at the beginning of the story, in which case the caller
+	// should get and present current scene options
+	public StoryNode getNodeBeingConsumed() { return m_nodeBeingConsumed; }
+	
+	
+	// Select the next node to consume
+	public void startConsumingNode(StoryNode node) { m_nodeBeingConsumed = node; } 
+	
+	
+	// Call this after a node has been presented to a user to apply its
+	// outcome to the story state
+	public void applyOutcomeAndAdjustDesires()
+	{
+		if (m_nodeBeingConsumed != null)
+		{
+			m_nodeBeingConsumed.applyOutcomeForSelectedChoice(m_storyState);
+			m_nodeBeingConsumed.resetRelevantDesireValuesInStoryState(m_storyState);
+		}
+		else
+		{
+			System.err.println("Could not apply outcome or adjust desires because " +
+								"node being consumed is null.");
+		}
+	}
+	
+	
+	// Finalize consumption after all outcomes are applied, and return
+	// whether the node is the last one in the story
+	public boolean finishConsumingNode()
+	{
+		boolean lastNode = false;
+		
+		if (m_nodeBeingConsumed != null)
+		{
+			lastNode = m_nodeBeingConsumed.isLastNode();
+		}
+		
+		m_nodeBeingConsumed = null;
+		
+		return lastNode;
+	}
+	
+	
+	// Helper method to get all nodes that could potentially be presented to 
+	// the user, used by node prioritizer
 	ArrayList<StoryNode> getAvailableNodes()
 	{
 		ArrayList<StoryNode> availableNodes = new ArrayList<StoryNode>();
@@ -111,6 +167,8 @@ public class Story
 	}
 	
 	
+	// Returns an up-to-date list of the top available story nodes that
+	// can be presented to a user
 	public ArrayList<StoryNode> getCurrentSceneOptions()
 	{
 		ArrayList<StoryNode> currentSceneOptions = new ArrayList<StoryNode>();
@@ -127,5 +185,19 @@ public class Story
 		}
 		
 		return currentSceneOptions;
+	}
+	
+	
+	// Reset all values so the story can be re-run
+	public void reset(StoryState initialState)
+	{
+		m_nodeBeingConsumed = null;
+		m_nodePrioritizer = new NodePrioritizer(this);
+		m_storyState = initialState;
+		
+		for (StoryNode n : m_nodes)
+		{
+			n.resetNode();
+		}
 	}
 }
