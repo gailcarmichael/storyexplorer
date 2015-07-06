@@ -107,6 +107,17 @@ public class StoryNode
 	public boolean isConsumed() { return m_consumed; }
 	
 	
+	public boolean featuresElement(String id)
+	{
+		boolean features = false;
+		if (m_functionalDesc != null)
+		{
+			features = m_functionalDesc.featuresElement(id);
+		}
+		return features;
+	}
+	
+	
 	public String toString()
 	{
 		return m_id + ": " + m_teaserText;

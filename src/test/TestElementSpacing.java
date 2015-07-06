@@ -9,8 +9,10 @@ import java.util.HashMap;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
+import processing.core.PApplet;
 import storyEngine.Story;
 import storyEngine.StoryState;
+import storyEngine.analysis.ElementSpacingVisualizer;
 import storyEngine.analysis.StoryRunSimulation;
 import storyEngine.storyElements.ElementType;
 import storyEngine.storyElements.StoryElement;
@@ -25,11 +27,19 @@ import storyEngine.storyNodes.StoryNode;
 // of story scenes is generated such that there are many scenes
 // tagged with each theme, character, and setting element.
 
-public class TestElementSpacing
+public class TestElementSpacing extends PApplet
 {
-
-	private static final int NUM_EACH_ELEMENT = 4; // how many different themes, characters, settings each
+	private static final long serialVersionUID = -893063477402437731L;
+	
+	private static final int NUM_EACH_CATEGORY = 5; // how many different themes, characters, settings each
+	private static final int NUM_NODES_PER_ELEMENT = 15; // how many nodes for each individual theme, etc
+	
+	private static final int NUM_TOP_CHOICES = 5;
 	private static final boolean TEST_COMBO_ELEMENTS = false; // whether nodes should have multiple element tags
+	private static final boolean RANDOMIZE_CHOICES = false; // true when using random node choice rather than top
+	
+	private static ElementSpacingVisualizer VISUALIZER;
+	
 	
 	////////////////////////////////////////////////////////
 	
@@ -38,7 +48,7 @@ public class TestElementSpacing
 		// Initial story state: set all values to 1
 		
 		HashMap<String, Float> desires = new HashMap<String, Float>();
-		for (int i=1; i <= NUM_EACH_ELEMENT; i++)
+		for (int i=1; i <= NUM_EACH_CATEGORY; i++)
 		{
 			desires.put("theme" + i, 1.0f);
 			desires.put("character" + i, 1.0f);
@@ -68,11 +78,11 @@ public class TestElementSpacing
 		
 		try
 		{
-			String filename = ".\\testData\\testElementSpacing\\" + keyword + "Results.txt";
+			String filename = "./testData/testElementSpacing/" + keyword + "Results.txt";
 			BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
 			
 			writer.write("-----\nTop Scene Walkthrough Results\n-----\n");
-			writer.write("(" + story.getNodes().size() + " scenes total, " + numScenesSeen + " total)\n");
+			writer.write("(" + story.getNodes().size() + " scenes total, " + numScenesSeen + " seen)\n");
 			
 			for (StoryNode scene : story.getScenesSeen())
 			{
@@ -91,6 +101,28 @@ public class TestElementSpacing
 	
 	////////////////////////////////////////////////////////
 	
+	
+	public void setup()
+	{
+		VISUALIZER.setup(this);
+	}
+	
+
+	public void draw()
+	{
+		VISUALIZER.draw(this);
+	}
+	
+	
+	public void keyPressed()
+	{
+		save("./testData/testElementSpacing/spacing" +
+				(RANDOMIZE_CHOICES ? "-random" : "-topScene") + ".png");
+	}
+	
+	
+	////////////////////////////////////////////////////////
+	
 	public static void main(String[] args)
 	{		
 		////
@@ -98,7 +130,7 @@ public class TestElementSpacing
 		
 		StoryElementCollection elementCollection = new StoryElementCollection();
 		
-		for (int i=1; i <= NUM_EACH_ELEMENT; i++)
+		for (int i=1; i <= NUM_EACH_CATEGORY; i++)
 		{
 			elementCollection.add(
 					new StoryElement("theme" + i, "themes", "theme" + i, ElementType.quantifiable));
@@ -125,41 +157,41 @@ public class TestElementSpacing
 		
 		// Nodes tagged with just one element
 		
-		for (int i=1; i <= NUM_EACH_ELEMENT; i++)
+		for (int i=1; i <= NUM_EACH_CATEGORY; i++)
 		{
-			for (int j=0; j < 6; j++)
+			for (int j=0; j < NUM_NODES_PER_ELEMENT; j++)
 			{
 				FunctionalDescription funcDesc = new FunctionalDescription();
-				funcDesc.add(elementCollection, "theme" + i, j/2 + 1);
+				funcDesc.add(elementCollection, "theme" + i, /*j/2 + 1*/ 1);
 				
 				nodes.add(new StoryNode(
 						/* id */ "theme" + i + "-" + (j+1),
 						/* type */ NodeType.satellite, 
-						/* teaser text */ "theme" + i + " (" + (j/2 + 1) + ")", 
+						/* teaser text */ "theme" + i + " (" + /*j/2 + 1*/ 1 + ")", 
 						/* event text */ "-",
 						/* functional desc */ funcDesc,
 						/* prereq */ null,
 						/* choices */ null));
 				
 				funcDesc = new FunctionalDescription();
-				funcDesc.add(elementCollection, "character" + i, j/2 + 1);
+				funcDesc.add(elementCollection, "character" + i, /*j/2 + 1*/ 1);
 				
 				nodes.add(new StoryNode(
 						/* id */ "character" + i + "-" + (j+1),
 						/* type */ NodeType.satellite, 
-						/* teaser text */ "character" + i + " (" + (j/2 + 1) + ")", 
+						/* teaser text */ "character" + i + " (" + /*j/2 + 1*/ 1 + ")", 
 						/* event text */ "-",
 						/* functional desc */ funcDesc,
 						/* prereq */ null,
 						/* choices */ null));
 				
 				funcDesc = new FunctionalDescription();
-				funcDesc.add(elementCollection, "setting" + i, j/2 + 1);
+				funcDesc.add(elementCollection, "setting" + i, /*j/2 + 1*/ 1);
 				
 				nodes.add(new StoryNode(
 						/* id */ "setting" + i + "-" + (j+1),
 						/* type */ NodeType.satellite, 
-						/* teaser text */ "setting" + i + " (" + (j/2 + 1) + ")", 
+						/* teaser text */ "setting" + i + " (" + /*j/2 + 1*/ 1 + ")", 
 						/* event text */ "-",
 						/* functional desc */ funcDesc,
 						/* prereq */ null,
@@ -176,7 +208,7 @@ public class TestElementSpacing
 		
 		// Construct the story object and test validity
 		
-		Story story = new Story(4, nodes, null /* <- no start node */, initialState);
+		Story story = new Story(NUM_TOP_CHOICES, nodes, null /* <- no start node */, initialState);
 		story.setElementCollection(elementCollection);
 		System.out.println("Test story is valid: " + story.isValid(elementCollection));
 		
@@ -186,7 +218,7 @@ public class TestElementSpacing
 		try
 		{
 			Serializer serializer = new Persister();
-			File result = new File(".\\testData\\testElementSpacing\\testSpacing.xml");
+			File result = new File("./testData/testElementSpacing/testSpacing.xml");
 			serializer.write(story, result);
 		}
 		catch (Exception e)
@@ -200,13 +232,13 @@ public class TestElementSpacing
 		// making random choices from available scenes or choosing the
 		// top scene each time
 		
-		runThroughStory(story, false);
-		story.reset(getInitialState());
-		runThroughStory(story, true);
+		runThroughStory(story, RANDOMIZE_CHOICES);
 		
 		
 		////
-		// Step 4: Run through the story many times and report statistics
-		// on how far apart elements are
+		// Step 4: Visualize the spacing of elements
+		
+		TestElementSpacing.VISUALIZER = new ElementSpacingVisualizer(story);
+		PApplet.main(TestElementSpacing.class.getCanonicalName());
 	}
 }

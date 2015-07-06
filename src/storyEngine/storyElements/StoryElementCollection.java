@@ -36,6 +36,12 @@ public class StoryElementCollection
 	}
 	
 	
+	public int getNumElementsPriorityCalc()
+	{
+		return m_storyElementsPriorityCalc.size();
+	}
+	
+	
 	public void printStoryElements()
 	{
 		for (StoryElement e : m_storyElements)

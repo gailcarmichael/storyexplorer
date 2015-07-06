@@ -165,6 +165,10 @@ public class StoryState
 		{
 			m_elementDesires.put(id, (float) RESET_DESIRE_VALUE);
 		}
+		else
+		{
+			System.err.println("StoryState could not reset desire value for " + id);
+		}
 	}
 	
 	

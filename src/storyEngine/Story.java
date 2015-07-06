@@ -123,6 +123,7 @@ public class Story
 		{
 			m_nodeBeingConsumed.applyOutcomeForSelectedChoice(m_storyState);
 			m_nodeBeingConsumed.resetRelevantDesireValuesInStoryState(m_storyState);
+			m_storyState.increaseDesireValues();
 		}
 		else
 		{

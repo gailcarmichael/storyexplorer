@@ -85,6 +85,12 @@ public class FunctionalDescription
 	}
 	
 	
+	boolean featuresElement(String id)
+	{
+		return (m_elementProminences.containsKey(id) || m_elementTags.contains(id));
+	}
+	
+	
 	////////////////////////////////////////////////////////////////
 	
 	
