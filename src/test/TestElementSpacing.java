@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
@@ -32,13 +33,16 @@ public class TestElementSpacing extends PApplet
 	private static final long serialVersionUID = -893063477402437731L;
 	
 	private static final int NUM_EACH_CATEGORY = 5; // how many different themes, characters, settings each
-	private static final int NUM_NODES_PER_ELEMENT = 15; // how many nodes for each individual theme, etc
+	private static final int NUM_NODES_PER_ELEMENT = 10; // how many nodes for each individual theme, etc
 	
-	private static final int NUM_TOP_CHOICES = 5;
-	private static final boolean TEST_COMBO_ELEMENTS = false; // whether nodes should have multiple element tags
-	private static final boolean RANDOMIZE_CHOICES = false; // true when using random node choice rather than top
+	private static final int NUM_TOP_CHOICES = 5; // how many of the top nodes are offered to players
+	
+	private static final boolean TEST_COMBO_ELEMENTS = true; // whether nodes should have multiple element tags
+	private static final boolean TEST_RANDOM_CHOICES = true; // true when using random node choice rather than top
 	
 	private static ElementSpacingVisualizer VISUALIZER;
+	
+	private static Random RANDOM = null;
 	
 	
 	////////////////////////////////////////////////////////
@@ -117,14 +121,53 @@ public class TestElementSpacing extends PApplet
 	public void keyPressed()
 	{
 		save("./testData/testElementSpacing/spacing" +
-				(RANDOMIZE_CHOICES ? "-random" : "-topScene") + ".png");
+				(TEST_RANDOM_CHOICES ? "-random" : "-topScene") + ".png");
 	}
 	
 	
 	////////////////////////////////////////////////////////
 	
+	
+	private static StoryNode createStoryNode(
+			StoryElementCollection elementCollection, String category, int catNum, int withinCatNum)
+	{
+		int prominence = RANDOM.nextInt(3) + 1;
+		
+		FunctionalDescription funcDesc = new FunctionalDescription();
+		funcDesc.add(elementCollection, category + catNum, prominence);
+		
+		if (TEST_COMBO_ELEMENTS)
+		{
+			if (RANDOM.nextBoolean())
+			{
+				addRandomElementToFuncDesc(elementCollection, funcDesc);
+			}
+		}
+		
+		return new StoryNode(
+				/* id */ category + catNum + "-" + (withinCatNum+1),
+				/* type */ NodeType.satellite, 
+				/* teaser text */ category + catNum + " (" + prominence + ")", 
+				/* event text */ "-",
+				/* functional desc */ funcDesc,
+				/* prereq */ null,
+				/* choices */ null);
+	}
+	
+	
+	private static void addRandomElementToFuncDesc(StoryElementCollection col, FunctionalDescription funcDesc)
+	{
+		// Pick a random element from the collection, and then give it a random prominence between 1 and 3
+		
+		String id = col.getIDs().get(RANDOM.nextInt(col.getIDs().size()));
+		funcDesc.add(col, id, RANDOM.nextInt(3) + 1);
+	}
+	
+	
 	public static void main(String[] args)
 	{		
+		RANDOM = new Random();
+		
 		////
 		// Step 1: Generate a story collection with generic story elements
 		
@@ -161,48 +204,10 @@ public class TestElementSpacing extends PApplet
 		{
 			for (int j=0; j < NUM_NODES_PER_ELEMENT; j++)
 			{
-				FunctionalDescription funcDesc = new FunctionalDescription();
-				funcDesc.add(elementCollection, "theme" + i, /*j/2 + 1*/ 1);
-				
-				nodes.add(new StoryNode(
-						/* id */ "theme" + i + "-" + (j+1),
-						/* type */ NodeType.satellite, 
-						/* teaser text */ "theme" + i + " (" + /*j/2 + 1*/ 1 + ")", 
-						/* event text */ "-",
-						/* functional desc */ funcDesc,
-						/* prereq */ null,
-						/* choices */ null));
-				
-				funcDesc = new FunctionalDescription();
-				funcDesc.add(elementCollection, "character" + i, /*j/2 + 1*/ 1);
-				
-				nodes.add(new StoryNode(
-						/* id */ "character" + i + "-" + (j+1),
-						/* type */ NodeType.satellite, 
-						/* teaser text */ "character" + i + " (" + /*j/2 + 1*/ 1 + ")", 
-						/* event text */ "-",
-						/* functional desc */ funcDesc,
-						/* prereq */ null,
-						/* choices */ null));
-				
-				funcDesc = new FunctionalDescription();
-				funcDesc.add(elementCollection, "setting" + i, /*j/2 + 1*/ 1);
-				
-				nodes.add(new StoryNode(
-						/* id */ "setting" + i + "-" + (j+1),
-						/* type */ NodeType.satellite, 
-						/* teaser text */ "setting" + i + " (" + /*j/2 + 1*/ 1 + ")", 
-						/* event text */ "-",
-						/* functional desc */ funcDesc,
-						/* prereq */ null,
-						/* choices */ null));
+				nodes.add(createStoryNode(elementCollection, "theme", i, j));
+				nodes.add(createStoryNode(elementCollection, "character", i, j));
+				nodes.add(createStoryNode(elementCollection, "setting", i, j));
 			}
-		}
-		
-		
-		if (TEST_COMBO_ELEMENTS)
-		{
-			
 		}
 		
 		
@@ -232,7 +237,7 @@ public class TestElementSpacing extends PApplet
 		// making random choices from available scenes or choosing the
 		// top scene each time
 		
-		runThroughStory(story, RANDOMIZE_CHOICES);
+		runThroughStory(story, TEST_RANDOM_CHOICES);
 		
 		
 		////

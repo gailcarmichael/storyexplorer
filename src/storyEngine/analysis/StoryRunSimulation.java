@@ -45,7 +45,7 @@ public class StoryRunSimulation
 	
 	protected static int walkthrough(Story story, boolean random)
 	{
-		if (RANDOM == null) RANDOM = new Random();
+		RANDOM = new Random();
 		
 		boolean lastNode = false;
 		int numScenesSeen = 0;

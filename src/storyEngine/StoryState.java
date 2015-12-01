@@ -60,6 +60,43 @@ public class StoryState
 	///////////////////////////////////////////////////////////////
 	
 	
+	public String toString()
+	{
+		String toReturn = "";
+		
+		System.out.println("Story state: ");
+		
+		if (m_elementValues != null)
+		{
+			for (String id : m_elementValues.keySet())
+			{
+				toReturn += "\t" + id + ": " + m_elementValues.get(id) + "\n";
+			}
+		}
+		
+		if (m_elementDesires != null)
+		{
+			for (String id : m_elementDesires.keySet())
+			{
+				toReturn += "\t" + id + ": " + m_elementDesires.get(id) + "\n";
+			}
+		}
+		
+		if (m_tagList != null)
+		{
+			for (String id : m_tagList)
+			{
+				toReturn += id + "\n";
+			}
+		}
+		
+		return toReturn.substring(0, toReturn.length()-2);
+	}
+	
+	
+	///////////////////////////////////////////////////////////////
+	
+	
 	public float getValueForElement(String id)
 	{
 		if (m_elementValues.containsKey(id))

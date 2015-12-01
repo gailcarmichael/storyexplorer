@@ -68,6 +68,9 @@ public class Story
 	}
 	
 	
+	public void printStoryState() { System.out.println(m_storyState); }
+	
+	
 	/////////////////////////////////////////////////////////////
 	
 	
