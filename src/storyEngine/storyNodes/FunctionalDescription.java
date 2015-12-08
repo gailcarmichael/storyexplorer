@@ -21,6 +21,8 @@ public class FunctionalDescription
 		@Attribute(name="id")
 		String m_tag;
 		Tag(@Attribute(name="id") String tag) { m_tag = tag; }
+		
+		public String toString() { return m_tag; }
 	}
 	
 	
@@ -146,8 +148,114 @@ public class FunctionalDescription
 	
 	////////////////////////////////////////////////////////////////
 	
+	public float getProminenceValueForElement(String elementID)
+	{
+		float prominence = 0;
+		
+		if (m_elementProminences.containsKey(elementID))
+		{
+			prominence = m_elementProminences.get(elementID);
+		}
+
+		return prominence;
+	}
+	
+	public ArrayList<String> getElementIDs()
+	{
+		ArrayList<String> elementIDs = new ArrayList<String>();
+		
+		elementIDs.addAll(m_elementProminences.keySet());
+		
+		for (Tag t : m_elementTags)
+		{
+			elementIDs.add(t.toString());
+		}
+		
+		return elementIDs;
+	}
+	
+	
+	////////////////////////////////////////////////////////////////
+	
 	
 	public float calculatePriorityScore(Story story, StoryElementCollection elementCol)
+	{
+		switch (story.getPrioritizationType())
+		{
+			case sumOfCategoryMaximums:
+				return calculateSumOfCategoryMaximums(story, elementCol);
+				
+			case physicsAnalogy:
+				return calculatePhysicsAnalogyScore(story, elementCol);
+
+			default:
+				System.err.println("Cannot calculate priority score because " + story.getPrioritizationType() +
+						" is not a valid prioritization type.");
+				return -1;
+		}
+	}
+	
+	protected float calculatePhysicsAnalogyScore(Story story, StoryElementCollection elementCol)
+	{		
+		// Each story element represented in the node will get a score that represents attraction (+ve)
+		// or repulsion (-ve).
+		
+		// The default behavior of a node is that story elements that have been seen recently should
+		// cause a repulsion while elements not seen in some time should cause an attraction; either
+		// should be proportional to the distance between the empty slot and the last node that 
+		// reflected the story element. Forces values for all the story elements will be summed and 
+		// this will become the score of the node.
+
+		
+		//final float MAX_DESIRE = story.getLargestDesireValue();
+		
+		float nodeScore = 0;
+		
+		for (String id : m_elementProminences.keySet())
+		{			
+			StoryElement el = elementCol.getElementWithID(id);
+			
+			//System.out.print("\t" + el.getName() + ":\t");
+			//if (el.getName().length() < 8) System.out.print("\t");
+			
+			if (el != null && el.hasDesireValue())
+			{
+				float mostRecentProminence = story.getProminenceForMostRecentNodeWithElement(id);
+				
+				// If there were no other nodes that have shown this element, we still want to use the desire
+				// and the new node's prominence to calculate a force
+				if (mostRecentProminence <= 0) mostRecentProminence = 1;
+				
+				float newProminence = m_elementProminences.get(id);
+				
+				float desire = story.getDesireForElement(id);
+				
+				float force = (newProminence * mostRecentProminence * desire);
+				
+				if (desire <= 5)
+				{
+					// If the element has been seen recently, the node should be 
+					// strongly repelled on this element
+					force *= -1;
+				}
+				
+				nodeScore += force;
+				
+				/*System.out.println(
+						mostRecentProminence + " \t" +
+						newProminence + " \t" +
+						desire + " \t" +
+						force + " \t");*/
+			}
+			//else System.out.println("-");
+		}
+		
+		//System.out.println("Total score: " + nodeScore + "\n");
+		
+		return nodeScore;
+	}
+	
+	protected float calculateSumOfCategoryMaximums(Story story, StoryElementCollection elementCol)
 	{
 		float nodeScore = 0;
 		

@@ -94,6 +94,26 @@ public class StoryElementCollection
 	}
 	
 	
+	public ArrayList<String> getDesireValueIDs()
+	{
+		ArrayList<String> ids = new ArrayList<String>();
+		
+		for (StoryElement el : m_storyElements)
+		{
+			if (ids.contains(el.getID()))
+			{
+				System.err.println("getIDs found duplicate story element id: " + el.getID());
+			}
+			else if (el.hasDesireValue())
+			{
+				ids.add(el.getID());
+			}
+		}
+		
+		return ids;
+	}
+	
+	
 	public boolean add(StoryElement e)
 	{
 		boolean success = false;

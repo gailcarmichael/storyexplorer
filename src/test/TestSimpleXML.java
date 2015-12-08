@@ -111,7 +111,7 @@ public class TestSimpleXML
 		nodes.add(new StoryNode("node2", NodeType.satellite, "node 2 teaser", "node 3 event", funcDesc, choices));
 		nodes.add(new StoryNode("node3", NodeType.satellite, "node 2 teaser", "node 3 event", funcDesc, choices));
 		
-		Story story = new Story(5, nodes, null, initStoryState);
+		Story story = new Story(5, null, nodes, null, initStoryState);
 		
 		System.out.println("Test story is valid: " + story.isValid(elements));
 		

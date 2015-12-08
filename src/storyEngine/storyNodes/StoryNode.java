@@ -117,6 +117,18 @@ public class StoryNode
 		return features;
 	}
 	
+	public ArrayList<String> getElementIDs()
+	{
+		ArrayList<String> elementIDs = new ArrayList<String>();
+		
+		if (m_functionalDesc != null)
+		{
+			elementIDs.addAll(m_functionalDesc.getElementIDs());
+		}
+		
+		return elementIDs;
+	}
+	
 	
 	public String toString()
 	{
@@ -174,6 +186,22 @@ public class StoryNode
 		}
 		
 		return isValid;
+	}
+	
+	
+	////////////////////////////////////////////////////////////////
+	
+	
+	public float getProminenceValueForElement(String elementID)
+	{
+		float prominence = 0;
+		
+		if (m_functionalDesc != null)
+		{
+			prominence = m_functionalDesc.getProminenceValueForElement(elementID);
+		}
+		
+		return prominence;
 	}
 	
 	

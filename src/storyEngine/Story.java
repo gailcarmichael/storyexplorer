@@ -1,6 +1,7 @@
 package storyEngine;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
@@ -18,6 +19,9 @@ public class Story
 	@Attribute(name="numTopScenesForUser")
 	protected int m_numTopScenesForUser;
 	
+	@Attribute(name="prioritizationType", required=false)
+	protected PrioritizationType m_prioritizationType;
+	
 	@ElementList(name="storyNodes")
 	protected ArrayList<StoryNode> m_nodes;
 	
@@ -31,14 +35,22 @@ public class Story
 	protected NodePrioritizer m_nodePrioritizer;
 	protected StoryNode m_nodeBeingConsumed;
 	
+	// Information that will be looked up often
+	protected HashMap<String, Integer> m_numNodesWithElement;
+	
 	
 	public Story(
 			@Attribute(name="numTopScenesForUser") int numTopScenesForUser,
+			@Attribute(name="prioritizationType", required=false) PrioritizationType prioritizationType,
 			@ElementList(name="storyNodes") ArrayList<StoryNode> nodes,
 			@Element(name="startingNode", required=false) StoryNode startingNode,
 			@Element(name="initialStoryState") StoryState initStoryState)
 	{
 		m_numTopScenesForUser = numTopScenesForUser;
+		
+		m_prioritizationType = prioritizationType;
+		if (m_prioritizationType == null) m_prioritizationType = PrioritizationType.physicsAnalogy;
+				
 		m_nodes = nodes;
 		m_startingNode = startingNode;
 		m_storyState = initStoryState;
@@ -46,6 +58,21 @@ public class Story
 		m_nodePrioritizer = new NodePrioritizer(this);
 		
 		m_nodeBeingConsumed = m_startingNode; // could be null
+		
+		////
+		m_numNodesWithElement = new HashMap<String, Integer>();
+		for (StoryNode node : m_nodes)
+		{
+			for (String id : node.getElementIDs())
+			{
+				int num = 1;
+				if (m_numNodesWithElement.containsKey(id))
+				{
+					num += m_numNodesWithElement.get(id);
+				}
+				m_numNodesWithElement.put(id, num);
+			}
+		}
 	}
 	
 	
@@ -53,6 +80,7 @@ public class Story
 	public StoryNode getStartingNode() { return m_startingNode; }
 	
 	public int getNumTopScenesForUser() { return m_numTopScenesForUser; }
+	public PrioritizationType getPrioritizationType() { return m_prioritizationType; }
 	
 	public StoryElementCollection getElementCollection() { return m_elementCol; }
 	public void setElementCollection(StoryElementCollection c) { m_elementCol = c; }
@@ -62,9 +90,31 @@ public class Story
 		return m_storyState.getValueForElement(id);
 	}
 	
+	public float getLargestDesireValue()
+	{
+		return m_storyState.getLargestDesireValue();
+	}
+	
+	public int getNumNodesWithElement(String id)
+	{
+		int num = -1;
+		
+		if (m_numNodesWithElement.containsKey(id))
+		{
+			num =  m_numNodesWithElement.get(id);
+		}
+		
+		return num;
+	}
+	
 	public ArrayList<StoryNode> getScenesSeen()
 	{
 		return m_storyState.getScenesSeen();
+	}
+	
+	public float getProminenceForMostRecentNodeWithElement(String elementID)
+	{
+		return m_storyState.getProminenceForMostRecentNodeWithElement(elementID);
 	}
 	
 	

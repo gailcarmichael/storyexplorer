@@ -64,16 +64,20 @@ public class StoryRunSimulation
 		
 		while (!lastNode && !possibleScenes.isEmpty())
 		{
+			int randomIndex = RANDOM.nextInt(possibleScenes.size());
+			
 			StoryNode nextNode = 
 					random ?
-						possibleScenes.get(RANDOM.nextInt(possibleScenes.size())) :
+						possibleScenes.get(randomIndex) :
 						possibleScenes.get(0);
-			
+						
 			lastNode = consumeNode(story, nextNode);
 			numScenesSeen++;
 			
 			possibleScenes = story.getCurrentSceneOptions();
 		}
+		
+		System.out.println("Objective function result for story: " + ObjectiveFunction.objectiveFunctionForStory(story));
 		
 		return numScenesSeen;
 	}

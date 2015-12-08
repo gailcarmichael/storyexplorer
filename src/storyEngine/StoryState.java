@@ -1,6 +1,7 @@
 package storyEngine;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 import org.simpleframework.xml.ElementList;
@@ -192,8 +193,30 @@ public class StoryState
 		return seenScene;
 	}
 	
+	float getProminenceForMostRecentNodeWithElement(String elementID)
+	{
+		float desire = -1;
+		
+		for (int i = m_scenesSeen.size()-1; i >= 0; i--)
+		{
+			desire = m_scenesSeen.get(i).getProminenceValueForElement(elementID);
+			if (desire > 0) // i.e. if an element is featured at all
+			{
+				break;
+			}
+		}
+		
+		return desire;
+	}
+	
 	
 	///////////////////////////////////////////////////////////////
+	
+	
+	public float getLargestDesireValue()
+	{
+		return Collections.max(m_elementDesires.values());
+	}
 	
 	
 	public void resetDesireValue(String id)

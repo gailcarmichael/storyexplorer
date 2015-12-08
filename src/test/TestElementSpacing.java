@@ -11,6 +11,7 @@ import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
 import processing.core.PApplet;
+import storyEngine.PrioritizationType;
 import storyEngine.Story;
 import storyEngine.StoryState;
 import storyEngine.analysis.ElementSpacingVisualizer;
@@ -35,9 +36,14 @@ public class TestElementSpacing extends PApplet
 	private static final int NUM_EACH_CATEGORY = 5; // how many different themes, characters, settings each
 	private static final int NUM_NODES_PER_ELEMENT = 10; // how many nodes for each individual theme, etc
 	
+	private static final int MAX_PROMINENCE_VALUE = 1; // a random value between 1 and this number will be assigned
+	
 	private static final int NUM_TOP_CHOICES = 5; // how many of the top nodes are offered to players
 	
+	private static final PrioritizationType PRIORITIZATION_TYPE = PrioritizationType.sumOfCategoryMaximums;
+	
 	private static final boolean TEST_COMBO_ELEMENTS = true; // whether nodes should have multiple element tags
+	
 	private static final boolean TEST_RANDOM_CHOICES = true; // true when using random node choice rather than top
 	
 	private static ElementSpacingVisualizer VISUALIZER;
@@ -54,9 +60,9 @@ public class TestElementSpacing extends PApplet
 		HashMap<String, Float> desires = new HashMap<String, Float>();
 		for (int i=1; i <= NUM_EACH_CATEGORY; i++)
 		{
-			desires.put("theme" + i, 1.0f);
-			desires.put("character" + i, 1.0f);
-			desires.put("setting" + i, 1.0f);
+			desires.put("theme" + i, 10.0f);
+			desires.put("character" + i, 10.0f);
+			desires.put("setting" + i, 10.0f);
 		}
 		
 		return new StoryState(null, desires, null); 
@@ -131,7 +137,7 @@ public class TestElementSpacing extends PApplet
 	private static StoryNode createStoryNode(
 			StoryElementCollection elementCollection, String category, int catNum, int withinCatNum)
 	{
-		int prominence = RANDOM.nextInt(3) + 1;
+		int prominence = RANDOM.nextInt(MAX_PROMINENCE_VALUE) + 1;
 		
 		FunctionalDescription funcDesc = new FunctionalDescription();
 		funcDesc.add(elementCollection, category + catNum, prominence);
@@ -160,7 +166,7 @@ public class TestElementSpacing extends PApplet
 		// Pick a random element from the collection, and then give it a random prominence between 1 and 3
 		
 		String id = col.getIDs().get(RANDOM.nextInt(col.getIDs().size()));
-		funcDesc.add(col, id, RANDOM.nextInt(3) + 1);
+		funcDesc.add(col, id, RANDOM.nextInt(MAX_PROMINENCE_VALUE) + 1);
 	}
 	
 	
@@ -213,7 +219,7 @@ public class TestElementSpacing extends PApplet
 		
 		// Construct the story object and test validity
 		
-		Story story = new Story(NUM_TOP_CHOICES, nodes, null /* <- no start node */, initialState);
+		Story story = new Story(NUM_TOP_CHOICES, PRIORITIZATION_TYPE, nodes, null /* <- no start node */, initialState);
 		story.setElementCollection(elementCollection);
 		System.out.println("Test story is valid: " + story.isValid(elementCollection));
 		

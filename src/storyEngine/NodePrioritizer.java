@@ -33,17 +33,30 @@ public class NodePrioritizer
 	{
 		StoryNode m_node;
 		float m_score;
+		PrioritizationType m_prioritizationType;
 		
-		public NodeIDAndScore(StoryNode node, float score)
+		public NodeIDAndScore(StoryNode node, float score, PrioritizationType pType)
 		{
 			m_node = node;
 			m_score = score;
+			m_prioritizationType = pType;
 		}
 
 		@Override
 		public int compareTo(NodeIDAndScore other)
 		{
-			return (int)(m_score - other.m_score);
+			if (m_prioritizationType == PrioritizationType.sumOfCategoryMaximums ||
+				m_prioritizationType == PrioritizationType.physicsAnalogy)
+			{
+				if (m_score > other.m_score) return 1;
+				else if (m_score < other.m_score) return -1;
+				else return 0;
+			}
+			else
+			{
+				System.err.println("Can't compare node priorities because prioritization type is invalid.");
+				return 0;
+			}
 		}	
 	}
 	
@@ -63,9 +76,12 @@ public class NodePrioritizer
 		ArrayList<NodeIDAndScore> scores = new ArrayList<NodeIDAndScore>();
 		for (StoryNode node : availableNodes)
 		{
+			//System.out.println("\nNode with ID " + node.getID());
 			float nodeScore = node.calculatePriorityScore(m_story, elementCol);
-			scores.add(new NodeIDAndScore(node, nodeScore));
+			scores.add(new NodeIDAndScore(node, nodeScore, m_story.getPrioritizationType()));
 		}
+		
+		//System.out.println("\n----------------------------------------------\n");
 		
 		Collections.sort(scores); // sort according to score
 		Collections.reverse(scores); // highest scoring first
