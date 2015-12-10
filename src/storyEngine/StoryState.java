@@ -52,10 +52,27 @@ public class StoryState
 		
 		if (m_elementValues == null) m_elementValues = new HashMap<String, Float>();
 		if (m_elementDesires == null) m_elementDesires = new HashMap<String, Float>();
+		if (m_tagList == null) m_tagList = new ArrayList<String>();
 	}
 	
 	
 	public boolean isDesireValue(String id) { return m_elementDesires.containsKey(id); }
+	
+	
+	///////////////////////////////////////////////////////////////
+	
+	
+	public StoryState clone()
+	{
+		StoryState newState = new StoryState(
+				new HashMap<String, Float>(m_elementValues),
+				new HashMap<String, Float>(m_elementDesires),
+				new ArrayList<String>(m_tagList));
+		
+		newState.m_scenesSeen = new ArrayList<StoryNode>(m_scenesSeen);
+		
+		return newState;
+	}
 	
 	
 	///////////////////////////////////////////////////////////////

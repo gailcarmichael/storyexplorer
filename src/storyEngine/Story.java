@@ -31,12 +31,17 @@ public class Story
 	@Element(name="initialStoryState")
 	protected StoryState m_storyState;
 	
+	// Keep a reference to the original
+	protected StoryState m_initialStoryState;
+	
 	// Stuff used for managing story progression
 	protected NodePrioritizer m_nodePrioritizer;
 	protected StoryNode m_nodeBeingConsumed;
 	
 	// Information that will be looked up often
 	protected HashMap<String, Integer> m_numNodesWithElement;
+	protected HashMap<String, Float> m_sumProminencesForNodesWithElement;
+	protected float m_totalAllProminences;
 	
 	
 	public Story(
@@ -49,30 +54,20 @@ public class Story
 		m_numTopScenesForUser = numTopScenesForUser;
 		
 		m_prioritizationType = prioritizationType;
-		if (m_prioritizationType == null) m_prioritizationType = PrioritizationType.physicsAnalogy;
+		if (m_prioritizationType == null) m_prioritizationType = PrioritizationType.physicsForcesAnalogy;
 				
 		m_nodes = nodes;
 		m_startingNode = startingNode;
-		m_storyState = initStoryState;
+		
+		m_initialStoryState = initStoryState;
+		m_storyState = m_initialStoryState.clone();
 		
 		m_nodePrioritizer = new NodePrioritizer(this);
 		
 		m_nodeBeingConsumed = m_startingNode; // could be null
 		
-		////
-		m_numNodesWithElement = new HashMap<String, Integer>();
-		for (StoryNode node : m_nodes)
-		{
-			for (String id : node.getElementIDs())
-			{
-				int num = 1;
-				if (m_numNodesWithElement.containsKey(id))
-				{
-					num += m_numNodesWithElement.get(id);
-				}
-				m_numNodesWithElement.put(id, num);
-			}
-		}
+		calculateNumNodesWithElement();
+		calculateSumProminencesWithElementAndTotal();
 	}
 	
 	
@@ -80,7 +75,9 @@ public class Story
 	public StoryNode getStartingNode() { return m_startingNode; }
 	
 	public int getNumTopScenesForUser() { return m_numTopScenesForUser; }
+	
 	public PrioritizationType getPrioritizationType() { return m_prioritizationType; }
+	public void setPrioritizationType(PrioritizationType pType) { m_prioritizationType = pType; }
 	
 	public StoryElementCollection getElementCollection() { return m_elementCol; }
 	public void setElementCollection(StoryElementCollection c) { m_elementCol = c; }
@@ -97,19 +94,31 @@ public class Story
 	
 	public int getNumNodesWithElement(String id)
 	{
-		int num = -1;
+		int num = 0;
 		
 		if (m_numNodesWithElement.containsKey(id))
 		{
-			num =  m_numNodesWithElement.get(id);
+			num = m_numNodesWithElement.get(id);
 		}
 		
 		return num;
 	}
 	
-	public ArrayList<StoryNode> getScenesSeen()
+	public float getSumOfProminenceValuesForElement(String id)
 	{
-		return m_storyState.getScenesSeen();
+		float sum = 0;
+		
+		if (m_sumProminencesForNodesWithElement.containsKey(id))
+		{
+			sum = m_sumProminencesForNodesWithElement.get(id);
+		}
+		
+		return sum;
+	}
+	
+	public float getTotalProminenceValues()
+	{
+		return m_totalAllProminences;
 	}
 	
 	public float getProminenceForMostRecentNodeWithElement(String elementID)
@@ -117,8 +126,89 @@ public class Story
 		return m_storyState.getProminenceForMostRecentNodeWithElement(elementID);
 	}
 	
+	public ArrayList<StoryNode> getScenesSeen()
+	{
+		return m_storyState.getScenesSeen();
+	}
+	
 	
 	public void printStoryState() { System.out.println(m_storyState); }
+	
+	
+	/////////////////////////////////////////////////////////////
+	
+	
+	protected void calculateNumNodesWithElement()
+	{
+		m_numNodesWithElement = new HashMap<String, Integer>();
+		for (StoryNode node : m_nodes)
+		{
+			for (String id : node.getElementIDs())
+			{
+				int num = 1;
+				if (m_numNodesWithElement.containsKey(id))
+				{
+					num += m_numNodesWithElement.get(id);
+				}
+				m_numNodesWithElement.put(id, num);
+			}
+		}
+	}
+	
+	protected void calculateSumProminencesWithElementAndTotal()
+	{
+		m_sumProminencesForNodesWithElement = new HashMap<String, Float>();
+		m_totalAllProminences = 0;
+		
+		for (StoryNode node : m_nodes)
+		{
+			for (String id : node.getElementIDs())
+			{
+				float sum = node.getProminenceValueForElement(id);
+				m_totalAllProminences += sum;
+				
+				if (m_sumProminencesForNodesWithElement.containsKey(id))
+				{
+					sum += m_sumProminencesForNodesWithElement.get(id);
+				}
+				m_sumProminencesForNodesWithElement.put(id, sum);
+			}
+		}
+	}
+	
+	
+	/////////////////////////////////////////////////////////////
+	
+	
+	public Story clone()
+	{
+		Story newStory = new Story(
+				m_numTopScenesForUser,
+				m_prioritizationType,
+				m_nodes,
+				m_startingNode,
+				m_storyState); // <- story state gets cloned in constructor
+		
+		newStory.setElementCollection(m_elementCol);
+		
+		return newStory;
+	}
+	
+	
+	public Story cloneAndReset()
+	{
+		Story newStory = new Story(
+				m_numTopScenesForUser,
+				m_prioritizationType,
+				m_nodes,
+				m_startingNode,
+				m_initialStoryState);
+		
+		newStory.setElementCollection(m_elementCol);
+		
+		newStory.reset();
+		return newStory;
+	}
 	
 	
 	/////////////////////////////////////////////////////////////
@@ -234,7 +324,7 @@ public class Story
 		}
 		else
 		{
-			m_nodePrioritizer.recalculateTopNodes(m_elementCol);
+			m_nodePrioritizer.recalculateTopNodes();
 			currentSceneOptions.addAll(m_nodePrioritizer.getTopNodes());
 		}
 		
@@ -243,11 +333,12 @@ public class Story
 	
 	
 	// Reset all values so the story can be re-run
-	public void reset(StoryState initialState)
+	public void reset()
 	{
 		m_nodeBeingConsumed = null;
 		m_nodePrioritizer = new NodePrioritizer(this);
-		m_storyState = initialState;
+		
+		m_storyState = m_initialStoryState.clone();
 		
 		for (StoryNode n : m_nodes)
 		{

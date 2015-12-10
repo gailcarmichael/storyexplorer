@@ -2,8 +2,9 @@ package storyEngine;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
-import storyEngine.storyElements.StoryElementCollection;
+import storyEngine.analysis.ObjectiveFunction;
 import storyEngine.storyNodes.StoryNode;
 
 public class NodePrioritizer
@@ -28,40 +29,47 @@ public class NodePrioritizer
 	///////////////////////////////////////////////////////////////////////////////
 	
 	
+	void recalculateTopNodes()
+	{
+		if (m_story.getPrioritizationType() == PrioritizationType.sumOfCategoryMaximums ||
+			m_story.getPrioritizationType() == PrioritizationType.physicsForcesAnalogy  ||
+			m_story.getPrioritizationType() == PrioritizationType.eventBased)
+		{
+			doLocalCalculation();
+		}
+		
+		if (m_story.getPrioritizationType() == PrioritizationType.bestObjectiveFunction)
+		{
+			randomSubsetBestObjectiveFunction();
+		}
+	}
+	
+	
+	///////////////////////////////////////////////////////////////////////////////
+	
+	
 	// Helper class that facilitates easy sorting of nodes according to score
 	private class NodeIDAndScore implements Comparable<NodeIDAndScore>
 	{
-		StoryNode m_node;
-		float m_score;
-		PrioritizationType m_prioritizationType;
+		protected StoryNode m_node;
+		protected float m_score;
 		
-		public NodeIDAndScore(StoryNode node, float score, PrioritizationType pType)
+		public NodeIDAndScore(StoryNode node, float score)
 		{
 			m_node = node;
 			m_score = score;
-			m_prioritizationType = pType;
 		}
 
 		@Override
 		public int compareTo(NodeIDAndScore other)
 		{
-			if (m_prioritizationType == PrioritizationType.sumOfCategoryMaximums ||
-				m_prioritizationType == PrioritizationType.physicsAnalogy)
-			{
-				if (m_score > other.m_score) return 1;
-				else if (m_score < other.m_score) return -1;
-				else return 0;
-			}
-			else
-			{
-				System.err.println("Can't compare node priorities because prioritization type is invalid.");
-				return 0;
-			}
+			if (m_score > other.m_score) return 1;
+			else if (m_score < other.m_score) return -1;
+			else return 0;
 		}	
 	}
 	
-	
-	void recalculateTopNodes(StoryElementCollection elementCol)
+	protected void doLocalCalculation()
 	{
 		// - Ask the story for all available nodes
 		// - Calculate the priority score for each node
@@ -76,12 +84,9 @@ public class NodePrioritizer
 		ArrayList<NodeIDAndScore> scores = new ArrayList<NodeIDAndScore>();
 		for (StoryNode node : availableNodes)
 		{
-			//System.out.println("\nNode with ID " + node.getID());
-			float nodeScore = node.calculatePriorityScore(m_story, elementCol);
-			scores.add(new NodeIDAndScore(node, nodeScore, m_story.getPrioritizationType()));
+			float nodeScore = node.calculatePriorityScore(m_story, m_story.getElementCollection());
+			scores.add(new NodeIDAndScore(node, nodeScore));
 		}
-		
-		//System.out.println("\n----------------------------------------------\n");
 		
 		Collections.sort(scores); // sort according to score
 		Collections.reverse(scores); // highest scoring first
@@ -114,6 +119,54 @@ public class NodePrioritizer
 				}
 			}
 		}
+	}
+	
+	
+	///////////////////////////////////////////////////////////////////////////////
+
+	// This needs more testing/development - running it is currently very slow (I'm not even sure if it ever finishes)
+	
+	protected void randomSubsetBestObjectiveFunction()
+	{
+		// - Ask the story for all available nodes
+		// - Try a variety of random configurations of the next X nodes, calculating the 'score' of each
+		//   (the score mechanism being determined by the prioritization type)
+		// - Pick the configuration with the best score
+		// - Save references to the top nodes, ensuring there is at least one
+		//   kernel in the top nodes if a kernel is available
+		
+		final ArrayList<StoryNode> availableNodes = m_story.getAvailableNodes();
+		final int numNodesToGet = Math.min(availableNodes.size(), m_story.getNumTopScenesForUser());
+		final Random random = new Random();
+		
+		Story bestStory = null;
+		float bestScore = -1;
+		
+		int originalNumScenesSeen = m_story.getScenesSeen().size();
+		
+		for (int i=0; i < 100; i++)
+		{
+			// Create a temporary story where we can put a bunch of random nodes and then test
+			// whether the result has a better objective score
+			
+			ArrayList<StoryNode> copyOfAvailableNodes = new ArrayList<StoryNode>(availableNodes);
+			Collections.shuffle(copyOfAvailableNodes, random);
+			
+			Story copyOfStory = m_story.clone();
+			copyOfStory.getScenesSeen().addAll(copyOfAvailableNodes.subList(0, numNodesToGet));
+			
+			float scoreForCopyOfStory = ObjectiveFunction.objectiveFunctionForStory(copyOfStory);
+			
+			if (bestStory == null || scoreForCopyOfStory < bestScore)
+			{
+				bestStory = copyOfStory;
+				bestScore = scoreForCopyOfStory;
+			}
+		}
+		
+		m_topNodes.addAll(bestStory.getScenesSeen().subList(
+				originalNumScenesSeen,
+				bestStory.getScenesSeen().size()));
 	}
 }
 

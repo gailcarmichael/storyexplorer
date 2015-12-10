@@ -31,30 +31,28 @@ public class StoryRunSimulation
 	}
 	
 	
-	public static int randomWalkthrough(Story story)
+	public static float randomWalkthrough(Story story)
 	{
 		return walkthrough(story, true);
 	}
 	
 	
-	public static int topSceneWalkthrough(Story story)
+	public static float topSceneWalkthrough(Story story)
 	{
 		return walkthrough(story, false);
 	}
 	
 	
-	protected static int walkthrough(Story story, boolean random)
+	protected static float walkthrough(Story story, boolean random)
 	{
 		RANDOM = new Random();
 		
 		boolean lastNode = false;
-		int numScenesSeen = 0;
 		
 		// If there's a starting node, go there first
 		if (story.getStartingNode() != null)
 		{
 			lastNode = consumeNode(story, story.getStartingNode());
-			numScenesSeen++;
 		}
 
 		// Loop through possible nodes until there aren't any
@@ -72,13 +70,10 @@ public class StoryRunSimulation
 						possibleScenes.get(0);
 						
 			lastNode = consumeNode(story, nextNode);
-			numScenesSeen++;
 			
 			possibleScenes = story.getCurrentSceneOptions();
 		}
 		
-		System.out.println("Objective function result for story: " + ObjectiveFunction.objectiveFunctionForStory(story));
-		
-		return numScenesSeen;
+		return ObjectiveFunction.objectiveFunctionForStory(story);
 	}
 }

@@ -3,5 +3,7 @@ package storyEngine;
 public enum PrioritizationType
 {
 	sumOfCategoryMaximums,
-	physicsAnalogy
+	physicsForcesAnalogy,
+	eventBased,
+	bestObjectiveFunction
 }

@@ -185,8 +185,11 @@ public class FunctionalDescription
 			case sumOfCategoryMaximums:
 				return calculateSumOfCategoryMaximums(story, elementCol);
 				
-			case physicsAnalogy:
+			case physicsForcesAnalogy:
 				return calculatePhysicsAnalogyScore(story, elementCol);
+			
+			case eventBased:
+				return calculateEventBasedScore(story, elementCol);
 
 			default:
 				System.err.println("Cannot calculate priority score because " + story.getPrioritizationType() +
@@ -194,6 +197,10 @@ public class FunctionalDescription
 				return -1;
 		}
 	}
+	
+	
+	////////////////////////////////////////////////////////////////
+	
 	
 	protected float calculatePhysicsAnalogyScore(Story story, StoryElementCollection elementCol)
 	{		
@@ -207,16 +214,11 @@ public class FunctionalDescription
 		// this will become the score of the node.
 
 		
-		//final float MAX_DESIRE = story.getLargestDesireValue();
-		
 		float nodeScore = 0;
 		
 		for (String id : m_elementProminences.keySet())
 		{			
 			StoryElement el = elementCol.getElementWithID(id);
-			
-			//System.out.print("\t" + el.getName() + ":\t");
-			//if (el.getName().length() < 8) System.out.print("\t");
 			
 			if (el != null && el.hasDesireValue())
 			{
@@ -240,20 +242,16 @@ public class FunctionalDescription
 				}
 				
 				nodeScore += force;
-				
-				/*System.out.println(
-						mostRecentProminence + " \t" +
-						newProminence + " \t" +
-						desire + " \t" +
-						force + " \t");*/
 			}
-			//else System.out.println("-");
 		}
 		
-		//System.out.println("Total score: " + nodeScore + "\n");
 		
 		return nodeScore;
 	}
+	
+	
+	////////////////////////////////////////////////////////////////
+	
 	
 	protected float calculateSumOfCategoryMaximums(Story story, StoryElementCollection elementCol)
 	{
@@ -290,6 +288,46 @@ public class FunctionalDescription
 		}
 		
 		return nodeScore;
+	}
+	
+	
+	////////////////////////////////////////////////////////////////
+	
+	// This approach is fairly similar to the idea behind the physics analogy approach
+	protected float calculateEventBasedScore(Story story, StoryElementCollection elementCol)
+	{
+		float nodeScore = 0;
+		
+		// For each element featured in this node, check how recently any relevant events
+		// occurred (in this case, that means checking the desire values for those elements).
+		// Then calculate the penalty or advantage the node should have by summing (averaging?)
+		// those values.
+		
+		final int thresholdForPenalty = 4;
+		
+		int num = 0;
+		for (String id : m_elementProminences.keySet())
+		{
+			StoryElement el = elementCol.getElementWithID(id);
+			
+			if (el != null && el.hasDesireValue())
+			{
+				float timeSinceEvent = story.getDesireForElement(id);
+				
+				// Use a cubic function to get a gradually changing penalty / advantage
+				float elementScore = (float) Math.pow(timeSinceEvent - thresholdForPenalty, 3);
+				
+				// Adjust the score proportional to the prominence of the element
+				elementScore *= (1 + (0.1*m_elementProminences.get(id)));
+				
+				// Accumulate with node score
+				nodeScore += elementScore;
+				num++;
+			}
+		}
+		
+		
+		return nodeScore / num;
 	}
 	
 	

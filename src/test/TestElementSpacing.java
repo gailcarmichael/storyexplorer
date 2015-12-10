@@ -31,16 +31,22 @@ import storyEngine.storyNodes.StoryNode;
 
 public class TestElementSpacing extends PApplet
 {
+	private enum TestType
+	{
+		VisualizeOneRun,
+		MonteCarloSimulation
+	}
+	
 	private static final long serialVersionUID = -893063477402437731L;
 	
 	private static final int NUM_EACH_CATEGORY = 5; // how many different themes, characters, settings each
-	private static final int NUM_NODES_PER_ELEMENT = 10; // how many nodes for each individual theme, etc
+	private static final int NUM_NODES_PER_ELEMENT = 15; // how many nodes for each individual theme, etc
+	private static final int MAX_PROMINENCE_VALUE = 3; // a random value between 1 and this number will be assigned
+	private static final int NUM_TOP_CHOICES = 10; // how many of the top nodes are offered to players
 	
-	private static final int MAX_PROMINENCE_VALUE = 1; // a random value between 1 and this number will be assigned
+	private static final PrioritizationType PRIORITIZATION_TYPE = PrioritizationType.eventBased; // just for visualizing one story
 	
-	private static final int NUM_TOP_CHOICES = 5; // how many of the top nodes are offered to players
-	
-	private static final PrioritizationType PRIORITIZATION_TYPE = PrioritizationType.sumOfCategoryMaximums;
+	private static final TestType TEST_TYPE = TestType.MonteCarloSimulation;
 	
 	private static final boolean TEST_COMBO_ELEMENTS = true; // whether nodes should have multiple element tags
 	
@@ -70,21 +76,25 @@ public class TestElementSpacing extends PApplet
 	
 	////////////////////////////////////////////////////////
 	
-	private static void runThroughStory(Story story, boolean random)
+	private static float runThroughStory(Story story, boolean random)
 	{
-		int numScenesSeen;
+		story.reset();
+		
 		String keyword;
+		float objectiveFunctionResult = 0;
 		
 		if (random)
 		{
-			numScenesSeen = StoryRunSimulation.randomWalkthrough(story);
+			objectiveFunctionResult = StoryRunSimulation.randomWalkthrough(story);
 			keyword = "random";
 		}
 		else
 		{
-			numScenesSeen = StoryRunSimulation.topSceneWalkthrough(story);
+			objectiveFunctionResult = StoryRunSimulation.topSceneWalkthrough(story);
 			keyword = "topScene";
 		}
+		
+		int numScenesSeen = story.getScenesSeen().size();
 		
 		try
 		{
@@ -107,6 +117,8 @@ public class TestElementSpacing extends PApplet
 		{
 			e.printStackTrace();
 		}
+		
+		return objectiveFunctionResult;
 	}
 	
 	////////////////////////////////////////////////////////
@@ -167,6 +179,23 @@ public class TestElementSpacing extends PApplet
 		
 		String id = col.getIDs().get(RANDOM.nextInt(col.getIDs().size()));
 		funcDesc.add(col, id, RANDOM.nextInt(MAX_PROMINENCE_VALUE) + 1);
+	}
+	
+	private static void doMonteCarloForPrioritizationType(Story story, PrioritizationType type)
+	{
+		story.setPrioritizationType(type);
+		
+		ArrayList<Float> objectiveFunctionResults = new ArrayList<Float>();
+		
+		for (int i=0; i < 1000; i++)
+		{
+			objectiveFunctionResults.add(runThroughStory(story, TEST_RANDOM_CHOICES));
+		}
+		
+		float total = 0;
+		for (float f : objectiveFunctionResults) { total += f; }
+		
+		System.out.println("Objective function average for " + story.getPrioritizationType() + ": " + total / objectiveFunctionResults.size());
 	}
 	
 	
@@ -243,13 +272,29 @@ public class TestElementSpacing extends PApplet
 		// making random choices from available scenes or choosing the
 		// top scene each time
 		
-		runThroughStory(story, TEST_RANDOM_CHOICES);
 		
+		if (TEST_TYPE == TestType.MonteCarloSimulation)
+		{
+			
+			doMonteCarloForPrioritizationType(story, PrioritizationType.sumOfCategoryMaximums);
+			doMonteCarloForPrioritizationType(story, PrioritizationType.physicsForcesAnalogy);
+			doMonteCarloForPrioritizationType(story, PrioritizationType.eventBased);
+			//doMonteCarloForPrioritizationType(story, PrioritizationType.bestObjectiveFunction); // <- too slow
+		}
+		else if (TEST_TYPE == TestType.VisualizeOneRun)
+		{
+			float objectiveFunctionResult = runThroughStory(story, TEST_RANDOM_CHOICES);
+			System.out.println("Objective function result: " + objectiveFunctionResult);
+		}
+			
 		
 		////
 		// Step 4: Visualize the spacing of elements
 		
-		TestElementSpacing.VISUALIZER = new ElementSpacingVisualizer(story);
-		PApplet.main(TestElementSpacing.class.getCanonicalName());
+		if (TEST_TYPE == TestType.VisualizeOneRun)
+		{
+			TestElementSpacing.VISUALIZER = new ElementSpacingVisualizer(story);
+			PApplet.main(TestElementSpacing.class.getCanonicalName());
+		}
 	}
 }

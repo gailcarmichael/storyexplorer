@@ -17,7 +17,7 @@ public class FitnessFunctions
 		for (int i = 0; i <= Math.min(nodeIndex, scenesSeen.size()-1); i++)
 		{
 			StoryNode node = scenesSeen.get(i);
-			fitness += node.getProminenceValueForElement(elementID); // <- maybe this should always be 0 or 1 instead of prominence values?
+			fitness += node.getProminenceValueForElement(elementID);
 		}
 		
 		return fitness;
@@ -34,6 +34,11 @@ public class FitnessFunctions
 	private static float k_for_element(Story story, String elementID, int nodeIndex)
 	{
 		// How many nodes feature this element? Divide that by the total number of nodes to get k
-		return story.getNumNodesWithElement(elementID) / (float)story.getNodes().size();
+		// This is currently incorrect when nodes can have more than one element associated with them;
+		// a node needs to be counted according to how many elements are featured
+		//return story.getNumNodesWithElement(elementID) / (float)story.getNodes().size();
+		
+		// Divide the sum of prominence values for the element by the sum of all prominence values
+		return story.getSumOfProminenceValuesForElement(elementID) / (float)story.getTotalProminenceValues();
 	}
 }
