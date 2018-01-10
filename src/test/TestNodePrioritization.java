@@ -41,7 +41,8 @@ public class TestNodePrioritization
 
 		try
 		{
-			File result = new File(".\\testData\\testNodePrioritization\\story.xml");
+			File result = new File("." + File.separator + "testData" + File.separator + 
+								   "testNodePrioritization" + File.separator+ "story.xml");
 			Serializer serializer = new Persister();
 			story = serializer.read(Story.class, result);
 		}

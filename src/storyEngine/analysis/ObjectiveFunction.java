@@ -3,37 +3,58 @@ package storyEngine.analysis;
 import storyEngine.Story;
 
 public class ObjectiveFunction
-{
-	public static float objectiveFunctionForElementAtNode(Story story, String elementID, int nodeIndex)
+{	
+	protected Story m_story;
+	protected FitnessFunctions m_fitness;
+	
+	float m_lastResult;
+	
+	public ObjectiveFunction(Story story)
 	{
-		float ideal = FitnessFunctions.idealFitnessForElementAtNode(story, elementID, nodeIndex);
-		float actual = FitnessFunctions.actualFitnessForElementAtNode(story, elementID, nodeIndex); 
+		m_story = story;
+		m_fitness = new FitnessFunctions(story);
+		m_lastResult = 0;
+	}
+	
+	private float objectiveFunctionForElementAtNode(String elementID, int nodeIndex)
+	{
+		float ideal = m_fitness.idealFitnessForElementAtNode(elementID, nodeIndex);
+		float actual = m_fitness.actualFitnessForElementAtNode(elementID, nodeIndex); 
 		
 		return (float)Math.pow(ideal-actual, 2);
 	}
 	
-	public static float objectiveFunctionForAllElementsAtNode(Story story, int nodeIndex)
+	private float objectiveFunctionForAllElementsAtNode(int nodeIndex)
 	{
 		float result = 0;
 		
-		for (String id : story.getElementCollection().getDesireValueIDs())
+		for (String id : m_story.getElementCollection().getDesireValueIDs())
 		{
-			result += objectiveFunctionForElementAtNode(story, id, nodeIndex);
+
+			result += objectiveFunctionForElementAtNode(id, nodeIndex);
 		}
 		
 		return result;
 	}
 	
-	public static float objectiveFunctionForStory(Story story)
+	public float objectiveFunctionWithNewLastNode()
 	{
-		float result = 0;
+		int lastIndex = m_story.getScenesSeen().size()-1;
+		if (lastIndex >= 0)
+			m_lastResult += objectiveFunctionForAllElementsAtNode(lastIndex);
+		return m_lastResult;
+	}
+	
+	public float objectiveFunctionForStory()
+	{
+		float m_lastResult = 0;
 		
-		final int NUM_NODES = story.getScenesSeen().size(); 
+		final int NUM_NODES = m_story.getScenesSeen().size(); 
 		for (int nodeIndex=0; nodeIndex < NUM_NODES; nodeIndex++)
 		{
-			result += objectiveFunctionForAllElementsAtNode(story, nodeIndex);
+			m_lastResult += objectiveFunctionForAllElementsAtNode(nodeIndex);
 		}
-		
-		return result;
+		 
+		return m_lastResult;
 	}
 }

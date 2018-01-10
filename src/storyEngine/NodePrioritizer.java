@@ -2,7 +2,6 @@ package storyEngine;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 import storyEngine.analysis.ObjectiveFunction;
 import storyEngine.storyNodes.StoryNode;
@@ -40,7 +39,7 @@ public class NodePrioritizer
 		
 		if (m_story.getPrioritizationType() == PrioritizationType.bestObjectiveFunction)
 		{
-			randomSubsetBestObjectiveFunction();
+			bestObjectiveFunction();
 		}
 	}
 	
@@ -124,49 +123,46 @@ public class NodePrioritizer
 	
 	///////////////////////////////////////////////////////////////////////////////
 
-	// This needs more testing/development - running it is currently very slow (I'm not even sure if it ever finishes)
-	
-	protected void randomSubsetBestObjectiveFunction()
+	protected void bestObjectiveFunction()
 	{
-		// - Ask the story for all available nodes
-		// - Try a variety of random configurations of the next X nodes, calculating the 'score' of each
-		//   (the score mechanism being determined by the prioritization type)
-		// - Pick the configuration with the best score
-		// - Save references to the top nodes, ensuring there is at least one
-		//   kernel in the top nodes if a kernel is available
-		
 		final ArrayList<StoryNode> availableNodes = m_story.getAvailableNodes();
-		final int numNodesToGet = Math.min(availableNodes.size(), m_story.getNumTopScenesForUser());
-		final Random random = new Random();
+		final int numTopScenes = m_story.getNumTopScenesForUser();
 		
-		Story bestStory = null;
-		float bestScore = -1;
+		ObjectiveFunction objFunction = new ObjectiveFunction(m_story);
+		objFunction.objectiveFunctionForStory(); // saves last result
 		
-		int originalNumScenesSeen = m_story.getScenesSeen().size();
+		ArrayList<Float> bestScores = new ArrayList<Float>();
+		m_topNodes.clear();
 		
-		for (int i=0; i < 100; i++)
+		for (StoryNode nextNode : availableNodes)
 		{
-			// Create a temporary story where we can put a bunch of random nodes and then test
-			// whether the result has a better objective score
+			// Make a copy of the story and add a random new node from what's available
+			// to see how it affects the score...the nodes with the best results will
+			// be returned as the top choices
 			
-			ArrayList<StoryNode> copyOfAvailableNodes = new ArrayList<StoryNode>(availableNodes);
-			Collections.shuffle(copyOfAvailableNodes, random);
+			Story copyOfStory = (Story)(m_story.clone());
+			copyOfStory.getScenesSeen().add(nextNode);
+			float scoreForCopyOfStory = objFunction.objectiveFunctionWithNewLastNode();
 			
-			Story copyOfStory = m_story.clone();
-			copyOfStory.getScenesSeen().addAll(copyOfAvailableNodes.subList(0, numNodesToGet));
-			
-			float scoreForCopyOfStory = ObjectiveFunction.objectiveFunctionForStory(copyOfStory);
-			
-			if (bestStory == null || scoreForCopyOfStory < bestScore)
+			if (m_topNodes.size() < numTopScenes)
 			{
-				bestStory = copyOfStory;
-				bestScore = scoreForCopyOfStory;
+				// Just add blindly to the list until all slots are filled
+				m_topNodes.add(nextNode);
+				bestScores.add(scoreForCopyOfStory);
+			}
+			else
+			{
+				float maxScore = Collections.max(bestScores);
+				int maxIndex = bestScores.indexOf(maxScore);
+				
+				// Replace a node if we have a score better than the max
+				if (scoreForCopyOfStory < maxScore)
+				{
+					m_topNodes.set(maxIndex, nextNode);
+					bestScores.set(maxIndex, scoreForCopyOfStory);
+				}
 			}
 		}
-		
-		m_topNodes.addAll(bestStory.getScenesSeen().subList(
-				originalNumScenesSeen,
-				bestStory.getScenesSeen().size()));
 	}
 }
 

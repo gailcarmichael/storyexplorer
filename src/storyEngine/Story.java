@@ -59,7 +59,7 @@ public class Story
 		m_nodes = nodes;
 		m_startingNode = startingNode;
 		
-		m_initialStoryState = initStoryState;
+		m_initialStoryState = initStoryState.clone();
 		m_storyState = m_initialStoryState.clone();
 		
 		m_nodePrioritizer = new NodePrioritizer(this);
@@ -164,14 +164,14 @@ public class Story
 		{
 			for (String id : node.getElementIDs())
 			{
-				float sum = node.getProminenceValueForElement(id);
-				m_totalAllProminences += sum;
+				float totalProminence = node.getProminenceValueForElement(id);
+				m_totalAllProminences += totalProminence;
 				
 				if (m_sumProminencesForNodesWithElement.containsKey(id))
 				{
-					sum += m_sumProminencesForNodesWithElement.get(id);
+					totalProminence += m_sumProminencesForNodesWithElement.get(id);
 				}
-				m_sumProminencesForNodesWithElement.put(id, sum);
+				m_sumProminencesForNodesWithElement.put(id, totalProminence);
 			}
 		}
 	}
@@ -180,16 +180,18 @@ public class Story
 	/////////////////////////////////////////////////////////////
 	
 	
-	public Story clone()
+	public Object clone()
 	{
+		@SuppressWarnings("unchecked")
+		
 		Story newStory = new Story(
 				m_numTopScenesForUser,
 				m_prioritizationType,
-				m_nodes,
+				(ArrayList<StoryNode>)m_nodes.clone(),
 				m_startingNode,
 				m_storyState); // <- story state gets cloned in constructor
 		
-		newStory.setElementCollection(m_elementCol);
+		newStory.setElementCollection((StoryElementCollection)m_elementCol.clone());
 		
 		return newStory;
 	}

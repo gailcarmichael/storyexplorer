@@ -135,4 +135,12 @@ public class StoryElementCollection
 		
 		return success;
 	}
+	
+	public Object clone()
+	{
+		StoryElementCollection collection = new StoryElementCollection(
+				m_storyElements);
+		
+		return collection;
+	}
 }

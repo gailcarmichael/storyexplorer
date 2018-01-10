@@ -15,6 +15,7 @@ import storyEngine.PrioritizationType;
 import storyEngine.Story;
 import storyEngine.StoryState;
 import storyEngine.analysis.ElementSpacingVisualizer;
+import storyEngine.analysis.ObjectiveFunction;
 import storyEngine.analysis.StoryRunSimulation;
 import storyEngine.storyElements.ElementType;
 import storyEngine.storyElements.StoryElement;
@@ -61,7 +62,7 @@ public class TestElementSpacing extends PApplet
 	
 	private static StoryState getInitialState()
 	{
-		// Initial story state: set all values to 1
+		// Initial story state: set all values to 1(?)
 		
 		HashMap<String, Float> desires = new HashMap<String, Float>();
 		for (int i=1; i <= NUM_EACH_CATEGORY; i++)
@@ -76,21 +77,20 @@ public class TestElementSpacing extends PApplet
 	
 	////////////////////////////////////////////////////////
 	
-	private static float runThroughStory(Story story, boolean random)
+	private static void runThroughStory(Story story, boolean random)
 	{
 		story.reset();
 		
 		String keyword;
-		float objectiveFunctionResult = 0;
 		
 		if (random)
 		{
-			objectiveFunctionResult = StoryRunSimulation.randomWalkthrough(story);
+			StoryRunSimulation.randomWalkthrough(story);
 			keyword = "random";
 		}
 		else
 		{
-			objectiveFunctionResult = StoryRunSimulation.topSceneWalkthrough(story);
+			StoryRunSimulation.topSceneWalkthrough(story);
 			keyword = "topScene";
 		}
 		
@@ -117,8 +117,6 @@ public class TestElementSpacing extends PApplet
 		{
 			e.printStackTrace();
 		}
-		
-		return objectiveFunctionResult;
 	}
 	
 	////////////////////////////////////////////////////////
@@ -139,7 +137,9 @@ public class TestElementSpacing extends PApplet
 	public void keyPressed()
 	{
 		save("./testData/testElementSpacing/spacing" +
-				(TEST_RANDOM_CHOICES ? "-random" : "-topScene") + ".png");
+				(TEST_RANDOM_CHOICES ? "-random" : "-topScene") +
+				"-" + PRIORITIZATION_TYPE +
+				".png");
 	}
 	
 	
@@ -156,7 +156,7 @@ public class TestElementSpacing extends PApplet
 		
 		if (TEST_COMBO_ELEMENTS)
 		{
-			if (RANDOM.nextBoolean())
+			while (RANDOM.nextBoolean())
 			{
 				addRandomElementToFuncDesc(elementCollection, funcDesc);
 			}
@@ -189,7 +189,8 @@ public class TestElementSpacing extends PApplet
 		
 		for (int i=0; i < 1000; i++)
 		{
-			objectiveFunctionResults.add(runThroughStory(story, TEST_RANDOM_CHOICES));
+			runThroughStory(story, TEST_RANDOM_CHOICES);
+			objectiveFunctionResults.add(new ObjectiveFunction(story).objectiveFunctionForStory());
 		}
 		
 		float total = 0;
@@ -268,7 +269,7 @@ public class TestElementSpacing extends PApplet
 					
 		
 		////
-		// Step 3: Do a quick test by running through the story twice,
+		// Step 3: Do a quick test by running through the story,
 		// making random choices from available scenes or choosing the
 		// top scene each time
 		
@@ -279,12 +280,12 @@ public class TestElementSpacing extends PApplet
 			doMonteCarloForPrioritizationType(story, PrioritizationType.sumOfCategoryMaximums);
 			doMonteCarloForPrioritizationType(story, PrioritizationType.physicsForcesAnalogy);
 			doMonteCarloForPrioritizationType(story, PrioritizationType.eventBased);
-			//doMonteCarloForPrioritizationType(story, PrioritizationType.bestObjectiveFunction); // <- too slow
+			doMonteCarloForPrioritizationType(story, PrioritizationType.bestObjectiveFunction); // <- too slow
 		}
 		else if (TEST_TYPE == TestType.VisualizeOneRun)
 		{
-			float objectiveFunctionResult = runThroughStory(story, TEST_RANDOM_CHOICES);
-			System.out.println("Objective function result: " + objectiveFunctionResult);
+			runThroughStory(story, TEST_RANDOM_CHOICES);
+			System.out.println("Objective function result: " + new ObjectiveFunction(story).objectiveFunctionForStory());
 		}
 			
 		

@@ -31,21 +31,22 @@ public class StoryRunSimulation
 	}
 	
 	
-	public static float randomWalkthrough(Story story)
+	public static void randomWalkthrough(Story story)
 	{
-		return walkthrough(story, true);
+		walkthrough(story, true);
 	}
 	
 	
-	public static float topSceneWalkthrough(Story story)
+	public static void topSceneWalkthrough(Story story)
 	{
-		return walkthrough(story, false);
+		walkthrough(story, false);
 	}
 	
 	
-	protected static float walkthrough(Story story, boolean random)
+	protected static void walkthrough(Story story, boolean random)
 	{
 		RANDOM = new Random();
+		story.reset();
 		
 		boolean lastNode = false;
 		
@@ -73,7 +74,5 @@ public class StoryRunSimulation
 			
 			possibleScenes = story.getCurrentSceneOptions();
 		}
-		
-		return ObjectiveFunction.objectiveFunctionForStory(story);
 	}
 }
