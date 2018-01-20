@@ -1,5 +1,6 @@
 package storyEngine;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -7,6 +8,8 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
+import org.simpleframework.xml.Serializer;
+import org.simpleframework.xml.core.Persister;
 
 import storyEngine.storyElements.StoryElementCollection;
 import storyEngine.storyNodes.StoryNode;
@@ -133,6 +136,40 @@ public class Story
 	
 	
 	public void printStoryState() { System.out.println(m_storyState); }
+	
+	
+	/////////////////////////////////////////////////////////////
+	
+	
+	public static Story loadStoryFromFile(String storyFilename, String elementCollectionFilename)
+	{
+		Story story = null;
+		StoryElementCollection col = null;
+		Serializer serializer = new Persister();
+		
+		try
+		{
+			File collectionFile = new File(elementCollectionFilename);
+			col = serializer.read(StoryElementCollection.class, collectionFile);
+			
+			try
+			{
+				File storyFile = new File(storyFilename);
+				story = serializer.read(Story.class, storyFile);
+				story.setElementCollection(col);
+			}
+			catch (Exception e)
+			{
+				System.err.println("Loading story from " + storyFilename + " failed.\n" + e.getMessage());
+			}
+		}
+		catch (Exception e)
+		{
+			System.err.println("Loading story element collection from " + elementCollectionFilename + " failed.\n" + e.getMessage());
+		}
+		
+		return story;
+	}
 	
 	
 	/////////////////////////////////////////////////////////////
