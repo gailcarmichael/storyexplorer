@@ -1,4 +1,4 @@
-<story numTopScenesForUser="5">
+<story numTopScenesForUser="5" prioritizationType="physicsForcesAnalogy">
    <storyNodes>
       <storyNode id="node1" type="kernel" lastNode="false">
          <teaserText>node 1 teaser</teaserText>
@@ -13,7 +13,7 @@
             <sceneReq name="FirstScene" operator="notSeen"/>
          </prerequisite>
       </storyNode>
-      <storyNode id="node2" type="satellite" lastNode="false">
+      <storyNode id="node2" type="kernel" lastNode="false">
          <teaserText>node 2 teaser</teaserText>
          <eventText>node 3 event</eventText>
          <functionalDescription>
@@ -29,8 +29,8 @@
             </outcome>
          </choice>
       </storyNode>
-      <storyNode id="node3" type="satellite" lastNode="false">
-         <teaserText>node 2 teaser</teaserText>
+      <storyNode id="node3" type="kernel" lastNode="false">
+         <teaserText>node 3 teaser</teaserText>
          <eventText>node 3 event</eventText>
          <functionalDescription>
             <prominence id="dawgCharacter">3</prominence>
@@ -44,13 +44,69 @@
                <tagModifier id="sunnyWeather">add</tagModifier>
             </outcome>
          </choice>
+      </storyNode>
+      <storyNode id="node4" type="satellite" lastNode="false">
+         <teaserText>node 4 teaser</teaserText>
+         <eventText>node 4 event</eventText>
+         <functionalDescription>
+            <prominence id="dawgCharacter">3</prominence>
+            <tag id="sunnyWeather"/>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node5" type="satellite" lastNode="false">
+         <teaserText>node 5 teaser</teaserText>
+         <eventText>node 5 event</eventText>
+         <functionalDescription>
+            <prominence id="dawgCharacter">3</prominence>
+            <tag id="sunnyWeather"/>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node6" type="satellite" lastNode="false">
+         <teaserText>node 6 teaser</teaserText>
+         <eventText>node 6 event</eventText>
+         <functionalDescription>
+            <prominence id="dawgCharacter">3</prominence>
+            <tag id="sunnyWeather"/>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node7" type="satellite" lastNode="false">
+         <teaserText>node 7 teaser</teaserText>
+         <eventText>node 7 event</eventText>
+         <functionalDescription>
+            <prominence id="dawgCharacter">3</prominence>
+            <tag id="sunnyWeather"/>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node8" type="satellite" lastNode="false">
+         <teaserText>node 8 teaser</teaserText>
+         <eventText>node 7 event</eventText>
+         <functionalDescription>
+            <prominence id="dawgCharacter">3</prominence>
+            <tag id="sunnyWeather"/>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node9" type="satellite" lastNode="false">
+         <teaserText>node 9 teaser</teaserText>
+         <eventText>node 9 event</eventText>
+         <functionalDescription>
+            <prominence id="dawgCharacter">3</prominence>
+            <tag id="sunnyWeather"/>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node10" type="satellite" lastNode="false">
+         <teaserText>node 10 teaser</teaserText>
+         <eventText>node 10 event</eventText>
+         <functionalDescription>
+            <prominence id="dawgCharacter">3</prominence>
+            <tag id="sunnyWeather"/>
+         </functionalDescription>
       </storyNode>
    </storyNodes>
    <initialStoryState>
       <value id="tension">3.0</value>
       <desire id="friendshipTheme">1.0</desire>
-      <desire id="kittyCharacter">1.0</desire>
-      <desire id="dawgCharacter">1.0</desire>
       <desire id="heroTheme">1.0</desire>
+      <desire id="dawgCharacter">1.0</desire>
+      <desire id="kittyCharacter">1.0</desire>
    </initialStoryState>
 </story>
