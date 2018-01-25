@@ -9,20 +9,13 @@ public class MetricsBar
 	private StoryExplorerApplet m_parent;
 	private StoryExplorerGame m_game;
 	
-	private final int BAR_HEIGHT = 80;
-	private final int METRIC_IMAGE_SPACING = 20;
+	final int BAR_HEIGHT = 80;
 	private final int BAR_BACKGROUND_COLOUR;
 
-	// TODO: Can metric icons be more data driven?
 	private final PImage[] METRIC_ICONS;
-	private final String[] METRIC_ICON_PATHS =
-		{
-			"../data/images/knife-fork.png",
-			"../data/images/heart.png",
-			"../data/images/cross.png",	
-			"../data/images/cow.png",	
-		};
 	private final int TOTAL_ICON_WIDTH;
+	
+	private final int METRIC_IMAGE_SPACING = 20;
 	
 	///////////////////////////
 	
@@ -33,11 +26,13 @@ public class MetricsBar
 		
 		BAR_BACKGROUND_COLOUR = m_parent.color(245);
 		
-		METRIC_ICONS = new PImage[METRIC_ICON_PATHS.length];
+		String [] iconFilenames = m_game.getMetricIconFilenames();
+		METRIC_ICONS = new PImage[iconFilenames.length];
+		
 		int totalWidth = 0;
-		for (int i=0; i < METRIC_ICON_PATHS.length; i++)
+		for (int i=0; i < iconFilenames.length; i++)
 		{
-			METRIC_ICONS[i] = m_parent.loadImage(METRIC_ICON_PATHS[i]);
+			METRIC_ICONS[i] = m_parent.loadImage(iconFilenames[i]);
 			METRIC_ICONS[i].resize(0, (int)(0.5*BAR_HEIGHT));
 			totalWidth += METRIC_ICONS[i].width + METRIC_IMAGE_SPACING;
 		}
