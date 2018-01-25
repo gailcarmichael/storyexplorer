@@ -108,8 +108,16 @@ public class TestSimpleXML
 		
 		ArrayList<StoryNode> nodes = new ArrayList<StoryNode>();
 		nodes.add(new StoryNode("node1", NodeType.kernel, "node 1 teaser", "node 1 event", funcDesc, prereq, null));
-		nodes.add(new StoryNode("node2", NodeType.satellite, "node 2 teaser", "node 3 event", funcDesc, choices));
-		nodes.add(new StoryNode("node3", NodeType.satellite, "node 2 teaser", "node 3 event", funcDesc, choices));
+		nodes.add(new StoryNode("node2", NodeType.kernel, "node 2 teaser", "node 3 event", funcDesc, choices));
+		nodes.add(new StoryNode("node3", NodeType.kernel, "node 3 teaser", "node 3 event", funcDesc, choices));
+
+		nodes.add(new StoryNode("node4", NodeType.satellite, "node 4 teaser", "node 4 event", funcDesc, null));
+		nodes.add(new StoryNode("node5", NodeType.satellite, "node 5 teaser", "node 5 event", funcDesc, null));
+		nodes.add(new StoryNode("node6", NodeType.satellite, "node 6 teaser", "node 6 event", funcDesc, null));
+		nodes.add(new StoryNode("node7", NodeType.satellite, "node 7 teaser", "node 7 event", funcDesc, null));
+		nodes.add(new StoryNode("node8", NodeType.satellite, "node 8 teaser", "node 7 event", funcDesc, null));
+		nodes.add(new StoryNode("node9", NodeType.satellite, "node 9 teaser", "node 9 event", funcDesc, null));
+		nodes.add(new StoryNode("node10", NodeType.satellite, "node 10 teaser", "node 10 event", funcDesc, null));
 		
 		Story story = new Story(5, null, nodes, null, initStoryState);
 		
@@ -119,7 +127,7 @@ public class TestSimpleXML
 		
 		try
 		{
-			File result = new File(".\\testData\\testSimpleXML\\testSimple.xml");
+			File result = new File("./testData/testSimpleXML/testSimple.xml");
 			
 			serializer.write(story, result);
 			
@@ -130,7 +138,7 @@ public class TestSimpleXML
 				System.out.println(n.getID());
 			}
 			
-			File result2 = new File(".\\testData\\testSimpleXML\\testSimple2.xml");
+			File result2 = new File("./testData/testSimpleXML/testSimple2.xml");
 			
 			serializer.write(readStory, result2);
 		}

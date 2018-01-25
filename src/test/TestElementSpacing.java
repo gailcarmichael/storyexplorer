@@ -47,9 +47,9 @@ public class TestElementSpacing extends PApplet
 	
 	private static final PrioritizationType PRIORITIZATION_TYPE = PrioritizationType.eventBased; // just for visualizing one story
 	
-	private static final TestType TEST_TYPE = TestType.MonteCarloSimulation;
+	private static final TestType TEST_TYPE = TestType.VisualizeOneRun;
 	
-	private static final boolean TEST_COMBO_ELEMENTS = true; // whether nodes should have multiple element tags
+	private static final boolean TEST_COMBO_ELEMENTS = false; // whether nodes should have multiple element tags
 	
 	private static final boolean TEST_RANDOM_CHOICES = true; // true when using random node choice rather than top
 	
