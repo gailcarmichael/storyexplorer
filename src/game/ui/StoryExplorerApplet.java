@@ -14,6 +14,7 @@ public class StoryExplorerApplet extends PApplet
 	private StoryExplorerGame m_game;
 	
 	// UI Stuff
+	private MetricsBar m_metricsBar;
 	
 	///////////////////////////////////////////////////////////////////////////
 	
@@ -24,17 +25,18 @@ public class StoryExplorerApplet extends PApplet
 	{
 		// TODO: Set this up to load a specified story instead of test data
 		Story story = Story.loadStoryFromFile("./testData/testElementSpacing/testSpacing.xml", "./testData/testElementSpacing/testSpacingElementCol.xml");
-		
 		m_game = new StoryExplorerGame(story);
 		
 		size(calculateWidth(), calculateHeight());
+		
+		m_metricsBar = new MetricsBar(this, m_game);
 	}
 	
 	public void draw()
 	{
 		background(255);
 		
-		
+		m_metricsBar.draw();
 	}
 	
 	public void mouseClicked()
