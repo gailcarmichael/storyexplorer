@@ -20,6 +20,11 @@ public class StoryExplorerGame
 	
 	///////////////////////
 	
+	public int getNumKernels() { return m_story.getNumKernels(); }
+	public int getNumKernelsConsumed() { return m_story.getNumKernelsConsumed(); }
+	
+	///////////////////////
+	
 	public String[] getMetricIconFilenames()
 	{
 		String[] filenames = {

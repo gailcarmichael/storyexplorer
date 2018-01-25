@@ -28,6 +28,9 @@ public class Story
 	@ElementList(name="storyNodes")
 	protected ArrayList<StoryNode> m_nodes;
 	
+	protected int m_numKernels;
+	protected int m_numKernelsConsumed;
+	
 	@Element(name="startingNode", required=false)
 	protected StoryNode m_startingNode;	
 	
@@ -60,6 +63,10 @@ public class Story
 		if (m_prioritizationType == null) m_prioritizationType = PrioritizationType.physicsForcesAnalogy;
 				
 		m_nodes = nodes;
+		
+		for (StoryNode node : m_nodes) { if (node.isKernel()) m_numKernels++; }
+		m_numKernelsConsumed = 0;
+		
 		m_startingNode = startingNode;
 		
 		m_initialStoryState = initStoryState.clone();
@@ -75,6 +82,8 @@ public class Story
 	
 	
 	public ArrayList<StoryNode> getNodes() { return m_nodes; }
+	public int getNumKernels() { return m_numKernels; }
+	public int getNumKernelsConsumed() { return m_numKernelsConsumed; }
 	public StoryNode getStartingNode() { return m_startingNode; }
 	
 	public int getNumTopScenesForUser() { return m_numTopScenesForUser; }
@@ -236,15 +245,7 @@ public class Story
 	
 	public Story cloneAndReset()
 	{
-		Story newStory = new Story(
-				m_numTopScenesForUser,
-				m_prioritizationType,
-				m_nodes,
-				m_startingNode,
-				m_initialStoryState);
-		
-		newStory.setElementCollection(m_elementCol);
-		
+		Story newStory = (Story)clone();
 		newStory.reset();
 		return newStory;
 	}
@@ -324,6 +325,7 @@ public class Story
 		if (m_nodeBeingConsumed != null)
 		{
 			lastNode = m_nodeBeingConsumed.isLastNode();
+			if (m_nodeBeingConsumed.isKernel()) m_numKernelsConsumed++;
 		}
 		
 		m_nodeBeingConsumed = null;
@@ -383,5 +385,7 @@ public class Story
 		{
 			n.resetNode();
 		}
+		
+		m_numKernelsConsumed = 0;
 	}
 }

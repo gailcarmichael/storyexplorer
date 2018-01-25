@@ -24,7 +24,7 @@ public class MetricsBar
 		m_parent = parent;
 		m_game = game;
 		
-		BAR_BACKGROUND_COLOUR = m_parent.color(245);
+		BAR_BACKGROUND_COLOUR = m_parent.color(206, 225, 255);
 		
 		String [] iconFilenames = m_game.getMetricIconFilenames();
 		METRIC_ICONS = new PImage[iconFilenames.length];
