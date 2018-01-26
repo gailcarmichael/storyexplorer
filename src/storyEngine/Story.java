@@ -334,21 +334,30 @@ public class Story
 	}
 	
 	
-	// Helper method to get all nodes that could potentially be presented to 
-	// the user, used by node prioritizer
-	ArrayList<StoryNode> getAvailableNodes()
+	// Helper methods to get all nodes that could potentially be presented to 
+	// the user; used by node prioritizer and to get available kernels
+	ArrayList<StoryNode> getAvailableNodes() { return getAvailableNodes(false); }
+	private ArrayList<StoryNode> getAvailableNodes(boolean kernelsOnly)
 	{
 		ArrayList<StoryNode> availableNodes = new ArrayList<StoryNode>();
 		
 		for (StoryNode node : m_nodes)
 		{
-			if (!node.isConsumed() && node.passesPrerequisite(m_storyState))
+			if (!node.isConsumed() && node.passesPrerequisite(m_storyState)
+					&& (!kernelsOnly || node.isKernel()))
 			{
 				availableNodes.add(node);
 			}
 		}
 		
 		return availableNodes;
+	}
+	
+	
+	// Returns a collection of available kernel nodes
+	public ArrayList<StoryNode> getAvailableKernelNodes()
+	{
+		return getAvailableNodes(true);
 	}
 	
 	

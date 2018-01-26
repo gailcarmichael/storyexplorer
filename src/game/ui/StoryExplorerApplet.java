@@ -47,6 +47,11 @@ public class StoryExplorerApplet extends PApplet
 		
 	}
 	
+	public void mouseMoved()
+	{
+		m_kernelsBar.mouseMoved();
+	}
+	
 	///////////////////////////////////////////////////////////////////////////
 	
 

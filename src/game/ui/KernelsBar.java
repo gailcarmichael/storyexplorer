@@ -17,7 +17,12 @@ public class KernelsBar
 	private final int CIRCLE_UNCONSUMED_FILL_COLOUR;
 	private final int CIRCLE_CONSUMED_FILL_COLOUR;
 	private final int CIRCLE_NEXT_FILL_COLOUR;
+	
 	private final int CIRCLE_STROKE_COLOUR;
+	private final int CIRCLE_STROKE_WEIGHT = 2;
+	private final int CIRCLE_HOVER_STROKE_WEIGHT = 3;
+	
+	private int m_circleHoverIndex;
 	
 	class KernelCircle
 	{
@@ -37,7 +42,7 @@ public class KernelsBar
 		
 		BAR_BACKGROUND_COLOUR = m_parent.color(245);
 		
-		CIRCLE_UNCONSUMED_FILL_COLOUR = m_parent.color(193, 166, 237);
+		CIRCLE_UNCONSUMED_FILL_COLOUR = m_parent.color(228, 211, 255);
 		CIRCLE_CONSUMED_FILL_COLOUR = m_parent.color(152, 105, 229);
 		CIRCLE_NEXT_FILL_COLOUR = m_parent.color(255);
 		CIRCLE_STROKE_COLOUR = m_parent.color(0);
@@ -54,6 +59,8 @@ public class KernelsBar
 			KERNEL_CIRCLES[i] = new KernelCircle(startX, startY);
 			startX += CIRCLE_SIZE + CIRCLE_SPACING;
 		}
+		
+		m_circleHoverIndex = -1;
 	}
 	
 	///////////////////////////
@@ -82,8 +89,42 @@ public class KernelsBar
 				m_parent.fill(CIRCLE_UNCONSUMED_FILL_COLOUR);
 			}
 			
+			if (m_circleHoverIndex == i)
+			{
+				m_parent.strokeWeight(CIRCLE_HOVER_STROKE_WEIGHT);
+			}
+			else
+			{
+				m_parent.strokeWeight(CIRCLE_STROKE_WEIGHT);
+			}
 			m_parent.stroke(CIRCLE_STROKE_COLOUR);
 			m_parent.ellipse(c.x, c.y, CIRCLE_SIZE, CIRCLE_SIZE);
+		}
+	}
+	
+	///////////////////////////
+	
+	void mouseMoved()
+	{		
+		m_circleHoverIndex = -1;
+		
+		if (m_parent.mouseY < m_parent.getHeight() - BAR_HEIGHT) return;
+		
+		for (int i=0; i < KERNEL_CIRCLES.length; i++)
+		{
+			KernelCircle c = KERNEL_CIRCLES[i];
+			
+			if (m_parent.mouseX >= c.x - CIRCLE_SIZE/2 &&
+			    m_parent.mouseX <= c.x + CIRCLE_SIZE/2 &&
+			    m_parent.mouseY >= c.y - CIRCLE_SIZE/2 &&
+			    m_parent.mouseY <= c.y + CIRCLE_SIZE/2)
+			{
+				if (i == m_game.getNumKernelsConsumed())
+				{
+					m_circleHoverIndex = i;
+					break;
+				}
+			}
 		}
 	}
 }
