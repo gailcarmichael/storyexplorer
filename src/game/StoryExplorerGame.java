@@ -1,10 +1,16 @@
 package game;
 
+import java.util.ArrayList;
+
 import storyEngine.Story;
+import storyEngine.storyNodes.StoryNode;
 
 // For now, this class represents one specific game created for Global Game Jam.
 // Later, it should be refactored so that it is general and the subclasses represent
 // specific games.
+
+// In this version of the game:
+// - kernels can't branch, and must have prerequisites that enforce linear progression
 
 public class StoryExplorerGame
 {
@@ -50,4 +56,23 @@ public class StoryExplorerGame
 	}
 	
 	///////////////////////
+	
+	public boolean canChooseAKernel()
+	{
+		return m_story.getNodeBeingConsumed() == null;
+	}
+	
+	public void consumeNextKernel()
+	{
+		ArrayList<StoryNode> kernels = m_story.getAvailableKernelNodes();
+		
+		if (kernels.size() != 1)
+		{
+			System.err.println("Game failed to consume next kernel node because there isn't exactly one such node currently available.");
+		}
+		else
+		{
+			m_story.startConsumingNode(kernels.get(0));
+		}
+	}
 }

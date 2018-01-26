@@ -7,11 +7,6 @@
             <prominence id="dawgCharacter">3</prominence>
             <tag id="sunnyWeather"/>
          </functionalDescription>
-         <prerequisite>
-            <quantReq id="kittyCharacter" operator="greaterThan" compareTo="4"/>
-            <tagReq id="rainyWeather" operator="contains"/>
-            <sceneReq name="FirstScene" operator="notSeen"/>
-         </prerequisite>
       </storyNode>
       <storyNode id="node2" type="kernel" lastNode="false">
          <teaserText>node 2 teaser</teaserText>
@@ -20,6 +15,9 @@
             <prominence id="dawgCharacter">3</prominence>
             <tag id="sunnyWeather"/>
          </functionalDescription>
+         <prerequisite>
+            <sceneReq name="node1" operator="seen"/>
+         </prerequisite>
          <choice>
             <text>choice text</text>
             <outcome>
@@ -36,6 +34,9 @@
             <prominence id="dawgCharacter">3</prominence>
             <tag id="sunnyWeather"/>
          </functionalDescription>
+         <prerequisite>
+            <sceneReq name="node2" operator="seen"/>
+         </prerequisite>
          <choice>
             <text>choice text</text>
             <outcome>
@@ -52,6 +53,9 @@
             <prominence id="dawgCharacter">3</prominence>
             <tag id="sunnyWeather"/>
          </functionalDescription>
+         <prerequisite>
+            <sceneReq name="node2" operator="seen"/>
+         </prerequisite>
       </storyNode>
       <storyNode id="node5" type="satellite" lastNode="false">
          <teaserText>node 5 teaser</teaserText>

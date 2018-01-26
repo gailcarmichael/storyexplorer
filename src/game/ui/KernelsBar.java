@@ -19,10 +19,12 @@ public class KernelsBar
 	private final int CIRCLE_NEXT_FILL_COLOUR;
 	
 	private final int CIRCLE_STROKE_COLOUR;
+	private final int CIRCLE_CONSUMING_STROKE_COLOUR;
 	private final int CIRCLE_STROKE_WEIGHT = 2;
 	private final int CIRCLE_HOVER_STROKE_WEIGHT = 3;
 	
 	private int m_circleHoverIndex;
+	private int m_circleConsumingIndex;
 	
 	class KernelCircle
 	{
@@ -45,7 +47,9 @@ public class KernelsBar
 		CIRCLE_UNCONSUMED_FILL_COLOUR = m_parent.color(228, 211, 255);
 		CIRCLE_CONSUMED_FILL_COLOUR = m_parent.color(152, 105, 229);
 		CIRCLE_NEXT_FILL_COLOUR = m_parent.color(255);
+		
 		CIRCLE_STROKE_COLOUR = m_parent.color(0);
+		CIRCLE_CONSUMING_STROKE_COLOUR = m_parent.color(152, 105, 229);
 		
 		int numCircles = m_game.getNumKernels();
 		
@@ -61,6 +65,7 @@ public class KernelsBar
 		}
 		
 		m_circleHoverIndex = -1;
+		m_circleConsumingIndex = -1;
 	}
 	
 	///////////////////////////
@@ -97,7 +102,16 @@ public class KernelsBar
 			{
 				m_parent.strokeWeight(CIRCLE_STROKE_WEIGHT);
 			}
-			m_parent.stroke(CIRCLE_STROKE_COLOUR);
+			
+			if (i == m_circleConsumingIndex)
+			{
+				m_parent.stroke(CIRCLE_CONSUMING_STROKE_COLOUR);
+			}
+			else
+			{
+				m_parent.stroke(CIRCLE_STROKE_COLOUR);
+			}
+			
 			m_parent.ellipse(c.x, c.y, CIRCLE_SIZE, CIRCLE_SIZE);
 		}
 	}
@@ -122,6 +136,32 @@ public class KernelsBar
 				if (i == m_game.getNumKernelsConsumed())
 				{
 					m_circleHoverIndex = i;
+					break;
+				}
+			}
+		}
+	}
+	
+	///////////////////////////
+	
+	void mouseClicked()
+	{
+		if (m_parent.mouseY < m_parent.getHeight() - BAR_HEIGHT) return;
+		if (!m_game.canChooseAKernel()) return;
+		
+		for (int i=0; i < KERNEL_CIRCLES.length; i++)
+		{
+			KernelCircle c = KERNEL_CIRCLES[i];
+			
+			if (m_parent.mouseX >= c.x - CIRCLE_SIZE/2 &&
+			    m_parent.mouseX <= c.x + CIRCLE_SIZE/2 &&
+			    m_parent.mouseY >= c.y - CIRCLE_SIZE/2 &&
+			    m_parent.mouseY <= c.y + CIRCLE_SIZE/2)
+			{
+				if (i == m_game.getNumKernelsConsumed())
+				{
+					m_game.consumeNextKernel();
+					m_circleConsumingIndex = i;
 					break;
 				}
 			}

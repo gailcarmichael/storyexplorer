@@ -107,11 +107,18 @@ public class TestSimpleXML
 		
 		
 		ArrayList<StoryNode> nodes = new ArrayList<StoryNode>();
-		nodes.add(new StoryNode("node1", NodeType.kernel, "node 1 teaser", "node 1 event", funcDesc, prereq, null));
-		nodes.add(new StoryNode("node2", NodeType.kernel, "node 2 teaser", "node 3 event", funcDesc, choices));
-		nodes.add(new StoryNode("node3", NodeType.kernel, "node 3 teaser", "node 3 event", funcDesc, choices));
+		
+		nodes.add(new StoryNode("node1", NodeType.kernel, "node 1 teaser", "node 1 event", funcDesc, null, null));
+		
+		prereq = new Prerequisite();
+		prereq.add(new Prerequisite.SceneRequirement("node1", Prerequisite.SceneRestriction.seen));
+		nodes.add(new StoryNode("node2", NodeType.kernel, "node 2 teaser", "node 3 event", funcDesc, prereq, choices));
 
-		nodes.add(new StoryNode("node4", NodeType.satellite, "node 4 teaser", "node 4 event", funcDesc, null));
+		prereq = new Prerequisite();
+		prereq.add(new Prerequisite.SceneRequirement("node2", Prerequisite.SceneRestriction.seen));
+		nodes.add(new StoryNode("node3", NodeType.kernel, "node 3 teaser", "node 3 event", funcDesc, prereq, choices));
+
+		nodes.add(new StoryNode("node4", NodeType.satellite, "node 4 teaser", "node 4 event", funcDesc, prereq, null));
 		nodes.add(new StoryNode("node5", NodeType.satellite, "node 5 teaser", "node 5 event", funcDesc, null));
 		nodes.add(new StoryNode("node6", NodeType.satellite, "node 6 teaser", "node 6 event", funcDesc, null));
 		nodes.add(new StoryNode("node7", NodeType.satellite, "node 7 teaser", "node 7 event", funcDesc, null));
