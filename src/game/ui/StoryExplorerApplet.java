@@ -16,6 +16,7 @@ public class StoryExplorerApplet extends PApplet
 	// UI Stuff
 	private MetricsBar m_metricsBar;
 	private KernelsBar m_kernelsBar;
+	private SceneUI m_sceneUI;
 	
 	///////////////////////////////////////////////////////////////////////////
 	
@@ -32,6 +33,7 @@ public class StoryExplorerApplet extends PApplet
 		
 		m_metricsBar = new MetricsBar(this, m_game);
 		m_kernelsBar = new KernelsBar(this, m_game);
+		m_sceneUI = new SceneUI(this, m_game);
 	}
 	
 	public void draw()
@@ -40,6 +42,7 @@ public class StoryExplorerApplet extends PApplet
 		
 		m_metricsBar.draw();
 		m_kernelsBar.draw();
+		m_sceneUI.draw();
 	}
 	
 	public void mouseClicked()

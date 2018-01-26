@@ -8,7 +8,8 @@ public class KernelsBar
 	private StoryExplorerApplet m_parent;
 	private StoryExplorerGame m_game;
 	
-	final int BAR_HEIGHT = 50;
+	final static int BAR_HEIGHT = 50;
+	
 	private final int BAR_BACKGROUND_COLOUR;
 	
 	private final int CIRCLE_SPACING = 15;
@@ -26,7 +27,9 @@ public class KernelsBar
 	private int m_circleHoverIndex;
 	private int m_circleConsumingIndex;
 	
-	class KernelCircle
+	///////////////////////////
+	
+	protected class KernelCircle
 	{
 		int x, y;
 		KernelCircle(int new_x, int new_y)
@@ -36,6 +39,8 @@ public class KernelsBar
 		}
 	}
 	private final KernelCircle[] KERNEL_CIRCLES;
+	
+	///////////////////////////
 	
 	KernelsBar(StoryExplorerApplet parent, StoryExplorerGame game)
 	{

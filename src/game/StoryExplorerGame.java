@@ -75,4 +75,35 @@ public class StoryExplorerGame
 			m_story.startConsumingNode(kernels.get(0));
 		}
 	}
+	
+	///////////////////////
+	
+	public boolean displayAScene()
+	{
+		return m_story.getNodeBeingConsumed() != null;
+	}
+	
+	public String getCurrentSceneText()
+	{
+		String text = "";
+		StoryNode currentNode = m_story.getNodeBeingConsumed();
+		
+		if (currentNode == null)
+		{
+			System.err.println("Game cannot provide current scene text because no node is being consumed.");
+		}
+		else
+		{
+			text = currentNode.getEventText();
+		}
+		
+		return text;
+	}
+	
+	///////////////////////
+	
+	public boolean displayNextSceneOptions()
+	{
+		return m_story.getNodeBeingConsumed() == null;
+	}
 }
