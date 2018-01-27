@@ -6,6 +6,7 @@ import processing.core.PConstants;
 public class KernelsBar
 {
 	private StoryExplorerApplet m_parent;
+	private SceneUI m_sceneUI;
 	private StoryExplorerGame m_game;
 	
 	final static int BAR_HEIGHT = 50;
@@ -25,7 +26,6 @@ public class KernelsBar
 	private final int CIRCLE_HOVER_STROKE_WEIGHT = 3;
 	
 	private int m_circleHoverIndex;
-	private int m_circleConsumingIndex;
 	
 	///////////////////////////
 	
@@ -42,9 +42,10 @@ public class KernelsBar
 	
 	///////////////////////////
 	
-	KernelsBar(StoryExplorerApplet parent, StoryExplorerGame game)
+	KernelsBar(StoryExplorerApplet parent, SceneUI sceneUI, StoryExplorerGame game)
 	{
 		m_parent = parent;
+		m_sceneUI = sceneUI;
 		m_game = game;
 		
 		BAR_BACKGROUND_COLOUR = m_parent.color(245);
@@ -70,7 +71,6 @@ public class KernelsBar
 		}
 		
 		m_circleHoverIndex = -1;
-		m_circleConsumingIndex = -1;
 	}
 	
 	///////////////////////////
@@ -166,7 +166,7 @@ public class KernelsBar
 				if (i == m_game.getNumKernelsConsumed())
 				{
 					m_game.consumeNextKernel();
-					m_circleConsumingIndex = i;
+					m_sceneUI.prepareForNewScene();
 					break;
 				}
 			}

@@ -112,7 +112,7 @@ public class TestSimpleXML
 		
 		prereq = new Prerequisite();
 		prereq.add(new Prerequisite.SceneRequirement("node1", Prerequisite.SceneRestriction.seen));
-		nodes.add(new StoryNode("node2", NodeType.kernel, "node 2 teaser", "node 3 event", funcDesc, prereq, choices));
+		nodes.add(new StoryNode("node2", NodeType.kernel, "node 2 teaser", "node 2 event", funcDesc, prereq, choices));
 
 		prereq = new Prerequisite();
 		prereq.add(new Prerequisite.SceneRequirement("node2", Prerequisite.SceneRestriction.seen));

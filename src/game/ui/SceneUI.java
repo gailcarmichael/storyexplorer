@@ -37,14 +37,16 @@ public class SceneUI
 		String m_text;
 		int m_x, m_y;
 		int m_width, m_height;
+		int m_choiceIndex;
 		
-		ChoiceButton(String text, int x, int y, int width, int height)
+		ChoiceButton(String text, int x, int y, int width, int height, int choiceIndex)
 		{
 			m_text = text;
 			m_x = x;
 			m_y = y;
 			m_width = width;
 			m_height = height;
+			m_choiceIndex = choiceIndex;
 		}
 		
 		boolean pointInside(int pointX, int pointY)
@@ -71,14 +73,14 @@ public class SceneUI
 		
 		CHOICE_TEXT_FONT = m_parent.loadFont("AvenirNext-Medium-14.vlw");
 		
-		setupChoiceButtons();
+		m_choiceButtons = new ArrayList<ChoiceButton>();
 	}
 	
 	///////////////////////////
 	
 	void draw()
 	{
-		if (!m_game.displayAScene()) return;
+		if (!m_game.isDisplayingAScene()) return;
 		
 		int boxX = MAIN_BOX_PADDING;
 		int boxY = MetricsBar.BAR_HEIGHT + MAIN_BOX_PADDING;
@@ -128,9 +130,14 @@ public class SceneUI
 	
 	///////////////////////////
 	
+	void prepareForNewScene()
+	{
+		setupChoiceButtons();
+	}
+	
 	private void setupChoiceButtons()
 	{
-		m_choiceButtons = new ArrayList<ChoiceButton>();
+		m_choiceButtons.clear();
 		
 		ArrayList<String> choicesText = m_game.getChoicesText();
 		int numChoices = choicesText.size();
@@ -146,7 +153,7 @@ public class SceneUI
 			
 			float allButtonAndSpacesWidth = (width * numChoices) + (CHOICE_BUTTON_SPACE_BETWEEN * (numChoices + 1));
 			
-			int x = (int)(textBoxWidth/2 - allButtonAndSpacesWidth/2 + CHOICE_BUTTON_SPACE_BETWEEN);
+			int x = (int)(m_parent.width/2 - allButtonAndSpacesWidth/2 + CHOICE_BUTTON_SPACE_BETWEEN);
 			int y = m_parent.height - KernelsBar.BAR_HEIGHT - 2*MAIN_BOX_PADDING - CHOICE_BUTTON_HEIGHT;
 			
 			for (int i=0; i < numChoices; i++)
@@ -154,7 +161,8 @@ public class SceneUI
 				ChoiceButton newB = new ChoiceButton(
 						choicesText.get(i),
 						x, y, 
-						(int)width, CHOICE_BUTTON_HEIGHT);
+						(int)width, CHOICE_BUTTON_HEIGHT,
+						i);
 				
 				m_choiceButtons.add(newB);
 				
@@ -190,12 +198,38 @@ public class SceneUI
 		}
 	}
 	
+	private ChoiceButton choiceButtonClicked(int clickX, int clickY)
+	{
+		ChoiceButton clicked = null;
+		
+		for (ChoiceButton b : m_choiceButtons)
+		{
+			if (b.pointInside(clickX, clickY))
+			{
+				clicked = b;
+				break;
+			}
+		}
+		
+		return clicked;
+	}
+	
+	private void handleChoiceButtonClick(ChoiceButton clicked)
+	{
+		m_game.applyChoice(clicked.m_choiceIndex);
+	}
+	
 	///////////////////////////
 	
 	void mouseClicked()
 	{
-		if (!m_game.displayAScene()) return;
+		if (!m_game.isDisplayingAScene()) return;
 	
+		ChoiceButton clicked = choiceButtonClicked(m_parent.mouseX, m_parent.mouseY);
+		if (clicked != null)
+		{
+			handleChoiceButtonClick(clicked);
+		}
 		m_game.finishConsumingScene();
 	}
 }

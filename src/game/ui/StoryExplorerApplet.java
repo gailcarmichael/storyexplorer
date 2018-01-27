@@ -31,9 +31,10 @@ public class StoryExplorerApplet extends PApplet
 		
 		size(calculateWidth(), calculateHeight());
 		
-		m_metricsBar = new MetricsBar(this, m_game);
-		m_kernelsBar = new KernelsBar(this, m_game);
 		m_sceneUI = new SceneUI(this, m_game);
+		
+		m_metricsBar = new MetricsBar(this, m_game);
+		m_kernelsBar = new KernelsBar(this, m_sceneUI, m_game);
 	}
 	
 	public void draw()
