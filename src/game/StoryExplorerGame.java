@@ -78,6 +78,14 @@ public class StoryExplorerGame
 	
 	///////////////////////
 	
+	public void finishConsumingScene()
+	{
+		m_story.applyOutcomeAndAdjustDesires();
+		m_story.finishConsumingNode();
+	}
+	
+	///////////////////////
+	
 	public boolean displayAScene()
 	{
 		return m_story.getNodeBeingConsumed() != null;

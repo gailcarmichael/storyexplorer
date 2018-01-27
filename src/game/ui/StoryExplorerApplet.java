@@ -47,6 +47,7 @@ public class StoryExplorerApplet extends PApplet
 	
 	public void mouseClicked()
 	{
+		m_sceneUI.mouseClicked();
 		m_kernelsBar.mouseClicked();
 	}
 	
