@@ -29,6 +29,29 @@ public class StoryExplorerGame
 	public int getNumKernels() { return m_story.getNumKernels(); }
 	public int getNumKernelsConsumed() { return m_story.getNumKernelsConsumed(); }
 	
+	public int getNumChoicesForCurrentNode()
+	{
+		int numChoices = 0;
+		
+		if (m_story.getNodeBeingConsumed() != null)
+		{
+			m_story.getNodeBeingConsumed().getNumChoices();
+		}
+		
+		return numChoices;
+	}
+	public ArrayList<String> getChoicesText()
+	{
+		ArrayList<String> choicesText = new ArrayList<String>();
+		
+		for (int i=0; i < getNumChoicesForCurrentNode(); i++)
+		{
+			choicesText.add(m_story.getNodeBeingConsumed().getTextForChoice(i));
+		}
+		
+		return choicesText;
+	}
+	
 	///////////////////////
 	
 	public String[] getMetricIconFilenames()

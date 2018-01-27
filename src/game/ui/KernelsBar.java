@@ -20,7 +20,7 @@ public class KernelsBar
 	private final int CIRCLE_NEXT_FILL_COLOUR;
 	
 	private final int CIRCLE_STROKE_COLOUR;
-	private final int CIRCLE_CONSUMING_STROKE_COLOUR;
+	private final int CIRCLE_CONSUMED_STROKE_COLOUR;
 	private final int CIRCLE_STROKE_WEIGHT = 2;
 	private final int CIRCLE_HOVER_STROKE_WEIGHT = 3;
 	
@@ -54,7 +54,7 @@ public class KernelsBar
 		CIRCLE_NEXT_FILL_COLOUR = m_parent.color(255);
 		
 		CIRCLE_STROKE_COLOUR = m_parent.color(0);
-		CIRCLE_CONSUMING_STROKE_COLOUR = m_parent.color(152, 105, 229);
+		CIRCLE_CONSUMED_STROKE_COLOUR = m_parent.color(152, 105, 229);
 		
 		int numCircles = m_game.getNumKernels();
 		
@@ -99,7 +99,7 @@ public class KernelsBar
 				m_parent.fill(CIRCLE_UNCONSUMED_FILL_COLOUR);
 			}
 			
-			if (m_circleHoverIndex == i)
+			if (i == m_circleHoverIndex)
 			{
 				m_parent.strokeWeight(CIRCLE_HOVER_STROKE_WEIGHT);
 			}
@@ -108,9 +108,9 @@ public class KernelsBar
 				m_parent.strokeWeight(CIRCLE_STROKE_WEIGHT);
 			}
 			
-			if (i == m_circleConsumingIndex)
+			if (i < m_game.getNumKernelsConsumed())
 			{
-				m_parent.stroke(CIRCLE_CONSUMING_STROKE_COLOUR);
+				m_parent.stroke(CIRCLE_CONSUMED_STROKE_COLOUR);
 			}
 			else
 			{
