@@ -104,6 +104,11 @@ public class Story
 		return m_storyState.getLargestDesireValue();
 	}
 	
+	public float getStoryStateOnlyElementValue(String id)
+	{
+		return m_storyState.getValueForElement(id);
+	}
+	
 	public int getNumNodesWithElement(String id)
 	{
 		int num = 0;

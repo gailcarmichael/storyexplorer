@@ -26,8 +26,8 @@ public class StoryExplorerApplet extends PApplet
 	
 	public void setup()
 	{
-		Story story = Story.loadStoryFromFile("./testData/testSimpleXML/testSimple.xml", "./testData/testSimpleXML/testStoryElements.xml");
-		//Story story = Story.loadStoryFromFile("./data/ggjGameStory.xml", "./data/ggjGameStoryElements.xml");
+		//Story story = Story.loadStoryFromFile("./testData/testSimpleXML/testSimple.xml", "./testData/testSimpleXML/testStoryElements.xml");
+		Story story = Story.loadStoryFromFile("./data/ggjGameStory.xml", "./data/ggjGameStoryElements.xml");
 		
 		m_game = new StoryExplorerGame(story);
 		

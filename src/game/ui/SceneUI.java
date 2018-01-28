@@ -24,6 +24,7 @@ public class SceneUI
 	private static final int CHOICE_BUTTON_SPACE_BETWEEN = 20;
 	
 	private final PFont CHOICE_TEXT_FONT;
+	private final int CHOICE_TEXT_PADDING = 10;
 	
 	private final int CHOICE_BUTTON_FILL;
 	private final int CHOICE_BUTTON_HOVER_FILL;
@@ -192,7 +193,8 @@ public class SceneUI
 					
 					m_parent.fill(0);
 					m_parent.textFont(CHOICE_TEXT_FONT);
-					m_parent.text(text, b.m_x, b.m_y, b.m_width * 0.95f, b.m_height * 0.95f);
+					m_parent.text(text, b.m_x+CHOICE_TEXT_PADDING, b.m_y+CHOICE_TEXT_PADDING, 
+							      b.m_width - 2*CHOICE_TEXT_PADDING, b.m_height -2*CHOICE_TEXT_PADDING);
 				}
 			}
 		}

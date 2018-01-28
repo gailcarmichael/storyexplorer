@@ -57,8 +57,9 @@ public class MetricsBar
 		{
 			PImage img = METRIC_ICONS[i];
 			
-			float metricPercent = (float)m_game.getCurrentMetricValue(i) / m_game.getMaxMetricValue(i);
-			m_parent.tint(255, metricPercent*256);
+			float metricPercent = (float)m_game.getCurrentMetricValue(i) / (float)m_game.getMaxMetricValue(i);
+			
+			m_parent.tint(255, metricPercent*255);
 			
 			m_parent.image(img, iconX, iconY);
 			iconX += img.width + METRIC_IMAGE_SPACING;

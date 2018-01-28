@@ -37,7 +37,7 @@ public class StoryExplorerGame
 			"../data/images/charity.png",
 			"../data/images/morality.png",
 			"../data/images/trust.png",
-			"../data/images/superstition.jpg",
+			"../data/images/superstition.png",
 		};
 		
 		return filenames;
@@ -63,8 +63,10 @@ public class StoryExplorerGame
 	
 	public int getCurrentMetricValue(int metricIndex)
 	{
-		// TODO: Get proper value from game or story
-		return 5;
+		float metricValue = m_story.getStoryStateOnlyElementValue(getMetricIDs()[metricIndex]);
+		metricValue = Math.max(0, metricValue);
+		metricValue = Math.min(getMaxMetricValue(metricIndex), metricValue);
+		return (int)metricValue;
 	}
 	
 	///////////////////////
