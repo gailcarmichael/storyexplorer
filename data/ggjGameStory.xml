@@ -290,6 +290,19 @@
 
 	        </choice>        
 	    </storyNode>
+		<storyNode id="springKernel" type="kernel" lastNode="false">
+         	<eventText>The sun beats down on you, almost physically forcing the sweat from your body. The plains surrounding you are seemingly infinite in their vastness, matched only by the great pure azure hanging above. A gust of wind toys with the sea of tall grass, and suddenly you are granted a glimpse at the things that could be, the things that will be, and even some things that might’ve been. Cities rise from the ground, their cobbled streets and shingled rooves willed into being by the sheer strength of your devotion to the divine majesty with which you commune. This wonder can persist, can withstand the test of time—all you need to do is spread the word, live in accordance with the tenants you have been shown. Most of all, though, you must never, ever doubt, never waver. Even the most steadfast of citadels will crumble, if the foundation is not sound.</eventText>
+			<functionalDescription>
+
+			</functionalDescription>
+	        <prerequisite>
+
+	        </prerequisite>
+	        <choice>
+
+	        </choice>        
+	    </storyNode>
+
 	</storyNodes>
 	<initialStoryState>
 		<desire id="insanityTheme">1.0</desire>
