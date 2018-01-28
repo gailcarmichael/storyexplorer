@@ -2,13 +2,21 @@
 	<storyNodes>
 	</storyNodes>
 	<initialStoryState>
-		<value id="insanityTheme">1.0</value>
-		<value id="wealthTheme">1.0</value>
-		<value id="charityTheme">1.0</value>
-		<value id="trustTheme">1.0</value>
-		<value id="superstitionTheme">1.0</value>
-		<value id="moralityTheme">1.0</value>
-		<value id="apprenticeCharacter">1.0</value>
-		<value id="shepherdCharacter">1.0</value>
+		<desire id="insanityTheme">1.0</desire>
+		<desire id="wealthTheme">1.0</desire>
+		<desire id="charityTheme">1.0</desire>
+		<desire id="trustTheme">1.0</desire>
+		<desire id="superstitionTheme">1.0</desire>
+		<desire id="moralityTheme">1.0</desire>
+		
+		<desire id="apprenticeCharacter">1.0</desire>
+		<desire id="shepherdCharacter">1.0</desire>
+		
+		<value id="wealthMetric">5.0</value>
+		<value id="charityMetric">5.0</value>
+		<value id="trustMetric">5.0</value>
+		<value id="superstitionMetric">5.0</value>
+		<value id="moralityMetric">5.0</value>
+		
 	</initialStoryState>
 </story>
