@@ -1,5 +1,106 @@
 <story numTopScenesForUser="3" prioritizationType="eventBased">
 	<storyNodes>
+		<storyNode id="apprenticeSubplot1" type="satellite" lastNode="false">
+			<teaserText>A young man approaches...</teaserText>
+			<eventText>He asks you for your advice on a few existential questions before a long pause. He looks up at you pensively, "I've been reading your teachings and listening to you speak Prophet, and I would like to live my life in service to you and the deity."</eventText>
+			<functionalDescription>
+				<prominence id="apprenticeCharacter">1</prominence>
+			</functionalDescription>
+			<choice>
+				<text>The devotion he shows gives you renewed faith in your cause. You agree to take him under your wing.</text>
+				<outcome>
+					<text>He is ecstatic, but admittedly less so when you send him off to the outskirts of the village to spread word there rather than having him stay in the upper city with you.</text>
+					<quantModifier id="trustMetric" absolute="false">+1</quantModifier>
+					<quantModifier id="charityMetric" absolute="false">+1</quantModifier>
+					<tagModifier id="acceptedApprentice">add</tagModifier>
+				</outcome>
+			</choice>
+			<choice>
+				<text>"No thank you, the last thing I need is more work around here."</text>
+				<outcome>
+					<text>The boy leaves in a huff, and you have no doubt that he will speak maliciously of you for the next few days.</text>
+					<quantModifier id="trustMetric" absolute="false">-1</quantModifier>
+					<quantModifier id="superstitionMetric" absolute="false">+1</quantModifier>
+				</outcome>
+			</choice>
+		</storyNode>
+		<storyNode id="apprenticeSubplot2" type="satellite" lastNode="false">
+			<teaserText>Your apprentice returns.</teaserText>
+			<eventText>Despite the short time, he looks older and wiser from his time in lower town. His robe is tattered and his face is coated with grime beyond the usual daily wear. He describes to you a strong group of skeptics who spat at and ridiculed him.</eventText>
+			<functionalDescription>
+				<prominence id="apprenticeCharacter">1</prominence>
+			</functionalDescription>
+			<prerequisite>
+				<tagReq id="acceptedApprentice" operator="contains"/>
+			</prerequisite>
+			<choice>
+				<text>"We must notify the guard!"</text>
+				<outcome>
+					<text>He nods with determination in his eyes.</text>
+					<quantModifier id="trustMetric" absolute="false">+1</quantModifier>
+					<quantModifier id="charityMetric" absolute="false">+1</quantModifier>
+					<tagModifier id="vengfulApprentice">add</tagModifier>
+				</outcome>
+			</choice>
+			<choice>
+				<text>"This is part of the path; refuting the skeptics will only make us stronger if we can learn to live amongst them in peace."</text>
+				<outcome>
+					<text>He looks tired, perhaps more aged by your words, but he purses his lips and nods before returning to the outerskirts of town.</text>
+					<tagModifier id="patientApprentice">add</tagModifier>
+				</outcome>
+			</choice>
+		</storyNode>
+		<storyNode id="apprenticeSubplot3" type="satellite" lastNode="false">
+			<teaserText>Your apprentice has finished his sabbatical.</teaserText>
+			<eventText>Now ready to serve you directly, he is eager to take on a role as your personal guard. "The peasants do not yet understand, it's important to keep you safe until they do."</eventText>
+			<functionalDescription>
+				<prominence id="apprenticeCharacter">1</prominence>
+			</functionalDescription>
+			<prerequisite>
+				<tagReq id="vengfulApprentice" operator="contains"/>
+			</prerequisite>
+			<choice>
+				<text>This is just what I need.</text>
+				<outcome>
+					<text>He grins, finally satisfied with his role, and readies his sword.</text>
+					<quantModifier id="trustMetric" absolute="false">-1</quantModifier>
+					<tagModifier id="trainedApprentice">add</tagModifier>
+				</outcome>
+			</choice>
+			<choice>
+				<text>This is not the kind of path that will achieve the vision!</text>
+				<outcome>
+					<text>He storms out angrily, feeling cheated.</text>
+				</outcome>
+			</choice>
+		</storyNode>
+		<storyNode id="apprenticeSubplot4" type="satellite" lastNode="false">
+			<teaserText>Your apprentice has finished his sabbatical.</teaserText>
+			<eventText>He comes back cleaner, and somehow refreshed by his time amongst the people. This is not the young man you had last seen.</eventText>
+			<functionalDescription>
+				<prominence id="apprenticeCharacter">1</prominence>
+			</functionalDescription>
+			<prerequisite>
+				<tagReq id="patientApprentice" operator="contains"/>
+			</prerequisite>
+			<choice>
+				<text>"You're welcome to work alongside me."</text>
+				<outcome>
+					<text>He smiles, at peace with your decision and finally feeling fulfilled.</text>
+					<quantModifier id="trustMetric" absolute="false">+1</quantModifier>
+					<tagModifier id="trainedApprentice">add</tagModifier>
+				</outcome>
+			</choice>
+			<choice>
+				<text>"I believe your purpose is amongst the people now, please pass my vision onward."</text>
+				<outcome>
+					<text>He hesitates then smiles when he realizes the amount of trust you place in him. "I will visit with news from the villages."</text>
+					<quantModifier id="trustMetric" absolute="false">+1</quantModifier>
+					<quantModifier id="moralityMetric" absolute="false">+1</quantModifier>
+					<tagModifier id="trainedWanderingApprentice">add</tagModifier>
+				</outcome>
+			</choice>
+		</storyNode>
 		<storyNode id="holySymbol1" type="satellite" lastNode="false">
          	<teaserText>The town blacksmith comes to you with an interesting proposal...</teaserText>
          	<eventText> The blacksmith stands before you, twisting his beard in excitement. He's hoping that you can fund the creation of ornate metal-worked holy symbols for your burgeoning 	faith. </eventText>
