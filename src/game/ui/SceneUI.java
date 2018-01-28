@@ -17,6 +17,7 @@ public class SceneUI
 	private final int MAIN_BOX_STROKE_WEIGHT = 2;
 	
 	private final PFont SCENE_TEXT_FONT;
+	private final int SCENE_TEXT_PADDING = 20;
 	
 	private static final int CHOICE_BUTTON_WIDTH_MIN = 150;
 	private static final int CHOICE_BUTTON_WIDTH_MAX = 200;
@@ -102,7 +103,7 @@ public class SceneUI
 		////
 		// Event text
 		
-		if (m_game.getNumChoicesForCurrentNode() > 0)
+		if (m_game.getNumChoicesForCurrentNode() > 1)
 		{
 			drawEventTextWithChoices(boxX, boxY, boxWidth, boxHeight);
 		}
@@ -118,13 +119,15 @@ public class SceneUI
 		m_parent.fill(0);
 		m_parent.textAlign(PApplet.CENTER, PApplet.CENTER);
 		m_parent.textFont(SCENE_TEXT_FONT);
-		m_parent.text(m_game.getCurrentSceneText(), boxX, boxY, boxWidth, boxHeight);
+		m_parent.text(m_game.getCurrentSceneText(), 
+				boxX + SCENE_TEXT_PADDING, boxY + SCENE_TEXT_PADDING, 
+				boxWidth - 2*SCENE_TEXT_PADDING, boxHeight - 2*SCENE_TEXT_PADDING);
 	}
 	
 	private void drawEventTextWithChoices(int boxX, int boxY, int boxWidth, int boxHeight)
 	{
 		int textBoxHeight = boxHeight - CHOICE_BUTTON_HEIGHT - 2*MAIN_BOX_PADDING;
-		drawEventText(boxX, boxY - CHOICE_BUTTON_HEIGHT/2 - MAIN_BOX_PADDING, boxWidth, textBoxHeight);
+		drawEventText(boxX, boxY, boxWidth, textBoxHeight);
 		
 		drawChoiceButtons();
 	}
