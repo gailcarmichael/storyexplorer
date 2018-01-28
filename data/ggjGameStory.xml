@@ -1,5 +1,30 @@
 <story numTopScenesForUser="3" prioritizationType="eventBased">
 	<storyNodes>
+		<storyNode id="holySymbol1" type="satellite" lastNode="false">
+         	<teaserText>The town blacksmith comes to you with an interesting proposal...</teaserText>
+         	<eventText> The blacksmith stands before you, twisting his beard in excitement. He's hoping that you can fund the creation of ornate metal-worked holy symbols for your burgeoning 	faith. </eventText>
+         <functionalDescription>
+            <tag id="wealthTheme"/>
+	         </functionalDescription>
+	         <prerequisite>
+	            <quantReq id="wealthMetric" operator="greaterThan" compareTo="1"/>         
+	         </prerequisite>
+	         <choice>
+	            <text>Grant him the funds!</text>
+	            <outcome>
+	               <text>The blacksmith hefts the purse of coins and hurries off, promising great results.</text>
+	               <quantModifier id="wealthMetric" absolute="false">+1</quantModifier>
+	               <tagModifier id="paidBlacksmith">add</tagModifier>
+	            </outcome>
+	         </choice>
+	         <choice>
+	            <text>Decline the offer.</text>
+	            <outcome>
+	               <text>The blacksmith looks dissappointed, but bows slowly and walks away.</text>
+	            </outcome>
+	         </choice>
+	      </storyNode>
+
 	</storyNodes>
 	<initialStoryState>
 		<desire id="insanityTheme">1.0</desire>
