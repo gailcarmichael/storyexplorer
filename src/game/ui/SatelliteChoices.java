@@ -17,6 +17,7 @@ public class SatelliteChoices
 	
 	private final int BUTTON_PADDING = 50;
 	private final int BUTTON_HEIGHT = 100;
+	private final int MAX_SPACE_BETWEEN_BUTTONS = 40;
 	
 	private final int BUTTON_FILL_COLOUR;
 	private final int BUTTON_HOVER_COLOUR;
@@ -74,6 +75,14 @@ public class SatelliteChoices
 		int numButtons = m_game.getNumSatellitesToShow();
 		int spaceBetween = ((topY-bottomY) - (numButtons*BUTTON_HEIGHT)) / (numButtons-1);
 		int buttonWidth = (rightX-leftX);
+		
+		if (spaceBetween > MAX_SPACE_BETWEEN_BUTTONS)
+		{
+			//TODO: Center satellite buttons in space provided
+			//int diff = spaceBetween - MAX_SPACE_BETWEEN_BUTTONS;
+			
+			spaceBetween = MAX_SPACE_BETWEEN_BUTTONS;
+		}
 		
 		int currentY = bottomY;
 		for (int buttonNum=0; buttonNum < numButtons; buttonNum++)
