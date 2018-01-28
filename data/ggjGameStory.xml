@@ -24,7 +24,6 @@
 	            </outcome>
 	        </choice>
 	    </storyNode>
-
 		<storyNode id="crowOmen" type="satellite" lastNode="false">
 			<teaserText>One of the villagers wants to inform you of a strange happening...</teaserText>
 			<eventText>Ulrich said the black crow was lucky, I saw one last night and now my crops are dead.</eventText>
@@ -201,7 +200,6 @@
 				<prominence id="instanityTheme">1</prominence>
 			</functionalDescription>
 		</storyNode>
-
 		<storyNode id="holySymbol2" type="satellite" lastNode="false">
          	<teaserText>The blacksmith hopes you will reconsider his offer...</teaserText>
          	<eventText> The blacksmith once again comes before you with renewed vigour. He really thinks you should take advantage of his offer to create your holy symbols, and is willing to work at half his original fee </eventText>
@@ -261,7 +259,6 @@
 	            </outcome>
 	        </choice>
 	    </storyNode>
-
 	    <storyNode id="holySymbol4" type="satellite" lastNode="false">
          	<teaserText>A grieving mother seeks your aid...</teaserText>
          	<eventText>The miller's wife is quite distraught over the violent and unexpected death of her son. Upon investigation of the grisly scene, you notice the dead boy is clutching a bloody symbol of devotion to your faith in his lifeless fingers.</eventText>
@@ -272,18 +269,13 @@
 	        <prerequisite>
 	        	<tagReq name="jaggedSymbol" operator="contains" />
 	        </prerequisite>
-	        
 	        <choice>
 	            <outcome>
 	            	<quantModifier id="superstitionMetric" absolute="false">+3</quantModifier>
 	            	<quantModifier id="trustMetric" absolute="false">-2</quantModifier>
 	            </outcome>
-	        </choice>
-	        
+	        </choice>        
 	    </storyNode>
-
-
-
 	</storyNodes>
 	<initialStoryState>
 		<desire id="insanityTheme">1.0</desire>
@@ -292,15 +284,15 @@
 		<desire id="trustTheme">1.0</desire>
 		<desire id="superstitionTheme">1.0</desire>
 		<desire id="moralityTheme">1.0</desire>
-		
+
 		<desire id="apprenticeCharacter">1.0</desire>
 		<desire id="shepherdCharacter">1.0</desire>
-		
+
 		<value id="wealthMetric">5.0</value>
 		<value id="charityMetric">5.0</value>
 		<value id="trustMetric">5.0</value>
 		<value id="superstitionMetric">5.0</value>
 		<value id="moralityMetric">5.0</value>
-		
+
 	</initialStoryState>
 </story>
