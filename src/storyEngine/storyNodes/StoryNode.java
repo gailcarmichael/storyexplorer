@@ -276,7 +276,7 @@ public class StoryNode
 		
 		if (m_choices != null && selectedChoiceIsValid())
 		{
-			text = m_choices.get(getSelectedChoice()).getText();
+			text = m_choices.get(getSelectedChoice()).getOutcome().getOutcomeText();
 		}
 		
 		return text;
