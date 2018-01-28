@@ -3,27 +3,103 @@
 		<storyNode id="holySymbol1" type="satellite" lastNode="false">
          	<teaserText>The town blacksmith comes to you with an interesting proposal...</teaserText>
          	<eventText> The blacksmith stands before you, twisting his beard in excitement. He's hoping that you can fund the creation of ornate metal-worked holy symbols for your burgeoning 	faith. </eventText>
-         <functionalDescription>
-            <tag id="wealthTheme"/>
-	         </functionalDescription>
-	         <prerequisite>
+         	<functionalDescription>
+				<prominence id="dawgCharacter">3</prominence>	        
+			</functionalDescription>
+	        <prerequisite>
 	            <quantReq id="wealthMetric" operator="greaterThan" compareTo="1"/>         
-	         </prerequisite>
-	         <choice>
+	        </prerequisite>
+	        <choice>
 	            <text>Grant him the funds!</text>
 	            <outcome>
 	               <text>The blacksmith hefts the purse of coins and hurries off, promising great results.</text>
-	               <quantModifier id="wealthMetric" absolute="false">+1</quantModifier>
+	               <quantModifier id="wealthMetric" absolute="false">-2</quantModifier>
 	               <tagModifier id="paidBlacksmith">add</tagModifier>
 	            </outcome>
-	         </choice>
-	         <choice>
+	        </choice>
+	        <choice>
 	            <text>Decline the offer.</text>
 	            <outcome>
 	               <text>The blacksmith looks dissappointed, but bows slowly and walks away.</text>
 	            </outcome>
-	         </choice>
-	      </storyNode>
+	        </choice>
+	    </storyNode>
+
+		<storyNode id="holySymbol2" type="satellite" lastNode="false">
+         	<teaserText>The blacksmith hopes you will reconsider his offer...</teaserText>
+         	<eventText> The blacksmith once again comes before you with renewed vigour. He really thinks you should take advantage of his offer to create your holy symbols, and is willing to work at half his original fee </eventText>
+         	<functionalDescription>
+				<prominence id="dawgCharacter">3</prominence>	        
+			</functionalDescription>
+	        <prerequisite>
+	            <quantReq id="wealthMetric" operator="greaterThan" compareTo="1"/>
+	            <sceneReq name="holySymbol1" operator="seen"/>         
+	        </prerequisite>
+	        <choice>
+	            <text>Grant him the funds!</text>
+	            <outcome>
+	               <text>The blacksmith hefts the purse of coins and hurries off, promising great results.</text>
+	               <quantModifier id="wealthMetric" absolute="false">-1</quantModifier>
+	               <tagModifier id="paidBlacksmith">add</tagModifier>
+	            </outcome>
+	        </choice>
+	        <choice>
+	            <text>Decline the offer.</text>
+	            <outcome>
+	               <text>The blacksmith spits at your feet and huffs away angrily.</text>
+	            </outcome>
+	        </choice>
+	    </storyNode>
+
+	    <storyNode id="holySymbol3" type="satellite" lastNode="false">
+         	<teaserText>The blacksmith is seeking input for some desing decisions...</teaserText>
+         	<eventText>The blacksmith is wondering what exactly you had in mind for the holy symbols-- which of these designs best suit your faith?' visual design. What should they look like? </eventText>
+
+	        <prerequisite>
+	        	<tagReq name="paidBlacksmith" operator="contains" />
+	        </prerequisite>
+	        
+	        <choice>
+	            <text>Jagged and brutal.</text>
+	            <outcome>
+	               <text>The blacksmith bites his lip thoughtfully and walks away</text>
+	               <tagModifier id="jaggedSymbol">add</tagModifier>
+	            </outcome>
+	        </choice>
+	        <choice>
+	            <text>Austere and symmetrical.</text>
+	            <outcome>
+	               <text>The blacksmith bites his lip thoughtfully and walks away</text>
+	               <quantModifier id="trustMetric" absolute="false">+1</quantModifier>
+	            </outcome>
+	        </choice>
+	        <choice>
+	            <text>Fluid and whimsical.</text>
+	            <outcome>
+	                <text>The blacksmith bites his lip thoughtfully and walks away</text>
+	               	<quantModifier id="superstitionMetric" absolute="false">+1</quantModifier>
+	            </outcome>
+	        </choice>
+	    </storyNode>
+
+	    <storyNode id="holySymbol4" type="satellite" lastNode="false">
+         	<teaserText>A grieving mother seeks your aid...</teaserText>
+         	<eventText>The miller's wife is quite distraught over the violent and unexpected death of her son. Upon investigation of the grisly scene, you notice the dead boy is clutching a bloody symbol of devotion to your faith in his lifeless fingers.</eventText>
+
+	        <prerequisite>
+	        	<tagReq name="jaggedSymbol" operator="contains" />
+	        </prerequisite>
+	        
+	        <choice>
+	            <outcome>
+	            	<quantModifier id="superstitionMetric" absolute="false">+3</quantModifier>
+	            	<quantModifier id="trustMetric" absolute="false">-2</quantModifier>
+	            </outcome>
+	        </choice>
+	        
+	    </storyNode>
+
+
 
 	</storyNodes>
 	<initialStoryState>
