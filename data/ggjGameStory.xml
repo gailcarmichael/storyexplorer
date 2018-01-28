@@ -7,7 +7,7 @@
 				<tag id="wealthTheme"/>
 			</functionalDescription>
 			<prerequisite>
-				<quantReq id="wealthMetric" operator="greaterThan" compareTo="1"/>         
+				<quantReq id="wealthMetric" operator="greaterThan" compareTo="1"/>
 			</prerequisite>
 			<choice>
 				<text>Grant him the funds!</text>
@@ -28,8 +28,8 @@
 			<teaserText>One of the villagers wants to inform you of a strange happening...</teaserText>
 			<eventText>Ulrich said the black crow was lucky, I saw one last night and now my crops are dead.</eventText>
 			<functionalDescription>
-				<prominence id="trustMetric">1</prominence>
-				<prominence id="superstitionMetric">1</prominence>
+				<prominence id="trustTheme">1</prominence>
+				<prominence id="superstitionTheme">1</prominence>
 			</functionalDescription>
 			<choice>
 				<outcome>
@@ -43,8 +43,8 @@
 			<teaserText>A happy occurence is cause for consecration...</teaserText>
 			<eventText>Shepard has had a new lamb born and wants you to come over the consecrate the flock.</eventText>
 			<functionalDescription>
-				<prominence id="trustMetric">1</prominence>			
-				<prominence id="charityMetric">1</prominence>
+				<prominence id="trustTheme">1</prominence>
+				<prominence id="charityTheme">1</prominence>
 			</functionalDescription>
 			<choice>
 				<text>You take the time to go and consecrate the large flock.</text>
@@ -64,17 +64,17 @@
 			</choice>
 		</storyNode>
 		<storyNode id="badMeatMeet" type="satellite" lastNode="false">
-			<teaserText>A chance to increase your wealthMetric approaches, but at a cost.</teaserText>
+			<teaserText>A chance to increase your wealth approaches, but at a cost.</teaserText>
 			<eventText>Butcher has a problem with people getting sick from his meat, and wants you to tell them they’re not living a moral enough life</eventText>
 			<functionalDescription>
-				<prominence id="trustMetric">1</prominence>
-				<prominence id="moralityMetric">1</prominence>
-				<prominence id="wealthMetric">1</prominence>			
+				<prominence id="trustTheme">1</prominence>
+				<prominence id="moralityTheme">1</prominence>
+				<prominence id="wealthTheme">1</prominence>
 			</functionalDescription>
 			<choice>
 				<text>Take his money and preach ot the people.</text>
 				<outcome>
-					<text>Preaching to the people lines your pockets, but it only decreases the trustMetric and moralityMetric of your followers as disease kills them off.</text>
+					<text>Preaching to the people lines your pockets, but it only decreases the trust and morality of your followers as disease kills them off.</text>
 					<quantModifier id="trustMetric" absolute="false">-1</quantModifier>
 					<quantModifier id="moralityMetric" absolute="false">-1</quantModifier>
 					<quantModifier id="wealthMetric" absolute="false">+2</quantModifier>
@@ -83,7 +83,7 @@
 			<choice>
 				<text>Reject making false claims to your people.</text>
 				<outcome>
-					<text>The butcher denounces your abilities in response to your rejection of making these claims, and they come to trustMetric you more as their health improves.</text>
+					<text>The butcher denounces your abilities in response to your rejection of making these claims, and they come to trust you more as their health improves.</text>
 					<quantModifier id="trustMetric" absolute="false">+2</quantModifier>
 				</outcome>
 			</choice>
@@ -92,13 +92,13 @@
 			<teaserText>You have an unlikely visitor!</teaserText>
 			<eventText>The witch from the outskirts needs help gathering truffles but the local priests are in the way, and she is willing to pray to your god in return.</eventText>
 			<functionalDescription>
-				<prominence id="trustMetric">1</prominence>			
-				<prominence id="charityMetric">1</prominence>
+				<prominence id="trustTheme">1</prominence>
+				<prominence id="charityTheme">1</prominence>
 			</functionalDescription>
 			<choice>
 				<text>Help her by ensuring her path is clear.</text>
 				<outcome>
-					<text>Seeing you help the witch, your followers grow distrustMetricful of you despite your giving nature.</text>
+					<text>Seeing you help the witch, your followers grow distrustful of you despite your giving nature.</text>
 					<quantModifier id="trustMetric" absolute="false">-2</quantModifier>
 					<quantModifier id="charityMetric" absolute="false">+1</quantModifier>
 				</outcome>
@@ -106,7 +106,7 @@
 			<choice>
 				<text>Deny her aid, risking her wrath.</text>
 				<outcome>
-					<text>The curse of an angered witch echoes your halls, and superstitionMetric runs amok amongst your people.</text>
+					<text>The curse of an angered witch echoes your halls, and superstition runs amok amongst your people.</text>
 					<quantModifier id="superstitionMetric" absolute="false">+3</quantModifier>
 				</outcome>
 			</choice>
@@ -115,13 +115,13 @@
 			<teaserText>A villager desparate for your help arrives.</teaserText>
 			<eventText>The mother wants to have a baby, asks for ingredient for fertility. She does not have the coin to buy it herself and is appealing to your good nature.</eventText>
 			<functionalDescription>
-				<prominence id="charityMetric">1</prominence>
-				<prominence id="wealthMetric">1</prominence>
+				<prominence id="charityTheme">1</prominence>
+				<prominence id="wealthTheme">1</prominence>
 			</functionalDescription>
 			<choice>
 				<text>Give her the coin she needs to buy the ingredient.</text>
 				<outcome>
-					<text>Your show of charityMetric at personal cost does not go unnoticed, but nor does your decrease in wealthMetric.</text>
+					<text>Your show of charity at personal cost does not go unnoticed, but nor does your decrease in wealth.</text>
 					<quantModifier id="wealthMetric" absolute="false">-1</quantModifier>
 					<quantModifier id="charityMetric" absolute="false">+1</quantModifier>
 				</outcome>
@@ -136,7 +136,7 @@
 			<choice>
 				<text>Flatly deny her any aid with such personal matters.</text>
 				<outcome>
-					<text>The mother leaves angry that you will not even offer her advice. trustMetric decreases as it becomes apparent you're not invested in the personal lives of your people.</text>
+					<text>The mother leaves angry that you will not even offer her advice. Trust decreases as it becomes apparent you're not invested in the personal lives of your people.</text>
 					<quantModifier id="trustMetric" absolute="false">-2</quantModifier>
 				</outcome>
 			</choice>
@@ -145,8 +145,8 @@
 			<teaserText>Take some time to walk among the people.</teaserText>
 			<eventText>Walking along you pass the village drunk passed out naked in the street. Do you leave him or take him in?</eventText>
 			<functionalDescription>
-				<prominence id="moralityMetric">1</prominence>
-				<prominence id="trustMetric">1</prominence>
+				<prominence id="moralityTheme">1</prominence>
+				<prominence id="trustTheme">1</prominence>
 			</functionalDescription>
 			<choice>
 				<text>You pass by, averting your gaze.</text>
@@ -159,7 +159,7 @@
 			<choice>
 				<text>You toss a blanket around the man and clothe and feed him, taking care of him until he sobers up.</text>
 				<outcome>
-					<text>Others see your act of kindness for the man and moved by the act of charityMetric.</text>
+					<text>Others see your act of kindness for the man and moved by the act of charity.</text>
 					<quantModifier id="charityMetric" absolute="false">+1</quantModifier>
 					<quantModifier id="moralityMetric" absolute="false">+1</quantModifier>
 				</outcome>
@@ -208,15 +208,15 @@
 		<desire id="trustTheme">1.0</desire>
 		<desire id="superstitionTheme">1.0</desire>
 		<desire id="moralityTheme">1.0</desire>
-		
+
 		<desire id="apprenticeCharacter">1.0</desire>
 		<desire id="shepherdCharacter">1.0</desire>
-		
+
 		<value id="wealthMetric">5.0</value>
 		<value id="charityMetric">5.0</value>
 		<value id="trustMetric">5.0</value>
 		<value id="superstitionMetric">5.0</value>
 		<value id="moralityMetric">5.0</value>
-		
+
 	</initialStoryState>
 </story>
