@@ -16,6 +16,7 @@ public class StoryExplorerApplet extends PApplet
 	// UI Stuff
 	private MetricsBar m_metricsBar;
 	private KernelsBar m_kernelsBar;
+	private SatelliteChoices m_satelliteChoices;
 	private SceneUI m_sceneUI;
 	
 	///////////////////////////////////////////////////////////////////////////
@@ -25,9 +26,8 @@ public class StoryExplorerApplet extends PApplet
 	
 	public void setup()
 	{
-		// TODO: Set this up to load a specified story instead of test data
-		//Story story = Story.loadStoryFromFile("./testData/testSimpleXML/testSimple.xml", "./testData/testSimpleXML/testStoryElements.xml");
-		Story story = Story.loadStoryFromFile("./data/ggjGameStory.xml", "./data/ggjGameStoryElements.xml");
+		Story story = Story.loadStoryFromFile("./testData/testSimpleXML/testSimple.xml", "./testData/testSimpleXML/testStoryElements.xml");
+		//Story story = Story.loadStoryFromFile("./data/ggjGameStory.xml", "./data/ggjGameStoryElements.xml");
 		
 		m_game = new StoryExplorerGame(story);
 		
@@ -37,6 +37,7 @@ public class StoryExplorerApplet extends PApplet
 		
 		m_metricsBar = new MetricsBar(this, m_game);
 		m_kernelsBar = new KernelsBar(this, m_sceneUI, m_game);
+		m_satelliteChoices = new SatelliteChoices(this, m_sceneUI, m_game);
 	}
 	
 	public void draw()
@@ -45,18 +46,24 @@ public class StoryExplorerApplet extends PApplet
 		
 		m_metricsBar.draw();
 		m_kernelsBar.draw();
+		
+		m_satelliteChoices.draw();
+		
 		m_sceneUI.draw();
 	}
 	
 	public void mouseClicked()
 	{
-		m_sceneUI.mouseClicked();
-		m_kernelsBar.mouseClicked();
+		boolean handledSceneClick = m_sceneUI.mouseClicked();
+		
+		if (!handledSceneClick) handledSceneClick = m_kernelsBar.mouseClicked();
+		if (!handledSceneClick) handledSceneClick = m_satelliteChoices.mouseClicked();
 	}
 	
 	public void mouseMoved()
 	{
 		m_kernelsBar.mouseMoved();
+		m_satelliteChoices.mouseMoved();
 	}
 	
 	///////////////////////////////////////////////////////////////////////////

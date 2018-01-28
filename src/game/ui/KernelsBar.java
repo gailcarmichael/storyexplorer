@@ -76,7 +76,7 @@ public class KernelsBar
 	///////////////////////////
 	
 	void draw()
-	{
+	{	
 		m_parent.fill(BAR_BACKGROUND_COLOUR);
 		m_parent.noStroke();
 		m_parent.rectMode(PConstants.CORNER);
@@ -149,10 +149,10 @@ public class KernelsBar
 	
 	///////////////////////////
 	
-	void mouseClicked()
+	boolean mouseClicked()
 	{
-		if (m_parent.mouseY < m_parent.getHeight() - BAR_HEIGHT) return;
-		if (!m_game.canChooseAKernel()) return;
+		if (m_parent.mouseY < m_parent.getHeight() - BAR_HEIGHT) return false;
+		if (!m_game.canChooseAKernel()) return false;
 		
 		for (int i=0; i < KERNEL_CIRCLES.length; i++)
 		{
@@ -167,9 +167,11 @@ public class KernelsBar
 				{
 					m_game.consumeNextKernel();
 					m_sceneUI.prepareForNewScene();
-					break;
+					return true;
 				}
 			}
 		}
+		
+		return false;
 	}
 }

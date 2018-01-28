@@ -289,7 +289,7 @@ public class Prerequisite
 	@Root(name="sceneReq")
 	public static class SceneRequirement
 	{
-		@Attribute(name="name")
+		@Attribute(name="name") //TODO: This should be id rather than name (requires updating a lot of XML)
 		protected String m_sceneID;
 
 		@Attribute(name="operator")

@@ -28,18 +28,18 @@ public class NodePrioritizer
 	///////////////////////////////////////////////////////////////////////////////
 	
 	
-	void recalculateTopNodes()
+	void recalculateTopNodes(boolean satellitesOnly)
 	{
 		if (m_story.getPrioritizationType() == PrioritizationType.sumOfCategoryMaximums ||
 			m_story.getPrioritizationType() == PrioritizationType.physicsForcesAnalogy  ||
 			m_story.getPrioritizationType() == PrioritizationType.eventBased)
 		{
-			doLocalCalculation();
+			doLocalCalculation(satellitesOnly);
 		}
 		
 		if (m_story.getPrioritizationType() == PrioritizationType.bestObjectiveFunction)
 		{
-			bestObjectiveFunction();
+			bestObjectiveFunction(satellitesOnly);
 		}
 	}
 	
@@ -68,7 +68,7 @@ public class NodePrioritizer
 		}	
 	}
 	
-	protected void doLocalCalculation()
+	protected void doLocalCalculation(boolean satellitesOnly)
 	{
 		// - Ask the story for all available nodes
 		// - Calculate the priority score for each node
@@ -84,7 +84,10 @@ public class NodePrioritizer
 		for (StoryNode node : availableNodes)
 		{
 			float nodeScore = node.calculatePriorityScore(m_story, m_story.getElementCollection());
-			scores.add(new NodeIDAndScore(node, nodeScore));
+			if (!satellitesOnly || node.isSatellite())
+			{
+				scores.add(new NodeIDAndScore(node, nodeScore));
+			}
 		}
 		
 		Collections.sort(scores); // sort according to score
@@ -92,7 +95,7 @@ public class NodePrioritizer
 		
 		m_topNodes.clear();
 		boolean aTopNodeIsKernel = false;
-		for (int i=0; i < numNodesToGet; i++)
+		for (int i=0; i < scores.size(); i++)
 		{
 			m_topNodes.add(scores.get(i).m_node);
 			if (m_topNodes.get(i).isKernel())
@@ -101,7 +104,7 @@ public class NodePrioritizer
 			}
 		}
 		
-		if (!aTopNodeIsKernel)
+		if (!satellitesOnly && !aTopNodeIsKernel)
 		{
 			// Search for the top scoring kernel, and if there is
 			// one, switch it with the lowest scoring node from 
@@ -123,7 +126,7 @@ public class NodePrioritizer
 	
 	///////////////////////////////////////////////////////////////////////////////
 
-	protected void bestObjectiveFunction()
+	protected void bestObjectiveFunction(boolean satellitesOnly)
 	{
 		final ArrayList<StoryNode> availableNodes = m_story.getAvailableNodes();
 		final int numTopScenes = m_story.getNumTopScenesForUser();

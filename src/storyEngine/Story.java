@@ -336,15 +336,16 @@ public class Story
 	
 	// Helper methods to get all nodes that could potentially be presented to 
 	// the user; used by node prioritizer and to get available kernels
-	ArrayList<StoryNode> getAvailableNodes() { return getAvailableNodes(false); }
-	private ArrayList<StoryNode> getAvailableNodes(boolean kernelsOnly)
+	ArrayList<StoryNode> getAvailableNodes() { return getAvailableNodes(false, false); }
+	private ArrayList<StoryNode> getAvailableNodes(boolean kernelsOnly, boolean satellitesOnly)
 	{
 		ArrayList<StoryNode> availableNodes = new ArrayList<StoryNode>();
 		
 		for (StoryNode node : m_nodes)
 		{
 			if (!node.isConsumed() && node.passesPrerequisite(m_storyState)
-					&& (!kernelsOnly || node.isKernel()))
+					&& (!kernelsOnly || node.isKernel())
+					&& (!satellitesOnly || node.isSatellite()))
 			{
 				availableNodes.add(node);
 			}
@@ -357,13 +358,26 @@ public class Story
 	// Returns a collection of available kernel nodes
 	public ArrayList<StoryNode> getAvailableKernelNodes()
 	{
-		return getAvailableNodes(true);
+		return getAvailableNodes(true, false);
 	}
 	
+	// Returns a collection of available satellite nodes
+		public ArrayList<StoryNode> getAvailableSatelliteNodes()
+		{
+			return getAvailableNodes(false, true);
+		}
 	
+	
+	////
 	// Returns an up-to-date list of the top available story nodes that
-	// can be presented to a user
+	// can be presented to a user...default is to include a kernel
+	
 	public ArrayList<StoryNode> getCurrentSceneOptions()
+	{
+		return getCurrentSceneOptions(false);
+	}
+	
+	public ArrayList<StoryNode> getCurrentSceneOptions(boolean satellitesOnly)
 	{
 		ArrayList<StoryNode> currentSceneOptions = new ArrayList<StoryNode>();
 		
@@ -374,7 +388,7 @@ public class Story
 		}
 		else
 		{
-			m_nodePrioritizer.recalculateTopNodes();
+			m_nodePrioritizer.recalculateTopNodes(satellitesOnly);
 			currentSceneOptions.addAll(m_nodePrioritizer.getTopNodes());
 		}
 		

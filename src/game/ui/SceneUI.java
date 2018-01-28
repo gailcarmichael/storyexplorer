@@ -221,9 +221,9 @@ public class SceneUI
 	
 	///////////////////////////
 	
-	void mouseClicked()
+	boolean mouseClicked()
 	{
-		if (!m_game.isDisplayingAScene()) return;
+		if (!m_game.isDisplayingAScene()) return false;
 	
 		ChoiceButton clicked = choiceButtonClicked(m_parent.mouseX, m_parent.mouseY);
 		if (clicked != null)
@@ -231,5 +231,7 @@ public class SceneUI
 			handleChoiceButtonClick(clicked);
 		}
 		m_game.finishConsumingScene();
+		
+		return true;
 	}
 }

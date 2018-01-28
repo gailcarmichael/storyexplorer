@@ -15,6 +15,8 @@ import storyEngine.storyNodes.StoryNode;
 public class StoryExplorerGame
 {
 	private Story m_story;
+	
+	private ArrayList<StoryNode> m_currentSatellites;
 
 	///////////////////////
 	
@@ -22,25 +24,40 @@ public class StoryExplorerGame
 	{
 		m_story = (Story)story.clone();
 		m_story.reset();
+		
+		refreshCurrentSatellites();
 	}
 	
 	///////////////////////
 	
 	public String[] getMetricIconFilenames()
-	{
+	{	
 		String[] filenames = {
-			"../data/images/knife-fork.png",
-			"../data/images/heart.png",
-			"../data/images/cross.png",	
-			"../data/images/cow.png",	
+			"../data/images/currency.png",
+			"../data/images/charity.png",
+			"../data/images/morality.png",
+			"../data/images/trust.png",
+			"../data/images/superstition.jpg",
 		};
 		
 		return filenames;
 	}
 	
+	public String[] getMetricIDs()
+	{
+		String[] ids = {
+			"wealthMetric",
+			"charityMetric",
+			"moralityMetric",
+			"trustMetric",
+			"superstitionMetric"
+		};
+		
+		return ids;
+	}
+	
 	public int getMaxMetricValue(int metricIndex)
 	{
-		// TODO: Get proper value from game or story
 		return 10;
 	}
 	
@@ -60,8 +77,6 @@ public class StoryExplorerGame
 		return m_story.getNodeBeingConsumed() == null;
 	}
 	
-	///////////////////////
-	
 	public void consumeNextKernel()
 	{
 		ArrayList<StoryNode> kernels = m_story.getAvailableKernelNodes();
@@ -73,6 +88,42 @@ public class StoryExplorerGame
 		else
 		{
 			m_story.startConsumingNode(kernels.get(0));
+		}
+	}
+	
+	///////////////////////
+	
+	private void refreshCurrentSatellites()
+	{
+		m_currentSatellites = m_story.getCurrentSceneOptions(true); // don't include top kernel
+	}
+	
+	public int getNumSatellitesToShow()
+	{
+		return m_story.getNumTopScenesForUser();
+	}
+	
+	public ArrayList<String> getSatellitesTeaserText()
+	{
+		ArrayList<String> textList = new ArrayList<String>();
+		
+		for (StoryNode s : m_currentSatellites)
+		{
+			textList.add(s.getTeaserText());
+		}
+		
+		return textList;
+	}
+	
+	public void consumeSatellite(int index)
+	{
+		if (index < 0 || index >= m_currentSatellites.size())
+		{
+			System.err.println("Game failed to consume satellite because " + index + " is not a valid index");
+		}
+		else
+		{
+			m_story.startConsumingNode(m_currentSatellites.get(index));
 		}
 	}
 	
@@ -130,6 +181,7 @@ public class StoryExplorerGame
 	{
 		if (m_story.getNodeBeingConsumed() == null) return; 
 		
+		if (index < 0) index = 0; // for scenes with one choice but no button
 		m_story.getNodeBeingConsumed().setSelectedChoice(index);
 	}
 	
@@ -141,6 +193,8 @@ public class StoryExplorerGame
 		
 		m_story.applyOutcomeAndAdjustDesires();
 		m_story.finishConsumingNode();
+		
+		refreshCurrentSatellites();
 	}
 	
 	///////////////////////
