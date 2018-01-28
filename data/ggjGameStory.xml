@@ -1,29 +1,29 @@
 <story numTopScenesForUser="3" prioritizationType="eventBased">
 	<storyNodes>
 		<storyNode id="holySymbol1" type="satellite" lastNode="false">
-			<teaserText>The town blacksmith comes to you with an interesting proposal...</teaserText>
-			<eventText> The blacksmith stands before you, twisting his beard in excitement. He's hoping that you can fund the creation of ornate metal-worked holy symbols for your burgeoning 	faith. </eventText>
-			<functionalDescription>
-				<tag id="wealthTheme"/>
+         	<teaserText>The town blacksmith comes to you with an interesting proposal...</teaserText>
+         	<eventText> The blacksmith stands before you, twisting his beard in excitement. He's hoping that you can fund the creation of ornate metal-worked holy symbols for your burgeoning 	faith. </eventText>
+         	<functionalDescription>
+				<prominence id="wealthTheme">1</prominence>	        
 			</functionalDescription>
-			<prerequisite>
-				<quantReq id="wealthMetric" operator="greaterThan" compareTo="1"/>
-			</prerequisite>
-			<choice>
-				<text>Grant him the funds!</text>
-				<outcome>
-					<text>The blacksmith hefts the purse of coins and hurries off, promising great results.</text>
-			       		<quantModifier id="wealthMetric" absolute="false">+1</quantModifier>
-			       		<tagModifier id="paidBlacksmith">add</tagModifier>
-				</outcome>
-			</choice>
-			<choice>
-				<text>Decline the offer.</text>
-				<outcome>
-					<text>The blacksmith looks dissappointed, but bows slowly and walks away.</text>
-			    	</outcome>
-			</choice>
-		</storyNode>
+	        <prerequisite>
+	            <quantReq id="wealthMetric" operator="greaterThan" compareTo="1"/>         
+	        </prerequisite>
+	        <choice>
+	            <text>Grant him the funds!</text>
+	            <outcome>
+	               <text>The blacksmith hefts the purse of coins and hurries off, promising great results.</text>
+	               <quantModifier id="wealthMetric" absolute="false">-2</quantModifier>
+	               <tagModifier id="paidBlacksmith">add</tagModifier>
+	            </outcome>
+	        </choice>
+	        <choice>
+	            <text>Decline the offer.</text>
+	            <outcome>
+	               <text>The blacksmith looks dissappointed, but bows slowly and walks away.</text>
+	            </outcome>
+	        </choice>
+	    </storyNode>
 		<storyNode id="crowOmen" type="satellite" lastNode="false">
 			<teaserText>One of the villagers wants to inform you of a strange happening...</teaserText>
 			<eventText>Ulrich said the black crow was lucky, I saw one last night and now my crops are dead.</eventText>
@@ -200,6 +200,125 @@
 				<prominence id="instanityTheme">1</prominence>
 			</functionalDescription>
 		</storyNode>
+		<storyNode id="holySymbol2" type="satellite" lastNode="false">
+         	<teaserText>The blacksmith hopes you will reconsider his offer...</teaserText>
+         	<eventText> The blacksmith once again comes before you with renewed vigour. He really thinks you should take advantage of his offer to create your holy symbols, and is willing to work at half his original fee </eventText>
+         	<functionalDescription>
+				<prominence id="wealthTheme">1</prominence>	        
+			</functionalDescription>
+	        <prerequisite>
+	            <quantReq id="wealthMetric" operator="greaterThan" compareTo="1"/>
+	            <sceneReq name="holySymbol1" operator="seen"/>         
+	        </prerequisite>
+	        <choice>
+	            <text>Grant him the funds!</text>
+	            <outcome>
+	               <text>The blacksmith hefts the purse of coins and hurries off, promising great results.</text>
+	               <quantModifier id="wealthMetric" absolute="false">-1</quantModifier>
+	               <tagModifier id="paidBlacksmith">add</tagModifier>
+	            </outcome>
+	        </choice>
+	        <choice>
+	            <text>Decline the offer.</text>
+	            <outcome>
+	               <text>The blacksmith spits at your feet and huffs away angrily.</text>
+	            </outcome>
+	        </choice>
+	    </storyNode>
+
+	    <storyNode id="holySymbol3" type="satellite" lastNode="false">
+         	<teaserText>The blacksmith is seeking input for some desing decisions...</teaserText>
+         	<eventText>The blacksmith is wondering what exactly you had in mind for the holy symbols-- which of these designs best suit your faith?' visual design. What should they look like? </eventText>
+			<functionalDescription>
+				<prominence id="trustTheme">1</prominence>
+				<prominence id="superstitionTheme">1</prominence>	            
+			</functionalDescription>
+	        <prerequisite>
+	        	<tagReq id="paidBlacksmith" operator="contains" />
+	        </prerequisite>
+	        
+	        <choice>
+	            <text>Jagged and brutal.</text>
+	            <outcome>
+	               <text>The blacksmith bites his lip thoughtfully and walks away</text>
+	               <tagModifier id="jaggedSymbol">add</tagModifier>
+	            </outcome>
+	        </choice>
+	        <choice>
+	            <text>Austere and symmetrical.</text>
+	            <outcome>
+	               <text>The blacksmith bites his lip thoughtfully and walks away</text>
+	               <quantModifier id="trustMetric" absolute="false">+1</quantModifier>
+	            </outcome>
+	        </choice>
+	        <choice>
+	            <text>Fluid and whimsical.</text>
+	            <outcome>
+	                <text>The blacksmith bites his lip thoughtfully and walks away</text>
+	               	<quantModifier id="superstitionMetric" absolute="false">+1</quantModifier>
+	            </outcome>
+	        </choice>
+	    </storyNode>
+	    <storyNode id="holySymbol4" type="satellite" lastNode="false">
+         	<teaserText>A grieving mother seeks your aid...</teaserText>
+         	<eventText>The miller's wife is quite distraught over the violent and unexpected death of her son. Upon investigation of the grisly scene, you notice the dead boy is clutching a bloody symbol of devotion to your faith in his lifeless fingers.</eventText>
+			<functionalDescription>
+				<prominence id="trustTheme">1</prominence>
+				<prominence id="superstitionTheme">1</prominence>	            
+			</functionalDescription>
+	        <prerequisite>
+	        	<tagReq id="jaggedSymbol" operator="contains" />
+	        </prerequisite>
+	        <choice>
+	            <outcome>
+	            	<quantModifier id="superstitionMetric" absolute="false">+3</quantModifier>
+	            	<quantModifier id="trustMetric" absolute="false">-2</quantModifier>
+	            </outcome>
+	        </choice>        
+	    </storyNode>
+
+
+	    <storyNode id="springKernel" type="kernel" lastNode="false">
+         	<teaserText>...</teaserText>
+         	<eventText>They came to you in the night, as you lay dreaming. It was not a gradual transformation, like the onset of Spring, but rather a stark departure from one ethereal dreamscape to another. With the remnants of your seconds-dead dream falling to shreds around you, you stepped forward into the piercing-pure light of the dawn’s sun, you understood with a sudden clarity why you had been chosen, what was expected of you, and the great hope that had been planted in the fertile earth just ahead of you. The future is budding with possibilities, and you have  been chosen to play the part of the gardener transcendent—to guide, to foster, to reap and sow, to prune and trim as befits their splendour. This vision was granted to you and you alone, and it is only you who can see it to fruition.</eventText>
+			<functionalDescription>
+
+			</functionalDescription>
+	        <prerequisite>
+
+	        </prerequisite>
+	        <choice>
+
+	        </choice>        
+	    </storyNode>
+		<storyNode id="summerKernel" type="kernel" lastNode="false">
+          	<teaserText>...</teaserText>        	
+         	<eventText>The sun beats down on you, almost physically forcing the sweat from your body. The plains surrounding you are seemingly infinite in their vastness, matched only by the great pure azure hanging above. A gust of wind toys with the sea of tall grass, and suddenly you are granted a glimpse at the things that could be, the things that will be, and even some things that might’ve been. Cities rise from the ground, their cobbled streets and shingled rooves willed into being by the sheer strength of your devotion to the divine majesty with which you commune. This wonder can persist, can withstand the test of time—all you need to do is spread the word, live in accordance with the tenants you have been shown. Most of all, though, you must never, ever doubt, never waver. Even the most steadfast of citadels will crumble, if the foundation is not sound.</eventText>
+			<functionalDescription>
+
+			</functionalDescription>
+	        <prerequisite>
+	            <sceneReq name="springKernel" operator="seen"/>         
+	        </prerequisite>
+	        <choice>
+
+	        </choice>        
+	    </storyNode>
+		<storyNode id="fallKernel" type="kernel" lastNode="true">
+         	<teaserText>...</teaserText>			
+         	<eventText>A chill wind rips through the air, biting at exposed skin and tearing leaves from where they perch. The trees know that the time for sleep is near, and the conflagration of oranges, reds and yellows they display mark their final arboreal celebration. The husks of dead leaves slither and rustle along the ground, just the first to fall in the cold months ahead. This flame that was entrusted to you, you have succeeded in tending to it, nurturing it from a mere spark to the roaring bonfire it is today. The fierce dread of winter marches ever closer, though, brining with it the numbing frost and frigid death it is best known for—will your fire burn bright enough to wait out this creeping season? When the snow finally begins to melt, and the streams swell with mountain run-off, what will remain of what you have done? Will it persist?</eventText>
+			<functionalDescription>
+
+			</functionalDescription>
+	        <prerequisite>
+	            <sceneReq name="summerKernel" operator="seen"/>         
+	        </prerequisite>
+	        <choice>
+
+	        </choice>        
+	    </storyNode>
+
+
 	</storyNodes>
 	<initialStoryState>
 		<desire id="insanityTheme">1.0</desire>

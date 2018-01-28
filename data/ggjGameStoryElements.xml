@@ -70,6 +70,11 @@
 		<category>choiceTags</category>
 		<name>paid blacksmith</name>
 	</storyElement>
+	<storyElement id="jaggedSymbol" type="taggable">
+		<category>choiceTags</category>
+		<name>jagged symbol</name>
+	</storyElement>
+
 
 
 </storyElementCollection>
