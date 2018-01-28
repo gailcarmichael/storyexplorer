@@ -66,6 +66,10 @@
 
 	<!-- Tags -->
 
+	<storyElement id="paidBlacksmith" type="taggable">
+		<category>choiceTags</category>
+		<name>paid blacksmith</name>
+	</storyElement>
 
 
 </storyElementCollection>
