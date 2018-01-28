@@ -276,6 +276,20 @@
 	            </outcome>
 	        </choice>        
 	    </storyNode>
+
+
+	    <storyNode id="springKernel" type="kernel" lastNode="false">
+         	<eventText>They came to you in the night, as you lay dreaming. It was not a gradual transformation, like the onset of Spring, but rather a stark departure from one ethereal dreamscape to another. With the remnants of your seconds-dead dream falling to shreds around you, you stepped forward into the piercing-pure light of the dawn’s sun, you understood with a sudden clarity why you had been chosen, what was expected of you, and the great hope that had been planted in the fertile earth just ahead of you. The future is budding with possibilities, and you have  been chosen to play the part of the gardener transcendent—to guide, to foster, to reap and sow, to prune and trim as befits their splendour. This vision was granted to you and you alone, and it is only you who can see it to fruition.</eventText>
+			<functionalDescription>
+
+			</functionalDescription>
+	        <prerequisite>
+
+	        </prerequisite>
+	        <choice>
+
+	        </choice>        
+	    </storyNode>
 	</storyNodes>
 	<initialStoryState>
 		<desire id="insanityTheme">1.0</desire>
