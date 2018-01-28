@@ -1,0 +1,71 @@
+<storyElementCollection>
+
+	<!-- Themes -->
+
+	<storyElement id="insanityTheme" type="quantifiable">
+		<category>themes</category>
+		<name>insanity</name>
+	</storyElement>
+	<storyElement id="wealthTheme" type="quantifiable">
+		<category>themes</category>
+		<name>wealth</name>
+	</storyElement>
+	<storyElement id="charityTheme" type="quantifiable">
+		<category>themes</category>
+		<name>charity</name>
+	</storyElement>
+	<storyElement id="trustTheme" type="quantifiable">
+		<category>themes</category>
+		<name>trust</name>
+	</storyElement>
+	<storyElement id="superstitionTheme" type="quantifiable">
+		<category>themes</category>
+		<name>superstition</name>
+	</storyElement>
+	<storyElement id="moralityTheme" type="quantifiable">
+		<category>themes</category>
+		<name>morality</name>
+	</storyElement>
+
+
+	<!-- Characters -->
+
+	<storyElement id="apprenticeCharacter" type="quantifiable">
+		<category>characters</category>
+		<name>apprentice</name>
+	</storyElement>
+	<storyElement id="shepherdCharacter" type="quantifiable">
+		<category>characters</category>
+		<name>shepherd</name>
+	</storyElement>
+
+
+	<!-- Metrics -->
+
+	<storyElement id="wealthMetric" type="quantifiableStoryStateOnly">
+		<category>metrics</category>
+		<name>wealth</name>
+	</storyElement>
+	<storyElement id="charityMetric" type="quantifiableStoryStateOnly">
+		<category>metrics</category>
+		<name>charity</name>
+	</storyElement>
+	<storyElement id="trustMetric" type="quantifiableStoryStateOnly">
+		<category>metrics</category>
+		<name>trust</name>
+	</storyElement>
+	<storyElement id="superstitionMetric" type="quantifiableStoryStateOnly">
+		<category>metrics</category>
+		<name>superstition</name>
+	</storyElement>
+	<storyElement id="moralityMetric" type="quantifiableStoryStateOnly">
+		<category>metrics</category>
+		<name>morality</name>
+	</storyElement>
+
+
+	<!-- Tags -->
+
+
+
+</storyElementCollection>

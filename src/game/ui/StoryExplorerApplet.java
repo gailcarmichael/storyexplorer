@@ -26,7 +26,9 @@ public class StoryExplorerApplet extends PApplet
 	public void setup()
 	{
 		// TODO: Set this up to load a specified story instead of test data
-		Story story = Story.loadStoryFromFile("./testData/testSimpleXML/testSimple.xml", "./testData/testSimpleXML/testStoryElements.xml");
+		//Story story = Story.loadStoryFromFile("./testData/testSimpleXML/testSimple.xml", "./testData/testSimpleXML/testStoryElements.xml");
+		Story story = Story.loadStoryFromFile("./data/ggjGameStory.xml", "./data/ggjGameStoryElements.xml");
+		
 		m_game = new StoryExplorerGame(story);
 		
 		size(calculateWidth(), calculateHeight());

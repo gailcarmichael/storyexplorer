@@ -1,0 +1,14 @@
+<story numTopScenesForUser="3" prioritizationType="eventBased">
+	<storyNodes>
+	</storyNodes>
+	<initialStoryState>
+		<value id="insanityTheme">1.0</value>
+		<value id="wealthTheme">1.0</value>
+		<value id="charityTheme">1.0</value>
+		<value id="trustTheme">1.0</value>
+		<value id="superstitionTheme">1.0</value>
+		<value id="moralityTheme">1.0</value>
+		<value id="apprenticeCharacter">1.0</value>
+		<value id="shepherdCharacter">1.0</value>
+	</initialStoryState>
+</story>
