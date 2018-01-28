@@ -101,27 +101,47 @@ public class SceneUI
 		m_parent.rect(boxX, boxY, boxWidth, boxHeight);
 
 		////
-		// Event text
+		// Event / Outcome text
 		
-		if (m_game.getNumChoicesForCurrentNode() > 1)
+		if (m_game.showingOutcome())
 		{
-			drawEventTextWithChoices(boxX, boxY, boxWidth, boxHeight);
+			drawOutcomeText(boxX, boxY, boxWidth, boxHeight);
 		}
 		else
 		{
-			drawEventText(boxX, boxY, boxWidth, boxHeight);
+			if (m_game.getNumChoicesForCurrentNode() > 1)
+			{
+				drawEventTextWithChoices(boxX, boxY, boxWidth, boxHeight);
+			}
+			else
+			{
+				drawEventText(boxX, boxY, boxWidth, boxHeight);
+			}
 		}
+		
+			
+		
 		
 	}
 	
-	private void drawEventText(int boxX, int boxY, int boxWidth, int boxHeight)
+	private void drawText(String text, int boxX, int boxY, int boxWidth, int boxHeight)
 	{
 		m_parent.fill(0);
 		m_parent.textAlign(PApplet.CENTER, PApplet.CENTER);
 		m_parent.textFont(SCENE_TEXT_FONT);
-		m_parent.text(m_game.getCurrentSceneText(), 
+		m_parent.text(text, 
 				boxX + SCENE_TEXT_PADDING, boxY + SCENE_TEXT_PADDING, 
 				boxWidth - 2*SCENE_TEXT_PADDING, boxHeight - 2*SCENE_TEXT_PADDING);
+	}
+	
+	private void drawEventText(int boxX, int boxY, int boxWidth, int boxHeight)
+	{
+		drawText(m_game.getCurrentSceneText(), boxX, boxY, boxWidth, boxHeight);
+	}
+	
+	private void drawOutcomeText(int boxX, int boxY, int boxWidth, int boxHeight)
+	{
+		drawText(m_game.getCurrentSceneOutcomeText(), boxX, boxY, boxWidth, boxHeight);
 	}
 	
 	private void drawEventTextWithChoices(int boxX, int boxY, int boxWidth, int boxHeight)
@@ -235,7 +255,18 @@ public class SceneUI
 		{
 			handleChoiceButtonClick(clicked);
 		}
-		m_game.finishConsumingScene();
+		else if (m_game.showingOutcome())
+		{
+			m_game.finishConsumingScene();
+		}
+		else
+		{
+			// time to move toward showing outcome
+			if (!m_game.startShowingOutcome())
+			{
+				m_game.finishConsumingScene();
+			}
+		}
 		
 		return true;
 	}

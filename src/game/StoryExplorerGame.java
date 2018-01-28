@@ -17,6 +17,8 @@ public class StoryExplorerGame
 	private Story m_story;
 	
 	private ArrayList<StoryNode> m_currentSatellites;
+	
+	private boolean m_showingOutcomeText;
 
 	///////////////////////
 	
@@ -26,6 +28,8 @@ public class StoryExplorerGame
 		m_story.reset();
 		
 		refreshCurrentSatellites();
+		
+		m_showingOutcomeText = false;
 	}
 	
 	///////////////////////
@@ -153,6 +157,23 @@ public class StoryExplorerGame
 		return text;
 	}
 	
+	public String getCurrentSceneOutcomeText()
+	{
+		String text = "";
+		StoryNode currentNode = m_story.getNodeBeingConsumed();
+		
+		if (currentNode == null)
+		{
+			System.err.println("Game cannot provide current scene text because no node is being consumed.");
+		}
+		else
+		{
+			text = currentNode.getOutcomeTextForSelectedChoice();
+		}
+		
+		return text;
+	}
+	
 	///////////////////////
 	
 	public int getNumChoicesForCurrentNode()
@@ -185,12 +206,28 @@ public class StoryExplorerGame
 		
 		if (index < 0) index = 0; // for scenes with one choice but no button
 		m_story.getNodeBeingConsumed().setSelectedChoice(index);
+		
+		m_showingOutcomeText = true;
+	}
+	
+	///////////////////////
+	
+	public boolean showingOutcome() { return m_showingOutcomeText; }
+	
+	public boolean startShowingOutcome() {
+		m_showingOutcomeText = 
+				(getNumChoicesForCurrentNode() > 1) &&
+				(!m_story.getNodeBeingConsumed().getOutcomeTextForSelectedChoice().isEmpty()); 
+		
+		return m_showingOutcomeText;
 	}
 	
 	///////////////////////
 	
 	public void finishConsumingScene()
 	{
+		m_showingOutcomeText = false;
+		
 		if (m_story.getNodeBeingConsumed() == null) return; 
 		
 		m_story.applyOutcomeAndAdjustDesires();
