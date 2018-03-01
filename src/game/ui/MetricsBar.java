@@ -9,7 +9,7 @@ public class MetricsBar
 	private StoryExplorerApplet m_parent;
 	private StoryExplorerGame m_game;
 	
-	final static int BAR_HEIGHT = 80;
+	final static int BAR_HEIGHT = 120;
 	
 	private final int BAR_BACKGROUND_COLOUR;
 
