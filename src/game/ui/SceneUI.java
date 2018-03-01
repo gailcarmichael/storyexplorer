@@ -87,7 +87,7 @@ public class SceneUI
 		int boxX = MAIN_BOX_PADDING;
 		int boxY = MetricsBar.BAR_HEIGHT + MAIN_BOX_PADDING;
 		int boxWidth = m_parent.width - 2*MAIN_BOX_PADDING;
-		int boxHeight = m_parent.height- MetricsBar.BAR_HEIGHT - KernelsBar.BAR_HEIGHT - 2*MAIN_BOX_PADDING;
+		int boxHeight = m_parent.height - MetricsBar.BAR_HEIGHT - 2*MAIN_BOX_PADDING;
 		
 		////
 		// Background box

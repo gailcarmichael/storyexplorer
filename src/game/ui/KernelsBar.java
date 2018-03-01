@@ -77,6 +77,8 @@ public class KernelsBar
 	
 	void draw()
 	{	
+		if (!m_game.canChooseAKernel()) return;
+		
 		m_parent.fill(BAR_BACKGROUND_COLOUR);
 		m_parent.noStroke();
 		m_parent.rectMode(PConstants.CORNER);
@@ -125,6 +127,9 @@ public class KernelsBar
 	
 	void mouseMoved()
 	{		
+		if (m_parent.mouseY < m_parent.getHeight() - BAR_HEIGHT) return;
+		if (!m_game.canChooseAKernel()) return;
+		
 		m_circleHoverIndex = -1;
 		
 		if (m_parent.mouseY < m_parent.getHeight() - BAR_HEIGHT) return;
