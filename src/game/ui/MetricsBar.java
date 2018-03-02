@@ -58,12 +58,32 @@ public class MetricsBar
 			PImage img = METRIC_ICONS[i];
 			
 			float metricPercent = (float)m_game.getCurrentMetricValue(i) / (float)m_game.getMaxMetricValue(i);
-			
-			m_parent.tint(255, metricPercent*255);
+			maskMetricIcon(img, metricPercent);
 			
 			m_parent.image(img, iconX, iconY);
 			iconX += img.width + METRIC_IMAGE_SPACING;
 		}
 	}
 	
+	private void maskMetricIcon(PImage iconImage, float percentFull)
+	{
+		int rowToStartSolid = iconImage.height - (int)(iconImage.height * percentFull); 
+		iconImage.loadPixels();
+		
+		for (int i=0; i < iconImage.pixels.length; i++)
+		{
+			int rowNum = i / iconImage.height;
+			
+			if(m_parent.alpha(iconImage.pixels[i]) > 10 && rowNum < rowToStartSolid)
+			{
+				float r = m_parent.red(iconImage.pixels[i]);
+				float g = m_parent.green(iconImage.pixels[i]);
+				float b = m_parent.blue(iconImage.pixels[i]);
+				
+				iconImage.pixels[i] = m_parent.color(r,g,b,40);
+			}
+		}
+		
+		iconImage.updatePixels();
+	}
 }
