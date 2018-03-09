@@ -43,7 +43,7 @@ public class TestElementSpacing extends PApplet
 	private static final int NUM_EACH_CATEGORY = 5; // how many different themes, characters, settings each
 	private static final int NUM_NODES_PER_ELEMENT = 15; // how many nodes for each individual theme, etc
 	private static final int MAX_PROMINENCE_VALUE = 3; // a random value between 1 and this number will be assigned
-	private static final int NUM_TOP_CHOICES = 10; // how many of the top nodes are offered to players
+	private static final int NUM_TOP_CHOICES = 3; // how many of the top nodes are offered to players
 	
 	private static final boolean TEST_RANDOM_STORY = false; // true if story is randomly generated, false if story is read from existing file
 	

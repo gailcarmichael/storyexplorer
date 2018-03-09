@@ -5,14 +5,11 @@ import java.util.ArrayList;
 import storyEngine.Story;
 import storyEngine.storyNodes.StoryNode;
 
-// For now, this class represents one specific game created for Global Game Jam.
-// Later, it should be refactored so that it is general and the subclasses represent
-// specific games.
-
 // In this version of the game:
 // - kernels can't branch, and must have prerequisites that enforce linear progression
+// - there is currently no regard for a node tagged as first, nor last
 
-public class StoryExplorerGame
+public abstract class StoryExplorerGame
 {
 	private Story m_story;
 	
@@ -22,7 +19,7 @@ public class StoryExplorerGame
 
 	///////////////////////
 	
-	public StoryExplorerGame(Story story)
+	protected StoryExplorerGame(Story story)
 	{
 		m_story = (Story)story.clone();
 		m_story.reset();
@@ -34,36 +31,9 @@ public class StoryExplorerGame
 	
 	///////////////////////
 	
-	public String[] getMetricIconFilenames()
-	{	
-		String[] filenames = {
-			"../data/images/currency.png",
-			"../data/images/charity.png",
-			"../data/images/morality.png",
-			"../data/images/trust.png",
-			"../data/images/superstition.png",
-		};
-		
-		return filenames;
-	}
-	
-	public String[] getMetricIDs()
-	{
-		String[] ids = {
-			"wealthMetric",
-			"charityMetric",
-			"moralityMetric",
-			"trustMetric",
-			"superstitionMetric"
-		};
-		
-		return ids;
-	}
-	
-	public int getMaxMetricValue(int metricIndex)
-	{
-		return 10;
-	}
+	public abstract String[] getMetricIconFilenames();
+	public abstract String[] getMetricIDs();
+	public abstract int getMaxMetricValue(int metricIndex);
 	
 	public int getCurrentMetricValue(int metricIndex)
 	{

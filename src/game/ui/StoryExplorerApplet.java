@@ -1,8 +1,8 @@
 package game.ui;
 
+import game.AccidentalProphetGame;
 import game.StoryExplorerGame;
 import processing.core.PApplet;
-import storyEngine.Story;
 
 public class StoryExplorerApplet extends PApplet
 {
@@ -25,11 +25,8 @@ public class StoryExplorerApplet extends PApplet
 	private int calculateHeight() { return 800; }
 	
 	public void setup()
-	{
-		//Story story = Story.loadStoryFromFile("./testData/testSimpleXML/testSimple.xml", "./testData/testSimpleXML/testStoryElements.xml");
-		Story story = Story.loadStoryFromFile("./data/ggjGameStory.xml", "./data/ggjGameStoryElements.xml");
-		
-		m_game = new StoryExplorerGame(story);
+	{		
+		m_game = new AccidentalProphetGame();
 		
 		size(calculateWidth(), calculateHeight());
 		
