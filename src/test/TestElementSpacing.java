@@ -45,9 +45,11 @@ public class TestElementSpacing extends PApplet
 	private static final int MAX_PROMINENCE_VALUE = 3; // a random value between 1 and this number will be assigned
 	private static final int NUM_TOP_CHOICES = 10; // how many of the top nodes are offered to players
 	
+	private static final boolean TEST_RANDOM_STORY = false; // true if story is randomly generated, false if story is read from existing file
+	
 	private static final PrioritizationType PRIORITIZATION_TYPE = PrioritizationType.eventBased; // just for visualizing one story
 	
-	private static final TestType TEST_TYPE = TestType.MonteCarloSimulation;
+	private static final TestType TEST_TYPE = TestType.VisualizeOneRun;
 	
 	private static final boolean TEST_COMBO_ELEMENTS = true; // whether nodes should have multiple element tags
 	
@@ -204,72 +206,86 @@ public class TestElementSpacing extends PApplet
 	{		
 		RANDOM = new Random();
 		
-		////
-		// Step 1: Generate a story collection with generic story elements
 		
-		StoryElementCollection elementCollection = new StoryElementCollection();
+		StoryElementCollection elementCollection = null;
+		Story story = null;
 		
-		for (int i=1; i <= NUM_EACH_CATEGORY; i++)
+		
+		if (TEST_RANDOM_STORY)
 		{
-			elementCollection.add(
-					new StoryElement("theme" + i, "themes", "theme" + i, ElementType.quantifiable));
+			////
+			// Step 1: Generate a story collection with generic story elements
 			
-			elementCollection.add(
-					new StoryElement("character" + i, "characters", "character" + i, ElementType.quantifiable));
-		
-			elementCollection.add(
-					new StoryElement("setting" + i, "settings", "setting" + i, ElementType.quantifiable));
-		}
-		
-		
-		
-		////
-		// Step 2: Create a story with generic scenes and validate it
-		
-		StoryState initialState = getInitialState();		
-		
-		// Create a set of scenes with different combinations of elements
-		// in their functional descriptions; stick with satellites only
-		// for this test
-		
-		ArrayList<StoryNode> nodes = new ArrayList<StoryNode>();
-		
-		// Nodes tagged with just one element
-		
-		for (int i=1; i <= NUM_EACH_CATEGORY; i++)
-		{
-			for (int j=0; j < NUM_NODES_PER_ELEMENT; j++)
+			elementCollection = new StoryElementCollection();
+			
+			for (int i=1; i <= NUM_EACH_CATEGORY; i++)
 			{
-				nodes.add(createStoryNode(elementCollection, "theme", i, j));
-				nodes.add(createStoryNode(elementCollection, "character", i, j));
-				nodes.add(createStoryNode(elementCollection, "setting", i, j));
+				elementCollection.add(
+						new StoryElement("theme" + i, "themes", "theme" + i, ElementType.quantifiable));
+				
+				elementCollection.add(
+						new StoryElement("character" + i, "characters", "character" + i, ElementType.quantifiable));
+			
+				elementCollection.add(
+						new StoryElement("setting" + i, "settings", "setting" + i, ElementType.quantifiable));
+				
+			}
+			
+			// Step 2: Create a story with generic scenes and validate it
+			
+			StoryState initialState = getInitialState();		
+			
+			// Create a set of scenes with different combinations of elements
+			// in their functional descriptions; stick with satellites only
+			// for this test
+			
+			ArrayList<StoryNode> nodes = new ArrayList<StoryNode>();
+			
+			// Nodes tagged with just one element
+			
+			for (int i=1; i <= NUM_EACH_CATEGORY; i++)
+			{
+				for (int j=0; j < NUM_NODES_PER_ELEMENT; j++)
+				{
+					nodes.add(createStoryNode(elementCollection, "theme", i, j));
+					nodes.add(createStoryNode(elementCollection, "character", i, j));
+					nodes.add(createStoryNode(elementCollection, "setting", i, j));
+				}
+			}
+			
+			
+			// Construct the story object and test validity
+			
+			story = new Story(NUM_TOP_CHOICES, PRIORITIZATION_TYPE, nodes, null /* <- no start node */, initialState);
+			story.setElementCollection(elementCollection);
+			System.out.println("Test story is valid: " + story.isValid(elementCollection));
+			
+			
+			// Export to XML for easy double checking of story generation
+			
+			try
+			{
+				Serializer serializer = new Persister();
+				File result = new File("./testData/testElementSpacing/testSpacing.xml");
+				serializer.write(story, result);
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
 			}
 		}
-		
-		
-		// Construct the story object and test validity
-		
-		Story story = new Story(NUM_TOP_CHOICES, PRIORITIZATION_TYPE, nodes, null /* <- no start node */, initialState);
-		story.setElementCollection(elementCollection);
-		System.out.println("Test story is valid: " + story.isValid(elementCollection));
-		
-		
-		// Export to XML for easy double checking of story generation
-		
-		try
+		else
 		{
-			Serializer serializer = new Persister();
-			File result = new File("./testData/testElementSpacing/testSpacing.xml");
-			serializer.write(story, result);
+			story = Story.loadStoryFromFile("./data/ggjGameStory.xml", "./data/ggjGameStoryElements.xml");
 		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
+		
+		
+		////
+			
 					
 		
 		////
-		// Step 3: Do a quick test by running through the story,
+		// Part 2: Do a quick test by running through the story,
 		// making random choices from available scenes or choosing the
 		// top scene each time
 		
