@@ -327,7 +327,7 @@ public class FunctionalDescription
 		}
 		
 		
-		return nodeScore / num;
+		return num > 0 ? nodeScore / num : 0;
 	}
 	
 	
