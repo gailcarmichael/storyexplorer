@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import processing.core.PApplet;
 import storyEngine.Story;
+import storyEngine.storyElements.ElementType;
 import storyEngine.storyNodes.StoryNode;
 
 // Use Processing to display the spacing between various elements
@@ -61,6 +62,11 @@ public class ElementSpacingVisualizer
 		int elementNum = 0;
 		for (String elementID : m_story.getElementCollection().getIDs())
 		{
+			if (m_story.getElementCollection().getElementWithID(elementID).getType() != ElementType.quantifiable)
+			{
+				continue;
+			}
+			
 			float y = (NODE_DIAMETER + VER_SPACE_BETWEEN) * elementNum + VER_SPACE_BETWEEN;
 			
 			int nodeNum = 0;
