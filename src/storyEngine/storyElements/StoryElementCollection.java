@@ -24,7 +24,7 @@ public class StoryElementCollection
 		this(new ArrayList<StoryElement>());
 	}
 	
-	public StoryElementCollection(ArrayList<StoryElement> storyElements)
+	public StoryElementCollection(@ElementList(name="storyElements", inline=true) ArrayList<StoryElement> storyElements)
 	{
 		m_storyElements = new ArrayList<StoryElement>();
 		m_storyElementsPriorityCalc = new ArrayList<StoryElement>();
