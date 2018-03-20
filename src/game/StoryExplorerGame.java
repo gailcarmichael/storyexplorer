@@ -184,7 +184,7 @@ public abstract class StoryExplorerGame
 	
 	public boolean showingOutcome() { return m_showingOutcomeText; }
 	
-	public boolean startShowingOutcome() {
+	public boolean shouldStartShowingOutcome() {
 		m_showingOutcomeText = 
 				(getNumChoicesForCurrentNode() > 1) &&
 				(!m_story.getNodeBeingConsumed().getOutcomeTextForSelectedChoice().isEmpty()); 

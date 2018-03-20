@@ -239,9 +239,9 @@ public class SceneUI
 		return clicked;
 	}
 	
-	private void handleChoiceButtonClick(ChoiceButton clicked)
+	private void handleChoiceButtonClick(int clickedIndex)
 	{
-		m_game.applyChoice(clicked.m_choiceIndex);
+		m_game.applyChoice(clickedIndex);
 	}
 	
 	///////////////////////////
@@ -251,23 +251,29 @@ public class SceneUI
 		if (!m_game.isDisplayingAScene()) return false;
 	
 		ChoiceButton clicked = choiceButtonClicked(m_parent.mouseX, m_parent.mouseY);
+		
+		
 		if (clicked != null)
 		{
-			handleChoiceButtonClick(clicked);
+			handleChoiceButtonClick(clicked.m_choiceIndex);
 		}
-		else if (m_game.showingOutcome())
+		else // no button was clicked because...
 		{
-			m_game.finishConsumingScene();
-		}
-		else
-		{
-			// time to move toward showing outcome
-			if (!m_game.startShowingOutcome())
+			if (m_game.showingOutcome()) // ...we are already showing an outcome
 			{
 				m_game.finishConsumingScene();
 			}
+			else // ...there was only one choice so we didn't show a button
+			{
+				handleChoiceButtonClick(0); // "choose" the only choice
+				
+				if (!m_game.shouldStartShowingOutcome())
+				{
+					m_game.finishConsumingScene();
+				}
+			}
 		}
-		
+			
 		return true;
 	}
 }
