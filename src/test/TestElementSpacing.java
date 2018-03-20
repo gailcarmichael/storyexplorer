@@ -276,7 +276,7 @@ public class TestElementSpacing extends PApplet
 		}
 		else
 		{
-			story = Story.loadStoryFromFile("./data/ggjGameStory.xml", "./data/ggjGameStoryElements.xml");
+			story = Story.loadStoryFromFile("./data/accidentalProphetStory.xml", "./data/accidentalProphetStoryElements.xml");
 		}
 		
 		
