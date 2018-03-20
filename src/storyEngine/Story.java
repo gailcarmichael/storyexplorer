@@ -309,7 +309,7 @@ public class Story
 	{
 		if (m_nodeBeingConsumed != null)
 		{
-			m_nodeBeingConsumed.applyOutcomeForSelectedChoice(m_storyState);
+			m_nodeBeingConsumed.applyOutcomeForSelectedChoice(m_storyState, m_elementCol);
 			m_nodeBeingConsumed.resetRelevantDesireValuesInStoryState(m_storyState);
 			m_storyState.increaseDesireValues();
 		}

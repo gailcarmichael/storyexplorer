@@ -133,10 +133,13 @@ public class Outcome
 	//////////////////////////////////////////////////////////////////////////////////////
 	
 	
-	void applyOutcome(StoryState state)
+	void applyOutcome(StoryState state, StoryElementCollection c)
 	{
+		if (!isValid(c)) return;
+		
 		for (QuantifiableModifier modifier : m_quantifiableModifiers)
 		{
+			
 			float value = state.getValueForElement(modifier.getID());
 			
 			if (modifier.getAbsolute())

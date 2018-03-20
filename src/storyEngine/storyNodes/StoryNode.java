@@ -283,7 +283,7 @@ public class StoryNode
 	}
 	
 	
-	public void applyOutcomeForSelectedChoice(StoryState state)
+	public void applyOutcomeForSelectedChoice(StoryState state, StoryElementCollection c)
 	{
 		// Node-specific changes
 		m_consumed = true;
@@ -295,7 +295,7 @@ public class StoryNode
 			Outcome outcome = m_choices.get(getSelectedChoice()).getOutcome();
 			if (outcome != null)
 			{
-				outcome.applyOutcome(state);
+				outcome.applyOutcome(state, c);
 			}
 		}
 	}
