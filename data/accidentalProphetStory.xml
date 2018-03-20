@@ -1,148 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <story numTopScenesForUser="3" prioritizationType="eventBased">
 	<storyNodes>
-		<storyNode id="apprenticeSubplot1" type="satellite" lastNode="false">
+
+		<!-- Apprentice satellites -->
+
+		<storyNode id="apprenticeSubplot1" type="satellite"
+			lastNode="false">
 			<teaserText>A young man approaches...</teaserText>
-			<eventText>He asks you for your advice on a few existential questions before a long pause. He looks up at you pensively, "I've been reading your teachings and listening to you speak Prophet, and I would like to live my life in service to you and the deity."</eventText>
+			<eventText>He asks you for your advice on a few existential questions
+				before a long pause. He looks up at you pensively. "I've been
+				reading your teachings and listening to you speak, Prophet, and I
+				would like to live my life in service to you and the deity."
+			</eventText>
 			<functionalDescription>
 				<prominence id="apprenticeCharacter">1</prominence>
 			</functionalDescription>
 			<choice>
-				<text>The devotion he shows gives you renewed faith in your cause. You agree to take him under your wing.</text>
+				<text>The devotion he shows gives you renewed faith in your cause.
+					You agree to take him under your wing.
+				</text>
 				<outcome>
-					<text>He is ecstatic, but admittedly less so when you send him off to the outskirts of the village to spread word there rather than having him stay in the upper city with you.</text>
-					<quantModifier id="trustMetric" absolute="false">+1</quantModifier>
-					<quantModifier id="charityMetric" absolute="false">+1</quantModifier>
+					<text>He is ecstatic, but admittedly less so when you send him off
+						to the outskirts of the village to spread word there rather than
+						having him stay in the upper city with you.
+					</text>
+					<quantModifier id="trustMetric" absolute="false">+1
+					</quantModifier>
+					<quantModifier id="charityMetric" absolute="false">+1
+					</quantModifier>
 					<tagModifier id="acceptedApprentice">add</tagModifier>
 				</outcome>
 			</choice>
 			<choice>
-				<text>"No thank you, the last thing I need is more work around here."</text>
+				<text>"No thank you, the last thing I need is more work around
+					here."
+				</text>
 				<outcome>
-					<text>The boy leaves in a huff, and you have no doubt that he will speak maliciously of you for the next few days.</text>
-					<quantModifier id="trustMetric" absolute="false">-1</quantModifier>
-					<quantModifier id="superstitionMetric" absolute="false">+1</quantModifier>
+					<text>The boy leaves in a huff, and you have no doubt that he will
+						speak maliciously of you for the next few days.
+					</text>
+					<quantModifier id="trustMetric" absolute="false">-1
+					</quantModifier>
+					<quantModifier id="superstitionMetric" absolute="false">+1
+					</quantModifier>
 				</outcome>
 			</choice>
 		</storyNode>
-		<storyNode id="apprenticeSubplot2" type="satellite" lastNode="false">
+
+		<storyNode id="apprenticeSubplot2" type="satellite"
+			lastNode="false">
 			<teaserText>Your apprentice returns.</teaserText>
-			<eventText>Despite the short time, he looks older and wiser from his time in lower town. His robe is tattered and his face is coated with grime beyond the usual daily wear. He describes to you a strong group of skeptics who spat at and ridiculed him.</eventText>
+			<eventText>Despite the short time, he looks older and wiser from his
+				time in lower town. His robe is tattered and his face is coated with
+				grime beyond the usual daily wear. He describes to you a strong
+				group of skeptics who spat at and ridiculed him.
+			</eventText>
 			<functionalDescription>
 				<prominence id="apprenticeCharacter">1</prominence>
 			</functionalDescription>
 			<prerequisite>
-				<tagReq id="acceptedApprentice" operator="contains"/>
+				<tagReq id="acceptedApprentice" operator="contains" />
 			</prerequisite>
 			<choice>
 				<text>"We must notify the guard!"</text>
 				<outcome>
 					<text>He nods with determination in his eyes.</text>
-					<quantModifier id="trustMetric" absolute="false">+1</quantModifier>
-					<quantModifier id="charityMetric" absolute="false">+1</quantModifier>
+					<quantModifier id="trustMetric" absolute="false">+1
+					</quantModifier>
+					<quantModifier id="charityMetric" absolute="false">+1
+					</quantModifier>
 					<tagModifier id="vengefulApprentice">add</tagModifier>
 				</outcome>
 			</choice>
 			<choice>
-				<text>"This is part of the path; refuting the skeptics will only make us stronger if we can learn to live amongst them in peace."</text>
+				<text>"This is part of the path; refuting the skeptics will only
+					make us stronger if we can learn to live amongst them in peace."
+				</text>
 				<outcome>
-					<text>He looks tired, perhaps more aged by your words, but he purses his lips and nods before returning to the outerskirts of town.</text>
+					<text>He looks tired, perhaps more aged by your words, but he
+						purses his lips and nods before returning to the outskirts of
+						town.
+					</text>
 					<tagModifier id="patientApprentice">add</tagModifier>
 				</outcome>
 			</choice>
 		</storyNode>
-		<storyNode id="apprenticeSubplot3" type="satellite" lastNode="false">
+
+		<storyNode id="apprenticeSubplot3" type="satellite"
+			lastNode="false">
 			<teaserText>Your apprentice has finished his sabbatical.</teaserText>
-			<eventText>Now ready to serve you directly, he is eager to take on a role as your personal guard. "The peasants do not yet understand, it's important to keep you safe until they do."</eventText>
+			<eventText>Now ready to serve you directly, he is eager to take on a
+				role as your personal guard. "The peasants do not yet understand,
+				it's important to keep you safe until they do."
+			</eventText>
 			<functionalDescription>
 				<prominence id="apprenticeCharacter">1</prominence>
 			</functionalDescription>
 			<prerequisite>
-				<tagReq id="vengefulApprentice" operator="contains"/>
+				<tagReq id="vengefulApprentice" operator="contains" />
 			</prerequisite>
 			<choice>
 				<text>This is just what I need.</text>
 				<outcome>
-					<text>He grins, finally satisfied with his role, and readies his sword.</text>
-					<quantModifier id="trustMetric" absolute="false">-1</quantModifier>
+					<text>He grins, finally satisfied with his role, and readies his
+						sword.
+					</text>
+					<quantModifier id="trustMetric" absolute="false">-1
+					</quantModifier>
 					<tagModifier id="trainedApprentice">add</tagModifier>
 				</outcome>
 			</choice>
 			<choice>
-				<text>This is not the kind of path that will achieve the vision!</text>
+				<text>This is not the kind of path that will achieve the vision!
+				</text>
 				<outcome>
 					<text>He storms out angrily, feeling cheated.</text>
 				</outcome>
 			</choice>
 		</storyNode>
-		<storyNode id="apprenticeSubplot4" type="satellite" lastNode="false">
+
+		<storyNode id="apprenticeSubplot4" type="satellite"
+			lastNode="false">
 			<teaserText>Your apprentice has finished his sabbatical.</teaserText>
-			<eventText>He comes back cleaner, and somehow refreshed by his time amongst the people. This is not the young man you had last seen.</eventText>
+			<eventText>He comes back cleaner, and somehow refreshed by his time
+				amongst the people. This is not the young man you had last seen.
+			</eventText>
 			<functionalDescription>
 				<prominence id="apprenticeCharacter">1</prominence>
 			</functionalDescription>
 			<prerequisite>
-				<tagReq id="patientApprentice" operator="contains"/>
+				<tagReq id="patientApprentice" operator="contains" />
 			</prerequisite>
 			<choice>
 				<text>"You're welcome to work alongside me."</text>
 				<outcome>
-					<text>He smiles, at peace with your decision and finally feeling fulfilled.</text>
-					<quantModifier id="trustMetric" absolute="false">+1</quantModifier>
+					<text>He smiles, at peace with your decision and finally feeling
+						fulfilled.
+					</text>
+					<quantModifier id="trustMetric" absolute="false">+1
+					</quantModifier>
 					<tagModifier id="trainedApprentice">add</tagModifier>
 				</outcome>
 			</choice>
 			<choice>
-				<text>"I believe your purpose is amongst the people now, please pass my vision onward."</text>
+				<text>"I believe your purpose is amongst the people now, please pass
+					my vision onward."
+				</text>
 				<outcome>
-					<text>He hesitates then smiles when he realizes the amount of trust you place in him. "I will visit with news from the villages."</text>
-					<quantModifier id="trustMetric" absolute="false">+1</quantModifier>
-					<quantModifier id="moralityMetric" absolute="false">+1</quantModifier>
+					<text>He hesitates then smiles when he realizes the amount of trust
+						you place in him. "I will visit with news from the villages."
+					</text>
+					<quantModifier id="trustMetric" absolute="false">+1
+					</quantModifier>
+					<quantModifier id="moralityMetric" absolute="false">+1
+					</quantModifier>
 					<tagModifier id="trainedWanderingApprentice">add</tagModifier>
 				</outcome>
 			</choice>
 		</storyNode>
+		
+		
+		<!-- Blacksmith satellites -->
+
 		<storyNode id="holySymbol1" type="satellite" lastNode="false">
-         	<teaserText>The town blacksmith comes to you with an interesting proposal...</teaserText>
-         	<eventText> The blacksmith stands before you, twisting his beard in excitement. He's hoping that you can fund the creation of ornate metal-worked holy symbols for your burgeoning 	faith. </eventText>
-         	<functionalDescription>
-				<prominence id="wealthTheme">1</prominence>	        
+			<teaserText>The town blacksmith comes to you with an interesting
+				proposal...
+			</teaserText>
+			<eventText> The blacksmith stands before you, twisting his beard in
+				excitement. He's hoping that you can fund the creation of ornate
+				metal-worked holy symbols for your burgeoning faith.
+			</eventText>
+			<functionalDescription>
+				<prominence id="wealthTheme">1</prominence>
 			</functionalDescription>
-	        <prerequisite>
-	            <quantReq id="wealthMetric" operator="greaterThan" compareTo="1"/>         
-	        </prerequisite>
-	        <choice>
-	            <text>Grant him the funds!</text>
-	            <outcome>
-	               <text>The blacksmith hefts the purse of coins and hurries off, promising great results.</text>
-	               <quantModifier id="wealthMetric" absolute="false">-2</quantModifier>
-	               <tagModifier id="paidBlacksmith">add</tagModifier>
-	            </outcome>
-	        </choice>
-	        <choice>
-	            <text>Decline the offer.</text>
-	            <outcome>
-	               <text>The blacksmith looks dissappointed, but bows slowly and walks away.</text>
-	            </outcome>
-	        </choice>
-	    </storyNode>
-		<storyNode id="crowOmen" type="satellite" lastNode="false">
-			<teaserText>One of the villagers wants to inform you of a strange happening...</teaserText>
-			<eventText>Ulrich said the black crow was lucky, I saw one last night and now my crops are dead.</eventText>
+			<prerequisite>
+				<quantReq id="wealthMetric" operator="greaterThan"
+					compareTo="1" />
+			</prerequisite>
+			<choice>
+				<text>Grant him the funds!</text>
+				<outcome>
+					<text>The blacksmith hefts the purse of coins and hurries off,
+						promising great results.
+					</text>
+					<quantModifier id="wealthMetric" absolute="false">-2
+					</quantModifier>
+					<tagModifier id="paidBlacksmith">add</tagModifier>
+				</outcome>
+			</choice>
+			<choice>
+				<text>Decline the offer.</text>
+				<outcome>
+					<text>The blacksmith looks dissappointed, but bows slowly and walks
+						away.
+					</text>
+				</outcome>
+			</choice>
+		</storyNode>
+		
+		<storyNode id="holySymbol2" type="satellite" lastNode="false">
+			<teaserText>The blacksmith hopes you will reconsider his offer...
+			</teaserText>
+			<eventText> The blacksmith once again comes before you with renewed
+				vigour. He really thinks you should take advantage of his offer to
+				create your holy symbols, and is willing to work at half his
+				original fee
+			</eventText>
+			<functionalDescription>
+				<prominence id="wealthTheme">1</prominence>
+			</functionalDescription>
+			<prerequisite>
+				<quantReq id="wealthMetric" operator="greaterThan"
+					compareTo="1" />
+				<sceneReq name="holySymbol1" operator="seen" />
+			</prerequisite>
+			<choice>
+				<text>Grant him the funds!</text>
+				<outcome>
+					<text>The blacksmith hefts the purse of coins and hurries off,
+						promising great results.
+					</text>
+					<quantModifier id="wealthMetric" absolute="false">-1
+					</quantModifier>
+					<tagModifier id="paidBlacksmith">add</tagModifier>
+				</outcome>
+			</choice>
+			<choice>
+				<text>Decline the offer.</text>
+				<outcome>
+					<text>The blacksmith spits at your feet and huffs away angrily.
+					</text>
+				</outcome>
+			</choice>
+		</storyNode>
+
+		<storyNode id="holySymbol3" type="satellite" lastNode="false">
+			<teaserText>The blacksmith is seeking input for some desing
+				decisions...
+			</teaserText>
+			<eventText>The blacksmith is wondering what exactly you had in mind
+				for the holy symbols-- which of these designs best suit your faith?'
+				visual design. What should they look like?
+			</eventText>
 			<functionalDescription>
 				<prominence id="trustTheme">1</prominence>
 				<prominence id="superstitionTheme">1</prominence>
 			</functionalDescription>
+			<prerequisite>
+				<tagReq id="paidBlacksmith" operator="contains" />
+			</prerequisite>
+
 			<choice>
+				<text>Jagged and brutal.</text>
 				<outcome>
-					<text>The villagers are a bit more weary of rumors passed on from others, they'd rather defer to you on such matters.</text>
-					<quantModifier id="trustMetric" absolute="false">+1</quantModifier>
-					<quantModifier id="superstitionMetric" absolute="false">-1</quantModifier>
+					<text>The blacksmith bites his lip thoughtfully and walks away
+					</text>
+					<tagModifier id="jaggedSymbol">add</tagModifier>
+				</outcome>
+			</choice>
+			<choice>
+				<text>Austere and symmetrical.</text>
+				<outcome>
+					<text>The blacksmith bites his lip thoughtfully and walks away
+					</text>
+					<quantModifier id="trustMetric" absolute="false">+1
+					</quantModifier>
+				</outcome>
+			</choice>
+			<choice>
+				<text>Fluid and whimsical.</text>
+				<outcome>
+					<text>The blacksmith bites his lip thoughtfully and walks away
+					</text>
+					<quantModifier id="superstitionMetric" absolute="false">+1
+					</quantModifier>
 				</outcome>
 			</choice>
 		</storyNode>
+		
+		
+		<!-- Shepherd satellites -->
+
 		<storyNode id="shepFlockBirth" type="satellite" lastNode="false">
-			<teaserText>A happy occurence is cause for consecration...</teaserText>
-			<eventText>Shepard has had a new lamb born and wants you to come over the consecrate the flock.</eventText>
+			<teaserText>A happy occurence is cause for consecration...
+			</teaserText>
+			<eventText>Shepard has had a new lamb born and wants you to come over
+				the consecrate the flock.
+			</eventText>
 			<functionalDescription>
 				<prominence id="trustTheme">1</prominence>
 				<prominence id="charityTheme">1</prominence>
@@ -150,23 +294,40 @@
 			<choice>
 				<text>You take the time to go and consecrate the large flock.</text>
 				<outcome>
-					<text>The villagers all attend the ceremony, scholars taking note of the work you've done for the people.</text>
-					<quantModifier id="trustMetric" absolute="false">+1</quantModifier>
-					<quantModifier id="charityMetric" absolute="false">+1</quantModifier>
+					<text>The villagers all attend the ceremony, scholars taking note
+						of the work you've done for the people.
+					</text>
+					<quantModifier id="trustMetric" absolute="false">+1
+					</quantModifier>
+					<quantModifier id="charityMetric" absolute="false">+1
+					</quantModifier>
 				</outcome>
 			</choice>
 			<choice>
-				<text>You say no, there is not time for that as you have more important matters to attend to.</text>
+				<text>You say no, there is not time for that as you have more
+					important matters to attend to.
+				</text>
 				<outcome>
 					<text>The shepard is disappointed to be turned away.</text>
-					<quantModifier id="trustMetric" absolute="false">-1</quantModifier>
-					<quantModifier id="wealthMetric" absolute="false">+1</quantModifier>
+					<quantModifier id="trustMetric" absolute="false">-1
+					</quantModifier>
+					<quantModifier id="wealthMetric" absolute="false">+1
+					</quantModifier>
 				</outcome>
 			</choice>
 		</storyNode>
+		
+		
+		<!-- Butcher satellites -->
+
 		<storyNode id="badMeatMeet" type="satellite" lastNode="false">
-			<teaserText>A chance to increase your wealth approaches, but at a cost.</teaserText>
-			<eventText>Butcher has a problem with people getting sick from his meat, and wants you to tell them they’re not living a moral enough life</eventText>
+			<teaserText>A chance to increase your wealth approaches, but at a
+				cost.
+			</teaserText>
+			<eventText>Butcher has a problem with people getting sick from his
+				meat, and wants you to tell them they’re not living a moral enough
+				life
+			</eventText>
 			<functionalDescription>
 				<prominence id="trustTheme">1</prominence>
 				<prominence id="moralityTheme">1</prominence>
@@ -175,23 +336,40 @@
 			<choice>
 				<text>Take his money and preach ot the people.</text>
 				<outcome>
-					<text>Preaching to the people lines your pockets, but it only decreases the trust and morality of your followers as disease kills them off.</text>
-					<quantModifier id="trustMetric" absolute="false">-1</quantModifier>
-					<quantModifier id="moralityMetric" absolute="false">-1</quantModifier>
-					<quantModifier id="wealthMetric" absolute="false">+2</quantModifier>
+					<text>Preaching to the people lines your pockets, but it only
+						decreases the trust and morality of your followers as disease
+						kills them off.
+					</text>
+					<quantModifier id="trustMetric" absolute="false">-1
+					</quantModifier>
+					<quantModifier id="moralityMetric" absolute="false">-1
+					</quantModifier>
+					<quantModifier id="wealthMetric" absolute="false">+2
+					</quantModifier>
 				</outcome>
 			</choice>
 			<choice>
 				<text>Reject making false claims to your people.</text>
 				<outcome>
-					<text>The butcher denounces your abilities in response to your rejection of making these claims, and they come to trust you more as their health improves.</text>
-					<quantModifier id="trustMetric" absolute="false">+2</quantModifier>
+					<text>The butcher denounces your abilities in response to your
+						rejection of making these claims, and they come to trust you more
+						as their health improves.
+					</text>
+					<quantModifier id="trustMetric" absolute="false">+2
+					</quantModifier>
 				</outcome>
 			</choice>
 		</storyNode>
+		
+		
+		<!-- Witch satellites -->
+
 		<storyNode id="witchVisit" type="satellite" lastNode="false">
 			<teaserText>You have an unlikely visitor!</teaserText>
-			<eventText>The witch from the outskirts needs help gathering truffles but the local priests are in the way, and she is willing to pray to your god in return.</eventText>
+			<eventText>The witch from the outskirts needs help gathering truffles
+				but the local priests are in the way, and she is willing to pray to
+				your god in return.
+			</eventText>
 			<functionalDescription>
 				<prominence id="trustTheme">1</prominence>
 				<prominence id="charityTheme">1</prominence>
@@ -199,22 +377,36 @@
 			<choice>
 				<text>Help her by ensuring her path is clear.</text>
 				<outcome>
-					<text>Seeing you help the witch, your followers grow distrustful of you despite your giving nature.</text>
-					<quantModifier id="trustMetric" absolute="false">-2</quantModifier>
-					<quantModifier id="charityMetric" absolute="false">+1</quantModifier>
+					<text>Seeing you help the witch, your followers grow distrustful of
+						you despite your giving nature.
+					</text>
+					<quantModifier id="trustMetric" absolute="false">-2
+					</quantModifier>
+					<quantModifier id="charityMetric" absolute="false">+1
+					</quantModifier>
 				</outcome>
 			</choice>
 			<choice>
 				<text>Deny her aid, risking her wrath.</text>
 				<outcome>
-					<text>The curse of an angered witch echoes your halls, and superstition runs amok amongst your people.</text>
-					<quantModifier id="superstitionMetric" absolute="false">+3</quantModifier>
+					<text>The curse of an angered witch echoes your halls, and
+						superstition runs amok amongst your people.
+					</text>
+					<quantModifier id="superstitionMetric" absolute="false">+3
+					</quantModifier>
 				</outcome>
 			</choice>
 		</storyNode>
+		
+		
+		<!-- Mother satellites -->
+
 		<storyNode id="motherVisit" type="satellite" lastNode="false">
-			<teaserText>A villager desparate for your help arrives.</teaserText>
-			<eventText>The mother wants to have a baby, asks for ingredient for fertility. She does not have the coin to buy it herself and is appealing to your good nature.</eventText>
+			<teaserText>A villager desperate for your help arrives.</teaserText>
+			<eventText>The mother wants to have a baby, asks for ingredient for
+				fertility. She does not have the coin to buy it herself and is
+				appealing to your good nature.
+			</eventText>
 			<functionalDescription>
 				<prominence id="charityTheme">1</prominence>
 				<prominence id="wealthTheme">1</prominence>
@@ -222,29 +414,46 @@
 			<choice>
 				<text>Give her the coin she needs to buy the ingredient.</text>
 				<outcome>
-					<text>Your show of charity at personal cost does not go unnoticed, but nor does your decrease in wealth.</text>
-					<quantModifier id="wealthMetric" absolute="false">-1</quantModifier>
-					<quantModifier id="charityMetric" absolute="false">+1</quantModifier>
+					<text>Your show of charity at personal cost does not go unnoticed,
+						but nor does your decrease in wealth.
+					</text>
+					<quantModifier id="wealthMetric" absolute="false">-1
+					</quantModifier>
+					<quantModifier id="charityMetric" absolute="false">+1
+					</quantModifier>
 				</outcome>
 			</choice>
 			<choice>
-				<text>Suggest she seek out new employment to save up for the ingredient.</text>
+				<text>Suggest she seek out new employment to save up for the
+					ingredient.
+				</text>
 				<outcome>
 					<text>The mother leaves upset as you were her last resort.</text>
-					<quantModifier id="trustMetric" absolute="false">-1</quantModifier>
+					<quantModifier id="trustMetric" absolute="false">-1
+					</quantModifier>
 				</outcome>
 			</choice>
 			<choice>
 				<text>Flatly deny her any aid with such personal matters.</text>
 				<outcome>
-					<text>The mother leaves angry that you will not even offer her advice. Trust decreases as it becomes apparent you're not invested in the personal lives of your people.</text>
-					<quantModifier id="trustMetric" absolute="false">-2</quantModifier>
+					<text>The mother leaves angry that you will not even offer her
+						advice. Trust decreases as it becomes apparent you're not invested
+						in the personal lives of your people.
+					</text>
+					<quantModifier id="trustMetric" absolute="false">-2
+					</quantModifier>
 				</outcome>
 			</choice>
 		</storyNode>
+		
+		
+		<!-- Drunkard satellites -->
+
 		<storyNode id="drunkWalk" type="satellite" lastNode="false">
 			<teaserText>Take some time to walk among the people.</teaserText>
-			<eventText>Walking along you pass the village drunk passed out naked in the street. Do you leave him or take him in?</eventText>
+			<eventText>Walking along you pass the village drunk passed out naked
+				in the street. Do you leave him or take him in?
+			</eventText>
 			<functionalDescription>
 				<prominence id="moralityTheme">1</prominence>
 				<prominence id="trustTheme">1</prominence>
@@ -252,175 +461,221 @@
 			<choice>
 				<text>You pass by, averting your gaze.</text>
 				<outcome>
-					<text>The people look upon the man with scorn and mocking gazes.</text>
-					<quantModifier id="moralityMetric" absolute="false">-1</quantModifier>
-					<quantModifier id="trustMetric" absolute="false">+1</quantModifier>
+					<text>The people look upon the man with scorn and mocking gazes.
+					</text>
+					<quantModifier id="moralityMetric" absolute="false">-1
+					</quantModifier>
+					<quantModifier id="trustMetric" absolute="false">+1
+					</quantModifier>
 				</outcome>
 			</choice>
 			<choice>
-				<text>You toss a blanket around the man and clothe and feed him, taking care of him until he sobers up.</text>
+				<text>You toss a blanket around the man and clothe and feed him,
+					taking care of him until he sobers up.
+				</text>
 				<outcome>
-					<text>Others see your act of kindness for the man and moved by the act of charity.</text>
-					<quantModifier id="charityMetric" absolute="false">+1</quantModifier>
-					<quantModifier id="moralityMetric" absolute="false">+1</quantModifier>
+					<text>Others see your act of kindness for the man and moved by the
+						act of charity.
+					</text>
+					<quantModifier id="charityMetric" absolute="false">+1
+					</quantModifier>
+					<quantModifier id="moralityMetric" absolute="false">+1
+					</quantModifier>
 				</outcome>
 			</choice>
 		</storyNode>
+
+		
+		
+		<!-- General villager satellites -->
+
+		<storyNode id="crowOmen" type="satellite" lastNode="false">
+			<teaserText>One of the villagers wants to inform you of a strange
+				happening...
+			</teaserText>
+			<eventText>Ulrich said the black crow was lucky, I saw one last night
+				and now my crops are dead.
+			</eventText>
+			<functionalDescription>
+				<prominence id="trustTheme">1</prominence>
+				<prominence id="superstitionTheme">1</prominence>
+			</functionalDescription>
+			<choice>
+				<outcome>
+					<text>The villagers are a bit more weary of rumors passed on from
+						others, they'd rather defer to you on such matters.
+					</text>
+					<quantModifier id="trustMetric" absolute="false">+1
+					</quantModifier>
+					<quantModifier id="superstitionMetric" absolute="false">-1
+					</quantModifier>
+				</outcome>
+			</choice>
+		</storyNode>
+		
 		<storyNode id="basementMystery" type="satellite" lastNode="false">
 			<teaserText>A very distressed villager arrives</teaserText>
-			<eventText>You are approached by someone fearful of a fiend in their basement, you investigate and wake up suddenly somewhere in the woods</eventText>
+			<eventText>You are approached by someone fearful of a fiend in their
+				basement, you investigate and wake up suddenly somewhere in the
+				woods
+			</eventText>
 			<functionalDescription>
 				<prominence id="insanityTheme">1</prominence>
 			</functionalDescription>
 		</storyNode>
+		
 		<storyNode id="skyMystery" type="satellite" lastNode="false">
 			<teaserText>A very distressed villager arrives.</teaserText>
-			<eventText>Farmer finds meteor in field, they need you to go investigate the meaning of it.</eventText>
+			<eventText>Farmer finds meteor in field, they need you to go
+				investigate the meaning of it.
+			</eventText>
 			<functionalDescription>
 				<prominence id="insanityTheme">1</prominence>
 			</functionalDescription>
 		</storyNode>
+
 		<storyNode id="interruptMystery" type="satellite" lastNode="false">
-			<teaserText>You feel disconnected from the petitions today, something else is on your mind...</teaserText>
-			<eventText>As a noble from a nearby town confides in you, you are suddenly overcome and interrupt them ranting about the state of the stars and the great tragedy that is your existence.</eventText>
+			<teaserText>You feel disconnected from the petitions today, something
+				else is on your mind...
+			</teaserText>
+			<eventText>As a noble from a nearby town confides in you, you are
+				suddenly overcome and interrupt them ranting about the state of the
+				stars and the great tragedy that is your existence.
+			</eventText>
 			<functionalDescription>
 				<prominence id="insanityTheme">3</prominence>
 			</functionalDescription>
 		</storyNode>
+
 		<storyNode id="whisperMystery" type="satellite" lastNode="false">
-			<teaserText>A deep paranoia has followed you from your sleep...</teaserText>
-			<eventText>The town baker just wants to have a confession about rising cost of supplies, but you’re hearing incessant whispering that you’re not sure where they’re coming from and quickly excuse yourself.</eventText>
+			<teaserText>A deep paranoia has followed you from your sleep...
+			</teaserText>
+			<eventText>The town baker just wants to have a confession about
+				rising cost of supplies, but you’re hearing incessant whispering
+				that you’re not sure where they’re coming from and quickly excuse
+				yourself.
+			</eventText>
 			<functionalDescription>
 				<prominence id="insanityTheme">3</prominence>
 			</functionalDescription>
 		</storyNode>
+
 		<storyNode id="nightwatchMystery" type="satellite" lastNode="false">
 			<teaserText>A defender of the city visits.</teaserText>
-			<eventText>Night watch wants you to stand watch with him because he’s heard rumors of vampires in the area.</eventText>
+			<eventText>Night watch wants you to stand watch with him because he’s
+				heard rumors of vampires in the area.
+			</eventText>
 			<functionalDescription>
 				<prominence id="insanityTheme">1</prominence>
 			</functionalDescription>
 		</storyNode>
-		<storyNode id="holySymbol2" type="satellite" lastNode="false">
-         	<teaserText>The blacksmith hopes you will reconsider his offer...</teaserText>
-         	<eventText> The blacksmith once again comes before you with renewed vigour. He really thinks you should take advantage of his offer to create your holy symbols, and is willing to work at half his original fee </eventText>
-         	<functionalDescription>
-				<prominence id="wealthTheme">1</prominence>	        
-			</functionalDescription>
-	        <prerequisite>
-	            <quantReq id="wealthMetric" operator="greaterThan" compareTo="1"/>
-	            <sceneReq name="holySymbol1" operator="seen"/>         
-	        </prerequisite>
-	        <choice>
-	            <text>Grant him the funds!</text>
-	            <outcome>
-	               <text>The blacksmith hefts the purse of coins and hurries off, promising great results.</text>
-	               <quantModifier id="wealthMetric" absolute="false">-1</quantModifier>
-	               <tagModifier id="paidBlacksmith">add</tagModifier>
-	            </outcome>
-	        </choice>
-	        <choice>
-	            <text>Decline the offer.</text>
-	            <outcome>
-	               <text>The blacksmith spits at your feet and huffs away angrily.</text>
-	            </outcome>
-	        </choice>
-	    </storyNode>
-
-	    <storyNode id="holySymbol3" type="satellite" lastNode="false">
-         	<teaserText>The blacksmith is seeking input for some desing decisions...</teaserText>
-         	<eventText>The blacksmith is wondering what exactly you had in mind for the holy symbols-- which of these designs best suit your faith?' visual design. What should they look like? </eventText>
+		
+		
+		
+		
+		<!-- ~~KERNELS~~ -->
+		
+		<storyNode id="holySymbol4" type="satellite" lastNode="false">
+			<teaserText>A grieving mother seeks your aid...</teaserText>
+			<eventText>The miller's wife is quite distraught over the violent and
+				unexpected death of her son. Upon investigation of the grisly scene,
+				you notice the dead boy is clutching a bloody symbol of devotion to
+				your faith in his lifeless fingers.
+			</eventText>
 			<functionalDescription>
 				<prominence id="trustTheme">1</prominence>
-				<prominence id="superstitionTheme">1</prominence>	            
+				<prominence id="superstitionTheme">1</prominence>
 			</functionalDescription>
-	        <prerequisite>
-	        	<tagReq id="paidBlacksmith" operator="contains" />
-	        </prerequisite>
-	        
-	        <choice>
-	            <text>Jagged and brutal.</text>
-	            <outcome>
-	               <text>The blacksmith bites his lip thoughtfully and walks away</text>
-	               <tagModifier id="jaggedSymbol">add</tagModifier>
-	            </outcome>
-	        </choice>
-	        <choice>
-	            <text>Austere and symmetrical.</text>
-	            <outcome>
-	               <text>The blacksmith bites his lip thoughtfully and walks away</text>
-	               <quantModifier id="trustMetric" absolute="false">+1</quantModifier>
-	            </outcome>
-	        </choice>
-	        <choice>
-	            <text>Fluid and whimsical.</text>
-	            <outcome>
-	                <text>The blacksmith bites his lip thoughtfully and walks away</text>
-	               	<quantModifier id="superstitionMetric" absolute="false">+1</quantModifier>
-	            </outcome>
-	        </choice>
-	    </storyNode>
-	    <storyNode id="holySymbol4" type="satellite" lastNode="false">
-         	<teaserText>A grieving mother seeks your aid...</teaserText>
-         	<eventText>The miller's wife is quite distraught over the violent and unexpected death of her son. Upon investigation of the grisly scene, you notice the dead boy is clutching a bloody symbol of devotion to your faith in his lifeless fingers.</eventText>
-			<functionalDescription>
-				<prominence id="trustTheme">1</prominence>
-				<prominence id="superstitionTheme">1</prominence>	            
-			</functionalDescription>
-	        <prerequisite>
-	        	<tagReq id="jaggedSymbol" operator="contains" />
-	        </prerequisite>
-	        <choice>
-	            <outcome>
-	            	<quantModifier id="superstitionMetric" absolute="false">+3</quantModifier>
-	            	<quantModifier id="trustMetric" absolute="false">-2</quantModifier>
-	            </outcome>
-	        </choice>        
-	    </storyNode>
+			<prerequisite>
+				<tagReq id="jaggedSymbol" operator="contains" />
+			</prerequisite>
+			<choice>
+				<outcome>
+					<quantModifier id="superstitionMetric" absolute="false">+3
+					</quantModifier>
+					<quantModifier id="trustMetric" absolute="false">-2
+					</quantModifier>
+				</outcome>
+			</choice>
+		</storyNode>
 
 
-	    <storyNode id="springKernel" type="kernel" lastNode="false">
-         	<teaserText>...</teaserText>
-         	<eventText>They came to you in the night, as you lay dreaming. It was not a gradual transformation, like the onset of Spring, but rather a stark departure from one ethereal dreamscape to another. With the remnants of your seconds-dead dream falling to shreds around you, you stepped forward into the piercing-pure light of the dawn’s sun, you understood with a sudden clarity why you had been chosen, what was expected of you, and the great hope that had been planted in the fertile earth just ahead of you. The future is budding with possibilities, and you have  been chosen to play the part of the gardener transcendent—to guide, to foster, to reap and sow, to prune and trim as befits their splendour. This vision was granted to you and you alone, and it is only you who can see it to fruition.</eventText>
-			<functionalDescription>
+		<storyNode id="springKernel" type="kernel" lastNode="false">
+			<teaserText>...</teaserText>
+			<eventText>They came to you in the night, as you lay dreaming. It was
+				not a gradual transformation, like the onset of Spring, but rather a
+				stark departure from one ethereal dreamscape to another. With the
+				remnants of your seconds-dead dream falling to shreds around you,
+				you stepped forward into the piercing-pure light of the dawn’s sun,
+				you understood with a sudden clarity why you had been chosen, what
+				was expected of you, and the great hope that had been planted in the
+				fertile earth just ahead of you. The future is budding with
+				possibilities, and you have been chosen to play the part of the
+				gardener transcendent—to guide, to foster, to reap and sow, to prune
+				and trim as befits their splendour. This vision was granted to you
+				and you alone, and it is only you who can see it to fruition.
+			</eventText>
+			<functionalDescription />
+			<prerequisite />
+			<choice />
 
-			</functionalDescription>
-	        <prerequisite>
+		</storyNode>
 
-	        </prerequisite>
-	        <choice>
-
-	        </choice>        
-	    </storyNode>
 		<storyNode id="summerKernel" type="kernel" lastNode="false">
-          	<teaserText>...</teaserText>        	
-         	<eventText>The sun beats down on you, almost physically forcing the sweat from your body. The plains surrounding you are seemingly infinite in their vastness, matched only by the great pure azure hanging above. A gust of wind toys with the sea of tall grass, and suddenly you are granted a glimpse at the things that could be, the things that will be, and even some things that might’ve been. Cities rise from the ground, their cobbled streets and shingled rooves willed into being by the sheer strength of your devotion to the divine majesty with which you commune. This wonder can persist, can withstand the test of time—all you need to do is spread the word, live in accordance with the tenants you have been shown. Most of all, though, you must never, ever doubt, never waver. Even the most steadfast of citadels will crumble, if the foundation is not sound.</eventText>
-			<functionalDescription>
+			<teaserText>...</teaserText>
+			<eventText>The sun beats down on you, almost physically forcing the
+				sweat from your body. The plains surrounding you are seemingly
+				infinite in their vastness, matched only by the great pure azure
+				hanging above. A gust of wind toys with the sea of tall grass, and
+				suddenly you are granted a glimpse at the things that could be, the
+				things that will be, and even some things that might’ve been. Cities
+				rise from the ground, their cobbled streets and shingled rooves
+				willed into being by the sheer strength of your devotion to the
+				divine majesty with which you commune. This wonder can persist, can
+				withstand the test of time—all you need to do is spread the word,
+				live in accordance with the tenants you have been shown. Most of
+				all, though, you must never, ever doubt, never waver. Even the most
+				steadfast of citadels will crumble, if the foundation is not sound.
+			</eventText>
+			<functionalDescription />
 
-			</functionalDescription>
-	        <prerequisite>
-	            <sceneReq name="springKernel" operator="seen"/>         
-	        </prerequisite>
-	        <choice>
 
-	        </choice>        
-	    </storyNode>
+			<prerequisite>
+				<sceneReq name="springKernel" operator="seen" />
+			</prerequisite>
+			<choice />
+
+
+		</storyNode>
+
 		<storyNode id="fallKernel" type="kernel" lastNode="true">
-         	<teaserText>...</teaserText>			
-         	<eventText>A chill wind rips through the air, biting at exposed skin and tearing leaves from where they perch. The trees know that the time for sleep is near, and the conflagration of oranges, reds and yellows they display mark their final arboreal celebration. The husks of dead leaves slither and rustle along the ground, just the first to fall in the cold months ahead. This flame that was entrusted to you, you have succeeded in tending to it, nurturing it from a mere spark to the roaring bonfire it is today. The fierce dread of winter marches ever closer, though, brining with it the numbing frost and frigid death it is best known for—will your fire burn bright enough to wait out this creeping season? When the snow finally begins to melt, and the streams swell with mountain run-off, what will remain of what you have done? Will it persist?</eventText>
-			<functionalDescription>
+			<teaserText>...</teaserText>
+			<eventText>A chill wind rips through the air, biting at exposed skin
+				and tearing leaves from where they perch. The trees know that the
+				time for sleep is near, and the conflagration of oranges, reds and
+				yellows they display mark their final arboreal celebration. The
+				husks of dead leaves slither and rustle along the ground, just the
+				first to fall in the cold months ahead. This flame that was
+				entrusted to you, you have succeeded in tending to it, nurturing it
+				from a mere spark to the roaring bonfire it is today. The fierce
+				dread of winter marches ever closer, though, brining with it the
+				numbing frost and frigid death it is best known for—will your fire
+				burn bright enough to wait out this creeping season? When the snow
+				finally begins to melt, and the streams swell with mountain run-off,
+				what will remain of what you have done? Will it persist?
+			</eventText>
+			<functionalDescription />
 
-			</functionalDescription>
-	        <prerequisite>
-	            <sceneReq name="summerKernel" operator="seen"/>         
-	        </prerequisite>
-	        <choice>
 
-	        </choice>        
-	    </storyNode>
+			<prerequisite>
+				<sceneReq name="summerKernel" operator="seen" />
+			</prerequisite>
+			<choice />
 
 
+		</storyNode>
 	</storyNodes>
+
 	<initialStoryState>
 		<desire id="insanityTheme">5.0</desire>
 		<desire id="wealthTheme">5.0</desire>
