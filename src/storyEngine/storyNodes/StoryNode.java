@@ -262,6 +262,7 @@ public class StoryNode
 	{
 		return
 			(m_choices == null && m_selectedChoiceIndex < 0) ||
+			(m_choices != null && m_choices.size() == 1 && m_selectedChoiceIndex < 0) ||
 			(m_choices != null && m_selectedChoiceIndex >= 0
 							   && m_selectedChoiceIndex < m_choices.size());
 	}
