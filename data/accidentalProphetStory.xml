@@ -24,9 +24,9 @@
 						to the outskirts of the village to spread word there rather than
 						having him stay in the upper city with you.
 					</text>
-					<quantModifier id="trustMetric" absolute="false">+1
+					<quantModifier id="trustMetric" absolute="false">1
 					</quantModifier>
-					<quantModifier id="charityMetric" absolute="false">+1
+					<quantModifier id="charityMetric" absolute="false">1
 					</quantModifier>
 					<tagModifier id="acceptedApprentice">add</tagModifier>
 				</outcome>
@@ -41,7 +41,7 @@
 					</text>
 					<quantModifier id="trustMetric" absolute="false">-1
 					</quantModifier>
-					<quantModifier id="superstitionMetric" absolute="false">+1
+					<quantModifier id="superstitionMetric" absolute="false">1
 					</quantModifier>
 				</outcome>
 			</choice>
@@ -65,9 +65,9 @@
 				<text>"We must notify the guard!"</text>
 				<outcome>
 					<text>He nods with determination in his eyes.</text>
-					<quantModifier id="trustMetric" absolute="false">+1
+					<quantModifier id="trustMetric" absolute="false">1
 					</quantModifier>
-					<quantModifier id="charityMetric" absolute="false">+1
+					<quantModifier id="charityMetric" absolute="false">1
 					</quantModifier>
 					<tagModifier id="vengefulApprentice">add</tagModifier>
 				</outcome>
@@ -137,7 +137,7 @@
 					<text>He smiles, at peace with your decision and finally feeling
 						fulfilled.
 					</text>
-					<quantModifier id="trustMetric" absolute="false">+1
+					<quantModifier id="trustMetric" absolute="false">1
 					</quantModifier>
 					<tagModifier id="trainedApprentice">add</tagModifier>
 				</outcome>
@@ -150,16 +150,16 @@
 					<text>He hesitates then smiles when he realizes the amount of trust
 						you place in him. "I will visit with news from the villages."
 					</text>
-					<quantModifier id="trustMetric" absolute="false">+1
+					<quantModifier id="trustMetric" absolute="false">1
 					</quantModifier>
-					<quantModifier id="moralityMetric" absolute="false">+1
+					<quantModifier id="moralityMetric" absolute="false">1
 					</quantModifier>
 					<tagModifier id="trainedWanderingApprentice">add</tagModifier>
 				</outcome>
 			</choice>
 		</storyNode>
-		
-		
+
+
 		<!-- Blacksmith satellites -->
 
 		<storyNode id="holySymbol1" type="satellite" lastNode="false">
@@ -197,7 +197,7 @@
 				</outcome>
 			</choice>
 		</storyNode>
-		
+
 		<storyNode id="holySymbol2" type="satellite" lastNode="false">
 			<teaserText>The blacksmith hopes you will reconsider his offer...
 			</teaserText>
@@ -263,7 +263,7 @@
 				<outcome>
 					<text>The blacksmith bites his lip thoughtfully and walks away
 					</text>
-					<quantModifier id="trustMetric" absolute="false">+1
+					<quantModifier id="trustMetric" absolute="false">1
 					</quantModifier>
 				</outcome>
 			</choice>
@@ -272,13 +272,13 @@
 				<outcome>
 					<text>The blacksmith bites his lip thoughtfully and walks away
 					</text>
-					<quantModifier id="superstitionMetric" absolute="false">+1
+					<quantModifier id="superstitionMetric" absolute="false">1
 					</quantModifier>
 				</outcome>
 			</choice>
 		</storyNode>
-		
-		
+
+
 		<!-- Shepherd satellites -->
 
 		<storyNode id="shepFlockBirth" type="satellite" lastNode="false">
@@ -297,9 +297,9 @@
 					<text>The villagers all attend the ceremony, scholars taking note
 						of the work you've done for the people.
 					</text>
-					<quantModifier id="trustMetric" absolute="false">+1
+					<quantModifier id="trustMetric" absolute="false">1
 					</quantModifier>
-					<quantModifier id="charityMetric" absolute="false">+1
+					<quantModifier id="charityMetric" absolute="false">1
 					</quantModifier>
 				</outcome>
 			</choice>
@@ -311,13 +311,13 @@
 					<text>The shepard is disappointed to be turned away.</text>
 					<quantModifier id="trustMetric" absolute="false">-1
 					</quantModifier>
-					<quantModifier id="wealthMetric" absolute="false">+1
+					<quantModifier id="wealthMetric" absolute="false">1
 					</quantModifier>
 				</outcome>
 			</choice>
 		</storyNode>
-		
-		
+
+
 		<!-- Butcher satellites -->
 
 		<storyNode id="badMeatMeet" type="satellite" lastNode="false">
@@ -344,7 +344,7 @@
 					</quantModifier>
 					<quantModifier id="moralityMetric" absolute="false">-1
 					</quantModifier>
-					<quantModifier id="wealthMetric" absolute="false">+2
+					<quantModifier id="wealthMetric" absolute="false">2
 					</quantModifier>
 				</outcome>
 			</choice>
@@ -355,13 +355,13 @@
 						rejection of making these claims, and they come to trust you more
 						as their health improves.
 					</text>
-					<quantModifier id="trustMetric" absolute="false">+2
+					<quantModifier id="trustMetric" absolute="false">2
 					</quantModifier>
 				</outcome>
 			</choice>
 		</storyNode>
-		
-		
+
+
 		<!-- Witch satellites -->
 
 		<storyNode id="witchVisit" type="satellite" lastNode="false">
@@ -382,7 +382,7 @@
 					</text>
 					<quantModifier id="trustMetric" absolute="false">-2
 					</quantModifier>
-					<quantModifier id="charityMetric" absolute="false">+1
+					<quantModifier id="charityMetric" absolute="false">1
 					</quantModifier>
 				</outcome>
 			</choice>
@@ -392,13 +392,13 @@
 					<text>The curse of an angered witch echoes your halls, and
 						superstition runs amok amongst your people.
 					</text>
-					<quantModifier id="superstitionMetric" absolute="false">+3
+					<quantModifier id="superstitionMetric" absolute="false">3
 					</quantModifier>
 				</outcome>
 			</choice>
 		</storyNode>
-		
-		
+
+
 		<!-- Mother satellites -->
 
 		<storyNode id="motherVisit" type="satellite" lastNode="false">
@@ -419,7 +419,7 @@
 					</text>
 					<quantModifier id="wealthMetric" absolute="false">-1
 					</quantModifier>
-					<quantModifier id="charityMetric" absolute="false">+1
+					<quantModifier id="charityMetric" absolute="false">1
 					</quantModifier>
 				</outcome>
 			</choice>
@@ -445,8 +445,8 @@
 				</outcome>
 			</choice>
 		</storyNode>
-		
-		
+
+
 		<!-- Drunkard satellites -->
 
 		<storyNode id="drunkWalk" type="satellite" lastNode="false">
@@ -465,7 +465,7 @@
 					</text>
 					<quantModifier id="moralityMetric" absolute="false">-1
 					</quantModifier>
-					<quantModifier id="trustMetric" absolute="false">+1
+					<quantModifier id="trustMetric" absolute="false">1
 					</quantModifier>
 				</outcome>
 			</choice>
@@ -477,16 +477,16 @@
 					<text>Others see your act of kindness for the man and moved by the
 						act of charity.
 					</text>
-					<quantModifier id="charityMetric" absolute="false">+1
+					<quantModifier id="charityMetric" absolute="false">1
 					</quantModifier>
-					<quantModifier id="moralityMetric" absolute="false">+1
+					<quantModifier id="moralityMetric" absolute="false">1
 					</quantModifier>
 				</outcome>
 			</choice>
 		</storyNode>
 
-		
-		
+
+
 		<!-- General villager satellites -->
 
 		<storyNode id="crowOmen" type="satellite" lastNode="false">
@@ -505,14 +505,14 @@
 					<text>The villagers are a bit more weary of rumors passed on from
 						others, they'd rather defer to you on such matters.
 					</text>
-					<quantModifier id="trustMetric" absolute="false">+1
+					<quantModifier id="trustMetric" absolute="false">1
 					</quantModifier>
 					<quantModifier id="superstitionMetric" absolute="false">-1
 					</quantModifier>
 				</outcome>
 			</choice>
 		</storyNode>
-		
+
 		<storyNode id="basementMystery" type="satellite" lastNode="false">
 			<teaserText>A very distressed villager arrives</teaserText>
 			<eventText>You are approached by someone fearful of a fiend in their
@@ -523,7 +523,7 @@
 				<prominence id="insanityTheme">1</prominence>
 			</functionalDescription>
 		</storyNode>
-		
+
 		<storyNode id="skyMystery" type="satellite" lastNode="false">
 			<teaserText>A very distressed villager arrives.</teaserText>
 			<eventText>Farmer finds meteor in field, they need you to go
@@ -569,12 +569,12 @@
 				<prominence id="insanityTheme">1</prominence>
 			</functionalDescription>
 		</storyNode>
-		
-		
-		
-		
+
+
+
+
 		<!-- ~~KERNELS~~ -->
-		
+
 		<storyNode id="holySymbol4" type="satellite" lastNode="false">
 			<teaserText>A grieving mother seeks your aid...</teaserText>
 			<eventText>The miller's wife is quite distraught over the violent and
@@ -591,7 +591,7 @@
 			</prerequisite>
 			<choice>
 				<outcome>
-					<quantModifier id="superstitionMetric" absolute="false">+3
+					<quantModifier id="superstitionMetric" absolute="false">3
 					</quantModifier>
 					<quantModifier id="trustMetric" absolute="false">-2
 					</quantModifier>
