@@ -6,7 +6,7 @@
 		<storyNode id="apprenticeSubplot1" type="satellite" lastNode="false">
 			<teaserText>A young man approaches...</teaserText>
 			<eventText>He asks you for your advice on a few existential questions before a long pause. He looks up at you pensively. "I've been reading your teachings and listening to you speak, Prophet, and I would like to live my life in service to you and the deity."
-			
+
 The devotion he shows gives you renewed faith in your cause. You agree to take him under your wing. 
 
 He is ecstatic, but admittedly less so when you send him off to the outskirts of the village to spread word there rather than having him stay in the upper city with you.</eventText>
@@ -64,6 +64,7 @@ He is ecstatic, but admittedly less so when you send him off to the outskirts of
 					<text>He grins, finally satisfied with his role, and readies his sword.</text>
 					<quantModifier id="trustMetric" absolute="false">-1</quantModifier>
 					<tagModifier id="trainedApprentice">add</tagModifier>
+					<tagModifier id="vengefulApprentice">remove</tagModifier>
 				</outcome>
 			</choice>
 			<choice>
@@ -89,6 +90,7 @@ He is ecstatic, but admittedly less so when you send him off to the outskirts of
 					<text>He smiles, at peace with your decision and finally feeling fulfilled.</text>
 					<quantModifier id="trustMetric" absolute="false">+1</quantModifier>
 					<tagModifier id="trainedApprentice">add</tagModifier>
+					<tagModifier id="patientApprentice">remove</tagModifier>
 				</outcome>
 			</choice>
 			<choice>
@@ -97,7 +99,71 @@ He is ecstatic, but admittedly less so when you send him off to the outskirts of
 					<text>He hesitates then smiles when he realizes the amount of trust you place in him. "I will visit with news from the villages."</text>
 					<quantModifier id="trustMetric" absolute="false">+1</quantModifier>
 					<quantModifier id="moralityMetric" absolute="false">+1</quantModifier>
-					<tagModifier id="trainedWanderingApprentice">add</tagModifier>
+					<tagModifier id="trainedApprentice">add</tagModifier>
+					<tagModifier id="patientApprentice">remove</tagModifier>
+				</outcome>
+			</choice>
+		</storyNode>
+		
+		<!-- 
+		<storyNode id="" type="satellite">
+			<teaserText></teaserText>
+			<eventText></eventText>
+			<functionalDescription>
+				<prominence id="apprenticeCharacter">2</prominence>
+			</functionalDescription>
+			<prerequisite>
+				<tagReq id="trainedApprentice" operator="contains" />
+			</prerequisite>
+			<choice>
+				<outcome>
+					<quantModifier id="" absolute="false"></quantModifier>
+				</outcome>
+			</choice>
+		</storyNode>
+		 -->
+		
+		<storyNode id="apprenticeInPast" type="satellite">
+			<teaserText>The apprentice looks lost in the past.</teaserText>
+			<eventText>Your apprentice is sitting close by, but looks a million miles away. He is clearly lost in the past.
+			
+"What troubles you so, young man?"
+
+He says nothing, but subconsciously fingers the scar on his forearm.
+</eventText>
+			<functionalDescription>
+				<prominence id="apprenticeCharacter">2</prominence>
+				<prominence id="trustTheme">1</prominence>
+			</functionalDescription>
+			<prerequisite>
+				<tagReq id="trainedApprentice" operator="contains" />
+			</prerequisite>
+			<choice>
+				<outcome>
+					<quantModifier id="trustMetric" absolute="false">1</quantModifier>
+				</outcome>
+			</choice>
+		</storyNode>
+		
+		<storyNode id="apprenticeScars" type="satellite">
+			<teaserText>You overhear patrons talking about your apprentice at the bar...</teaserText>
+			<eventText>While enjoying a pint of your favorite drink, you happen to overhear your apprentice's name float into the din.
+
+"I hear 'e's got quite the damaged past, I do!"
+
+"Ahh, whatta you know..."
+
+"No, it's true! When 'e wandered into town, 'e had but one shirt, torn pants, and one helluva scar!"
+
+They share an uproarious laugh over what they figure got him into that state.</eventText>
+			<functionalDescription>
+				<prominence id="apprenticeCharacter">2</prominence>
+			</functionalDescription>
+			<prerequisite>
+				<tagReq id="acceptedApprentice" operator="contains" />
+			</prerequisite>
+			<choice>
+				<outcome>
 				</outcome>
 			</choice>
 		</storyNode>
