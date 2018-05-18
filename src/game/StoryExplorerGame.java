@@ -129,7 +129,7 @@ public abstract class StoryExplorerGame
 	
 	public String getCurrentSceneOutcomeText()
 	{
-		String text = "";
+		String text = null;
 		StoryNode currentNode = m_story.getNodeBeingConsumed();
 		
 		if (currentNode == null)
@@ -176,20 +176,44 @@ public abstract class StoryExplorerGame
 		
 		if (index < 0) index = 0; // for scenes with one choice but no button
 		m_story.getNodeBeingConsumed().setSelectedChoice(index);
-		
-		m_showingOutcomeText = true;
+	}
+	
+	public void moveSceneForward()
+	{
+		if (!currentlyShowingOutcome() && currentNodeHasOutcomeToShow())
+		{
+			setShowingOutcome(true);
+		}
+		else if (currentlyShowingOutcome())
+		{
+			finishConsumingScene();
+		}
+		else
+		{
+			applyChoice(0);
+			setShowingOutcome(currentNodeHasOutcomeToShow());
+			if (!currentlyShowingOutcome()) finishConsumingScene();
+		}
 	}
 	
 	///////////////////////
 	
-	public boolean showingOutcome() { return m_showingOutcomeText; }
+	public boolean currentlyShowingOutcome() { return m_showingOutcomeText; }
+	private void setShowingOutcome(boolean showingOutcome) { m_showingOutcomeText = showingOutcome; }
 	
-	public boolean shouldStartShowingOutcome() {
-		m_showingOutcomeText = 
-				(getNumChoicesForCurrentNode() > 1) &&
-				(!m_story.getNodeBeingConsumed().getOutcomeTextForSelectedChoice().isEmpty()); 
-		
-		return m_showingOutcomeText;
+	public boolean currentNodeHasOutcomeToShow() 
+	{
+		if (m_story.getNodeBeingConsumed() == null)
+		{
+			return false;
+		}
+		else
+		{
+			String outcomeText = m_story.getNodeBeingConsumed().getOutcomeTextForSelectedChoice();
+			return (getNumChoicesForCurrentNode() > 1) &&
+					(outcomeText != null) &&
+					(!outcomeText.isEmpty());
+		}
 	}
 	
 	///////////////////////
