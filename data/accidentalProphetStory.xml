@@ -4,7 +4,7 @@
 	<!--  Apprentice satellites -->
 	
 		<storyNode id="apprenticeSubplot1" type="satellite" lastNode="false">
-			<teaserText>A young man approaches...</teaserText>
+			<teaserText>A young man approaches with a certain eagerness in his eyes.</teaserText>
 			<eventText>He asks you for your advice on a few existential questions before a long pause. He looks up at you pensively. "I've been reading your teachings and listening to you speak, Prophet, and I would like to live my life in service to you and the deity."
 
 The devotion he shows gives you renewed faith in your cause. You agree to take him under your wing. 
@@ -23,8 +23,8 @@ He is ecstatic, but admittedly less so when you send him off to the outskirts of
 		</storyNode>
 		
 		<storyNode id="apprenticeSubplot2" type="satellite" lastNode="false">
-			<teaserText>Your apprentice returns.</teaserText>
-			<eventText>Despite the short time, he looks older and wiser from his time in lower town. His robe is tattered and his face is coated with grime beyond the usual daily wear. He describes to you a strong group of skeptics who spat at and ridiculed him.</eventText>
+			<teaserText>Your apprentice is back from the outskirts.</teaserText>
+			<eventText>Despite the short time away, he looks older and wiser from his time in lower town. His robe is tattered and his face is coated with grime beyond the usual daily wear. He describes to you a strong group of skeptics who spat at and ridiculed him.</eventText>
 			<functionalDescription>
 				<prominence id="apprenticeCharacter">1</prominence>
 			</functionalDescription>
@@ -50,8 +50,8 @@ He is ecstatic, but admittedly less so when you send him off to the outskirts of
 		</storyNode>
 		
 		<storyNode id="apprenticeSubplot3" type="satellite" lastNode="false">
-			<teaserText>Your apprentice has finished his sabbatical.</teaserText>
-			<eventText>Now ready to serve you directly, he is eager to take on a role as your personal guard. "The peasants do not yet understand, it's important to keep you safe until they do."</eventText>
+			<teaserText>Your apprentice returns again, having finished his sabbatical.</teaserText>
+			<eventText>Now ready to serve you directly, he says he is eager to take on a role as your personal guard. "The peasants do not yet understand," he says, "and it's important to keep you safe until they do."</eventText>
 			<functionalDescription>
 				<prominence id="apprenticeCharacter">1</prominence>
 			</functionalDescription>
@@ -59,7 +59,7 @@ He is ecstatic, but admittedly less so when you send him off to the outskirts of
 				<tagReq id="vengefulApprentice" operator="contains"/>
 			</prerequisite>
 			<choice>
-				<text>This is just what I need.</text>
+				<text>This is just what you need.</text>
 				<outcome>
 					<text>He grins, finally satisfied with his role, and readies his sword.</text>
 					<quantModifier id="trustMetric" absolute="false">-1</quantModifier>
@@ -68,7 +68,7 @@ He is ecstatic, but admittedly less so when you send him off to the outskirts of
 				</outcome>
 			</choice>
 			<choice>
-				<text>This is not the kind of path that will achieve the vision!</text>
+				<text>"This is not the kind of path that will achieve the vision!"</text>
 				<outcome>
 					<text>He storms out angrily, feeling cheated.</text>
 				</outcome>
@@ -76,8 +76,8 @@ He is ecstatic, but admittedly less so when you send him off to the outskirts of
 		</storyNode>
 		
 		<storyNode id="apprenticeSubplot4" type="satellite" lastNode="false">
-			<teaserText>Your apprentice has finished his sabbatical.</teaserText>
-			<eventText>He comes back cleaner, and somehow refreshed by his time amongst the people. This is not the young man you had last seen.</eventText>
+			<teaserText>Your apprentice returns again, having finished his sabbatical.</teaserText>
+			<eventText>He comes back cleaner, and somehow refreshed by his time amongst the people. This is not the young man you had last seen. You tell him he may continue work alongside you.</eventText>
 			<functionalDescription>
 				<prominence id="apprenticeCharacter">1</prominence>
 			</functionalDescription>
@@ -85,20 +85,8 @@ He is ecstatic, but admittedly less so when you send him off to the outskirts of
 				<tagReq id="patientApprentice" operator="contains"/>
 			</prerequisite>
 			<choice>
-				<text>"You're welcome to work alongside me."</text>
 				<outcome>
-					<text>He smiles, at peace with your decision and finally feeling fulfilled.</text>
 					<quantModifier id="trustMetric" absolute="false">+1</quantModifier>
-					<tagModifier id="trainedApprentice">add</tagModifier>
-					<tagModifier id="patientApprentice">remove</tagModifier>
-				</outcome>
-			</choice>
-			<choice>
-				<text>"I believe your purpose is amongst the people now, please pass my vision onward."</text>
-				<outcome>
-					<text>He hesitates then smiles when he realizes the amount of trust you place in him. "I will visit with news from the villages."</text>
-					<quantModifier id="trustMetric" absolute="false">+1</quantModifier>
-					<quantModifier id="moralityMetric" absolute="false">+1</quantModifier>
 					<tagModifier id="trainedApprentice">add</tagModifier>
 					<tagModifier id="patientApprentice">remove</tagModifier>
 				</outcome>
@@ -123,9 +111,10 @@ He is ecstatic, but admittedly less so when you send him off to the outskirts of
 		</storyNode>
 		 -->
 		
+		
 		<storyNode id="apprenticeInPast" type="satellite">
-			<teaserText>The apprentice looks lost in the past.</teaserText>
-			<eventText>Your apprentice is sitting close by, but looks a million miles away. He is clearly lost in the past.
+			<teaserText>Your apprentice approaches, lost in the past.</teaserText>
+			<eventText>He is sitting close by, but looks a million miles away.
 			
 "What troubles you so, young man?"
 
@@ -145,8 +134,9 @@ He says nothing, but subconsciously fingers the scar on his forearm.
 			</choice>
 		</storyNode>
 		
+		
 		<storyNode id="apprenticeScars" type="satellite">
-			<teaserText>You overhear patrons talking about your apprentice at the bar...</teaserText>
+			<teaserText>You wander over to the public house to see who might need help over a quick drink.</teaserText>
 			<eventText>While enjoying a pint of your favorite drink, you happen to overhear your apprentice's name float into the din.
 
 "I hear 'e's got quite the damaged past, I do!"
@@ -155,7 +145,7 @@ He says nothing, but subconsciously fingers the scar on his forearm.
 
 "No, it's true! When 'e wandered into town, 'e had but one shirt, torn pants, and one helluva scar!"
 
-They share an uproarious laugh over what they figure got him into that state.</eventText>
+They share an uproarious laugh over what they imagined got him into that state.</eventText>
 			<functionalDescription>
 				<prominence id="apprenticeCharacter">2</prominence>
 			</functionalDescription>
@@ -163,7 +153,15 @@ They share an uproarious laugh over what they figure got him into that state.</e
 				<tagReq id="acceptedApprentice" operator="contains" />
 			</prerequisite>
 			<choice>
+				<text>You quietly slip out, saying nothing.</text>
 				<outcome>
+					<quantModifier id="moralityMetric" absolute="false">-2</quantModifier>
+				</outcome>
+			</choice>
+			<choice>
+				<text>You slam your first on the bar, giving the gossiping patrons the evil eye.</text>
+				<outcome>
+					<quantModifier id="trustMetric" absolute="false">-1</quantModifier>
 				</outcome>
 			</choice>
 		</storyNode>
