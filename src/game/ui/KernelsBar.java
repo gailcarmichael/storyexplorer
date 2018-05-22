@@ -9,7 +9,7 @@ public class KernelsBar
 	private SceneUI m_sceneUI;
 	private StoryExplorerGame m_game;
 	
-	final static int BAR_HEIGHT = 50;
+	final static int BAR_HEIGHT = 70;
 	
 	private final int BAR_BACKGROUND_COLOUR;
 	
@@ -23,7 +23,7 @@ public class KernelsBar
 	private final int CIRCLE_STROKE_COLOUR;
 	private final int CIRCLE_CONSUMED_STROKE_COLOUR;
 	private final int CIRCLE_STROKE_WEIGHT = 2;
-	private final int CIRCLE_HOVER_STROKE_WEIGHT = 3;
+	private final int CIRCLE_HOVER_STROKE_WEIGHT = 4;
 	
 	private int m_circleHoverIndex;
 	
