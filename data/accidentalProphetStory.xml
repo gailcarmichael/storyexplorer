@@ -489,10 +489,7 @@ They share an uproarious laugh over what they figure got him into that state.</e
 			</functionalDescription>
 	        <prerequisite>
 
-	        </prerequisite>
-	        <choice>
-
-	        </choice>        
+	        </prerequisite>     
 	    </storyNode>
 
 		<storyNode id="summerKernel" type="kernel" lastNode="false">
@@ -503,10 +500,7 @@ They share an uproarious laugh over what they figure got him into that state.</e
 			</functionalDescription>
 	        <prerequisite>
 	            <sceneReq name="springKernel" operator="seen"/>         
-	        </prerequisite>
-	        <choice>
-
-	        </choice>        
+	        </prerequisite>      
 	    </storyNode>
 
 		<storyNode id="fallKernel" type="kernel" lastNode="true">
@@ -517,10 +511,7 @@ They share an uproarious laugh over what they figure got him into that state.</e
 			</functionalDescription>
 	        <prerequisite>
 	            <sceneReq name="summerKernel" operator="seen"/>         
-	        </prerequisite>
-	        <choice>
-
-	        </choice>        
+	        </prerequisite>      
 	    </storyNode>
 	</storyNodes>
 
