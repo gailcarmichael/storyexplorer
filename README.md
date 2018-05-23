@@ -5,4 +5,5 @@ Currently, the easiest way to run the example game Accidental Prophet (also a wo
 * Download and install [Eclipse](http://www.eclipse.org/) for Java development ([Mars](https://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/mars2) and [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) are known to work).
 * Clone this repository.
 * Run Eclipse, and set the workspace as the folder that contains `storyexplorer`.
+* Start a new Java project, but select the `storyexplorer` folder as the source.
 * Under the `game.ui` package, right click the `StoryExplorerApplet.java` file and "Run As... Application" (not an applet, despite the name).
