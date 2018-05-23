@@ -9,7 +9,7 @@ public class Choice
 	@Element(name="text", required=false)
 	protected String m_text;
 	
-	@Element(name="outcome", required=false)
+	@Element(name="outcome")
 	protected Outcome m_outcome;
 	
 	
