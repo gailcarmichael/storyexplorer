@@ -333,24 +333,24 @@ They share an uproarious laugh over what they figure got him into that state.</e
 		<!-- Witch satellites -->
 		
 		<storyNode id="witchVisit" type="satellite" lastNode="false">
-			<teaserText>You have an unlikely visitor!</teaserText>
-			<eventText>The witch from the outskirts needs help gathering truffles but the local priests are in the way, and she is willing to pray to your god in return.</eventText>
+			<teaserText>Amice, a so-called witch who lives on the outskirts of town, has ventured in to seek your aid.</teaserText>
+			<eventText>Her robes have been torn in spots, and appear to be freshly smattered with rotten fruit during her journey in. She explains that she’s come to seek your company across the other half of the town and to the marshes where she wishes to collect moss for her craft.</eventText>
 			<functionalDescription>
 				<prominence id="trustTheme">1</prominence>
 				<prominence id="charityTheme">1</prominence>
 			</functionalDescription>
 			<choice>
-				<text>Help her by ensuring her path is clear.</text>
+				<text>Agree to accompany her.</text>
 				<outcome>
-					<text>Seeing you help the witch, your followers grow distrustful of you despite your giving nature.</text>
+					<text>While a disgruntled crowd follows as you set out, Amice is not harassed further. As she collects the moss, she muses about it's purposes for helping with headaches, particularly those brought on by visions. When you ask her about the visions, she smiles knowingly but only response that perhaps it's a tale best left for another time.</text>
 					<quantModifier id="trustMetric" absolute="false">-2</quantModifier>
 					<quantModifier id="charityMetric" absolute="false">+1</quantModifier>
 				</outcome>
 			</choice>
 			<choice>
-				<text>Deny her aid, risking her wrath.</text>
+				<text>Turn her away.</text>
 				<outcome>
-					<text>The curse of an angered witch echoes your halls, and superstition runs amok amongst your people.</text>
+					<text>To the whoops and cheers of the mob outside, you dismiss Amice. She is visibly disappointed, and as she turns to leave you hear her murmur “you do not know the power you wield”. Before you can ask her what she meant, she has disappeared into the crowd and you are left only able to hear their jeering taunts as she returns to where she came from.</text>
 					<quantModifier id="superstitionMetric" absolute="false">+3</quantModifier>
 				</outcome>
 			</choice>
