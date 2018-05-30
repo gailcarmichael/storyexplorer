@@ -40,6 +40,10 @@ public class ElementSpacingVisualizer
 	
 	
 	///////////////////////////////////////////////////////////////////////////
+	
+	public Story getStory() { return m_story; }
+	
+	///////////////////////////////////////////////////////////////////////////
 
 	
 	public void setup(PApplet parent)
@@ -47,9 +51,6 @@ public class ElementSpacingVisualizer
 		parent.size((int)m_windowWidth, (int)m_windowHeight);
 		parent.ellipseMode(PApplet.CENTER);
 	}
-	
-	
-	///////////////////////////////////////////////////////////////////////////
 	
 	
 	public void draw(PApplet parent)

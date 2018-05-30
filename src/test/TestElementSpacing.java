@@ -11,8 +11,10 @@ import org.simpleframework.xml.core.Persister;
 import processing.core.PApplet;
 import storyEngine.PrioritizationType;
 import storyEngine.Story;
+import storyEngine.analysis.ElementSpacingAnalysis;
 import storyEngine.analysis.ElementSpacingVisualizer;
 import storyEngine.analysis.ObjectiveFunction;
+import storyEngine.analysis.RandomStory;
 import storyEngine.analysis.StoryRunSimulation;
 import storyEngine.storyNodes.StoryNode;
 
@@ -39,7 +41,7 @@ public class TestElementSpacing extends PApplet
 	
 	private static final boolean TEST_RANDOM_STORY = true; // true if story is randomly generated, false if story is read from existing file
 	
-	private static final PrioritizationType PRIORITIZATION_TYPE = PrioritizationType.eventBased; // just for visualizing one story
+	private static final PrioritizationType PRIORITIZATION_TYPE = PrioritizationType.sumOfCategoryMaximums; // just for visualizing one story
 	
 	private static final TestType TEST_TYPE = TestType.VisualizeOneRun;
 	
@@ -110,10 +112,18 @@ public class TestElementSpacing extends PApplet
 	
 	public void keyPressed()
 	{
-		save("./testData/testElementSpacing/spacing" +
-				(TEST_RANDOM_CHOICES ? "-random" : "-topScene") +
-				"-" + PRIORITIZATION_TYPE +
-				".png");
+		if (key == 'h')
+		{
+			ElementSpacingAnalysis spacingAnalysis = new ElementSpacingAnalysis(VISUALIZER.getStory());
+			spacingAnalysis.printElementSpacingHistogram(true);
+		}
+		else
+		{
+			save("./testData/testElementSpacing/spacing" +
+					(TEST_RANDOM_CHOICES ? "-random" : "-topScene") +
+					"-" + PRIORITIZATION_TYPE +
+					".png");
+		}
 	}
 	
 	private static void doMonteCarloForPrioritizationType(Story story, PrioritizationType type)

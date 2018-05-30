@@ -38,7 +38,13 @@ public class StoryElementCollection
 	
 	public int getNumElementsPriorityCalc()
 	{
-		return m_storyElementsPriorityCalc.size();
+		return getStoryElementsPriorityCalc().size();
+	}
+	
+	
+	public ArrayList<StoryElement> getStoryElementsPriorityCalc()
+	{
+		return m_storyElementsPriorityCalc;
 	}
 	
 	
