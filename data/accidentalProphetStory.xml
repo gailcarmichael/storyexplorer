@@ -342,8 +342,8 @@ They share an uproarious laugh over what they figure got him into that state.</e
 			<choice>
 				<text>Agree to accompany her.</text>
 				<outcome>
-					<text>While a disgruntled crowd follows as you set out, Amice is not harassed further. As she collects the moss, she muses about it's purposes for helping with headaches, particularly those brought on by visions. When you ask her about the visions, she smiles knowingly but only response that perhaps it's a tale best left for another time.</text>
-					<quantModifier id="trustMetric" absolute="false">-2</quantModifier>
+					<text>While a disgruntled crowd follows as you set out, Amice is not harassed further. As she collects the moss, she muses about its purposes for helping with headaches, particularly those brought on by visions. When you ask her about the visions, she smiles knowingly but only responds that perhaps it's a tale best left for another time.</text>
+					<quantModifier id="superstitionMetric" absolute="false">+2</quantModifier>
 					<quantModifier id="charityMetric" absolute="false">+1</quantModifier>
 				</outcome>
 			</choice>
@@ -351,7 +351,7 @@ They share an uproarious laugh over what they figure got him into that state.</e
 				<text>Turn her away.</text>
 				<outcome>
 					<text>To the whoops and cheers of the mob outside, you dismiss Amice. She is visibly disappointed, and as she turns to leave you hear her murmur “you do not know the power you wield”. Before you can ask her what she meant, she has disappeared into the crowd and you are left only able to hear their jeering taunts as she returns to where she came from.</text>
-					<quantModifier id="superstitionMetric" absolute="false">+3</quantModifier>
+					<quantModifier id="superstitionMetric" absolute="false">-2</quantModifier>
 				</outcome>
 			</choice>
 		</storyNode>
