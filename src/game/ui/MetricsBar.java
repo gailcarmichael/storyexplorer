@@ -16,7 +16,7 @@ public class MetricsBar
 	private final PImage[] METRIC_ICONS;
 	private final int TOTAL_ICON_WIDTH;
 	
-	private final int METRIC_IMAGE_SPACING = 20;
+	private final int METRIC_IMAGE_SPACING = 30;
 	
 	///////////////////////////
 	

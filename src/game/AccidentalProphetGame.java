@@ -16,7 +16,7 @@ public class AccidentalProphetGame extends StoryExplorerGame
 	public String[] getMetricIconFilenames()
 	{	
 		String[] filenames = {
-			"../data/images/currency.png",
+			"../data/images/wealth.png",
 			"../data/images/charity.png",
 			"../data/images/morality.png",
 			"../data/images/trust.png",

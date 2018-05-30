@@ -243,11 +243,6 @@ public class SceneUI
 		return clicked;
 	}
 	
-//	private void handleChoiceButtonClick(int clickedIndex)
-//	{
-//		m_game.applyChoice(clickedIndex);
-//	}
-	
 	///////////////////////////
 	
 	boolean mouseClicked()
