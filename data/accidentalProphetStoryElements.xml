@@ -75,27 +75,6 @@
 		<category>blacksmithTags</category>
 		<name>jagged symbol</name>
 	</storyElement>
-	
-	<storyElement id="acceptedApprentice" type="taggable">
-		<category>apprenticeTags</category>
-		<name>vengefulApprentice</name>
-	</storyElement>
-	<storyElement id="vengefulApprentice" type="taggable">
-		<category>apprenticeTags</category>
-		<name>vengefulApprentice</name>
-	</storyElement>
-	<storyElement id="patientApprentice" type="taggable">
-		<category>apprenticeTags</category>
-		<name>vengefulApprentice</name>
-	</storyElement>
-	<storyElement id="trainedApprentice" type="taggable">
-		<category>apprenticeTags</category>
-		<name>vengefulApprentice</name>
-	</storyElement>
-	<storyElement id="trainedWanderingApprentice" type="taggable">
-		<category>apprenticeTags</category>
-		<name>vengefulApprentice</name>
-	</storyElement>
 
 
 
