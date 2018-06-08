@@ -140,10 +140,17 @@ public class ElementSpacingAnalysis
 			System.out.println("\n" + elementID + ":\n");
 
 			SortedMap<Integer, Integer> histForElement = m_spacingHist.get(elementID);
-			for (Integer spacing : histForElement.keySet())
+	
+			int max = getMaxSpacingForElement(elementID);
+			for (int spacing=0; spacing <= max; spacing++)
 			{
-				System.out.print("\tSpacing of " + spacing + ":\t" + histForElement.get(spacing));
-				System.out.print("\t" + String.join("", Collections.nCopies(histForElement.get(spacing), "*")) + "\n");
+				int count = 0;
+				if (histForElement.containsKey(spacing))
+				{
+					count = histForElement.get(spacing);
+				}
+				System.out.print("\tSpacing of " + spacing + ":\t" + count);
+				System.out.print("\t" + String.join("", Collections.nCopies(count, "*")) + "\n");
 			}
 
 			System.out.println("\n\tMin space value: " + getMinSpacingForElement(elementID));
