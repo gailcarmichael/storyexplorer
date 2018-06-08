@@ -3,104 +3,49 @@
 	
 	<!--  Apprentice satellites -->
 	
-		<storyNode id="apprenticeSubplot1" type="satellite" lastNode="false">
-			<teaserText>A young man approaches...</teaserText>
+		<storyNode id="introduceApprentice" type="satellite" lastNode="false">
+			<teaserText>A young man approaches with a certain eagerness in his eyes.</teaserText>
 			<eventText>He asks you for your advice on a few existential questions before a long pause. He looks up at you pensively. "I've been reading your teachings and listening to you speak, Prophet, and I would like to live my life in service to you and the deity."
 
-The devotion he shows gives you renewed faith in your cause. You agree to take him under your wing. 
-
-He is ecstatic, but admittedly less so when you send him off to the outskirts of the village to spread word there rather than having him stay in the upper city with you.</eventText>
+The devotion he shows gives you renewed faith in your cause. You agree to take him under your wing.</eventText>
 			<functionalDescription>
 				<prominence id="apprenticeCharacter">1</prominence>
+				<prominence id="trustTheme">1</prominence>
+				<prominence id=charityTheme">1</prominence>
 			</functionalDescription>
 			<choice>
 				<outcome>
 					<quantModifier id="trustMetric" absolute="false">+1</quantModifier>
 					<quantModifier id="charityMetric" absolute="false">+1</quantModifier>
-					<tagModifier id="acceptedApprentice">add</tagModifier>
 				</outcome>
 			</choice>
 		</storyNode>
 		
-		<storyNode id="apprenticeSubplot2" type="satellite" lastNode="false">
-			<teaserText>Your apprentice returns.</teaserText>
-			<eventText>Despite the short time, he looks older and wiser from his time in lower town. His robe is tattered and his face is coated with grime beyond the usual daily wear. He describes to you a strong group of skeptics who spat at and ridiculed him.</eventText>
+		<storyNode id="apprenticeOutskirts" type="satellite" lastNode="false">
+			<teaserText>Your apprentice return after sending him to the outskirts earlier that day.</teaserText>
+			<eventText>Despite the short time away, he looks older and wiser from his time in lower town. His robe is tattered and his face is coated with grime beyond the usual daily wear. He describes to you a strong group of skeptics who spat at and ridiculed him.</eventText>
 			<functionalDescription>
 				<prominence id="apprenticeCharacter">1</prominence>
+				<prominence id="trustTheme">1</prominence>
+				<prominence id="charityTheme">1</prominence>
 			</functionalDescription>
 			<prerequisite>
-				<tagReq id="acceptedApprentice" operator="contains"/>
+				<sceneReq id="introduceApprentice" operator="seen"/>
 			</prerequisite>
 			<choice>
 				<text>"We must notify the guard!"</text>
 				<outcome>
-					<text>He nods with determination in his eyes.</text>
-					<quantModifier id="trustMetric" absolute="false">+1</quantModifier>
+					<text>He nods with vengeful determination in his eyes.</text>
+					<quantModifier id="trustMetric" absolute="false">-1</quantModifier>
 					<quantModifier id="charityMetric" absolute="false">+1</quantModifier>
-					<tagModifier id="vengefulApprentice">add</tagModifier>
 				</outcome>
 			</choice>
 			<choice>
 				<text>"This is part of the path; refuting the skeptics will only make us stronger if we can learn to live amongst them in peace."</text>
 				<outcome>
-					<text>He looks tired, perhaps more aged by your words, but he purses his lips and nods before returning to the outskirts of town.</text>
-					<tagModifier id="patientApprentice">add</tagModifier>
-				</outcome>
-			</choice>
-		</storyNode>
-		
-		<storyNode id="apprenticeSubplot3" type="satellite" lastNode="false">
-			<teaserText>Your apprentice has finished his sabbatical.</teaserText>
-			<eventText>Now ready to serve you directly, he is eager to take on a role as your personal guard. "The peasants do not yet understand, it's important to keep you safe until they do."</eventText>
-			<functionalDescription>
-				<prominence id="apprenticeCharacter">1</prominence>
-			</functionalDescription>
-			<prerequisite>
-				<tagReq id="vengefulApprentice" operator="contains"/>
-			</prerequisite>
-			<choice>
-				<text>This is just what I need.</text>
-				<outcome>
-					<text>He grins, finally satisfied with his role, and readies his sword.</text>
-					<quantModifier id="trustMetric" absolute="false">-1</quantModifier>
-					<tagModifier id="trainedApprentice">add</tagModifier>
-					<tagModifier id="vengefulApprentice">remove</tagModifier>
-				</outcome>
-			</choice>
-			<choice>
-				<text>This is not the kind of path that will achieve the vision!</text>
-				<outcome>
-					<text>He storms out angrily, feeling cheated.</text>
-				</outcome>
-			</choice>
-		</storyNode>
-		
-		<storyNode id="apprenticeSubplot4" type="satellite" lastNode="false">
-			<teaserText>Your apprentice has finished his sabbatical.</teaserText>
-			<eventText>He comes back cleaner, and somehow refreshed by his time amongst the people. This is not the young man you had last seen.</eventText>
-			<functionalDescription>
-				<prominence id="apprenticeCharacter">1</prominence>
-			</functionalDescription>
-			<prerequisite>
-				<tagReq id="patientApprentice" operator="contains"/>
-			</prerequisite>
-			<choice>
-				<text>"You're welcome to work alongside me."</text>
-				<outcome>
-					<text>He smiles, at peace with your decision and finally feeling fulfilled.</text>
+					<text>He looks tired, perhaps more aged by your words, but he purses his lips and nods before turning away.</text>
 					<quantModifier id="trustMetric" absolute="false">+1</quantModifier>
-					<tagModifier id="trainedApprentice">add</tagModifier>
-					<tagModifier id="patientApprentice">remove</tagModifier>
-				</outcome>
-			</choice>
-			<choice>
-				<text>"I believe your purpose is amongst the people now, please pass my vision onward."</text>
-				<outcome>
-					<text>He hesitates then smiles when he realizes the amount of trust you place in him. "I will visit with news from the villages."</text>
-					<quantModifier id="trustMetric" absolute="false">+1</quantModifier>
-					<quantModifier id="moralityMetric" absolute="false">+1</quantModifier>
-					<tagModifier id="trainedApprentice">add</tagModifier>
-					<tagModifier id="patientApprentice">remove</tagModifier>
+					<quantModifier id="charityMetric" absolute="false">-1</quantModifier>
 				</outcome>
 			</choice>
 		</storyNode>
@@ -123,9 +68,10 @@ He is ecstatic, but admittedly less so when you send him off to the outskirts of
 		</storyNode>
 		 -->
 		
+		
 		<storyNode id="apprenticeInPast" type="satellite">
-			<teaserText>The apprentice looks lost in the past.</teaserText>
-			<eventText>Your apprentice is sitting close by, but looks a million miles away. He is clearly lost in the past.
+			<teaserText>Your apprentice approaches, lost in the past.</teaserText>
+			<eventText>He is sitting close by, but looks a million miles away.
 			
 "What troubles you so, young man?"
 
@@ -136,17 +82,18 @@ He says nothing, but subconsciously fingers the scar on his forearm.
 				<prominence id="trustTheme">1</prominence>
 			</functionalDescription>
 			<prerequisite>
-				<tagReq id="trainedApprentice" operator="contains" />
+				<sceneReq id="introduceApprentice" operator="seen"/>
 			</prerequisite>
 			<choice>
 				<outcome>
-					<quantModifier id="trustMetric" absolute="false">1</quantModifier>
+					<quantModifier id="trustMetric" absolute="false">+1</quantModifier>
 				</outcome>
 			</choice>
 		</storyNode>
 		
-		<storyNode id="apprenticeScars" type="satellite">
-			<teaserText>You overhear patrons talking about your apprentice at the bar...</teaserText>
+		
+		<storyNode id="apprenticePubScars" type="satellite">
+			<teaserText>You wander over to the public house to see who might need help over a quick drink.</teaserText>
 			<eventText>While enjoying a pint of your favorite drink, you happen to overhear your apprentice's name float into the din.
 
 "I hear 'e's got quite the damaged past, I do!"
@@ -155,15 +102,27 @@ He says nothing, but subconsciously fingers the scar on his forearm.
 
 "No, it's true! When 'e wandered into town, 'e had but one shirt, torn pants, and one helluva scar!"
 
-They share an uproarious laugh over what they figure got him into that state.</eventText>
+They share an uproarious laugh over what they imagined got him into that state.</eventText>
 			<functionalDescription>
 				<prominence id="apprenticeCharacter">2</prominence>
+				<prominence id="moralityTheme">1</prominence>
+				<prominence id="trustTheme">1</prominence>
 			</functionalDescription>
 			<prerequisite>
-				<tagReq id="acceptedApprentice" operator="contains" />
+				<sceneReq id="introduceApprentice" operator="seen"/>
 			</prerequisite>
 			<choice>
+				<text>You quietly slip out, saying nothing.</text>
 				<outcome>
+					<text>The patrons barely notice you were there.</text>
+					<quantModifier id="trustMetric" absolute="false">-1</quantModifier>
+				</outcome>
+			</choice>
+			<choice>
+				<text>You slam your first on the bar, giving the gossiping patrons the evil eye.</text>
+				<outcome>
+				<text>They might not change their behavior, but at least they are aware of your disapproval.</text>
+					<quantModifier id="trustMetric" absolute="false">+1/quantModifier>
 				</outcome>
 			</choice>
 		</storyNode>
@@ -333,25 +292,25 @@ They share an uproarious laugh over what they figure got him into that state.</e
 		<!-- Witch satellites -->
 		
 		<storyNode id="witchVisit" type="satellite" lastNode="false">
-			<teaserText>You have an unlikely visitor!</teaserText>
-			<eventText>The witch from the outskirts needs help gathering truffles but the local priests are in the way, and she is willing to pray to your god in return.</eventText>
+			<teaserText>Amice, a so-called witch who lives on the outskirts of town, has ventured in to seek your aid.</teaserText>
+			<eventText>Her robes have been torn in spots, and appear to be freshly smattered with rotten fruit during her journey in. She explains that she’s come to seek your company across the other half of the town and to the marshes where she wishes to collect moss for her craft.</eventText>
 			<functionalDescription>
 				<prominence id="trustTheme">1</prominence>
 				<prominence id="charityTheme">1</prominence>
 			</functionalDescription>
 			<choice>
-				<text>Help her by ensuring her path is clear.</text>
+				<text>Agree to accompany her.</text>
 				<outcome>
-					<text>Seeing you help the witch, your followers grow distrustful of you despite your giving nature.</text>
-					<quantModifier id="trustMetric" absolute="false">-2</quantModifier>
+					<text>While a disgruntled crowd follows as you set out, Amice is not harassed further. As she collects the moss, she muses about its purposes for helping with headaches, particularly those brought on by visions. When you ask her about the visions, she smiles knowingly but only responds that perhaps it's a tale best left for another time.</text>
+					<quantModifier id="superstitionMetric" absolute="false">+2</quantModifier>
 					<quantModifier id="charityMetric" absolute="false">+1</quantModifier>
 				</outcome>
 			</choice>
 			<choice>
-				<text>Deny her aid, risking her wrath.</text>
+				<text>Turn her away.</text>
 				<outcome>
-					<text>The curse of an angered witch echoes your halls, and superstition runs amok amongst your people.</text>
-					<quantModifier id="superstitionMetric" absolute="false">+3</quantModifier>
+					<text>To the whoops and cheers of the mob outside, you dismiss Amice. She is visibly disappointed, and as she turns to leave you hear her murmur “you do not know the power you wield”. Before you can ask her what she meant, she has disappeared into the crowd and you are left only able to hear their jeering taunts as she returns to where she came from.</text>
+					<quantModifier id="superstitionMetric" absolute="false">-2</quantModifier>
 				</outcome>
 			</choice>
 		</storyNode>
