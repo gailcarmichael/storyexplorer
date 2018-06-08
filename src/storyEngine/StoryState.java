@@ -7,6 +7,8 @@ import java.util.HashMap;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.ElementMap;
 
+import com.rits.cloning.Cloner;
+
 import storyEngine.storyElements.ElementType;
 import storyEngine.storyElements.StoryElement;
 import storyEngine.storyElements.StoryElementCollection;
@@ -33,6 +35,9 @@ public class StoryState
 	@ElementMap(required=false, inline=true, entry="desire", key="id", attribute=true)
 	protected HashMap<String, Float> m_elementDesires;
 	
+	// Memory functions for each story element (not stored in XML)
+	protected HashMap<String, MemoryFunction> m_memoryFunctions;
+	
 	// Element tags
 	@ElementList(required=false, inline=true)
 	protected ArrayList<String> m_tagList;
@@ -48,6 +53,8 @@ public class StoryState
 		m_elementValues = elementValues;
 		m_elementDesires = elementDesires;
 		m_tagList = tagList;
+		
+		m_memoryFunctions = new HashMap<String, MemoryFunction>();
 		m_scenesSeen = new ArrayList<StoryNode>();
 		
 		if (m_elementValues == null) m_elementValues = new HashMap<String, Float>();
@@ -57,6 +64,7 @@ public class StoryState
 	
 	
 	public boolean isDesireValue(String id) { return m_elementDesires.containsKey(id); }
+	public boolean isMemoryValue(String id) { return isDesireValue(id); }
 	
 	
 	///////////////////////////////////////////////////////////////
@@ -64,12 +72,16 @@ public class StoryState
 	
 	public StoryState clone()
 	{
-		StoryState newState = new StoryState(
-				new HashMap<String, Float>(m_elementValues),
-				new HashMap<String, Float>(m_elementDesires),
-				new ArrayList<String>(m_tagList));
+		Cloner cloner = new Cloner();
 		
-		newState.m_scenesSeen = new ArrayList<StoryNode>(m_scenesSeen);
+		StoryState newState = new StoryState(
+				cloner.deepClone(m_elementValues), // deep copy
+				cloner.deepClone(m_elementDesires), // deep copy
+				new ArrayList<String>(m_tagList)); // shallow copy
+		
+		newState.m_scenesSeen = new ArrayList<StoryNode>(m_scenesSeen); // shallow copy
+		
+		newState.m_memoryFunctions = cloner.deepClone(m_memoryFunctions); // deep copy
 		
 		return newState;
 	}
@@ -96,7 +108,8 @@ public class StoryState
 		{
 			for (String id : m_elementDesires.keySet())
 			{
-				toReturn += "\t" + id + ": " + m_elementDesires.get(id) + "\n";
+				toReturn += "\t" + id + ": " + m_elementDesires.get(id) + 
+						    " / " + m_memoryFunctions.get(id).getLastValue() + "\n";
 			}
 		}
 		
@@ -124,6 +137,10 @@ public class StoryState
 		else if (m_elementDesires.containsKey(id))
 		{
 			return m_elementDesires.get(id);
+		}
+		else if (m_memoryFunctions.containsKey(id))
+		{
+			return m_memoryFunctions.get(id).getLastValue();
 		}
 		else
 		{
@@ -257,6 +274,36 @@ public class StoryState
 			m_elementDesires.put(id, value += DESIRE_RATE_INCREASE);
 		}
 	}
+
+	
+	///////////////////////////////////////////////////////////////
+	
+	
+	public void adjustMemoryValues(StoryNode node, StoryElementCollection elementCol) // TODO: check for correctness 
+	{
+		ArrayList<String> nodeIDs = node.getElementIDs();
+	
+		for (String id : elementCol.getMemoryValueIDS()) // process all memory-related elements in the collection
+		{
+			MemoryFunction memFunc = m_memoryFunctions.get(id);
+			if (memFunc == null)
+			{
+				memFunc = new MemoryFunction(id);
+				m_memoryFunctions.put(id, memFunc);
+			}
+			
+			if (nodeIDs.contains(id)) // Elements shown in the node
+			{
+				memFunc.timeStepFeaturingElement(node.getProminenceValueForElement(id));
+			}
+			else // Elements not shown in the node
+			{
+				memFunc.timeStepNotFeaturingElement();
+			}
+			
+			//System.out.println("Node " + node.getID() + " - " + id + " -> " + memFunc.getLastValue());
+		}
+	}
 	
 	
 	///////////////////////////////////////////////////////////////
@@ -267,7 +314,7 @@ public class StoryState
 		boolean isValid = true;
 		
 		// A story state is valid if all the elements in the
-		// collection have values or desires in the correct
+		// collection have values or quantifiable values in the correct
 		// place in the story state
 		
 		for (String id : elements.getIDs())

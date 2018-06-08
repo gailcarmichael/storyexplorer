@@ -305,17 +305,19 @@ public class Story
 	
 	// Call this after a node has been presented to a user to apply its
 	// outcome to the story state
-	public void applyOutcomeAndAdjustDesires()
+	public void applyOutcomeAndAdjustQuantifiableValues()
 	{
 		if (m_nodeBeingConsumed != null)
 		{
 			m_nodeBeingConsumed.applyOutcomeForSelectedChoice(m_storyState, m_elementCol);
 			m_nodeBeingConsumed.resetRelevantDesireValuesInStoryState(m_storyState);
 			m_storyState.increaseDesireValues();
+			
+			m_storyState.adjustMemoryValues(m_nodeBeingConsumed, m_elementCol);			
 		}
 		else
 		{
-			System.err.println("Could not apply outcome or adjust desires because " +
+			System.err.println("Could not apply outcome or adjust quantifiable values because " +
 								"node being consumed is null.");
 		}
 	}

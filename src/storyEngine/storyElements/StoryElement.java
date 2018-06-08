@@ -51,6 +51,7 @@ public class StoryElement
 	public String getName() { return m_name; }
 	
 	
+	public boolean hasMemoryValue() { return getType() == ElementType.quantifiable; }
 	public boolean hasDesireValue() { return getType() == ElementType.quantifiable; }
 	
 	

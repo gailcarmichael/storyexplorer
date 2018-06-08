@@ -26,7 +26,7 @@ public class StoryRunSimulation
 			consuming.setSelectedChoice(choiceIndex);
 		}
 		
-		story.applyOutcomeAndAdjustDesires();
+		story.applyOutcomeAndAdjustQuantifiableValues();
 		return story.finishConsumingNode();
 	}
 	
