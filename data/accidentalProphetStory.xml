@@ -11,7 +11,7 @@ The devotion he shows gives you renewed faith in your cause. You agree to take h
 			<functionalDescription>
 				<prominence id="apprenticeCharacter">1</prominence>
 				<prominence id="trustTheme">1</prominence>
-				<prominence id=charityTheme">1</prominence>
+				<prominence id="charityTheme">1</prominence>
 			</functionalDescription>
 			<choice>
 				<outcome>
@@ -30,7 +30,7 @@ The devotion he shows gives you renewed faith in your cause. You agree to take h
 				<prominence id="charityTheme">1</prominence>
 			</functionalDescription>
 			<prerequisite>
-				<sceneReq id="introduceApprentice" operator="seen"/>
+				<sceneReq name="introduceApprentice" operator="seen"/>
 			</prerequisite>
 			<choice>
 				<text>"We must notify the guard!"</text>
@@ -82,7 +82,7 @@ He says nothing, but subconsciously fingers the scar on his forearm.
 				<prominence id="trustTheme">1</prominence>
 			</functionalDescription>
 			<prerequisite>
-				<sceneReq id="introduceApprentice" operator="seen"/>
+				<sceneReq name="introduceApprentice" operator="seen"/>
 			</prerequisite>
 			<choice>
 				<outcome>
@@ -109,7 +109,7 @@ They share an uproarious laugh over what they imagined got him into that state.<
 				<prominence id="trustTheme">1</prominence>
 			</functionalDescription>
 			<prerequisite>
-				<sceneReq id="introduceApprentice" operator="seen"/>
+				<sceneReq name="introduceApprentice" operator="seen"/>
 			</prerequisite>
 			<choice>
 				<text>You quietly slip out, saying nothing.</text>
@@ -122,7 +122,7 @@ They share an uproarious laugh over what they imagined got him into that state.<
 				<text>You slam your first on the bar, giving the gossiping patrons the evil eye.</text>
 				<outcome>
 				<text>They might not change their behavior, but at least they are aware of your disapproval.</text>
-					<quantModifier id="trustMetric" absolute="false">+1/quantModifier>
+					<quantModifier id="trustMetric" absolute="false">+1</quantModifier>
 				</outcome>
 			</choice>
 		</storyNode>
