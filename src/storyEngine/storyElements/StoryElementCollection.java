@@ -119,7 +119,7 @@ public class StoryElementCollection
 		return ids;
 	}
 	
-	public ArrayList<String> getMemoryValueIDS()
+	public ArrayList<String> getMemoryValueIDs()
 	{
 		return getDesireValueIDs();
 	}

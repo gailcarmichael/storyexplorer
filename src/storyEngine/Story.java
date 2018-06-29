@@ -104,6 +104,11 @@ public class Story
 		return m_storyState.getLargestDesireValue();
 	}
 	
+	public MemoryFunction getMemoryFunctionForElement(String id)
+	{
+		return m_storyState.getMemoryFunctionForElement(id);
+	}
+	
 	public float getStoryStateOnlyElementValue(String id)
 	{
 		return m_storyState.getValueForElement(id);

@@ -278,12 +278,16 @@ public class StoryState
 	
 	///////////////////////////////////////////////////////////////
 	
-	
-	public void adjustMemoryValues(StoryNode node, StoryElementCollection elementCol) // TODO: check for correctness 
+	MemoryFunction getMemoryFunctionForElement(String id)
 	{
-		ArrayList<String> nodeIDs = node.getElementIDs();
+		return m_memoryFunctions.get(id);
+	}
 	
-		for (String id : elementCol.getMemoryValueIDS()) // process all memory-related elements in the collection
+	void adjustMemoryValues(StoryNode node, StoryElementCollection elementCol) 
+	{
+		ArrayList<String> nodeElementIDs = node.getElementIDs();
+	
+		for (String id : elementCol.getMemoryValueIDs()) // process all memory-related elements in the collection
 		{
 			MemoryFunction memFunc = m_memoryFunctions.get(id);
 			if (memFunc == null)
@@ -292,7 +296,7 @@ public class StoryState
 				m_memoryFunctions.put(id, memFunc);
 			}
 			
-			if (nodeIDs.contains(id)) // Elements shown in the node
+			if (nodeElementIDs.contains(id)) // Elements shown in the node
 			{
 				memFunc.timeStepFeaturingElement(node.getProminenceValueForElement(id));
 			}

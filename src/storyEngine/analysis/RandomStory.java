@@ -136,7 +136,8 @@ public class RandomStory
 		
 		story = new Story(numTopChoices, prioritizationType, nodes, null /* <- no start node */, initialState);
 		story.setElementCollection(elementCollection);
-		System.out.println("Test story is valid: " + story.isValid(elementCollection));
+		
+		if (!story.isValid(elementCollection)) System.err.println("Randomly generated story is not valid.");
 		
 		return story;
 	}

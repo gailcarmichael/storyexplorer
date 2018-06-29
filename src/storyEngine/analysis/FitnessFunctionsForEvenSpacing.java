@@ -6,13 +6,13 @@ import java.util.HashMap;
 import storyEngine.Story;
 import storyEngine.storyNodes.StoryNode;
 
-public class FitnessFunctions
+public class FitnessFunctionsForEvenSpacing
 {
 	Story m_story;
 	HashMap<String, Float> m_kValues;
 	HashMap<String, Float> m_prevNodeFitnessForElement;
 	
-	FitnessFunctions(Story story)
+	FitnessFunctionsForEvenSpacing(Story story)
 	{
 		m_story = story;
 		m_kValues = new HashMap<String, Float>();

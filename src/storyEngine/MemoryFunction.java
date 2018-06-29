@@ -16,16 +16,21 @@ public class MemoryFunction
 	
 	public String getElementID() { return m_elementID; }
 	
-	public Float getLastValue()
+	public Float getValueAt(int pos)
 	{
 		Float lastValue = 0.0f;
 		
-		if (!m_memoryValueOverTime.isEmpty())
+		if (pos >= 0 && pos < m_memoryValueOverTime.size())
 		{
-			lastValue = m_memoryValueOverTime.get(m_memoryValueOverTime.size()-1);
+			lastValue = m_memoryValueOverTime.get(pos);
 		}
 		
 		return lastValue;
+	}
+	
+	public Float getLastValue()
+	{
+		return getValueAt(m_memoryValueOverTime.size()-1);
 	}
 	
 	public void timeStepFeaturingElement(float prominence)
