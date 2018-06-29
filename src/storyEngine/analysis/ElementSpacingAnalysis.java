@@ -149,8 +149,8 @@ public class ElementSpacingAnalysis
 				{
 					count = histForElement.get(spacing);
 				}
-				System.out.print("\tSpacing of " + spacing + ":\t" + count);
-				System.out.print("\t" + String.join("", Collections.nCopies(count, "*")) + "\n");
+				System.out.printf("\tSpacing of " + spacing + ":\t" + "%3d", count);
+				System.out.print(" " + String.join("", Collections.nCopies(count, "*")) + "\n");
 			}
 
 			System.out.println("\n\tMin space value: " + getMinSpacingForElement(elementID));

@@ -12,6 +12,13 @@ import storyEngine.storyNodes.StoryNode;
 
 public class StoryRunSimulation
 {
+	public static enum ChoiceType
+	{
+		TopChoice,
+		BottomChoice,
+		RandomChoice
+	}
+	
 	protected static Random RANDOM = null;
 	
 	protected static boolean consumeNode(Story story, StoryNode node)
@@ -26,24 +33,12 @@ public class StoryRunSimulation
 			consuming.setSelectedChoice(choiceIndex);
 		}
 		
-		story.applyOutcomeAndAdjustDesires();
+		story.applyOutcomeAndAdjustQuantifiableValues();
 		return story.finishConsumingNode();
 	}
 	
 	
-	public static void randomWalkthrough(Story story)
-	{
-		walkthrough(story, true);
-	}
-	
-	
-	public static void topSceneWalkthrough(Story story)
-	{
-		walkthrough(story, false);
-	}
-	
-	
-	protected static void walkthrough(Story story, boolean random)
+	public static void walkthrough(Story story, ChoiceType choiceType)
 	{
 		RANDOM = new Random();
 		story.reset();
@@ -65,10 +60,19 @@ public class StoryRunSimulation
 		{
 			int randomIndex = RANDOM.nextInt(possibleScenes.size());
 			
-			StoryNode nextNode = 
-					random ?
-						possibleScenes.get(randomIndex) :
-						possibleScenes.get(0);
+			StoryNode nextNode = null;
+			switch (choiceType)
+			{
+				case TopChoice:
+					nextNode = possibleScenes.get(0);
+					break;
+				case RandomChoice:
+					nextNode = possibleScenes.get(randomIndex);
+					break;
+				case BottomChoice:
+					nextNode = possibleScenes.get(possibleScenes.size()-1);
+					break;
+			}
 						
 			lastNode = consumeNode(story, nextNode);
 			

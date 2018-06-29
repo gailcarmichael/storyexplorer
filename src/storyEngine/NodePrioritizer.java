@@ -3,7 +3,6 @@ package storyEngine;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import storyEngine.analysis.ObjectiveFunction;
 import storyEngine.storyNodes.StoryNode;
 
 public class NodePrioritizer
@@ -128,44 +127,10 @@ public class NodePrioritizer
 
 	protected void bestObjectiveFunction(boolean satellitesOnly)
 	{
-		final ArrayList<StoryNode> availableNodes = m_story.getAvailableNodes();
+		/*final ArrayList<StoryNode> availableNodes = m_story.getAvailableNodes();
 		final int numTopScenes = m_story.getNumTopScenesForUser();
 		
-		ObjectiveFunction objFunction = new ObjectiveFunction(m_story);
-		objFunction.objectiveFunctionForStory(); // saves last result
-		
-		ArrayList<Float> bestScores = new ArrayList<Float>();
-		m_topNodes.clear();
-		
-		for (StoryNode nextNode : availableNodes)
-		{
-			// Make a copy of the story and add a random new node from what's available
-			// to see how it affects the score...the nodes with the best results will
-			// be returned as the top choices
-			
-			Story copyOfStory = (Story)(m_story.clone());
-			copyOfStory.getScenesSeen().add(nextNode);
-			float scoreForCopyOfStory = objFunction.objectiveFunctionWithNewLastNode();
-			
-			if (m_topNodes.size() < numTopScenes)
-			{
-				// Just add blindly to the list until all slots are filled
-				m_topNodes.add(nextNode);
-				bestScores.add(scoreForCopyOfStory);
-			}
-			else
-			{
-				float maxScore = Collections.max(bestScores);
-				int maxIndex = bestScores.indexOf(maxScore);
-				
-				// Replace a node if we have a score better than the max
-				if (scoreForCopyOfStory < maxScore)
-				{
-					m_topNodes.set(maxIndex, nextNode);
-					bestScores.set(maxIndex, scoreForCopyOfStory);
-				}
-			}
-		}
+		ObjectiveFunction objFunction = new ObjectiveFunctionForEvenSpacing(m_story);*/
 	}
 }
 

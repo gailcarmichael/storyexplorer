@@ -224,7 +224,7 @@ public abstract class StoryExplorerGame
 		
 		if (m_story.getNodeBeingConsumed() == null) return; 
 		
-		m_story.applyOutcomeAndAdjustDesires();
+		m_story.applyOutcomeAndAdjustQuantifiableValues();
 		m_story.finishConsumingNode();
 		
 		refreshCurrentSatellites();

@@ -2,59 +2,38 @@ package storyEngine.analysis;
 
 import storyEngine.Story;
 
-public class ObjectiveFunction
+public abstract class ObjectiveFunction
 {	
-	protected Story m_story;
-	protected FitnessFunctions m_fitness;
 	
-	float m_lastResult;
+	public static enum Type
+	{
+		EvenSpacing,
+		MemoryModel
+	}	
+	
+	protected Story m_story;
 	
 	public ObjectiveFunction(Story story)
 	{
 		m_story = story;
-		m_fitness = new FitnessFunctions(story);
-		m_lastResult = 0;
 	}
 	
-	private float objectiveFunctionForElementAtNode(String elementID, int nodeIndex)
-	{
-		float ideal = m_fitness.idealFitnessForElementAtNode(elementID, nodeIndex);
-		float actual = m_fitness.actualFitnessForElementAtNode(elementID, nodeIndex); 
-		
-		return (float)Math.pow(ideal-actual, 2);
-	}
+	public abstract float objectiveFunctionForStory();
 	
-	private float objectiveFunctionForAllElementsAtNode(int nodeIndex)
+	public static ObjectiveFunction forType(Type type, Story story)
 	{
-		float result = 0;
+		ObjectiveFunction f = null;
 		
-		for (String id : m_story.getElementCollection().getDesireValueIDs())
+		switch (type)
 		{
-
-			result += objectiveFunctionForElementAtNode(id, nodeIndex);
+			case EvenSpacing:
+				f = new ObjectiveFunctionForEvenSpacing(story);
+				break;
+			case MemoryModel:
+				f = new ObjectiveFunctionForMemoryModel(story);
+				break;
 		}
-		
-		return result;
-	}
-	
-	public float objectiveFunctionWithNewLastNode()
-	{
-		int lastIndex = m_story.getScenesSeen().size()-1;
-		if (lastIndex >= 0)
-			m_lastResult += objectiveFunctionForAllElementsAtNode(lastIndex);
-		return m_lastResult;
-	}
-	
-	public float objectiveFunctionForStory()
-	{
-		float m_lastResult = 0;
-		
-		final int NUM_NODES = m_story.getScenesSeen().size(); 
-		for (int nodeIndex=0; nodeIndex < NUM_NODES; nodeIndex++)
-		{
-			m_lastResult += objectiveFunctionForAllElementsAtNode(nodeIndex);
-		}
-		 
-		return m_lastResult;
+				
+		return f;
 	}
 }
