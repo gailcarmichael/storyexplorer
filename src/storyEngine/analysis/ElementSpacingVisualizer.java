@@ -25,10 +25,13 @@ public class ElementSpacingVisualizer
 	private float m_windowHeight;
 	private float m_windowWidth;
 	
+	private boolean m_showMultiElementNodes;
 	
-	public ElementSpacingVisualizer(Story story)
+	
+	public ElementSpacingVisualizer(Story story, boolean showMultiElementNodes)
 	{
 		m_story = story;
+		m_showMultiElementNodes = showMultiElementNodes;
 		
 		ArrayList<StoryNode> nodes = m_story.getScenesSeen();
 		int numElements = m_story.getElementCollection().getNumElementsPriorityCalc();
@@ -73,7 +76,19 @@ public class ElementSpacingVisualizer
 			int nodeNum = 0;
 			for (StoryNode node : m_story.getScenesSeen())
 			{
+			
 				float x = SPACE_FOR_TEXT + (NODE_DIAMETER + HOR_SPACE_BETWEEN) * nodeNum + HOR_SPACE_BETWEEN + NODE_DIAMETER/2;
+				
+				if (m_showMultiElementNodes &&
+						node.getElementIDs().size() > 1 &&
+						elementNum == 0)
+				{
+					parent.pushStyle();
+					parent.strokeWeight(4);
+					parent.stroke(0,200,0);
+					parent.line(x, 0, x, parent.height);
+					parent.popStyle();
+				}
 				
 				parent.noFill();
 				parent.stroke(200);

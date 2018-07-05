@@ -38,7 +38,7 @@ public class StoryRunSimulation
 	}
 	
 	
-	public static void walkthrough(Story story, ChoiceType choiceType)
+	public static void walkthrough(Story story, ChoiceType choiceType, int percentNodesToConsume)
 	{
 		RANDOM = new Random();
 		story.reset();
@@ -55,8 +55,9 @@ public class StoryRunSimulation
 		// left, or until the last node in the story is reached
 		
 		ArrayList<StoryNode> possibleScenes = story.getCurrentSceneOptions();
+		int stoppingNodeNum = percentNodesToConsume * story.getNodes().size() / 100;
 		
-		while (!lastNode && !possibleScenes.isEmpty())
+		while (!lastNode && !possibleScenes.isEmpty() && story.getScenesSeen().size() < stoppingNodeNum)
 		{
 			int randomIndex = RANDOM.nextInt(possibleScenes.size());
 			

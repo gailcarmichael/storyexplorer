@@ -38,13 +38,13 @@ public class TestElementSpacing extends PApplet
 	
 	private static final int NUM_EACH_CATEGORY = 5; // how many different themes, characters, settings each
 	private static final int NUM_NODES_PER_ELEMENT = 15; // how many nodes for each individual theme, etc
-	private static final int MAX_PROMINENCE_VALUE = 3; // a random value between 1 and this number will be assigned
+	private static final int MAX_PROMINENCE_VALUE = 5; // a random value between 1 and this number will be assigned
 
 	private static final int NUM_TOP_CHOICES = 3; // how many of the top nodes are offered to players
 	
 	private static final boolean TEST_RANDOM_STORY = true; // true if story is randomly generated, false if story is read from existing file
 	
-	private static final PrioritizationType PRIORITIZATION_TYPE = PrioritizationType.eventBased; // just for visualizing one story
+	private static final PrioritizationType PRIORITIZATION_TYPE = PrioritizationType.sumOfCategoryMaximums; // just for visualizing one story
 	
 	private static final ObjectiveFunction.Type OBJECTIVE_FUNCTION_TYPE = ObjectiveFunction.Type.MemoryModel;
 	
@@ -52,9 +52,12 @@ public class TestElementSpacing extends PApplet
 	
 	private static final boolean TEST_COMBO_ELEMENTS = true; // whether nodes should have multiple element tags
 	
-	private static final StoryRunSimulation.ChoiceType CHOICE_TYPE = StoryRunSimulation.ChoiceType.RandomChoice;
+	private static final StoryRunSimulation.ChoiceType CHOICE_TYPE = StoryRunSimulation.ChoiceType.TopChoice;
+	
+	private static final int PERCENT_OF_NODES_TO_CONSUME = 30;
 	
 	private static ElementSpacingVisualizer VISUALIZER;
+	private static boolean SHOW_MULTI_ELEMENT_NODES_IN_VISUALIZER = false;
 	
 	////////////////////////////////////////////////////////
 	
@@ -62,7 +65,7 @@ public class TestElementSpacing extends PApplet
 	{
 		story.reset();
 		
-		StoryRunSimulation.walkthrough(story, choiceType);
+		StoryRunSimulation.walkthrough(story, choiceType, PERCENT_OF_NODES_TO_CONSUME);
 		
 		int numScenesSeen = story.getScenesSeen().size();
 		
@@ -231,7 +234,7 @@ public class TestElementSpacing extends PApplet
 		
 		if (TEST_TYPE == TestType.VisualizeOneRun)
 		{
-			TestElementSpacing.VISUALIZER = new ElementSpacingVisualizer(story);
+			TestElementSpacing.VISUALIZER = new ElementSpacingVisualizer(story, SHOW_MULTI_ELEMENT_NODES_IN_VISUALIZER);
 			PApplet.main(TestElementSpacing.class.getCanonicalName());
 		}
 	}
