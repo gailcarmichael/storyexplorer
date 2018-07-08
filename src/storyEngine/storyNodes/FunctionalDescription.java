@@ -2,6 +2,7 @@ package storyEngine.storyNodes;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
@@ -182,11 +183,11 @@ public class FunctionalDescription
 	{
 		switch (story.getPrioritizationType())
 		{
+			case strawManRandom:
+				return calculateStrawManRandom(story, elementCol);
+				
 			case sumOfCategoryMaximums:
 				return calculateSumOfCategoryMaximums(story, elementCol);
-				
-			case physicsForcesAnalogy:
-				return calculatePhysicsAnalogyScore(story, elementCol);
 			
 			case eventBased:
 				return calculateEventBasedScore(story, elementCol);
@@ -201,54 +202,10 @@ public class FunctionalDescription
 	
 	////////////////////////////////////////////////////////////////
 	
-	
-	protected float calculatePhysicsAnalogyScore(Story story, StoryElementCollection elementCol)
-	{		
-		// Each story element represented in the node will get a score that represents attraction (+ve)
-		// or repulsion (-ve).
-		
-		// The default behavior of a node is that story elements that have been seen recently should
-		// cause a repulsion while elements not seen in some time should cause an attraction; either
-		// should be proportional to the distance between the empty slot and the last node that 
-		// reflected the story element. Forces values for all the story elements will be summed and 
-		// this will become the score of the node.
-
-		
-		float nodeScore = 0;
-		
-		for (String id : m_elementProminences.keySet())
-		{			
-			StoryElement el = elementCol.getElementWithID(id);
-			
-			if (el != null && el.hasDesireValue())
-			{
-				float mostRecentProminence = story.getProminenceForMostRecentNodeWithElement(id);
-				
-				// If there were no other nodes that have shown this element, we still want to use the desire
-				// and the new node's prominence to calculate a force
-				if (mostRecentProminence <= 0) mostRecentProminence = 1;
-				
-				float newProminence = m_elementProminences.get(id);
-				
-				float desire = story.getDesireForElement(id);
-				
-				float force = (newProminence * mostRecentProminence * desire);
-				
-				if (desire <= 5)
-				{
-					// If the element has been seen recently, the node should be 
-					// strongly repelled on this element
-					force *= -1;
-				}
-				
-				nodeScore += force;
-			}
-		}
-		
-		
-		return nodeScore;
+	protected float calculateStrawManRandom(Story story, StoryElementCollection elementCol)
+	{
+		return new Random().nextFloat();
 	}
-	
 	
 	////////////////////////////////////////////////////////////////
 	

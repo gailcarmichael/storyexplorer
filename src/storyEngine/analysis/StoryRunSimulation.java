@@ -34,7 +34,11 @@ public class StoryRunSimulation
 		}
 		
 		story.applyOutcomeAndAdjustQuantifiableValues();
-		return story.finishConsumingNode();
+		boolean success = story.finishConsumingNode();
+		
+		//System.out.println(ObjectiveFunction.forType(ObjectiveFunction.Type.MemoryModel, story).objectiveFunctionForStory());
+		
+		return success;
 	}
 	
 	

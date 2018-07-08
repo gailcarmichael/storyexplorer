@@ -79,9 +79,12 @@ public class ObjectiveFunctionForMemoryModel extends ObjectiveFunction
 		{
 			float integral = 0;
 			ArrayList<Float> memoryDesiredThreshDiffs = memoryDesiredThreshDiff.get(elementID);
-			for (Float diff : memoryDesiredThreshDiffs)
+			if (memoryDesiredThreshDiffs != null)
 			{
-				integral += diff;
+				for (Float diff : memoryDesiredThreshDiffs)
+				{
+					integral += diff;
+				}
 			}
 			Z_i.put(elementID, integral);
 		}

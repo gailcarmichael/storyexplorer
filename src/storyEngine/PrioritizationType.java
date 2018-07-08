@@ -2,8 +2,8 @@ package storyEngine;
 
 public enum PrioritizationType
 {
+	strawManRandom,
 	sumOfCategoryMaximums,
-	physicsForcesAnalogy,
 	eventBased,
 	bestObjectiveFunction
 }

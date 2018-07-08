@@ -11,6 +11,8 @@ import org.simpleframework.xml.Root;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
+import com.rits.cloning.Cloner;
+
 import storyEngine.storyElements.StoryElementCollection;
 import storyEngine.storyNodes.StoryNode;
 
@@ -60,9 +62,10 @@ public class Story
 		m_numTopScenesForUser = numTopScenesForUser;
 		
 		m_prioritizationType = prioritizationType;
-		if (m_prioritizationType == null) m_prioritizationType = PrioritizationType.physicsForcesAnalogy;
+		if (m_prioritizationType == null) m_prioritizationType = PrioritizationType.sumOfCategoryMaximums;
 				
-		m_nodes = nodes;
+		Cloner cloner = new Cloner();
+		m_nodes = cloner.deepClone(nodes);
 		
 		for (StoryNode node : m_nodes) { if (node.isKernel()) m_numKernels++; }
 		m_numKernelsConsumed = 0;
@@ -153,6 +156,22 @@ public class Story
 		return m_storyState.getScenesSeen();
 	}
 	
+	public StoryNode nodeWithID(String id)
+	{
+		StoryNode nodeWithID = null;
+		
+		for (StoryNode n : m_nodes)
+		{
+			if (n.getID().equals(id))
+			{
+				nodeWithID = n;
+				break;
+			}
+		}
+		
+		return nodeWithID;
+	}
+	
 	
 	public void printStoryState() { System.out.println(m_storyState); }
 	
@@ -238,14 +257,12 @@ public class Story
 	
 	public Object clone()
 	{
-		@SuppressWarnings("unchecked")
-		
 		Story newStory = new Story(
 				m_numTopScenesForUser,
 				m_prioritizationType,
-				(ArrayList<StoryNode>)m_nodes.clone(),
+				m_nodes, // <- nodes get deep cloned in constructor
 				m_startingNode,
-				m_storyState); // <- story state gets cloned in constructor
+				m_storyState); // <- story state gets deep cloned in constructor
 		
 		newStory.setElementCollection((StoryElementCollection)m_elementCol.clone());
 		

@@ -40,11 +40,11 @@ public class TestElementSpacing extends PApplet
 	private static final int NUM_NODES_PER_ELEMENT = 15; // how many nodes for each individual theme, etc
 	private static final int MAX_PROMINENCE_VALUE = 5; // a random value between 1 and this number will be assigned
 
-	private static final int NUM_TOP_CHOICES = 3; // how many of the top nodes are offered to players
+	private static final int NUM_TOP_CHOICES = 5; // how many of the top nodes are offered to players
 	
-	private static final boolean TEST_RANDOM_STORY = true; // true if story is randomly generated, false if story is read from existing file
+	private static final boolean TEST_RANDOM_STORY = false; // true if story is randomly generated, false if story is read from existing file
 	
-	private static final PrioritizationType PRIORITIZATION_TYPE = PrioritizationType.sumOfCategoryMaximums; // just for visualizing one story
+	private static final PrioritizationType PRIORITIZATION_TYPE = PrioritizationType.bestObjectiveFunction; // just for visualizing one story
 	
 	private static final ObjectiveFunction.Type OBJECTIVE_FUNCTION_TYPE = ObjectiveFunction.Type.MemoryModel;
 	
@@ -52,9 +52,9 @@ public class TestElementSpacing extends PApplet
 	
 	private static final boolean TEST_COMBO_ELEMENTS = true; // whether nodes should have multiple element tags
 	
-	private static final StoryRunSimulation.ChoiceType CHOICE_TYPE = StoryRunSimulation.ChoiceType.TopChoice;
+	private static final StoryRunSimulation.ChoiceType CHOICE_TYPE = StoryRunSimulation.ChoiceType.RandomChoice;
 	
-	private static final int PERCENT_OF_NODES_TO_CONSUME = 30;
+	private static final int PERCENT_OF_NODES_TO_CONSUME = 50;
 	
 	private static ElementSpacingVisualizer VISUALIZER;
 	private static boolean SHOW_MULTI_ELEMENT_NODES_IN_VISUALIZER = false;
@@ -139,9 +139,10 @@ public class TestElementSpacing extends PApplet
 						NUM_TOP_CHOICES, PRIORITIZATION_TYPE);
 			}
 
-			updateObjectiveFunctionResultsForMonteCarlo(story, objectiveFunctionResults, PrioritizationType.sumOfCategoryMaximums);	
-			updateObjectiveFunctionResultsForMonteCarlo(story, objectiveFunctionResults, PrioritizationType.physicsForcesAnalogy);	
-			updateObjectiveFunctionResultsForMonteCarlo(story, objectiveFunctionResults, PrioritizationType.eventBased);			
+			updateObjectiveFunctionResultsForMonteCarlo(story, objectiveFunctionResults, PrioritizationType.strawManRandom);
+			updateObjectiveFunctionResultsForMonteCarlo(story, objectiveFunctionResults, PrioritizationType.sumOfCategoryMaximums);
+			updateObjectiveFunctionResultsForMonteCarlo(story, objectiveFunctionResults, PrioritizationType.eventBased);
+			//updateObjectiveFunctionResultsForMonteCarlo(story, objectiveFunctionResults, PrioritizationType.bestObjectiveFunction);				
 		}
 		
 		for (PrioritizationType prioritizationType : objectiveFunctionResults.keySet())
@@ -201,7 +202,9 @@ public class TestElementSpacing extends PApplet
 		}
 		else
 		{
-			story = Story.loadStoryFromFile("./data/accidentalProphetStory.xml", "./data/accidentalProphetStoryElements.xml");
+			//story = Story.loadStoryFromFile("./data/accidentalProphetStory.xml", "./data/accidentalProphetStoryElements.xml");
+			story = Story.loadStoryFromFile("./testData/testElementSpacing/testSpacing.xml", "./testData/testElementSpacing/testSpacingElementCol.xml");
+			story.setPrioritizationType(PRIORITIZATION_TYPE);
 		}
 		
 		

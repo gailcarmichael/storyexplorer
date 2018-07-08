@@ -135,6 +135,8 @@ public class ElementSpacingAnalysis
 	{
 		if (recalculateFirst) recalculateSpacingHistogram();
 		
+		SortedMap<Integer, Integer> collectiveHistogram = new TreeMap<Integer, Integer>();
+		
 		for (String elementID : m_spacingHist.keySet())
 		{
 			System.out.println("\n" + elementID + ":\n");
@@ -151,10 +153,27 @@ public class ElementSpacingAnalysis
 				}
 				System.out.printf("\tSpacing of " + spacing + ":\t" + "%3d", count);
 				System.out.print(" " + String.join("", Collections.nCopies(count, "*")) + "\n");
+				
+				if (collectiveHistogram.containsKey(spacing))
+				{
+					collectiveHistogram.put(spacing, collectiveHistogram.get(spacing) + count);
+				}
+				else
+				{
+					collectiveHistogram.put(spacing, count);
+				}
 			}
 
 			System.out.println("\n\tMin space value: " + getMinSpacingForElement(elementID));
 			System.out.println("\tMax space value: " + getMaxSpacingForElement(elementID));
+		}
+		
+		System.out.println("\nSpacing over all elements: \n");
+		for (Integer spacing : collectiveHistogram.keySet())
+		{
+			int count = collectiveHistogram.get(spacing);
+			System.out.printf("\tSpacing of " + spacing + ":\t" + "%3d", count);
+			System.out.print(" " + String.join("", Collections.nCopies(count, "*")) + "\n");
 		}
 	}
 }
