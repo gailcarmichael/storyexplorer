@@ -42,22 +42,24 @@ public class TestElementSpacing extends PApplet
 
 	private static final int NUM_TOP_CHOICES = 5; // how many of the top nodes are offered to players
 	
-	private static final boolean TEST_RANDOM_STORY = false; // true if story is randomly generated, false if story is read from existing file
+	private static final boolean TEST_RANDOM_STORY = true; // true if story is randomly generated, false if story is read from existing file
 	
-	private static final PrioritizationType PRIORITIZATION_TYPE = PrioritizationType.bestObjectiveFunction; // just for visualizing one story
+	private static final PrioritizationType PRIORITIZATION_TYPE = PrioritizationType.sumOfCategoryMaximums; // just for visualizing one story
 	
 	private static final ObjectiveFunction.Type OBJECTIVE_FUNCTION_TYPE = ObjectiveFunction.Type.MemoryModel;
 	
 	private static final TestType TEST_TYPE = TestType.VisualizeOneRun;
 	
+	private static final int MONTE_CARLO_ITERATIONS = 1000;
+	
 	private static final boolean TEST_COMBO_ELEMENTS = true; // whether nodes should have multiple element tags
 	
 	private static final StoryRunSimulation.ChoiceType CHOICE_TYPE = StoryRunSimulation.ChoiceType.RandomChoice;
 	
-	private static final int PERCENT_OF_NODES_TO_CONSUME = 50;
+	private static final int PERCENT_OF_NODES_TO_CONSUME = 100;
 	
 	private static ElementSpacingVisualizer VISUALIZER;
-	private static boolean SHOW_MULTI_ELEMENT_NODES_IN_VISUALIZER = false;
+	private static boolean SHOW_MULTI_ELEMENT_NODES_IN_VISUALIZER = true;
 	
 	////////////////////////////////////////////////////////
 	
@@ -127,7 +129,7 @@ public class TestElementSpacing extends PApplet
 	{
 		HashMap<PrioritizationType, ArrayList<Float>> objectiveFunctionResults = new HashMap<PrioritizationType, ArrayList<Float>>();
 		
-		for (int i=0; i < 1000; i++)
+		for (int i=0; i < MONTE_CARLO_ITERATIONS; i++)
 		{
 			if (randomizeStoryEachTime)
 			{
@@ -139,9 +141,9 @@ public class TestElementSpacing extends PApplet
 						NUM_TOP_CHOICES, PRIORITIZATION_TYPE);
 			}
 
-			updateObjectiveFunctionResultsForMonteCarlo(story, objectiveFunctionResults, PrioritizationType.strawManRandom);
+			//updateObjectiveFunctionResultsForMonteCarlo(story, objectiveFunctionResults, PrioritizationType.strawManRandom);
 			updateObjectiveFunctionResultsForMonteCarlo(story, objectiveFunctionResults, PrioritizationType.sumOfCategoryMaximums);
-			updateObjectiveFunctionResultsForMonteCarlo(story, objectiveFunctionResults, PrioritizationType.eventBased);
+			//updateObjectiveFunctionResultsForMonteCarlo(story, objectiveFunctionResults, PrioritizationType.eventBased);
 			//updateObjectiveFunctionResultsForMonteCarlo(story, objectiveFunctionResults, PrioritizationType.bestObjectiveFunction);				
 		}
 		

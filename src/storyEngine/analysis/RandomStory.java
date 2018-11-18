@@ -43,6 +43,9 @@ public class RandomStory
 			int maxProminenceValue,
 			boolean testComboElements)
 	{	
+		
+		final float P_VALUE = 1.0f/2;
+		
 		int prominence = RANDOM.nextInt(maxProminenceValue) + 1;
 		
 		FunctionalDescription funcDesc = new FunctionalDescription();
@@ -50,7 +53,7 @@ public class RandomStory
 		
 		if (testComboElements)
 		{
-			while (RANDOM.nextBoolean())
+			while (RANDOM.nextFloat() < P_VALUE)
 			{
 				addRandomElementToFuncDesc(elementCollection, funcDesc, maxProminenceValue);
 			}
