@@ -15,6 +15,8 @@ import storyEngine.storyElements.StoryElementCollection;
 // of which must pass for the prerequisite to pass.
 public class Prerequisite
 {
+	@Attribute(name="id", required=false)
+	protected String m_id;
 	
 	@ElementList(inline=true, required=false)
 	protected ArrayList<QuantifiableElementRequirement> m_quantifiableRequirements;
@@ -34,11 +36,13 @@ public class Prerequisite
 	}
 	
 	public Prerequisite(
+			@Attribute(name="id", required=false) String id, 
 			ArrayList<QuantifiableElementRequirement> qRequirements,
 			ArrayList<TagRequirement> tagRequirements,
 			ArrayList<SceneRequirement> sceneRequirements)
 	{
 		this();
+		m_id = (id == null) ? "" : id;
 		if (qRequirements != null) m_quantifiableRequirements.addAll(qRequirements);
 		if (tagRequirements != null) m_tagRequirements.addAll(tagRequirements);
 		if (sceneRequirements != null) m_sceneRequirements.addAll(sceneRequirements);

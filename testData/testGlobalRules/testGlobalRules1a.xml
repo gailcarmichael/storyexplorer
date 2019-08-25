@@ -1,0 +1,4 @@
+<globalRule id="nodeFilterRule">
+   <nodeFilter checkNodesUsing="nodeIDs" listToCheck="nodeID1,nodeID2,nodeID3" howManyRequired="anyOf" nodeState="seen"/>
+   <nodesAffected checkNodesUsing="nodeIDs" listToCheck="nodeID4" howManyRequired="allOf"/>
+</globalRule>

@@ -20,6 +20,11 @@ import storyEngine.storyNodes.StoryNode;
 // since we've seen certain themes, characters, and so on.
 // Other values like tension can also be tracked.
 
+// Currently, it is assumed that only an initial story
+// state is ever stored in XML; some changes would be
+// required if the current state of a story needed to
+// be saved to disk (e.g. to save progress).
+
 public class StoryState
 {
 	
@@ -42,6 +47,7 @@ public class StoryState
 	@ElementList(required=false, inline=true)
 	protected ArrayList<String> m_tagList;
 	
+	// List of scenes as they are seen (not stored in XML)
 	protected ArrayList<StoryNode> m_scenesSeen;
 	
 	
