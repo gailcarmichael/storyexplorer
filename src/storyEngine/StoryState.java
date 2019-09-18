@@ -233,6 +233,22 @@ public class StoryState
 		return seenScene;
 	}
 	
+	public boolean haveSeenSceneWithFeature(String featureID)
+	{
+		boolean seenScene = false;
+		
+		for (StoryNode n : m_scenesSeen)
+		{
+			if (n.featuresElement(featureID))
+			{
+				seenScene = true;
+				break;
+			}
+		}
+		
+		return seenScene;
+	}
+	
 	float getProminenceForMostRecentNodeWithElement(String elementID)
 	{
 		float desire = -1;

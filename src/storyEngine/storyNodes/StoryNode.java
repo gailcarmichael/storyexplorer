@@ -7,6 +7,7 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
+import storyEngine.GlobalRule;
 import storyEngine.Story;
 import storyEngine.StoryState;
 import storyEngine.storyElements.StoryElementCollection;
@@ -148,6 +149,31 @@ public class StoryNode
 		else
 		{
 			return m_prerequisite.passes(storyState);
+		}
+	}
+	
+	
+	////////////////////////////////////////////////////////////////
+	
+	
+	public boolean passesGlobalRules(ArrayList<GlobalRule> rules, StoryState storyState)
+	{
+		if (rules == null || rules.isEmpty())
+		{
+			return true;
+		}
+		else
+		{
+			boolean passes = true;
+			for (GlobalRule rule : rules)
+			{
+				if (rule.appliesToNode(this) && !rule.passes(storyState))
+				{
+					passes = false;
+					break;
+				}
+			}
+			return passes;
 		}
 	}
 	

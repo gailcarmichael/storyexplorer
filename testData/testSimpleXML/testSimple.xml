@@ -1,4 +1,4 @@
-<story numTopScenesForUser="5" prioritizationType="physicsForcesAnalogy">
+<story numTopScenesForUser="5" prioritizationType="sumOfCategoryMaximums">
    <storyNodes>
       <storyNode id="node1" type="kernel" lastNode="false">
          <teaserText>node 1 teaser</teaserText>
@@ -10,7 +10,7 @@
       </storyNode>
       <storyNode id="node2" type="kernel" lastNode="false">
          <teaserText>node 2 teaser</teaserText>
-         <eventText>node 3 event</eventText>
+         <eventText>node 2 event</eventText>
          <functionalDescription>
             <prominence id="dawgCharacter">3</prominence>
             <tag id="sunnyWeather"/>

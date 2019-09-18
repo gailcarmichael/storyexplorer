@@ -39,6 +39,9 @@ public class Story
 	@Element(name="initialStoryState")
 	protected StoryState m_storyState;
 	
+	@ElementList(name="globalRules", required=false)
+	protected ArrayList<GlobalRule> m_globalRules;
+	
 	// Keep a reference to the original
 	protected StoryState m_initialStoryState;
 	
@@ -57,7 +60,8 @@ public class Story
 			@Attribute(name="prioritizationType", required=false) PrioritizationType prioritizationType,
 			@ElementList(name="storyNodes") ArrayList<StoryNode> nodes,
 			@Element(name="startingNode", required=false) StoryNode startingNode,
-			@Element(name="initialStoryState") StoryState initStoryState)
+			@Element(name="initialStoryState") StoryState initStoryState,
+			@ElementList(name="globalRules", required=false) ArrayList<GlobalRule> globalRules)
 	{
 		m_numTopScenesForUser = numTopScenesForUser;
 		
@@ -75,12 +79,24 @@ public class Story
 		m_initialStoryState = initStoryState.clone();
 		m_storyState = m_initialStoryState.clone();
 		
+		m_globalRules = globalRules;  // could be null
+		
 		m_nodePrioritizer = new NodePrioritizer(this);
 		
 		m_nodeBeingConsumed = m_startingNode; // could be null
 		
 		calculateNumNodesWithElement();
 		calculateSumProminencesWithElementAndTotal();
+	}
+	
+	public Story(
+			@Attribute(name="numTopScenesForUser") int numTopScenesForUser,
+			@Attribute(name="prioritizationType", required=false) PrioritizationType prioritizationType,
+			@ElementList(name="storyNodes") ArrayList<StoryNode> nodes,
+			@Element(name="startingNode", required=false) StoryNode startingNode,
+			@Element(name="initialStoryState") StoryState initStoryState)
+	{
+		this(numTopScenesForUser, prioritizationType, nodes, startingNode, initStoryState, null);
 	}
 	
 	
@@ -301,6 +317,18 @@ public class Story
 			isValid = false;
 		}
 		
+		if (m_globalRules != null)
+		{
+			for (GlobalRule r : m_globalRules)
+			{
+				if (!r.isValid())
+				{
+					isValid = false;
+					break;
+				}
+			}
+		}
+		
 		return isValid;
 	}
 	
@@ -372,7 +400,9 @@ public class Story
 		
 		for (StoryNode node : m_nodes)
 		{
-			if (!node.isConsumed() && node.passesPrerequisite(m_storyState)
+			if (!node.isConsumed() 
+					&& node.passesPrerequisite(m_storyState)
+					&& node.passesGlobalRules(m_globalRules, m_storyState)
 					&& (!kernelsOnly || node.isKernel())
 					&& (!satellitesOnly || node.isSatellite()))
 			{
@@ -391,10 +421,10 @@ public class Story
 	}
 	
 	// Returns a collection of available satellite nodes
-		public ArrayList<StoryNode> getAvailableSatelliteNodes()
-		{
-			return getAvailableNodes(false, true);
-		}
+	public ArrayList<StoryNode> getAvailableSatelliteNodes()
+	{
+		return getAvailableNodes(false, true);
+	}
 	
 	
 	////

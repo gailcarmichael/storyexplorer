@@ -3,6 +3,8 @@ package storyEngine;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 
+import storyEngine.storyNodes.StoryNode;
+
 public class GlobalRule
 {	
 	public static enum HowMany { allOf, anyOf }
@@ -68,6 +70,18 @@ public class GlobalRule
 			@Element(name="nodesAffected") NodesAffected nodesAffectedFilter)
 	{
 		this(null, null, storyStateFilter, nodesAffectedFilter);
+	}
+	
+	//
+	
+	public boolean appliesToNode(StoryNode node)
+	{
+		return m_nodesAffectedFilter.m_itemList.contains(node.getID());
+	}
+	
+	public boolean passes(StoryState storyState)
+	{
+		return true;//TODO: global rule passes?
 	}
 	
 	//
@@ -154,9 +168,62 @@ public class GlobalRule
 			m_nodeState = nodeState;
 		}
 		
+		private String[] items() { return m_itemList.split("[, ]+"); }
+		
+		private boolean itemPresent(StoryState storyState, String item)
+		{
+			switch(m_filterNodeListType)
+			{
+				case tags:
+				case storyElements:
+					return storyState.haveSeenSceneWithFeature(item);
+				case nodeIDs:
+					return storyState.haveSeenScene(item);
+				default:
+					return false;
+			}
+		}
+		
+		public boolean passes(StoryState storyState)
+		{
+			boolean passes = false;
+			
+			if (m_howManyItemsRequired == HowMany.allOf)
+			{
+				passes = true;
+				for (String item : items())
+				{
+					boolean itemPresent = itemPresent(storyState, item);
+					if ((m_nodeState == NodeState.seen && !itemPresent) ||
+						(m_nodeState == NodeState.notSeen && itemPresent))
+					{
+						passes = false;
+						break;
+					}
+				}
+			}
+			
+			else if (m_howManyItemsRequired == HowMany.anyOf)
+			{
+				passes = false;
+				for (String item : items())
+				{
+					boolean itemPresent = itemPresent(storyState, item);
+					if ((m_nodeState == NodeState.seen && itemPresent) ||
+						(m_nodeState == NodeState.notSeen && !itemPresent))
+					{
+						passes = true;
+						break;
+					}
+				}
+			}
+			
+			return passes;
+		}
+		
 		public boolean isValid()
 		{
-			return m_itemList.split(",").length > 0;
+			return items().length > 0;
 		}
 		
 		public String toString()
@@ -189,6 +256,45 @@ public class GlobalRule
 			m_tagList = tagList;
 			m_howManyItemsRequired = howManyItemsRequired;
 			m_tagState = tagState;
+		}
+		
+		private String[] tags() { return m_tagList.split("[, ]+"); }
+		
+		public boolean passes(StoryState storyState)
+		{
+			boolean passes = false;
+			
+			if (m_howManyItemsRequired == HowMany.allOf)
+			{
+				passes = true;
+				for (String item : tags())
+				{
+					boolean itemPresent = storyState.taggedWithElement(item);
+					if ((m_tagState == TagState.present && !itemPresent) ||
+						(m_tagState == TagState.notPresent && itemPresent))
+					{
+						passes = false;
+						break;
+					}
+				}
+			}
+			
+			else if (m_howManyItemsRequired == HowMany.anyOf)
+			{
+				passes = false;
+				for (String item : tags())
+				{
+					boolean itemPresent = storyState.taggedWithElement(item);
+					if ((m_tagState == TagState.present && itemPresent) ||
+						(m_tagState == TagState.notPresent && !itemPresent))
+					{
+						passes = true;
+						break;
+					}
+				}
+			}
+			
+			return passes;
 		}
 		
 		public boolean isValid()

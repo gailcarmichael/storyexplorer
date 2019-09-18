@@ -44,7 +44,7 @@ public class TestGlobalRules
 				"nodeID4,nodeID5",
 				GlobalRule.HowMany.anyOf);
 		
-		GlobalRule storyStateFilterRule = new GlobalRule("storyStateFilterRule", storyStateFilter, nodesAffected);
+		GlobalRule storyStateFilterRule = new GlobalRule("storyStateFilterRule", storyStateFilter, nodesAffected2);
 		
 		//////////////////////////////////////////////////////////////////
 		
