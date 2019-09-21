@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import game.StoryExplorerGame;
 import processing.core.PApplet;
 import processing.core.PFont;
+import processing.core.PImage;
 
 public class SatelliteChoices
 {
@@ -104,6 +105,8 @@ public class SatelliteChoices
 		m_parent.textAlign(PApplet.CENTER, PApplet.CENTER);
 		
 		ArrayList<String> teaserText = m_game.getSatellitesTeaserText();
+		ArrayList<String> teaserImage = m_game.getSatellitesTeaserImage();
+
 		int numButtons = Math.min(teaserText.size(), m_buttons.length);
 		
 		for (int buttonNum=0; buttonNum < numButtons; buttonNum++)
@@ -126,19 +129,18 @@ public class SatelliteChoices
 			m_parent.strokeWeight(BUTTON_STROKE_WEIGHT);
 			
 			m_parent.rect(button.x, button.y, button.width, button.height, 7);
-			
-			///
-			// Button text
-
 			m_parent.fill(0);
-			
-			m_parent.text(teaserText.get(buttonNum),
+			///
+			// Button text or image
+			if (!teaserImage.get(buttonNum).isEmpty()) {
+				PImage img = m_parent.loadImage(teaserImage.get(buttonNum));
+				img.resize(0, BUTTON_HEIGHT);
+				m_parent.image(img, button.x + (button.width / 8), button.y + (button.height/2));
+			}
+				m_parent.text(teaserText.get(buttonNum),
 					      button.x + BUTTON_TEXT_PADDING, button.y + BUTTON_TEXT_PADDING, 
 					      button.width - 2*BUTTON_TEXT_PADDING, button.height - 2*BUTTON_TEXT_PADDING);
-
-		}
-		
-		
+		}	
 	}
 	
 	///////////////////////////

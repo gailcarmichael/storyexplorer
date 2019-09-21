@@ -31,6 +31,9 @@ public class StoryNode
 
 	@Element(name="teaserText")
 	protected String m_teaserText;
+	
+	@Element(name="teaserImage", required=false)
+	protected String m_teaserImage;
 
 	@Element(name="eventText")
 	protected String m_eventText;
@@ -51,11 +54,12 @@ public class StoryNode
 			@Attribute(name="id") String id, 
 			@Attribute(name="type") NodeType type,
 			@Element(name="teaserText") String teaserText, 
+			@Element(name="teaserImage") String teaserImage, 
 			@Element(name="eventText") String eventText,
 			@Element(name="functionalDescription") FunctionalDescription funcDesc,
 			@ElementList(name="choices", inline=true) ArrayList<Choice> choices)
 	{
-		this(id, type, false, teaserText, eventText, funcDesc, null, choices);
+		this(id, type, false, teaserText, teaserImage, eventText, funcDesc, null, choices);
 	}
 	
 	
@@ -63,12 +67,13 @@ public class StoryNode
 			@Attribute(name="id") String id,  
 			@Attribute(name="type") NodeType type,
 			@Element(name="teaserText") String teaserText, 
+			@Element(name="teaserImage", required=false) String teaserImage, 
 			@Element(name="eventText") String eventText,
 			@Element(name="functionalDescription") FunctionalDescription funcDesc,
 			@Element(name="prerequisite", required=false) Prerequisite prerequisite,
 			@ElementList(name="choices", inline=true) ArrayList<Choice> choices)
 	{
-		this(id, type, false, teaserText, eventText, funcDesc, prerequisite, choices);
+		this(id, type, false, teaserText, teaserImage, eventText, funcDesc, prerequisite, choices);
 	}
 
 
@@ -76,7 +81,8 @@ public class StoryNode
 			@Attribute(name="id") String id,  
 			@Attribute(name="type") NodeType type,
 			@Attribute(name="lastNode", required=false) boolean lastNode,
-			@Element(name="teaserText") String teaserText, 
+			@Element(name="teaserText", required=false) String teaserText, 
+			@Element(name="teaserImage", required=false) String teaserImage, 
 			@Element(name="eventText") String eventText,
 			@Element(name="functionalDescription") FunctionalDescription funcDesc,
 			@Element(name="prerequisite", required=false) Prerequisite prerequisite,
@@ -86,6 +92,7 @@ public class StoryNode
 		m_type = type;
 		m_lastNode = false;
 		m_teaserText = teaserText;
+		m_teaserImage = teaserImage;
 		m_eventText = eventText;
 		m_functionalDesc = funcDesc;
 		m_prerequisite = prerequisite;
@@ -97,6 +104,7 @@ public class StoryNode
 
 	public String getID() { return m_id; }
 	public String getTeaserText() { return m_teaserText; }
+	public String getTeaserImage() { return m_teaserImage; }
 	public String getEventText() { return m_eventText; }
 	
 	public boolean isLastNode() { return m_lastNode; }
