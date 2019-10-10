@@ -91,17 +91,19 @@ public abstract class StoryExplorerGame
 		return textList;
 	}
 	
-	public ArrayList<String> getSatellitesTeaserImage()
+	public ArrayList<String> getSatellitesTeaserImages()
 	{
 		ArrayList<String> imageList = new ArrayList<String>();
 		
 		for (StoryNode s : m_currentSatellites)
 		{
-			if (s.getTeaserImage() == null) {
+			if (s.getTeaserImage() == null) 
+			{
 				imageList.add("");
 				
 			}
-			else {
+			else 
+			{
 				imageList.add(s.getTeaserImage());
 			}
 			

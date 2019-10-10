@@ -54,7 +54,7 @@ public class StoryNode
 			@Attribute(name="id") String id, 
 			@Attribute(name="type") NodeType type,
 			@Element(name="teaserText") String teaserText, 
-			@Element(name="teaserImage") String teaserImage, 
+			@Element(name="teaserImage", required=false) String teaserImage, 
 			@Element(name="eventText") String eventText,
 			@Element(name="functionalDescription") FunctionalDescription funcDesc,
 			@ElementList(name="choices", inline=true) ArrayList<Choice> choices)

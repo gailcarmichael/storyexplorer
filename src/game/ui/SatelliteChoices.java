@@ -105,7 +105,7 @@ public class SatelliteChoices
 		m_parent.textAlign(PApplet.CENTER, PApplet.CENTER);
 		
 		ArrayList<String> teaserText = m_game.getSatellitesTeaserText();
-		ArrayList<String> teaserImage = m_game.getSatellitesTeaserImage();
+		ArrayList<String> teaserImage = m_game.getSatellitesTeaserImages();
 
 		int numButtons = Math.min(teaserText.size(), m_buttons.length);
 		

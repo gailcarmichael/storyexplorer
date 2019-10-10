@@ -4,8 +4,7 @@
 	<!--  Apprentice satellites -->
 
 		<storyNode id="introduceApprentice" type="satellite" lastNode="false">
-			<teaserText>A young man approaches with a certain eagerness in his eyes.</teaserText>
-			<eventText>He asks you for your advice on a few existential questions before a long pause. He looks up at you pensively. "I've been reading your teachings and listening to you speak, Prophet, and I would like to live my life in service to you and the deity."
+			<teaserText>A young man approaches with a certain eagerness in his eyes.</teaserText><eventText>He asks you for your advice on a few existential questions before a long pause. He looks up at you pensively. "I've been reading your teachings and listening to you speak, Prophet, and I would like to live my life in service to you and the deity."
 
 The devotion he shows gives you renewed faith in your cause. You agree to take him under your wing.</eventText>
 			<functionalDescription>
@@ -19,7 +18,7 @@ The devotion he shows gives you renewed faith in your cause. You agree to take h
 					<quantModifier id="charityMetric" absolute="false">+1</quantModifier>
 				</outcome>
 			</choice>
-			<teaserImage>../data/images/wealth.png</teaserImage></storyNode>
+			</storyNode>
 
 		<storyNode id="apprenticeOutskirts" type="satellite" lastNode="false">
 			<teaserText>Your apprentice return after sending him to the outskirts earlier that day.</teaserText>
@@ -71,8 +70,7 @@ The devotion he shows gives you renewed faith in your cause. You agree to take h
 
 
 		<storyNode id="apprenticeInPast" type="satellite">
-			<teaserText>Your apprentice approaches, lost in the past.</teaserText>
-			<eventText>He is sitting close by, but looks a million miles away.
+			<teaserText>Your apprentice approaches, lost in the past.</teaserText><eventText>He is sitting close by, but looks a million miles away.
 
 "What troubles you so, young man?"
 
@@ -90,7 +88,7 @@ He says nothing, but subconsciously fingers the scar on his forearm.
 					<quantModifier id="trustMetric" absolute="false">+1</quantModifier>
 				</outcome>
 			</choice>
-                        <teaserImage>../data/images/wealth.png</teaserImage>
+                        
 		</storyNode>
 
 
