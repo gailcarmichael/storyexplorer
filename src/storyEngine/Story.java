@@ -401,10 +401,10 @@ public class Story
 		for (StoryNode node : m_nodes)
 		{
 			if (!node.isConsumed() 
-					&& node.passesPrerequisite(m_storyState)
-					&& node.passesGlobalRules(m_globalRules, m_storyState)
 					&& (!kernelsOnly || node.isKernel())
-					&& (!satellitesOnly || node.isSatellite()))
+					&& (!satellitesOnly || node.isSatellite())
+					&& node.passesPrerequisite(m_storyState)
+					&& node.passesGlobalRules(m_globalRules, m_storyState))
 			{
 				availableNodes.add(node);
 			}

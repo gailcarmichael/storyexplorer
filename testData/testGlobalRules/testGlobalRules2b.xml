@@ -1,4 +1,4 @@
 <globalRule id="storyStateFilterRule">
    <storyStateFilter tagsToCheck="tag1,tag2,tag3" howManyRequired="allOf" tagState="notPresent"/>
-   <nodesAffected checkNodesUsing="nodeIDs" listToCheck="nodeID4" howManyRequired="allOf"/>
+   <nodesAffected checkNodesUsing="nodeIDs" listToCheck="nodeID4,nodeID5" howManyRequired="anyOf"/>
 </globalRule>

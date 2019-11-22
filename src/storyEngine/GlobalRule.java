@@ -72,7 +72,7 @@ public class GlobalRule
 		this(null, null, storyStateFilter, nodesAffectedFilter);
 	}
 	
-	//
+	////
 	
 	public boolean appliesToNode(StoryNode node)
 	{
@@ -81,10 +81,22 @@ public class GlobalRule
 	
 	public boolean passes(StoryState storyState)
 	{
-		return true;//TODO: global rule passes?
+		boolean passes = true;
+		
+		if (m_nodeFilter != null && !m_nodeFilter.passes(storyState))
+		{
+			passes = false;
+		}
+		
+		if (m_storyStateFilter != null && m_storyStateFilter.passes(storyState))
+		{
+			passes = false;
+		}
+		
+		return passes;
 	}
 	
-	//
+	////
 	
 	public boolean isValid()
 	{
@@ -113,7 +125,7 @@ public class GlobalRule
 		return valid;
 	}
 	
-	//
+	////
 	
 	public String toString()
 	{
@@ -235,7 +247,7 @@ public class GlobalRule
 		}
 	}
 	
-	//
+	////
 	
 	public static class StoryStateFilter
 	{
@@ -310,7 +322,7 @@ public class GlobalRule
 		}
 	}
 	
-	// 
+	////
 	
 	public static class NodesAffected
 	{	
