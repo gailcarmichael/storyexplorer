@@ -1,9 +1,11 @@
 package storyEngine.analysis;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 import storyEngine.Story;
+import storyEngine.storyElements.StoryElement;
 import storyEngine.storyNodes.StoryNode;
 
 // This class is used to simulate one complete run-through of
@@ -16,7 +18,8 @@ public class StoryRunSimulation
 	{
 		TopChoice,
 		BottomChoice,
-		RandomChoice
+		RandomChoice,
+		PreferencesListChoice,
 	}
 	
 	protected static Random RANDOM = null;
@@ -65,6 +68,9 @@ public class StoryRunSimulation
 		{
 			int randomIndex = RANDOM.nextInt(possibleScenes.size());
 			
+			ArrayList<StoryElement> preferences = story.getElementCollection().getCopyOfElementList();
+			Collections.shuffle(preferences);
+			
 			StoryNode nextNode = null;
 			switch (choiceType)
 			{
@@ -77,11 +83,36 @@ public class StoryRunSimulation
 				case BottomChoice:
 					nextNode = possibleScenes.get(possibleScenes.size()-1);
 					break;
+				case PreferencesListChoice:
+					nextNode = nodeWithHighestPreference(possibleScenes, preferences);
+					break;
 			}
 						
 			lastNode = consumeNode(story, nextNode);
 			
 			possibleScenes = story.getCurrentSceneOptions();
 		}
+	}
+	
+	private static StoryNode nodeWithHighestPreference(ArrayList<StoryNode> possibleScenes, ArrayList<StoryElement> preferences)
+	{
+		StoryNode node = null;
+		int currentPreferenceIndex = 0;
+		
+		do
+		{
+			String preferredElementID = preferences.get(currentPreferenceIndex).getID();
+			for (StoryNode candidateNode : possibleScenes)
+			{
+				if (candidateNode.featuresElement(preferredElementID))
+				{
+					node = candidateNode;
+					break;
+				}
+			}
+			currentPreferenceIndex++;
+		} while (node == null && currentPreferenceIndex < preferences.size());
+		
+		return node;
 	}
 }
