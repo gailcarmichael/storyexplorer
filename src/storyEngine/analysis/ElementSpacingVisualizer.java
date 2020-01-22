@@ -15,12 +15,12 @@ public class ElementSpacingVisualizer
 	
 	private Story m_story;
 	
-	private static final int SPACE_FOR_TEXT = 150;
+	private static final int SPACE_FOR_TEXT = 300;
 	
-	private static final int HOR_SPACE_BETWEEN = 5;
-	private static final int VER_SPACE_BETWEEN = 10;
+	private static final int HOR_SPACE_BETWEEN = 10;
+	private static final int VER_SPACE_BETWEEN = 20;
 	
-	private static final int NODE_DIAMETER = 8;
+	private static final int NODE_DIAMETER = 16;
 	
 	private float m_windowHeight;
 	private float m_windowWidth;
@@ -116,6 +116,7 @@ public class ElementSpacingVisualizer
 			
 			parent.fill(0);
 			parent.textAlign(PApplet.LEFT, PApplet.CENTER);
+			parent.textSize(NODE_DIAMETER);
 			parent.text(elementID, HOR_SPACE_BETWEEN, y);
 			
 			elementNum++;
