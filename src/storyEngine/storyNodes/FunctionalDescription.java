@@ -13,6 +13,7 @@ import storyEngine.StoryState;
 import storyEngine.storyElements.ElementType;
 import storyEngine.storyElements.StoryElement;
 import storyEngine.storyElements.StoryElementCollection;
+import storyEngine.storyElements.StoryElementWeightCurve;
 
 public class FunctionalDescription
 {
@@ -225,10 +226,14 @@ public class FunctionalDescription
 		{
 			StoryElement el = elementCol.getElementWithID(id);
 			
+			StoryElementWeightCurve weightCurve = elementCol.getWeightCurve(id);
+			float weight = weightCurve.getValueAt(story.getScenesSeen().size()-1);
+			
 			if (el != null && el.hasDesireValue())
 			{
 				float elementScore = m_elementProminences.get(id) *
-						             story.getDesireForElement(id);
+						             story.getDesireForElement(id) *
+						             weight;
 				
 				if (!categoryScores.containsKey(el.getCategory()) || 
 					categoryScores.get(el.getCategory()) < elementScore)
@@ -267,6 +272,9 @@ public class FunctionalDescription
 		{
 			StoryElement el = elementCol.getElementWithID(id);
 			
+			StoryElementWeightCurve weightCurve = elementCol.getWeightCurve(id);
+			float weight = weightCurve.getValueAt(story.getScenesSeen().size()-1);
+			
 			if (el != null && el.hasDesireValue())
 			{
 				float timeSinceEvent = story.getDesireForElement(id);
@@ -276,6 +284,9 @@ public class FunctionalDescription
 				
 				// Adjust the score proportional to the prominence of the element
 				elementScore *= (1 + (0.1*m_elementProminences.get(id)));
+				
+				// Adjust score by the element's weight
+				elementScore *= weight;
 				
 				// Accumulate with node score
 				nodeScore += elementScore;

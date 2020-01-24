@@ -1,9 +1,12 @@
 package storyEngine.storyElements;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
+
+import storyEngine.storyElements.StoryElementWeightCurve.PiecewiseConstantWeightCurve;
 
 
 @Root
@@ -12,6 +15,10 @@ public class StoryElementCollection
 	@ElementList(name="storyElements", inline=true)
 	protected ArrayList<StoryElement> m_storyElements;
 	
+	
+	// Contains optional element weight curves (values to be used as multipliers)
+	// to change how important elements are in priority calculations
+	protected HashMap<String, StoryElementWeightCurve> m_weightCurves;
 	
 	// Used to easily retrieve elements involved with priority
 	// calculations (contains references to some of the elements
@@ -33,8 +40,16 @@ public class StoryElementCollection
 		{
 			add(e);
 		}
+		
+		m_weightCurves = new HashMap<String, StoryElementWeightCurve>();
 	}
 	
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<StoryElement> getCopyOfElementList()
+	{
+		return (ArrayList<StoryElement>) m_storyElements.clone();
+	}
 	
 	public int getNumElementsPriorityCalc()
 	{
@@ -147,11 +162,31 @@ public class StoryElementCollection
 		return success;
 	}
 	
+	public void addWeightCurve(String id, StoryElementWeightCurve curve)
+	{
+		m_weightCurves.put(id, curve);
+	}
+	
+	public StoryElementWeightCurve getWeightCurve(String id)
+	{
+		if (m_weightCurves.containsKey(id))
+		{
+			return m_weightCurves.get(id);
+		}
+		else
+		{
+			return new PiecewiseConstantWeightCurve(1); // all default weight of 1
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
 	public Object clone()
 	{
 		StoryElementCollection collection = new StoryElementCollection(
 				m_storyElements);
-		
+
+		collection.m_weightCurves = (HashMap<String, StoryElementWeightCurve>) m_weightCurves.clone();
+	
 		return collection;
 	}
 }

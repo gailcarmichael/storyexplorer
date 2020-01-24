@@ -48,18 +48,20 @@ public class TestElementSpacing extends PApplet
 	
 	private static final ObjectiveFunction.Type OBJECTIVE_FUNCTION_TYPE = ObjectiveFunction.Type.MemoryModel;
 	
-	private static final TestType TEST_TYPE = TestType.VisualizeOneRun;
+	private static final TestType TEST_TYPE = TestType.MonteCarloSimulationManyStories;
 	
 	private static final int MONTE_CARLO_ITERATIONS = 1000;
 	
 	private static final boolean TEST_COMBO_ELEMENTS = true; // whether nodes should have multiple element tags
 	
+	private static final RandomStory.WeightCurveStrategy WEIGHT_CURVE_STRATEGY = RandomStory.WeightCurveStrategy.Constant;
+	
 	private static final StoryRunSimulation.ChoiceType CHOICE_TYPE = StoryRunSimulation.ChoiceType.RandomChoice;
 	
-	private static final int PERCENT_OF_NODES_TO_CONSUME = 100;
+	private static final int PERCENT_OF_NODES_TO_CONSUME = 50;
 	
 	private static ElementSpacingVisualizer VISUALIZER;
-	private static boolean SHOW_MULTI_ELEMENT_NODES_IN_VISUALIZER = true;
+	private static boolean SHOW_MULTI_ELEMENT_NODES_IN_VISUALIZER = false;
 	
 	////////////////////////////////////////////////////////
 	
@@ -136,14 +138,15 @@ public class TestElementSpacing extends PApplet
 				story = 
 					RandomStory.getRandomStory(
 						NUM_EACH_CATEGORY, NUM_NODES_PER_ELEMENT,
+						WEIGHT_CURVE_STRATEGY,
 						10, 
 						MAX_PROMINENCE_VALUE, TEST_COMBO_ELEMENTS, 
 						NUM_TOP_CHOICES, PRIORITIZATION_TYPE);
 			}
 
-			//updateObjectiveFunctionResultsForMonteCarlo(story, objectiveFunctionResults, PrioritizationType.strawManRandom);
+			updateObjectiveFunctionResultsForMonteCarlo(story, objectiveFunctionResults, PrioritizationType.strawManRandom);
 			updateObjectiveFunctionResultsForMonteCarlo(story, objectiveFunctionResults, PrioritizationType.sumOfCategoryMaximums);
-			//updateObjectiveFunctionResultsForMonteCarlo(story, objectiveFunctionResults, PrioritizationType.eventBased);
+			updateObjectiveFunctionResultsForMonteCarlo(story, objectiveFunctionResults, PrioritizationType.eventBased);
 			//updateObjectiveFunctionResultsForMonteCarlo(story, objectiveFunctionResults, PrioritizationType.bestObjectiveFunction);				
 		}
 		
@@ -186,6 +189,7 @@ public class TestElementSpacing extends PApplet
 		{
 			story = RandomStory.getRandomStory(
 					NUM_EACH_CATEGORY, NUM_NODES_PER_ELEMENT,
+					WEIGHT_CURVE_STRATEGY,
 					10, 
 					MAX_PROMINENCE_VALUE, TEST_COMBO_ELEMENTS, 
 					NUM_TOP_CHOICES, PRIORITIZATION_TYPE);

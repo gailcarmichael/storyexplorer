@@ -5,6 +5,8 @@ import java.util.HashMap;
 
 import storyEngine.MemoryFunction;
 import storyEngine.Story;
+import storyEngine.analysis.RandomStory.WeightCurveStrategy;
+import storyEngine.storyElements.StoryElementWeightCurve;
 import storyEngine.storyNodes.StoryNode;
 
 public class ObjectiveFunctionForMemoryModel extends ObjectiveFunction
@@ -42,9 +44,11 @@ public class ObjectiveFunctionForMemoryModel extends ObjectiveFunction
 		// Step 3: Sum up W_i*Z_i
 		float sum = 0;
 		
-		for (Float value : Z_i.values())
+		//for (Float value : Z_i.values())
+		for (String elementID : Z_i.keySet())
 		{
-			sum += DEFAULT_ELEMENT_WEIGHT * value;
+			
+			sum += Z_i.get(elementID);
 		}
 		
 		return sum;
@@ -64,7 +68,10 @@ public class ObjectiveFunctionForMemoryModel extends ObjectiveFunction
 		
 		MemoryFunction memoryFunction = m_story.getMemoryFunctionForElement(elementID);
 		
-		float newResult = Math.abs(Math.min(0, memoryFunction.getValueAt(t) - DESIRED_THRESHOLD));
+		StoryElementWeightCurve weightCurve = m_story.getElementCollection().getWeightCurve(elementID);
+		float elementWeight = weightCurve.getValueAt(t);
+		
+		float newResult = Math.abs(Math.min(0, memoryFunction.getValueAt(t) - (elementWeight*DESIRED_THRESHOLD)));
 		resultListSoFar.add(newResult);
 		
 		return newResult;

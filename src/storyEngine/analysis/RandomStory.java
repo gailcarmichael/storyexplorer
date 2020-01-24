@@ -10,6 +10,8 @@ import storyEngine.StoryState;
 import storyEngine.storyElements.ElementType;
 import storyEngine.storyElements.StoryElement;
 import storyEngine.storyElements.StoryElementCollection;
+import storyEngine.storyElements.StoryElementWeightCurve;
+import storyEngine.storyElements.StoryElementWeightCurve.PiecewiseConstantWeightCurve;
 import storyEngine.storyNodes.FunctionalDescription;
 import storyEngine.storyNodes.NodeType;
 import storyEngine.storyNodes.StoryNode;
@@ -17,6 +19,12 @@ import storyEngine.storyNodes.StoryNode;
 public class RandomStory
 {
 	private static Random RANDOM = new Random();
+	
+	public static enum WeightCurveStrategy
+	{
+		Constant,
+		HalfHighHalfLowThenSwap
+	}
 	
 	////////////////////////////////////////////////////////
 	
@@ -76,7 +84,7 @@ public class RandomStory
 	private static void addRandomElementToFuncDesc(
 			StoryElementCollection col, FunctionalDescription funcDesc, int maxProminenceValue)
 	{
-		// Pick a random element from the collection, and then give it a random prominence between 1 and 3
+		// Pick a random element from the collection, and then give it a random prominence
 		
 		String id = col.getIDs().get(RANDOM.nextInt(col.getIDs().size()));
 		funcDesc.add(col, id, RANDOM.nextInt(maxProminenceValue) + 1);
@@ -85,30 +93,55 @@ public class RandomStory
 	
 	////////////////////////////////////////////////////////
 	
+	private static void addElementToCollection(
+			StoryElementCollection elementCollection, String id, String category, 
+			WeightCurveStrategy curveStrategy, int numNodes)
+	{
+		elementCollection.add(
+				new StoryElement(id, "themes", id, ElementType.quantifiable));
+		
+		if (curveStrategy == WeightCurveStrategy.Constant)
+		{
+			elementCollection.addWeightCurve(id, new PiecewiseConstantWeightCurve(1));
+		}
+		else if (curveStrategy == WeightCurveStrategy.HalfHighHalfLowThenSwap)
+		{
+			PiecewiseConstantWeightCurve highFirst = new PiecewiseConstantWeightCurve(1);
+			highFirst.addNewValue(0, 1.5f);
+			highFirst.addNewValue(numNodes/3, 0.5f);
+			
+			PiecewiseConstantWeightCurve lowFirst = new PiecewiseConstantWeightCurve(1);
+			lowFirst.addNewValue(0, 0.5f);
+			lowFirst.addNewValue(numNodes/3, 1.5f);
+			
+			elementCollection.addWeightCurve(id, RANDOM.nextBoolean() ? highFirst : lowFirst);
+		}
+	}
+	
+	
+	////////////////////////////////////////////////////////
+	
 	
 	public static Story getRandomStory(
-			int numElementsEachCategory, int numNodesPerElement, 
+			int numElementsEachCategory, int numNodesPerElement,
+			WeightCurveStrategy weightCurveStrategy,
 			int initialValueForDesires,
 			int maxValueForProminence, boolean allowComboProminence,
 			int numTopChoices, PrioritizationType prioritizationType)
 	{
 		Story story = null;
+		int numNodes = numElementsEachCategory * numNodesPerElement;
 		
 		////
-		// Step 1: Generate a story collection with generic story elements
+		// Step 1: Generate a story collection with generic story elements along with their weight curves
 		
 		StoryElementCollection elementCollection = new StoryElementCollection();
-		
+
 		for (int i=1; i <= numElementsEachCategory; i++)
 		{
-			elementCollection.add(
-					new StoryElement("theme" + i, "themes", "theme" + i, ElementType.quantifiable));
-			
-			elementCollection.add(
-					new StoryElement("character" + i, "characters", "character" + i, ElementType.quantifiable));
-		
-			elementCollection.add(
-					new StoryElement("setting" + i, "settings", "setting" + i, ElementType.quantifiable));
+			addElementToCollection(elementCollection, "theme" + i, "themes", weightCurveStrategy, numNodes);
+			addElementToCollection(elementCollection, "character" + i, "characters", weightCurveStrategy, numNodes);
+			addElementToCollection(elementCollection, "setting" + i, "settings", weightCurveStrategy, numNodes);
 			
 		}
 		
