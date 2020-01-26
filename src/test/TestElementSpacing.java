@@ -25,7 +25,7 @@ import storyEngine.storyNodes.StoryNode;
 // of story scenes is generated such that there are many scenes
 // tagged with each theme, character, and setting element.
 
-public class TestElementSpacing extends PApplet
+public class TestElementSpacing extends PApplet 
 {
 	private enum TestType
 	{
@@ -36,9 +36,19 @@ public class TestElementSpacing extends PApplet
 	
 	private static final long serialVersionUID = -893063477402437731L;
 	
-	private static final int NUM_EACH_CATEGORY = 5; // how many different themes, characters, settings each
-	private static final int NUM_NODES_PER_ELEMENT = 15; // how many nodes for each individual theme, etc
+	private static final int NUM_SETTING_ELEMENTS = 5;
+	private static final int NUM_THEME_ELEMENTS = 5;
+	private static final int NUM_CHARACTER_ELEMENTS = 5;
+	private static HashMap<String, Integer> NUM_ELEMENTS_PER_CATEGORY; // constructed using the above constants ^
+	
+	private static final int NUM_NODES_TOTAL = 225;
+	private static final int MIN_NODES_EACH_ELEMENT_USED_IN = 25;
+	private static final int MAX_ELEMENTS_PER_NODE = 2;
+	private static final boolean CONTINUE_ADDING_ELEMENTS_RANDOMLY = false;
+	
 	private static final int MAX_PROMINENCE_VALUE = 5; // a random value between 1 and this number will be assigned
+	
+	private static final RandomStory.WeightCurveStrategy WEIGHT_CURVE_STRATEGY = RandomStory.WeightCurveStrategy.Constant;
 
 	private static final int NUM_TOP_CHOICES = 5; // how many of the top nodes are offered to players
 	
@@ -48,13 +58,9 @@ public class TestElementSpacing extends PApplet
 	
 	private static final ObjectiveFunction.Type OBJECTIVE_FUNCTION_TYPE = ObjectiveFunction.Type.MemoryModel;
 	
-	private static final TestType TEST_TYPE = TestType.MonteCarloSimulationManyStories;
+	private static final TestType TEST_TYPE = TestType.VisualizeOneRun;
 	
 	private static final int MONTE_CARLO_ITERATIONS = 1000;
-	
-	private static final boolean TEST_COMBO_ELEMENTS = true; // whether nodes should have multiple element tags
-	
-	private static final RandomStory.WeightCurveStrategy WEIGHT_CURVE_STRATEGY = RandomStory.WeightCurveStrategy.Constant;
 	
 	private static final StoryRunSimulation.ChoiceType CHOICE_TYPE = StoryRunSimulation.ChoiceType.RandomChoice;
 	
@@ -62,6 +68,15 @@ public class TestElementSpacing extends PApplet
 	
 	private static ElementSpacingVisualizer VISUALIZER;
 	private static boolean SHOW_MULTI_ELEMENT_NODES_IN_VISUALIZER = false;
+	
+	static
+	{
+		NUM_ELEMENTS_PER_CATEGORY = new HashMap<String, Integer>();
+		NUM_ELEMENTS_PER_CATEGORY.put("settings", NUM_SETTING_ELEMENTS);
+		NUM_ELEMENTS_PER_CATEGORY.put("themes", NUM_THEME_ELEMENTS);
+		NUM_ELEMENTS_PER_CATEGORY.put("characters", NUM_CHARACTER_ELEMENTS);
+	}
+	
 	
 	////////////////////////////////////////////////////////
 	
@@ -134,14 +149,19 @@ public class TestElementSpacing extends PApplet
 		for (int i=0; i < MONTE_CARLO_ITERATIONS; i++)
 		{
 			if (randomizeStoryEachTime)
-			{
+			{		
 				story = 
 					RandomStory.getRandomStory(
-						NUM_EACH_CATEGORY, NUM_NODES_PER_ELEMENT,
+						NUM_ELEMENTS_PER_CATEGORY,
+						10,
 						WEIGHT_CURVE_STRATEGY,
-						10, 
-						MAX_PROMINENCE_VALUE, TEST_COMBO_ELEMENTS, 
-						NUM_TOP_CHOICES, PRIORITIZATION_TYPE);
+						NUM_NODES_TOTAL, 	
+						MIN_NODES_EACH_ELEMENT_USED_IN,
+						CONTINUE_ADDING_ELEMENTS_RANDOMLY,
+						MAX_ELEMENTS_PER_NODE,
+						MAX_PROMINENCE_VALUE,
+						NUM_TOP_CHOICES, 
+						PRIORITIZATION_TYPE);
 			}
 
 			updateObjectiveFunctionResultsForMonteCarlo(story, objectiveFunctionResults, PrioritizationType.strawManRandom);
@@ -187,12 +207,18 @@ public class TestElementSpacing extends PApplet
 		
 		if (TEST_RANDOM_STORY)
 		{
-			story = RandomStory.getRandomStory(
-					NUM_EACH_CATEGORY, NUM_NODES_PER_ELEMENT,
-					WEIGHT_CURVE_STRATEGY,
-					10, 
-					MAX_PROMINENCE_VALUE, TEST_COMBO_ELEMENTS, 
-					NUM_TOP_CHOICES, PRIORITIZATION_TYPE);
+			story = 
+					RandomStory.getRandomStory(
+						NUM_ELEMENTS_PER_CATEGORY,
+						10,
+						WEIGHT_CURVE_STRATEGY,
+						NUM_NODES_TOTAL, 	
+						MIN_NODES_EACH_ELEMENT_USED_IN,
+						CONTINUE_ADDING_ELEMENTS_RANDOMLY,
+						MAX_ELEMENTS_PER_NODE,
+						MAX_PROMINENCE_VALUE,
+						NUM_TOP_CHOICES, 
+						PRIORITIZATION_TYPE);
 			
 			// Export to XML for easy double checking of story generation
 			try

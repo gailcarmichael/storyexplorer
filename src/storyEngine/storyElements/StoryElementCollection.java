@@ -139,6 +139,21 @@ public class StoryElementCollection
 		return getDesireValueIDs();
 	}
 	
+	public ArrayList<String> getElementsIDsInCategory(String category)
+	{
+		ArrayList<String> inCategory = new ArrayList<String>();
+		
+		for (StoryElement e : m_storyElements)
+		{
+			if (e.getCategory().equals(category))
+			{
+				inCategory.add(e.getID());
+			}
+		}
+		
+		return inCategory;
+	}
+	
 	
 	public boolean add(StoryElement e)
 	{

@@ -1,1765 +1,1728 @@
 <story numTopScenesForUser="5" prioritizationType="sumOfCategoryMaximums">
    <storyNodes>
-      <storyNode id="theme1-1" type="satellite" lastNode="false">
-         <teaserText>theme1 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme4">4</prominence>
-            <prominence id="setting3">5</prominence>
-            <prominence id="theme1">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character1-1" type="satellite" lastNode="false">
-         <teaserText>character1 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character1">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting1-1" type="satellite" lastNode="false">
-         <teaserText>setting1 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting1">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme1-2" type="satellite" lastNode="false">
-         <teaserText>theme1 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme1">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character1-2" type="satellite" lastNode="false">
-         <teaserText>character1 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character1">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting1-2" type="satellite" lastNode="false">
-         <teaserText>setting1 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting1">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme1-3" type="satellite" lastNode="false">
-         <teaserText>theme1 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme1">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character1-3" type="satellite" lastNode="false">
-         <teaserText>character1 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character1">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting1-3" type="satellite" lastNode="false">
-         <teaserText>setting1 (3)</teaserText>
+      <storyNode id="node0" type="satellite" lastNode="false">
+         <teaserText>setting1</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
             <prominence id="setting1">3</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="theme1-4" type="satellite" lastNode="false">
-         <teaserText>theme1 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme1">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character1-4" type="satellite" lastNode="false">
-         <teaserText>character1 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme4">1</prominence>
-            <prominence id="character2">4</prominence>
-            <prominence id="character1">3</prominence>
-            <prominence id="setting1">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting1-4" type="satellite" lastNode="false">
-         <teaserText>setting1 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character4">5</prominence>
-            <prominence id="setting1">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme1-5" type="satellite" lastNode="false">
-         <teaserText>theme1 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme1">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character1-5" type="satellite" lastNode="false">
-         <teaserText>character1 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character1">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting1-5" type="satellite" lastNode="false">
-         <teaserText>setting1 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character3">1</prominence>
-            <prominence id="setting1">3</prominence>
-            <prominence id="setting4">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme1-6" type="satellite" lastNode="false">
-         <teaserText>theme1 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme2">2</prominence>
-            <prominence id="theme1">5</prominence>
-            <prominence id="theme5">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character1-6" type="satellite" lastNode="false">
-         <teaserText>character1 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character1">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting1-6" type="satellite" lastNode="false">
-         <teaserText>setting1 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting1">3</prominence>
-            <prominence id="theme1">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme1-7" type="satellite" lastNode="false">
-         <teaserText>theme1 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme4">1</prominence>
-            <prominence id="character2">1</prominence>
-            <prominence id="theme1">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character1-7" type="satellite" lastNode="false">
-         <teaserText>character1 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme4">2</prominence>
-            <prominence id="theme2">3</prominence>
-            <prominence id="character1">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting1-7" type="satellite" lastNode="false">
-         <teaserText>setting1 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting1">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme1-8" type="satellite" lastNode="false">
-         <teaserText>theme1 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme1">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character1-8" type="satellite" lastNode="false">
-         <teaserText>character1 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character1">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting1-8" type="satellite" lastNode="false">
-         <teaserText>setting1 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme2">1</prominence>
-            <prominence id="setting1">4</prominence>
-            <prominence id="theme5">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme1-9" type="satellite" lastNode="false">
-         <teaserText>theme1 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme1">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character1-9" type="satellite" lastNode="false">
-         <teaserText>character1 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character3">5</prominence>
-            <prominence id="character1">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting1-9" type="satellite" lastNode="false">
-         <teaserText>setting1 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting1">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme1-10" type="satellite" lastNode="false">
-         <teaserText>theme1 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme1">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character1-10" type="satellite" lastNode="false">
-         <teaserText>character1 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting3">4</prominence>
-            <prominence id="character1">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting1-10" type="satellite" lastNode="false">
-         <teaserText>setting1 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character4">3</prominence>
-            <prominence id="setting3">5</prominence>
-            <prominence id="character2">2</prominence>
-            <prominence id="setting1">4</prominence>
-            <prominence id="setting4">4</prominence>
-            <prominence id="setting5">5</prominence>
-            <prominence id="character5">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme1-11" type="satellite" lastNode="false">
-         <teaserText>theme1 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme1">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character1-11" type="satellite" lastNode="false">
-         <teaserText>character1 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character1">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting1-11" type="satellite" lastNode="false">
-         <teaserText>setting1 (4)</teaserText>
+      <storyNode id="node1" type="satellite" lastNode="false">
+         <teaserText>setting1-character3</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
             <prominence id="character3">3</prominence>
-            <prominence id="setting1">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme1-12" type="satellite" lastNode="false">
-         <teaserText>theme1 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme1">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character1-12" type="satellite" lastNode="false">
-         <teaserText>character1 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting2">3</prominence>
-            <prominence id="theme4">2</prominence>
-            <prominence id="character1">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting1-12" type="satellite" lastNode="false">
-         <teaserText>setting1 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme4">3</prominence>
-            <prominence id="setting1">2</prominence>
-            <prominence id="theme5">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme1-13" type="satellite" lastNode="false">
-         <teaserText>theme1 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme1">3</prominence>
-            <prominence id="character5">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character1-13" type="satellite" lastNode="false">
-         <teaserText>character1 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character1">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting1-13" type="satellite" lastNode="false">
-         <teaserText>setting1 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting3">3</prominence>
             <prominence id="setting1">1</prominence>
-            <prominence id="character1">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node2" type="satellite" lastNode="false">
+         <teaserText>setting1-character2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character2">1</prominence>
+            <prominence id="setting1">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node3" type="satellite" lastNode="false">
+         <teaserText>setting1-theme5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting1">5</prominence>
             <prominence id="theme5">2</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="theme1-14" type="satellite" lastNode="false">
-         <teaserText>theme1 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme1">3</prominence>
-            <prominence id="theme5">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character1-14" type="satellite" lastNode="false">
-         <teaserText>character1 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character1">4</prominence>
-            <prominence id="setting4">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting1-14" type="satellite" lastNode="false">
-         <teaserText>setting1 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting1">4</prominence>
-            <prominence id="theme1">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme1-15" type="satellite" lastNode="false">
-         <teaserText>theme1 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme1">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character1-15" type="satellite" lastNode="false">
-         <teaserText>character1 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character1">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting1-15" type="satellite" lastNode="false">
-         <teaserText>setting1 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting1">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme2-1" type="satellite" lastNode="false">
-         <teaserText>theme2 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme2">4</prominence>
-            <prominence id="setting1">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character2-1" type="satellite" lastNode="false">
-         <teaserText>character2 (2)</teaserText>
+      <storyNode id="node4" type="satellite" lastNode="false">
+         <teaserText>setting1-character2</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
             <prominence id="character2">2</prominence>
+            <prominence id="setting1">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node5" type="satellite" lastNode="false">
+         <teaserText>setting1-character3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character3">4</prominence>
+            <prominence id="setting1">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node6" type="satellite" lastNode="false">
+         <teaserText>setting1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting1">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node7" type="satellite" lastNode="false">
+         <teaserText>setting1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting1">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node8" type="satellite" lastNode="false">
+         <teaserText>setting1-character4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character4">5</prominence>
+            <prominence id="setting1">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node9" type="satellite" lastNode="false">
+         <teaserText>setting1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting1">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node10" type="satellite" lastNode="false">
+         <teaserText>setting1-character1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting1">5</prominence>
+            <prominence id="character1">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node11" type="satellite" lastNode="false">
+         <teaserText>setting1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting1">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node12" type="satellite" lastNode="false">
+         <teaserText>setting1-character5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting1">1</prominence>
+            <prominence id="character5">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node13" type="satellite" lastNode="false">
+         <teaserText>setting1-theme5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting1">3</prominence>
             <prominence id="theme5">5</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="setting2-1" type="satellite" lastNode="false">
-         <teaserText>setting2 (1)</teaserText>
+      <storyNode id="node14" type="satellite" lastNode="false">
+         <teaserText>setting1</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="setting2">1</prominence>
+            <prominence id="setting1">2</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="theme2-2" type="satellite" lastNode="false">
-         <teaserText>theme2 (3)</teaserText>
+      <storyNode id="node15" type="satellite" lastNode="false">
+         <teaserText>setting1-character1</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="theme2">3</prominence>
+            <prominence id="setting1">5</prominence>
+            <prominence id="character1">5</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="character2-2" type="satellite" lastNode="false">
-         <teaserText>character2 (3)</teaserText>
+      <storyNode id="node16" type="satellite" lastNode="false">
+         <teaserText>setting1-character3</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="character2">3</prominence>
+            <prominence id="character3">2</prominence>
+            <prominence id="setting1">3</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="setting2-2" type="satellite" lastNode="false">
-         <teaserText>setting2 (2)</teaserText>
+      <storyNode id="node17" type="satellite" lastNode="false">
+         <teaserText>setting1</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="setting2">4</prominence>
-            <prominence id="setting3">3</prominence>
-            <prominence id="character5">1</prominence>
+            <prominence id="setting1">4</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="theme2-3" type="satellite" lastNode="false">
-         <teaserText>theme2 (4)</teaserText>
+      <storyNode id="node18" type="satellite" lastNode="false">
+         <teaserText>setting1</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="theme2">4</prominence>
+            <prominence id="setting1">2</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="character2-3" type="satellite" lastNode="false">
-         <teaserText>character2 (4)</teaserText>
+      <storyNode id="node19" type="satellite" lastNode="false">
+         <teaserText>setting1-character5</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="character2">4</prominence>
+            <prominence id="setting1">4</prominence>
+            <prominence id="character5">5</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="setting2-3" type="satellite" lastNode="false">
-         <teaserText>setting2 (2)</teaserText>
+      <storyNode id="node20" type="satellite" lastNode="false">
+         <teaserText>setting1-character1</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="setting2">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme2-4" type="satellite" lastNode="false">
-         <teaserText>theme2 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme2">1</prominence>
+            <prominence id="setting1">5</prominence>
             <prominence id="character1">1</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="character2-4" type="satellite" lastNode="false">
-         <teaserText>character2 (1)</teaserText>
+      <storyNode id="node21" type="satellite" lastNode="false">
+         <teaserText>setting1</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="character3">5</prominence>
+            <prominence id="setting1">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node22" type="satellite" lastNode="false">
+         <teaserText>setting1-character2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
             <prominence id="character2">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting2-4" type="satellite" lastNode="false">
-         <teaserText>setting2 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting2">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme2-5" type="satellite" lastNode="false">
-         <teaserText>theme2 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme2">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character2-5" type="satellite" lastNode="false">
-         <teaserText>character2 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character2">5</prominence>
-            <prominence id="setting4">2</prominence>
-            <prominence id="theme5">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting2-5" type="satellite" lastNode="false">
-         <teaserText>setting2 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting2">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme2-6" type="satellite" lastNode="false">
-         <teaserText>theme2 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme2">2</prominence>
             <prominence id="setting1">5</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="character2-6" type="satellite" lastNode="false">
-         <teaserText>character2 (5)</teaserText>
+      <storyNode id="node23" type="satellite" lastNode="false">
+         <teaserText>setting1</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="character2">3</prominence>
-            <prominence id="character5">3</prominence>
-            <prominence id="theme5">2</prominence>
+            <prominence id="setting1">4</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="setting2-6" type="satellite" lastNode="false">
-         <teaserText>setting2 (2)</teaserText>
+      <storyNode id="node24" type="satellite" lastNode="false">
+         <teaserText>setting1-theme5</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="setting2">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme2-7" type="satellite" lastNode="false">
-         <teaserText>theme2 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme2">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character2-7" type="satellite" lastNode="false">
-         <teaserText>character2 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character2">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting2-7" type="satellite" lastNode="false">
-         <teaserText>setting2 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting2">2</prominence>
-            <prominence id="theme3">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme2-8" type="satellite" lastNode="false">
-         <teaserText>theme2 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme3">3</prominence>
-            <prominence id="theme2">2</prominence>
-            <prominence id="character1">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character2-8" type="satellite" lastNode="false">
-         <teaserText>character2 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character2">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting2-8" type="satellite" lastNode="false">
-         <teaserText>setting2 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting2">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme2-9" type="satellite" lastNode="false">
-         <teaserText>theme2 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme2">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character2-9" type="satellite" lastNode="false">
-         <teaserText>character2 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting3">3</prominence>
-            <prominence id="character2">4</prominence>
-            <prominence id="character5">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting2-9" type="satellite" lastNode="false">
-         <teaserText>setting2 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting2">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme2-10" type="satellite" lastNode="false">
-         <teaserText>theme2 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character4">3</prominence>
-            <prominence id="theme4">1</prominence>
-            <prominence id="setting3">5</prominence>
-            <prominence id="theme2">2</prominence>
-            <prominence id="theme5">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character2-10" type="satellite" lastNode="false">
-         <teaserText>character2 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character2">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting2-10" type="satellite" lastNode="false">
-         <teaserText>setting2 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting2">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme2-11" type="satellite" lastNode="false">
-         <teaserText>theme2 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme2">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character2-11" type="satellite" lastNode="false">
-         <teaserText>character2 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character2">2</prominence>
-            <prominence id="setting4">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting2-11" type="satellite" lastNode="false">
-         <teaserText>setting2 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting2">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme2-12" type="satellite" lastNode="false">
-         <teaserText>theme2 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme2">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character2-12" type="satellite" lastNode="false">
-         <teaserText>character2 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character2">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting2-12" type="satellite" lastNode="false">
-         <teaserText>setting2 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting2">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme2-13" type="satellite" lastNode="false">
-         <teaserText>theme2 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character3">1</prominence>
-            <prominence id="theme2">2</prominence>
-            <prominence id="character2">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character2-13" type="satellite" lastNode="false">
-         <teaserText>character2 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character2">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting2-13" type="satellite" lastNode="false">
-         <teaserText>setting2 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting2">4</prominence>
-            <prominence id="theme5">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme2-14" type="satellite" lastNode="false">
-         <teaserText>theme2 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme4">5</prominence>
-            <prominence id="theme2">5</prominence>
-            <prominence id="character1">5</prominence>
-            <prominence id="setting4">5</prominence>
-            <prominence id="setting5">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character2-14" type="satellite" lastNode="false">
-         <teaserText>character2 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character2">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting2-14" type="satellite" lastNode="false">
-         <teaserText>setting2 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting2">5</prominence>
-            <prominence id="character4">4</prominence>
-            <prominence id="theme5">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme2-15" type="satellite" lastNode="false">
-         <teaserText>theme2 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme2">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character2-15" type="satellite" lastNode="false">
-         <teaserText>character2 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme3">1</prominence>
-            <prominence id="character2">2</prominence>
+            <prominence id="setting1">4</prominence>
             <prominence id="theme5">1</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="setting2-15" type="satellite" lastNode="false">
-         <teaserText>setting2 (5)</teaserText>
+      <storyNode id="node25" type="satellite" lastNode="false">
+         <teaserText>setting2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting2">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node26" type="satellite" lastNode="false">
+         <teaserText>setting2-character4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting2">2</prominence>
+            <prominence id="character4">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node27" type="satellite" lastNode="false">
+         <teaserText>setting2</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
             <prominence id="setting2">5</prominence>
-            <prominence id="character4">5</prominence>
-            <prominence id="character3">3</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="theme3-1" type="satellite" lastNode="false">
-         <teaserText>theme3 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme3">4</prominence>
-            <prominence id="theme5">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character3-1" type="satellite" lastNode="false">
-         <teaserText>character3 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character3">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting3-1" type="satellite" lastNode="false">
-         <teaserText>setting3 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting3">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme3-2" type="satellite" lastNode="false">
-         <teaserText>theme3 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme3">5</prominence>
-            <prominence id="character5">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character3-2" type="satellite" lastNode="false">
-         <teaserText>character3 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character4">4</prominence>
-            <prominence id="setting2">3</prominence>
-            <prominence id="character3">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting3-2" type="satellite" lastNode="false">
-         <teaserText>setting3 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting3">4</prominence>
-            <prominence id="theme3">1</prominence>
-            <prominence id="character5">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme3-3" type="satellite" lastNode="false">
-         <teaserText>theme3 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme3">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character3-3" type="satellite" lastNode="false">
-         <teaserText>character3 (1)</teaserText>
+      <storyNode id="node28" type="satellite" lastNode="false">
+         <teaserText>setting2-character3</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
             <prominence id="setting2">2</prominence>
             <prominence id="character3">4</prominence>
-            <prominence id="theme2">5</prominence>
-            <prominence id="theme1">1</prominence>
-            <prominence id="setting5">3</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="setting3-3" type="satellite" lastNode="false">
-         <teaserText>setting3 (4)</teaserText>
+      <storyNode id="node29" type="satellite" lastNode="false">
+         <teaserText>setting2</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="setting3">4</prominence>
+            <prominence id="setting2">1</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="theme3-4" type="satellite" lastNode="false">
-         <teaserText>theme3 (4)</teaserText>
+      <storyNode id="node30" type="satellite" lastNode="false">
+         <teaserText>setting2-character1</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="theme3">4</prominence>
-            <prominence id="theme1">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character3-4" type="satellite" lastNode="false">
-         <teaserText>character3 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character3">1</prominence>
-            <prominence id="setting3">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting3-4" type="satellite" lastNode="false">
-         <teaserText>setting3 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting3">4</prominence>
-            <prominence id="theme3">1</prominence>
-            <prominence id="setting4">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme3-5" type="satellite" lastNode="false">
-         <teaserText>theme3 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme3">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character3-5" type="satellite" lastNode="false">
-         <teaserText>character3 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character3">1</prominence>
+            <prominence id="setting2">5</prominence>
             <prominence id="character1">4</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="setting3-5" type="satellite" lastNode="false">
-         <teaserText>setting3 (2)</teaserText>
+      <storyNode id="node31" type="satellite" lastNode="false">
+         <teaserText>setting2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting2">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node32" type="satellite" lastNode="false">
+         <teaserText>setting2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting2">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node33" type="satellite" lastNode="false">
+         <teaserText>setting2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting2">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node34" type="satellite" lastNode="false">
+         <teaserText>setting2-character2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting2">1</prominence>
+            <prominence id="character2">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node35" type="satellite" lastNode="false">
+         <teaserText>setting2-character1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting2">5</prominence>
+            <prominence id="character1">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node36" type="satellite" lastNode="false">
+         <teaserText>setting2-character4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting2">4</prominence>
+            <prominence id="character4">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node37" type="satellite" lastNode="false">
+         <teaserText>setting2-character2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting2">1</prominence>
+            <prominence id="character2">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node38" type="satellite" lastNode="false">
+         <teaserText>setting2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting2">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node39" type="satellite" lastNode="false">
+         <teaserText>setting2-character1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting2">1</prominence>
+            <prominence id="character1">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node40" type="satellite" lastNode="false">
+         <teaserText>setting2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting2">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node41" type="satellite" lastNode="false">
+         <teaserText>setting2-theme5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting2">2</prominence>
+            <prominence id="theme5">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node42" type="satellite" lastNode="false">
+         <teaserText>setting2-character3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting2">3</prominence>
+            <prominence id="character3">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node43" type="satellite" lastNode="false">
+         <teaserText>setting2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting2">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node44" type="satellite" lastNode="false">
+         <teaserText>setting2-character1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting2">2</prominence>
+            <prominence id="character1">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node45" type="satellite" lastNode="false">
+         <teaserText>setting2-character4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting2">5</prominence>
+            <prominence id="character4">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node46" type="satellite" lastNode="false">
+         <teaserText>setting2-character1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting2">5</prominence>
+            <prominence id="character1">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node47" type="satellite" lastNode="false">
+         <teaserText>setting2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting2">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node48" type="satellite" lastNode="false">
+         <teaserText>setting2-character4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting2">3</prominence>
+            <prominence id="character4">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node49" type="satellite" lastNode="false">
+         <teaserText>setting2-theme5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting2">5</prominence>
+            <prominence id="theme5">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node50" type="satellite" lastNode="false">
+         <teaserText>setting3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting3">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node51" type="satellite" lastNode="false">
+         <teaserText>setting3-character5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting3">5</prominence>
+            <prominence id="character5">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node52" type="satellite" lastNode="false">
+         <teaserText>setting3-character3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting3">2</prominence>
+            <prominence id="character3">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node53" type="satellite" lastNode="false">
+         <teaserText>setting3-character5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting3">4</prominence>
+            <prominence id="character5">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node54" type="satellite" lastNode="false">
+         <teaserText>setting3-theme5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting3">3</prominence>
+            <prominence id="theme5">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node55" type="satellite" lastNode="false">
+         <teaserText>setting3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting3">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node56" type="satellite" lastNode="false">
+         <teaserText>setting3-character5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting3">3</prominence>
+            <prominence id="character5">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node57" type="satellite" lastNode="false">
+         <teaserText>setting3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting3">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node58" type="satellite" lastNode="false">
+         <teaserText>setting3-character3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting3">1</prominence>
+            <prominence id="character3">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node59" type="satellite" lastNode="false">
+         <teaserText>setting3-character1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting3">5</prominence>
+            <prominence id="character1">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node60" type="satellite" lastNode="false">
+         <teaserText>setting3-theme5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting3">2</prominence>
+            <prominence id="theme5">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node61" type="satellite" lastNode="false">
+         <teaserText>setting3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting3">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node62" type="satellite" lastNode="false">
+         <teaserText>setting3-character2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting3">4</prominence>
+            <prominence id="character2">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node63" type="satellite" lastNode="false">
+         <teaserText>setting3-character1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting3">5</prominence>
+            <prominence id="character1">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node64" type="satellite" lastNode="false">
+         <teaserText>setting3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting3">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node65" type="satellite" lastNode="false">
+         <teaserText>setting3</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
             <prominence id="setting3">2</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="theme3-6" type="satellite" lastNode="false">
-         <teaserText>theme3 (2)</teaserText>
+      <storyNode id="node66" type="satellite" lastNode="false">
+         <teaserText>setting3-character1</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="theme3">2</prominence>
-            <prominence id="character2">2</prominence>
-            <prominence id="theme1">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character3-6" type="satellite" lastNode="false">
-         <teaserText>character3 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character3">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting3-6" type="satellite" lastNode="false">
-         <teaserText>setting3 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting3">4</prominence>
+            <prominence id="setting3">1</prominence>
             <prominence id="character1">2</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="theme3-7" type="satellite" lastNode="false">
-         <teaserText>theme3 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme3">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character3-7" type="satellite" lastNode="false">
-         <teaserText>character3 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character3">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting3-7" type="satellite" lastNode="false">
-         <teaserText>setting3 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting3">3</prominence>
-            <prominence id="setting1">2</prominence>
-            <prominence id="theme1">3</prominence>
-            <prominence id="character5">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme3-8" type="satellite" lastNode="false">
-         <teaserText>theme3 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme4">3</prominence>
-            <prominence id="theme3">3</prominence>
-            <prominence id="setting4">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character3-8" type="satellite" lastNode="false">
-         <teaserText>character3 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character4">1</prominence>
-            <prominence id="character3">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting3-8" type="satellite" lastNode="false">
-         <teaserText>setting3 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting3">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme3-9" type="satellite" lastNode="false">
-         <teaserText>theme3 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme3">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character3-9" type="satellite" lastNode="false">
-         <teaserText>character3 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character3">3</prominence>
-            <prominence id="theme3">4</prominence>
-            <prominence id="setting1">4</prominence>
-            <prominence id="setting5">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting3-9" type="satellite" lastNode="false">
-         <teaserText>setting3 (4)</teaserText>
+      <storyNode id="node67" type="satellite" lastNode="false">
+         <teaserText>setting3-character1</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
             <prominence id="setting3">4</prominence>
+            <prominence id="character1">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node68" type="satellite" lastNode="false">
+         <teaserText>setting3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting3">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node69" type="satellite" lastNode="false">
+         <teaserText>setting3-character5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting3">4</prominence>
+            <prominence id="character5">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node70" type="satellite" lastNode="false">
+         <teaserText>setting3-character5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting3">3</prominence>
+            <prominence id="character5">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node71" type="satellite" lastNode="false">
+         <teaserText>setting3-character4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character4">3</prominence>
+            <prominence id="setting3">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node72" type="satellite" lastNode="false">
+         <teaserText>setting3-character3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting3">5</prominence>
+            <prominence id="character3">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node73" type="satellite" lastNode="false">
+         <teaserText>setting3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting3">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node74" type="satellite" lastNode="false">
+         <teaserText>setting3-character2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting3">1</prominence>
+            <prominence id="character2">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node75" type="satellite" lastNode="false">
+         <teaserText>setting4-character1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character1">1</prominence>
+            <prominence id="setting4">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node76" type="satellite" lastNode="false">
+         <teaserText>setting4-theme5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting4">3</prominence>
+            <prominence id="theme5">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node77" type="satellite" lastNode="false">
+         <teaserText>setting4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting4">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node78" type="satellite" lastNode="false">
+         <teaserText>setting4-character1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character1">2</prominence>
+            <prominence id="setting4">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node79" type="satellite" lastNode="false">
+         <teaserText>setting4-theme5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting4">4</prominence>
+            <prominence id="theme5">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node80" type="satellite" lastNode="false">
+         <teaserText>setting4-character5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting4">4</prominence>
+            <prominence id="character5">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node81" type="satellite" lastNode="false">
+         <teaserText>setting4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting4">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node82" type="satellite" lastNode="false">
+         <teaserText>setting4-theme5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting4">1</prominence>
+            <prominence id="theme5">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node83" type="satellite" lastNode="false">
+         <teaserText>setting4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting4">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node84" type="satellite" lastNode="false">
+         <teaserText>setting4-character3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character3">1</prominence>
+            <prominence id="setting4">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node85" type="satellite" lastNode="false">
+         <teaserText>setting4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting4">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node86" type="satellite" lastNode="false">
+         <teaserText>setting4-character1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character1">1</prominence>
+            <prominence id="setting4">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node87" type="satellite" lastNode="false">
+         <teaserText>setting4-character2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character2">5</prominence>
+            <prominence id="setting4">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node88" type="satellite" lastNode="false">
+         <teaserText>setting4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting4">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node89" type="satellite" lastNode="false">
+         <teaserText>setting4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting4">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node90" type="satellite" lastNode="false">
+         <teaserText>setting4-character4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character4">4</prominence>
+            <prominence id="setting4">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node91" type="satellite" lastNode="false">
+         <teaserText>setting4-character4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character4">4</prominence>
+            <prominence id="setting4">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node92" type="satellite" lastNode="false">
+         <teaserText>setting4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting4">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node93" type="satellite" lastNode="false">
+         <teaserText>setting4-character4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character4">5</prominence>
+            <prominence id="setting4">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node94" type="satellite" lastNode="false">
+         <teaserText>setting4-character2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character2">3</prominence>
+            <prominence id="setting4">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node95" type="satellite" lastNode="false">
+         <teaserText>setting4-character1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character1">2</prominence>
+            <prominence id="setting4">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node96" type="satellite" lastNode="false">
+         <teaserText>setting4-character1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character1">2</prominence>
+            <prominence id="setting4">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node97" type="satellite" lastNode="false">
+         <teaserText>setting4-character2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character2">1</prominence>
+            <prominence id="setting4">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node98" type="satellite" lastNode="false">
+         <teaserText>setting4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting4">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node99" type="satellite" lastNode="false">
+         <teaserText>setting4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting4">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node100" type="satellite" lastNode="false">
+         <teaserText>setting5-character1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character1">2</prominence>
+            <prominence id="setting5">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node101" type="satellite" lastNode="false">
+         <teaserText>setting5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting5">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node102" type="satellite" lastNode="false">
+         <teaserText>setting5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting5">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node103" type="satellite" lastNode="false">
+         <teaserText>setting5-character5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting5">1</prominence>
+            <prominence id="character5">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node104" type="satellite" lastNode="false">
+         <teaserText>setting5-character5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting5">1</prominence>
+            <prominence id="character5">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node105" type="satellite" lastNode="false">
+         <teaserText>setting5-character2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character2">1</prominence>
+            <prominence id="setting5">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node106" type="satellite" lastNode="false">
+         <teaserText>setting5-theme5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting5">3</prominence>
+            <prominence id="theme5">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node107" type="satellite" lastNode="false">
+         <teaserText>setting5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting5">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node108" type="satellite" lastNode="false">
+         <teaserText>setting5-character2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character2">2</prominence>
+            <prominence id="setting5">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node109" type="satellite" lastNode="false">
+         <teaserText>setting5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting5">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node110" type="satellite" lastNode="false">
+         <teaserText>setting5-character3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character3">5</prominence>
             <prominence id="setting5">1</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="theme3-10" type="satellite" lastNode="false">
-         <teaserText>theme3 (5)</teaserText>
+      <storyNode id="node111" type="satellite" lastNode="false">
+         <teaserText>setting5-theme5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting5">4</prominence>
+            <prominence id="theme5">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node112" type="satellite" lastNode="false">
+         <teaserText>setting5-character4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character4">4</prominence>
+            <prominence id="setting5">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node113" type="satellite" lastNode="false">
+         <teaserText>setting5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting5">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node114" type="satellite" lastNode="false">
+         <teaserText>setting5-character5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting5">3</prominence>
+            <prominence id="character5">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node115" type="satellite" lastNode="false">
+         <teaserText>setting5-character1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character1">3</prominence>
+            <prominence id="setting5">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node116" type="satellite" lastNode="false">
+         <teaserText>setting5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting5">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node117" type="satellite" lastNode="false">
+         <teaserText>setting5-theme5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting5">3</prominence>
+            <prominence id="theme5">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node118" type="satellite" lastNode="false">
+         <teaserText>setting5-theme5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting5">1</prominence>
+            <prominence id="theme5">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node119" type="satellite" lastNode="false">
+         <teaserText>setting5-character4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character4">1</prominence>
+            <prominence id="setting5">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node120" type="satellite" lastNode="false">
+         <teaserText>setting5-character3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character3">4</prominence>
+            <prominence id="setting5">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node121" type="satellite" lastNode="false">
+         <teaserText>setting5-character1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character1">1</prominence>
+            <prominence id="setting5">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node122" type="satellite" lastNode="false">
+         <teaserText>setting5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting5">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node123" type="satellite" lastNode="false">
+         <teaserText>setting5-theme5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="setting5">3</prominence>
+            <prominence id="theme5">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node124" type="satellite" lastNode="false">
+         <teaserText>setting5-character4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character4">5</prominence>
+            <prominence id="setting5">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node125" type="satellite" lastNode="false">
+         <teaserText>theme1-character2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character2">4</prominence>
+            <prominence id="theme1">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node126" type="satellite" lastNode="false">
+         <teaserText>theme1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme1">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node127" type="satellite" lastNode="false">
+         <teaserText>theme1-character3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character3">3</prominence>
+            <prominence id="theme1">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node128" type="satellite" lastNode="false">
+         <teaserText>theme1-character2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character2">4</prominence>
+            <prominence id="theme1">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node129" type="satellite" lastNode="false">
+         <teaserText>theme1-character4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character4">3</prominence>
+            <prominence id="theme1">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node130" type="satellite" lastNode="false">
+         <teaserText>theme1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme1">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node131" type="satellite" lastNode="false">
+         <teaserText>theme1-character1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme1">5</prominence>
+            <prominence id="character1">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node132" type="satellite" lastNode="false">
+         <teaserText>theme1-character2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character2">1</prominence>
+            <prominence id="theme1">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node133" type="satellite" lastNode="false">
+         <teaserText>theme1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme1">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node134" type="satellite" lastNode="false">
+         <teaserText>theme1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme1">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node135" type="satellite" lastNode="false">
+         <teaserText>theme1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme1">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node136" type="satellite" lastNode="false">
+         <teaserText>theme1-character2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character2">3</prominence>
+            <prominence id="theme1">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node137" type="satellite" lastNode="false">
+         <teaserText>theme1-character5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme1">4</prominence>
+            <prominence id="character5">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node138" type="satellite" lastNode="false">
+         <teaserText>theme1-character2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character2">5</prominence>
+            <prominence id="theme1">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node139" type="satellite" lastNode="false">
+         <teaserText>theme1-character2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character2">1</prominence>
+            <prominence id="theme1">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node140" type="satellite" lastNode="false">
+         <teaserText>theme1-character4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character4">4</prominence>
+            <prominence id="theme1">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node141" type="satellite" lastNode="false">
+         <teaserText>theme1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme1">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node142" type="satellite" lastNode="false">
+         <teaserText>theme1-character3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character3">2</prominence>
+            <prominence id="theme1">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node143" type="satellite" lastNode="false">
+         <teaserText>theme1-character5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme1">5</prominence>
+            <prominence id="character5">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node144" type="satellite" lastNode="false">
+         <teaserText>theme1-theme5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme1">2</prominence>
+            <prominence id="theme5">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node145" type="satellite" lastNode="false">
+         <teaserText>theme1-character4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character4">4</prominence>
+            <prominence id="theme1">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node146" type="satellite" lastNode="false">
+         <teaserText>theme1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme1">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node147" type="satellite" lastNode="false">
+         <teaserText>theme1-character5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme1">4</prominence>
+            <prominence id="character5">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node148" type="satellite" lastNode="false">
+         <teaserText>theme1-character4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character4">4</prominence>
+            <prominence id="theme1">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node149" type="satellite" lastNode="false">
+         <teaserText>theme1-character4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character4">4</prominence>
+            <prominence id="theme1">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node150" type="satellite" lastNode="false">
+         <teaserText>theme2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme2">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node151" type="satellite" lastNode="false">
+         <teaserText>theme2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme2">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node152" type="satellite" lastNode="false">
+         <teaserText>theme2-character1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme2">3</prominence>
+            <prominence id="character1">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node153" type="satellite" lastNode="false">
+         <teaserText>theme2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme2">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node154" type="satellite" lastNode="false">
+         <teaserText>theme2-character3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character3">5</prominence>
+            <prominence id="theme2">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node155" type="satellite" lastNode="false">
+         <teaserText>theme2-character4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character4">1</prominence>
+            <prominence id="theme2">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node156" type="satellite" lastNode="false">
+         <teaserText>theme2-character3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character3">4</prominence>
+            <prominence id="theme2">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node157" type="satellite" lastNode="false">
+         <teaserText>theme2-character4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character4">3</prominence>
+            <prominence id="theme2">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node158" type="satellite" lastNode="false">
+         <teaserText>theme2-character3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character3">3</prominence>
+            <prominence id="theme2">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node159" type="satellite" lastNode="false">
+         <teaserText>theme2-theme5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme2">1</prominence>
+            <prominence id="theme5">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node160" type="satellite" lastNode="false">
+         <teaserText>theme2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme2">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node161" type="satellite" lastNode="false">
+         <teaserText>theme2-character4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character4">2</prominence>
+            <prominence id="theme2">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node162" type="satellite" lastNode="false">
+         <teaserText>theme2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme2">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node163" type="satellite" lastNode="false">
+         <teaserText>theme2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme2">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node164" type="satellite" lastNode="false">
+         <teaserText>theme2-theme5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme2">5</prominence>
+            <prominence id="theme5">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node165" type="satellite" lastNode="false">
+         <teaserText>theme2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme2">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node166" type="satellite" lastNode="false">
+         <teaserText>theme2-theme5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme2">3</prominence>
+            <prominence id="theme5">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node167" type="satellite" lastNode="false">
+         <teaserText>theme2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme2">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node168" type="satellite" lastNode="false">
+         <teaserText>theme2-theme5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme2">3</prominence>
+            <prominence id="theme5">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node169" type="satellite" lastNode="false">
+         <teaserText>theme2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme2">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node170" type="satellite" lastNode="false">
+         <teaserText>theme2-character1</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme2">5</prominence>
+            <prominence id="character1">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node171" type="satellite" lastNode="false">
+         <teaserText>theme2-character5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme2">5</prominence>
+            <prominence id="character5">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node172" type="satellite" lastNode="false">
+         <teaserText>theme2-character3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="character3">3</prominence>
+            <prominence id="theme2">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node173" type="satellite" lastNode="false">
+         <teaserText>theme2-theme5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme2">1</prominence>
+            <prominence id="theme5">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node174" type="satellite" lastNode="false">
+         <teaserText>theme2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme2">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node175" type="satellite" lastNode="false">
+         <teaserText>theme3-character3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme3">1</prominence>
+            <prominence id="character3">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node176" type="satellite" lastNode="false">
+         <teaserText>theme3-character2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme3">1</prominence>
+            <prominence id="character2">1</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node177" type="satellite" lastNode="false">
+         <teaserText>theme3-character3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme3">4</prominence>
+            <prominence id="character3">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node178" type="satellite" lastNode="false">
+         <teaserText>theme3</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
             <prominence id="theme3">4</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="character3-10" type="satellite" lastNode="false">
-         <teaserText>character3 (4)</teaserText>
+      <storyNode id="node179" type="satellite" lastNode="false">
+         <teaserText>theme3-character3</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="character3">4</prominence>
+            <prominence id="theme3">4</prominence>
+            <prominence id="character3">5</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="setting3-10" type="satellite" lastNode="false">
-         <teaserText>setting3 (1)</teaserText>
+      <storyNode id="node180" type="satellite" lastNode="false">
+         <teaserText>theme3</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="setting3">3</prominence>
+            <prominence id="theme3">4</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="theme3-11" type="satellite" lastNode="false">
-         <teaserText>theme3 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme3">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character3-11" type="satellite" lastNode="false">
-         <teaserText>character3 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character3">4</prominence>
-            <prominence id="setting1">5</prominence>
-            <prominence id="theme5">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting3-11" type="satellite" lastNode="false">
-         <teaserText>setting3 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting3">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme3-12" type="satellite" lastNode="false">
-         <teaserText>theme3 (2)</teaserText>
+      <storyNode id="node181" type="satellite" lastNode="false">
+         <teaserText>theme3</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
             <prominence id="theme3">2</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="character3-12" type="satellite" lastNode="false">
-         <teaserText>character3 (3)</teaserText>
+      <storyNode id="node182" type="satellite" lastNode="false">
+         <teaserText>theme3-character5</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="character3">4</prominence>
+            <prominence id="theme3">2</prominence>
+            <prominence id="character5">1</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="setting3-12" type="satellite" lastNode="false">
-         <teaserText>setting3 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting3">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme3-13" type="satellite" lastNode="false">
-         <teaserText>theme3 (1)</teaserText>
+      <storyNode id="node183" type="satellite" lastNode="false">
+         <teaserText>theme3</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
             <prominence id="theme3">1</prominence>
-            <prominence id="theme5">2</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="character3-13" type="satellite" lastNode="false">
-         <teaserText>character3 (5)</teaserText>
+      <storyNode id="node184" type="satellite" lastNode="false">
+         <teaserText>theme3-character5</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="character4">4</prominence>
-            <prominence id="character3">5</prominence>
-            <prominence id="setting1">4</prominence>
-            <prominence id="character1">3</prominence>
-            <prominence id="theme1">4</prominence>
-            <prominence id="setting4">2</prominence>
+            <prominence id="theme3">1</prominence>
+            <prominence id="character5">5</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="setting3-13" type="satellite" lastNode="false">
-         <teaserText>setting3 (5)</teaserText>
+      <storyNode id="node185" type="satellite" lastNode="false">
+         <teaserText>theme3-character4</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="setting3">5</prominence>
+            <prominence id="character4">1</prominence>
+            <prominence id="theme3">3</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="theme3-14" type="satellite" lastNode="false">
-         <teaserText>theme3 (4)</teaserText>
+      <storyNode id="node186" type="satellite" lastNode="false">
+         <teaserText>theme3-theme5</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="theme4">1</prominence>
-            <prominence id="theme3">4</prominence>
+            <prominence id="theme3">2</prominence>
+            <prominence id="theme5">5</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="character3-14" type="satellite" lastNode="false">
-         <teaserText>character3 (1)</teaserText>
+      <storyNode id="node187" type="satellite" lastNode="false">
+         <teaserText>theme3-character3</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
+            <prominence id="theme3">2</prominence>
             <prominence id="character3">1</prominence>
-            <prominence id="setting3">4</prominence>
-            <prominence id="character1">3</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="setting3-14" type="satellite" lastNode="false">
-         <teaserText>setting3 (3)</teaserText>
+      <storyNode id="node188" type="satellite" lastNode="false">
+         <teaserText>theme3-character2</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="theme4">1</prominence>
-            <prominence id="setting3">3</prominence>
-            <prominence id="theme2">3</prominence>
+            <prominence id="theme3">5</prominence>
+            <prominence id="character2">3</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="theme3-15" type="satellite" lastNode="false">
-         <teaserText>theme3 (3)</teaserText>
+      <storyNode id="node189" type="satellite" lastNode="false">
+         <teaserText>theme3-character5</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
             <prominence id="theme3">3</prominence>
-            <prominence id="character3">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character3-15" type="satellite" lastNode="false">
-         <teaserText>character3 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character3">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting3-15" type="satellite" lastNode="false">
-         <teaserText>setting3 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting3">4</prominence>
-            <prominence id="character2">4</prominence>
-            <prominence id="theme1">1</prominence>
             <prominence id="character5">1</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="theme4-1" type="satellite" lastNode="false">
-         <teaserText>theme4 (5)</teaserText>
+      <storyNode id="node190" type="satellite" lastNode="false">
+         <teaserText>theme3-character5</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="theme4">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character4-1" type="satellite" lastNode="false">
-         <teaserText>character4 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character4">1</prominence>
-            <prominence id="character5">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting4-1" type="satellite" lastNode="false">
-         <teaserText>setting4 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character3">2</prominence>
-            <prominence id="setting4">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme4-2" type="satellite" lastNode="false">
-         <teaserText>theme4 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme4">3</prominence>
-            <prominence id="theme5">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character4-2" type="satellite" lastNode="false">
-         <teaserText>character4 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character4">4</prominence>
-            <prominence id="setting4">5</prominence>
-            <prominence id="theme5">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting4-2" type="satellite" lastNode="false">
-         <teaserText>setting4 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character4">2</prominence>
-            <prominence id="setting4">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme4-3" type="satellite" lastNode="false">
-         <teaserText>theme4 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme4">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character4-3" type="satellite" lastNode="false">
-         <teaserText>character4 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character4">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting4-3" type="satellite" lastNode="false">
-         <teaserText>setting4 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting4">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme4-4" type="satellite" lastNode="false">
-         <teaserText>theme4 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme4">3</prominence>
-            <prominence id="setting4">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character4-4" type="satellite" lastNode="false">
-         <teaserText>character4 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character4">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting4-4" type="satellite" lastNode="false">
-         <teaserText>setting4 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting4">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme4-5" type="satellite" lastNode="false">
-         <teaserText>theme4 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme4">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character4-5" type="satellite" lastNode="false">
-         <teaserText>character4 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character4">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting4-5" type="satellite" lastNode="false">
-         <teaserText>setting4 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting4">4</prominence>
-            <prominence id="theme5">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme4-6" type="satellite" lastNode="false">
-         <teaserText>theme4 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme4">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character4-6" type="satellite" lastNode="false">
-         <teaserText>character4 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character4">4</prominence>
-            <prominence id="setting4">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting4-6" type="satellite" lastNode="false">
-         <teaserText>setting4 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting4">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme4-7" type="satellite" lastNode="false">
-         <teaserText>theme4 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme4">3</prominence>
-            <prominence id="character1">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character4-7" type="satellite" lastNode="false">
-         <teaserText>character4 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character4">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting4-7" type="satellite" lastNode="false">
-         <teaserText>setting4 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting4">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme4-8" type="satellite" lastNode="false">
-         <teaserText>theme4 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme4">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character4-8" type="satellite" lastNode="false">
-         <teaserText>character4 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character4">2</prominence>
-            <prominence id="theme4">2</prominence>
-            <prominence id="character2">1</prominence>
-            <prominence id="setting4">3</prominence>
+            <prominence id="theme3">3</prominence>
             <prominence id="character5">5</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="setting4-8" type="satellite" lastNode="false">
-         <teaserText>setting4 (1)</teaserText>
+      <storyNode id="node191" type="satellite" lastNode="false">
+         <teaserText>theme3-character5</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="setting4">1</prominence>
+            <prominence id="theme3">1</prominence>
+            <prominence id="character5">5</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="theme4-9" type="satellite" lastNode="false">
-         <teaserText>theme4 (4)</teaserText>
+      <storyNode id="node192" type="satellite" lastNode="false">
+         <teaserText>theme3</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="theme4">4</prominence>
+            <prominence id="theme3">1</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="character4-9" type="satellite" lastNode="false">
-         <teaserText>character4 (5)</teaserText>
+      <storyNode id="node193" type="satellite" lastNode="false">
+         <teaserText>theme3-character4</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
             <prominence id="character4">5</prominence>
-            <prominence id="character3">3</prominence>
+            <prominence id="theme3">2</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="setting4-9" type="satellite" lastNode="false">
-         <teaserText>setting4 (3)</teaserText>
+      <storyNode id="node194" type="satellite" lastNode="false">
+         <teaserText>theme3-character1</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="setting4">3</prominence>
+            <prominence id="theme3">1</prominence>
+            <prominence id="character1">1</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="theme4-10" type="satellite" lastNode="false">
-         <teaserText>theme4 (3)</teaserText>
+      <storyNode id="node195" type="satellite" lastNode="false">
+         <teaserText>theme3-character5</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="theme4">3</prominence>
             <prominence id="theme3">4</prominence>
-            <prominence id="theme2">1</prominence>
+            <prominence id="character5">3</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="character4-10" type="satellite" lastNode="false">
-         <teaserText>character4 (5)</teaserText>
+      <storyNode id="node196" type="satellite" lastNode="false">
+         <teaserText>theme3-character2</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="character4">5</prominence>
+            <prominence id="theme3">3</prominence>
+            <prominence id="character2">1</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="setting4-10" type="satellite" lastNode="false">
-         <teaserText>setting4 (5)</teaserText>
+      <storyNode id="node197" type="satellite" lastNode="false">
+         <teaserText>theme3-character5</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="setting2">2</prominence>
-            <prominence id="setting4">5</prominence>
+            <prominence id="theme3">1</prominence>
+            <prominence id="character5">2</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="theme4-11" type="satellite" lastNode="false">
-         <teaserText>theme4 (2)</teaserText>
+      <storyNode id="node198" type="satellite" lastNode="false">
+         <teaserText>theme3-character3</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="theme4">2</prominence>
-            <prominence id="theme5">4</prominence>
+            <prominence id="theme3">4</prominence>
+            <prominence id="character3">2</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="character4-11" type="satellite" lastNode="false">
-         <teaserText>character4 (4)</teaserText>
+      <storyNode id="node199" type="satellite" lastNode="false">
+         <teaserText>theme3-theme5</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="character4">4</prominence>
+            <prominence id="theme3">2</prominence>
+            <prominence id="theme5">1</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="setting4-11" type="satellite" lastNode="false">
-         <teaserText>setting4 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting4">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme4-12" type="satellite" lastNode="false">
-         <teaserText>theme4 (5)</teaserText>
+      <storyNode id="node200" type="satellite" lastNode="false">
+         <teaserText>theme4-character2</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
             <prominence id="theme4">5</prominence>
-            <prominence id="theme3">5</prominence>
+            <prominence id="character2">3</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="character4-12" type="satellite" lastNode="false">
-         <teaserText>character4 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character4">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting4-12" type="satellite" lastNode="false">
-         <teaserText>setting4 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting4">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme4-13" type="satellite" lastNode="false">
-         <teaserText>theme4 (2)</teaserText>
+      <storyNode id="node201" type="satellite" lastNode="false">
+         <teaserText>theme4</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
             <prominence id="theme4">2</prominence>
-            <prominence id="character5">4</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="character4-13" type="satellite" lastNode="false">
-         <teaserText>character4 (5)</teaserText>
+      <storyNode id="node202" type="satellite" lastNode="false">
+         <teaserText>theme4</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
+            <prominence id="theme4">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node203" type="satellite" lastNode="false">
+         <teaserText>theme4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme4">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node204" type="satellite" lastNode="false">
+         <teaserText>theme4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme4">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node205" type="satellite" lastNode="false">
+         <teaserText>theme4-character5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme4">2</prominence>
+            <prominence id="character5">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node206" type="satellite" lastNode="false">
+         <teaserText>theme4-character2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme4">2</prominence>
+            <prominence id="character2">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node207" type="satellite" lastNode="false">
+         <teaserText>theme4-character4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme4">3</prominence>
+            <prominence id="character4">4</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node208" type="satellite" lastNode="false">
+         <teaserText>theme4-theme5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme4">3</prominence>
+            <prominence id="theme5">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node209" type="satellite" lastNode="false">
+         <teaserText>theme4-character3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme4">4</prominence>
+            <prominence id="character3">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node210" type="satellite" lastNode="false">
+         <teaserText>theme4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme4">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node211" type="satellite" lastNode="false">
+         <teaserText>theme4-character5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme4">2</prominence>
+            <prominence id="character5">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node212" type="satellite" lastNode="false">
+         <teaserText>theme4-character5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme4">4</prominence>
+            <prominence id="character5">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node213" type="satellite" lastNode="false">
+         <teaserText>theme4-character2</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme4">3</prominence>
+            <prominence id="character2">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node214" type="satellite" lastNode="false">
+         <teaserText>theme4-theme5</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme4">2</prominence>
+            <prominence id="theme5">2</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node215" type="satellite" lastNode="false">
+         <teaserText>theme4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme4">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node216" type="satellite" lastNode="false">
+         <teaserText>theme4-character3</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme4">3</prominence>
+            <prominence id="character3">5</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node217" type="satellite" lastNode="false">
+         <teaserText>theme4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme4">3</prominence>
+         </functionalDescription>
+      </storyNode>
+      <storyNode id="node218" type="satellite" lastNode="false">
+         <teaserText>theme4-character4</teaserText>
+         <eventText>-</eventText>
+         <functionalDescription>
+            <prominence id="theme4">5</prominence>
             <prominence id="character4">5</prominence>
-            <prominence id="setting2">5</prominence>
-            <prominence id="character2">3</prominence>
-            <prominence id="setting1">1</prominence>
-            <prominence id="setting5">5</prominence>
-            <prominence id="theme5">5</prominence>
-            <prominence id="character5">4</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="setting4-13" type="satellite" lastNode="false">
-         <teaserText>setting4 (1)</teaserText>
+      <storyNode id="node219" type="satellite" lastNode="false">
+         <teaserText>theme4-character4</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="setting4">1</prominence>
+            <prominence id="theme4">5</prominence>
+            <prominence id="character4">1</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="theme4-14" type="satellite" lastNode="false">
-         <teaserText>theme4 (1)</teaserText>
+      <storyNode id="node220" type="satellite" lastNode="false">
+         <teaserText>theme4</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
             <prominence id="theme4">1</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="character4-14" type="satellite" lastNode="false">
-         <teaserText>character4 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character4">3</prominence>
-            <prominence id="theme4">4</prominence>
-            <prominence id="theme2">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting4-14" type="satellite" lastNode="false">
-         <teaserText>setting4 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting4">1</prominence>
-            <prominence id="theme5">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme4-15" type="satellite" lastNode="false">
-         <teaserText>theme4 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme4">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character4-15" type="satellite" lastNode="false">
-         <teaserText>character4 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character4">1</prominence>
-            <prominence id="setting3">4</prominence>
-            <prominence id="character2">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting4-15" type="satellite" lastNode="false">
-         <teaserText>setting4 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting1">4</prominence>
-            <prominence id="setting4">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme5-1" type="satellite" lastNode="false">
-         <teaserText>theme5 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme5">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character5-1" type="satellite" lastNode="false">
-         <teaserText>character5 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme4">5</prominence>
-            <prominence id="character2">2</prominence>
-            <prominence id="character5">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting5-1" type="satellite" lastNode="false">
-         <teaserText>setting5 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting2">4</prominence>
-            <prominence id="setting5">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme5-2" type="satellite" lastNode="false">
-         <teaserText>theme5 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme5">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character5-2" type="satellite" lastNode="false">
-         <teaserText>character5 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting4">1</prominence>
-            <prominence id="character5">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting5-2" type="satellite" lastNode="false">
-         <teaserText>setting5 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme3">4</prominence>
-            <prominence id="setting5">1</prominence>
-            <prominence id="character5">2</prominence>
-            <prominence id="theme5">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme5-3" type="satellite" lastNode="false">
-         <teaserText>theme5 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme5">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character5-3" type="satellite" lastNode="false">
-         <teaserText>character5 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character5">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting5-3" type="satellite" lastNode="false">
-         <teaserText>setting5 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting5">1</prominence>
-            <prominence id="character5">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme5-4" type="satellite" lastNode="false">
-         <teaserText>theme5 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme5">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character5-4" type="satellite" lastNode="false">
-         <teaserText>character5 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character5">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting5-4" type="satellite" lastNode="false">
-         <teaserText>setting5 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting5">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme5-5" type="satellite" lastNode="false">
-         <teaserText>theme5 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme5">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character5-5" type="satellite" lastNode="false">
-         <teaserText>character5 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character5">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting5-5" type="satellite" lastNode="false">
-         <teaserText>setting5 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting5">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme5-6" type="satellite" lastNode="false">
-         <teaserText>theme5 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting1">2</prominence>
-            <prominence id="theme5">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character5-6" type="satellite" lastNode="false">
-         <teaserText>character5 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character5">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting5-6" type="satellite" lastNode="false">
-         <teaserText>setting5 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character4">2</prominence>
-            <prominence id="setting5">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme5-7" type="satellite" lastNode="false">
-         <teaserText>theme5 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme5">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character5-7" type="satellite" lastNode="false">
-         <teaserText>character5 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character4">2</prominence>
-            <prominence id="character5">4</prominence>
-            <prominence id="theme5">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting5-7" type="satellite" lastNode="false">
-         <teaserText>setting5 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme1">5</prominence>
-            <prominence id="setting5">4</prominence>
-            <prominence id="character5">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme5-8" type="satellite" lastNode="false">
-         <teaserText>theme5 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme5">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character5-8" type="satellite" lastNode="false">
-         <teaserText>character5 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme1">3</prominence>
-            <prominence id="character5">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting5-8" type="satellite" lastNode="false">
-         <teaserText>setting5 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting5">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme5-9" type="satellite" lastNode="false">
-         <teaserText>theme5 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting4">2</prominence>
-            <prominence id="theme5">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character5-9" type="satellite" lastNode="false">
-         <teaserText>character5 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character5">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting5-9" type="satellite" lastNode="false">
-         <teaserText>setting5 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting5">5</prominence>
-            <prominence id="theme5">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme5-10" type="satellite" lastNode="false">
-         <teaserText>theme5 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting4">3</prominence>
-            <prominence id="theme5">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character5-10" type="satellite" lastNode="false">
-         <teaserText>character5 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character5">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting5-10" type="satellite" lastNode="false">
-         <teaserText>setting5 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character4">5</prominence>
-            <prominence id="theme2">1</prominence>
-            <prominence id="setting5">2</prominence>
-            <prominence id="character5">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme5-11" type="satellite" lastNode="false">
-         <teaserText>theme5 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme5">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character5-11" type="satellite" lastNode="false">
-         <teaserText>character5 (2)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character5">2</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting5-11" type="satellite" lastNode="false">
-         <teaserText>setting5 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme4">5</prominence>
-            <prominence id="setting3">5</prominence>
-            <prominence id="setting5">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme5-12" type="satellite" lastNode="false">
-         <teaserText>theme5 (5)</teaserText>
+      <storyNode id="node221" type="satellite" lastNode="false">
+         <teaserText>theme4-character3</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
             <prominence id="theme4">3</prominence>
-            <prominence id="setting1">5</prominence>
-            <prominence id="theme5">5</prominence>
+            <prominence id="character3">2</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="character5-12" type="satellite" lastNode="false">
-         <teaserText>character5 (1)</teaserText>
+      <storyNode id="node222" type="satellite" lastNode="false">
+         <teaserText>theme4-character2</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="character5">1</prominence>
+            <prominence id="theme4">3</prominence>
+            <prominence id="character2">4</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="setting5-12" type="satellite" lastNode="false">
-         <teaserText>setting5 (3)</teaserText>
+      <storyNode id="node223" type="satellite" lastNode="false">
+         <teaserText>theme4-character1</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="theme4">5</prominence>
-            <prominence id="setting4">4</prominence>
-            <prominence id="setting5">3</prominence>
-            <prominence id="character5">4</prominence>
+            <prominence id="theme4">4</prominence>
+            <prominence id="character1">1</prominence>
          </functionalDescription>
       </storyNode>
-      <storyNode id="theme5-13" type="satellite" lastNode="false">
-         <teaserText>theme5 (5)</teaserText>
+      <storyNode id="node224" type="satellite" lastNode="false">
+         <teaserText>theme4</teaserText>
          <eventText>-</eventText>
          <functionalDescription>
-            <prominence id="character2">1</prominence>
-            <prominence id="theme5">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character5-13" type="satellite" lastNode="false">
-         <teaserText>character5 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character5">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting5-13" type="satellite" lastNode="false">
-         <teaserText>setting5 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character4">4</prominence>
-            <prominence id="theme2">1</prominence>
-            <prominence id="setting4">5</prominence>
-            <prominence id="setting5">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme5-14" type="satellite" lastNode="false">
-         <teaserText>theme5 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting2">3</prominence>
-            <prominence id="setting4">1</prominence>
-            <prominence id="theme5">5</prominence>
-            <prominence id="setting5">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character5-14" type="satellite" lastNode="false">
-         <teaserText>character5 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="character5">4</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting5-14" type="satellite" lastNode="false">
-         <teaserText>setting5 (5)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting5">5</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="theme5-15" type="satellite" lastNode="false">
-         <teaserText>theme5 (1)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="theme5">1</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="character5-15" type="satellite" lastNode="false">
-         <teaserText>character5 (3)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting2">3</prominence>
-            <prominence id="character2">2</prominence>
-            <prominence id="character5">3</prominence>
-         </functionalDescription>
-      </storyNode>
-      <storyNode id="setting5-15" type="satellite" lastNode="false">
-         <teaserText>setting5 (4)</teaserText>
-         <eventText>-</eventText>
-         <functionalDescription>
-            <prominence id="setting2">4</prominence>
-            <prominence id="setting5">4</prominence>
+            <prominence id="theme4">3</prominence>
          </functionalDescription>
       </storyNode>
    </storyNodes>

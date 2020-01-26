@@ -5,14 +5,12 @@ import java.util.HashMap;
 
 import storyEngine.MemoryFunction;
 import storyEngine.Story;
-import storyEngine.analysis.RandomStory.WeightCurveStrategy;
 import storyEngine.storyElements.StoryElementWeightCurve;
 import storyEngine.storyNodes.StoryNode;
 
 public class ObjectiveFunctionForMemoryModel extends ObjectiveFunction
 {
 	private static final float DESIRED_THRESHOLD = 3;
-	private static final int DEFAULT_ELEMENT_WEIGHT = 1;
 	
 	public ObjectiveFunctionForMemoryModel(Story story)
 	{
