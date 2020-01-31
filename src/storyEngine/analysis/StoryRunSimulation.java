@@ -39,7 +39,9 @@ public class StoryRunSimulation
 		story.applyOutcomeAndAdjustQuantifiableValues();
 		boolean success = story.finishConsumingNode();
 		
-		//System.out.println(ObjectiveFunction.forType(ObjectiveFunction.Type.MemoryModel, story).objectiveFunctionForStory());
+//		System.out.println(ObjectiveFunction.forType(ObjectiveFunction.Type.MemoryModel, story).objectiveFunctionForStory());
+		
+		System.out.println(consuming.getElementIDs().size());
 		
 		return success;
 	}
@@ -51,6 +53,10 @@ public class StoryRunSimulation
 		story.reset();
 		
 		boolean lastNode = false;
+
+		ArrayList<StoryElement> preferences = story.getElementCollection().getCopyOfElementList();
+		Collections.shuffle(preferences);
+//		System.out.println(preferences);
 		
 		// If there's a starting node, go there first
 		if (story.getStartingNode() != null)
@@ -67,9 +73,6 @@ public class StoryRunSimulation
 		while (!lastNode && !possibleScenes.isEmpty() && story.getScenesSeen().size() < stoppingNodeNum)
 		{
 			int randomIndex = RANDOM.nextInt(possibleScenes.size());
-			
-			ArrayList<StoryElement> preferences = story.getElementCollection().getCopyOfElementList();
-			Collections.shuffle(preferences);
 			
 			StoryNode nextNode = null;
 			switch (choiceType)

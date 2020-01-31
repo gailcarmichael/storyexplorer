@@ -415,7 +415,7 @@ public class Story
 			System.err.println("Story could not return current scene options because the story"
 					+ " element collection is not available.");
 		}
-		else
+		else if (m_storyState.getNumScenesSeen() < m_nodes.size())
 		{
 			m_nodePrioritizer.recalculateTopNodes(satellitesOnly);
 			currentSceneOptions.addAll(m_nodePrioritizer.getTopNodes());

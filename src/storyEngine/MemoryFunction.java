@@ -50,4 +50,18 @@ public class MemoryFunction
 		Float newValue = Math.max(0, getLastValue() - m_decayAmount);
 		m_memoryValueOverTime.add(newValue);
 	}
+	
+	public String toString()
+	{
+		String result = "";
+		
+		result += m_elementID + "\n";
+		
+		for (Float value : m_memoryValueOverTime)
+		{
+			result += value + "\n";
+		}
+		
+		return result;
+	}
 }

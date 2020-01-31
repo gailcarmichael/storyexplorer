@@ -19,8 +19,6 @@ public class RandomStory
 {
 	private static Random RANDOM = new Random();
 	
-	private static float P_VALUE = 0.5f;
-	
 	public static enum WeightCurveStrategy
 	{
 		Constant,
@@ -129,8 +127,9 @@ public class RandomStory
 			int initialValueForDesires,
 			WeightCurveStrategy weightCurveStrategy,
 			int numNodesTotal,
-			int minNodesEachElementUsedIn,
-			boolean continueAddingElementsRandomly,
+			float minNodesEachElementUsedIn,
+			float maxNodesEachElementUsedIn,
+			boolean chooseMaxRandomly,
 			int maxElementsPerNode,
 			int maxValueForProminence,
 			int numTopChoices, 
@@ -169,21 +168,21 @@ public class RandomStory
 			nodeElementLists.add(new ArrayList<String>());
 		}
 		
+		int minNodes = (int)(numNodesTotal * minNodesEachElementUsedIn);
+		int maxNodes = (int)(numNodesTotal * maxNodesEachElementUsedIn);
+		
 		for (String elementID : elementCollection.getIDs())
 		{
 			int numNodesElementAppearsIn = 0;
-			while (true)
+			
+			int maxNodesThisElement = maxNodes;			
+			if (chooseMaxRandomly)
 			{
-				// After adding to at least the min number of nodes, add the element to 
-				// an additional node with probability P
-				if (numNodesElementAppearsIn >= minNodesEachElementUsedIn)
-				{
-					if (!continueAddingElementsRandomly || (RANDOM.nextFloat() > P_VALUE))
-					{
-						break;
-					}
-				}
-				
+				maxNodesThisElement = minNodes + RANDOM.nextInt(maxNodes - minNodes + 1);
+			}
+			
+			while (numNodesElementAppearsIn < maxNodesThisElement)
+			{
 				// Find a node with nothing in its element list if possible...
 				boolean foundEmpty = false;
 				for (ArrayList<String> elementList : nodeElementLists)

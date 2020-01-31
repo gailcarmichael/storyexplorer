@@ -1,62 +1,34 @@
 <storyElementCollection>
+   <storyElement id="setting1" type="quantifiable">
+      <category>themes</category>
+      <name>setting1</name>
+   </storyElement>
+   <storyElement id="setting2" type="quantifiable">
+      <category>themes</category>
+      <name>setting2</name>
+   </storyElement>
    <storyElement id="theme1" type="quantifiable">
       <category>themes</category>
       <name>theme1</name>
-   </storyElement>
-   <storyElement id="character1" type="quantifiable">
-      <category>characters</category>
-      <name>character1</name>
-   </storyElement>
-   <storyElement id="setting1" type="quantifiable">
-      <category>settings</category>
-      <name>setting1</name>
    </storyElement>
    <storyElement id="theme2" type="quantifiable">
       <category>themes</category>
       <name>theme2</name>
    </storyElement>
+   <storyElement id="character1" type="quantifiable">
+      <category>themes</category>
+      <name>character1</name>
+   </storyElement>
    <storyElement id="character2" type="quantifiable">
-      <category>characters</category>
+      <category>themes</category>
       <name>character2</name>
    </storyElement>
-   <storyElement id="setting2" type="quantifiable">
-      <category>settings</category>
-      <name>setting2</name>
-   </storyElement>
-   <storyElement id="theme3" type="quantifiable">
-      <category>themes</category>
-      <name>theme3</name>
-   </storyElement>
    <storyElement id="character3" type="quantifiable">
-      <category>characters</category>
+      <category>themes</category>
       <name>character3</name>
    </storyElement>
-   <storyElement id="setting3" type="quantifiable">
-      <category>settings</category>
-      <name>setting3</name>
-   </storyElement>
-   <storyElement id="theme4" type="quantifiable">
-      <category>themes</category>
-      <name>theme4</name>
-   </storyElement>
    <storyElement id="character4" type="quantifiable">
-      <category>characters</category>
-      <name>character4</name>
-   </storyElement>
-   <storyElement id="setting4" type="quantifiable">
-      <category>settings</category>
-      <name>setting4</name>
-   </storyElement>
-   <storyElement id="theme5" type="quantifiable">
       <category>themes</category>
-      <name>theme5</name>
-   </storyElement>
-   <storyElement id="character5" type="quantifiable">
-      <category>characters</category>
-      <name>character5</name>
-   </storyElement>
-   <storyElement id="setting5" type="quantifiable">
-      <category>settings</category>
-      <name>setting5</name>
+      <name>character4</name>
    </storyElement>
 </storyElementCollection>

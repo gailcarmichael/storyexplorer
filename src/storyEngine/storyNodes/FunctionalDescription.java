@@ -25,6 +25,8 @@ public class FunctionalDescription
 		Tag(@Attribute(name="id") String tag) { m_tag = tag; }
 		
 		public String toString() { return m_tag; }
+		
+		public boolean equals(Object o) { return ((Tag)o).m_tag.equals(m_tag); }
 	}
 	
 	
@@ -91,7 +93,7 @@ public class FunctionalDescription
 	
 	boolean featuresElement(String id)
 	{
-		return (m_elementProminences.containsKey(id) || m_elementTags.contains(id));
+		return (m_elementProminences.containsKey(id) || m_elementTags.contains(new Tag(id)));
 	}
 	
 	

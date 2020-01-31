@@ -78,7 +78,10 @@ public class NodePrioritizer
 			}
 		}
 		
-		m_topNodes =  new ArrayList<StoryNode>(m_topNodes.subList(0, Math.min(numNodesToGet, m_topNodes.size())));
+		if (!m_topNodes.isEmpty())
+		{
+			m_topNodes =  new ArrayList<StoryNode>(m_topNodes.subList(0, Math.min(numNodesToGet, m_topNodes.size())));
+		}
 	}
 	
 	
@@ -95,6 +98,16 @@ public class NodePrioritizer
 		{
 			m_node = node;
 			m_score = score;
+		}
+		
+		public boolean equals(Object o)
+		{
+			boolean result = false;
+			if (o instanceof NodeIDAndScore)
+			{
+				result = m_node.getID().equals(((NodeIDAndScore)o).m_node.getID());
+			}
+			return result;
 		}
 
 		@Override
@@ -137,8 +150,11 @@ public class NodePrioritizer
 	protected int bestObjectiveFunction(boolean satellitesOnly, ArrayList<NodeIDAndScore> scores)
 	{
 		final int NUM_TOP_SCENES = m_story.getNumTopScenesForUser();
-		final int NUM_SCENES_TO_SAMPLE = 2;
+		final int NUM_SCENES_TO_SAMPLE = 3;
 		final int NUM_STORIES_TO_TRY = 10000;
+		
+		
+		if (m_story.getAvailableNodes().isEmpty()) return 0;
 		
 		
 		// Use this sorted map to find the best scoring stories. If two stories have the same score,
@@ -156,8 +172,8 @@ public class NodePrioritizer
 			ArrayList<StoryNode> nodesToSample = new ArrayList<StoryNode>(storyCopy.getAvailableNodes());
 			Random random = new Random();
 			
-			int sampleNum=0;
-			while (sampleNum < NUM_SCENES_TO_SAMPLE && !nodesToSample.isEmpty())
+			int numSampledNodesConsumed=0;
+			while (numSampledNodesConsumed < NUM_SCENES_TO_SAMPLE && !nodesToSample.isEmpty())
 			{
 				int index = random.nextInt(nodesToSample.size());
 				StoryNode node = nodesToSample.get(index); 
@@ -170,7 +186,7 @@ public class NodePrioritizer
 				
 				nodesToSample.remove(index);
 				
-				sampleNum++;
+				numSampledNodesConsumed++;
 			}
 			
 			ObjectiveFunction objFunction = new ObjectiveFunctionForMemoryModel(storyCopy);
@@ -180,33 +196,24 @@ public class NodePrioritizer
 			
 
 			ArrayList<StoryNode> scenes = storyCopy.getScenesSeen();
-			StoryNode nodeToOffer = scenes.get(scenes.size() - NUM_SCENES_TO_SAMPLE);
+			StoryNode nodeToOffer = scenes.get(scenes.size() - numSampledNodesConsumed);
 			
-			if (storyScores.isEmpty())
-			{
-				storyScores.put(objFunctionResult, nodeToOffer.getID());				
-			}
-			else if (storyScores.lastKey() > objFunctionResult)
-			{
-				storyScores.remove(storyScores.lastKey());
-				storyScores.put(objFunctionResult, nodeToOffer.getID());
-			}
+			storyScores.put(objFunctionResult, nodeToOffer.getID());
 		}
 		
-		// TODO: Ensure there are no duplicates
 		for (Entry<Float, String> entry : storyScores.entrySet())
-		{
-			if (scores.size() >= NUM_SCENES_TO_SAMPLE)
+		{	
+			NodeIDAndScore newIDAndScore = new NodeIDAndScore(m_story.nodeWithID(entry.getValue()), entry.getKey());
+			
+			if (scores.contains(newIDAndScore)) // avoid duplicate node IDs
 			{
-				break;
+				continue;
 			}
 			
-			scores.add(new NodeIDAndScore(m_story.nodeWithID(entry.getValue()), entry.getKey()));
+			scores.add(newIDAndScore);
 		}
-		
-		//System.out.println(scores.get(0).m_score);
-		
-		return NUM_TOP_SCENES;
+				
+		return Math.min(NUM_TOP_SCENES, scores.size());
 	}
 }
 

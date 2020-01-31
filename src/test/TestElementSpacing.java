@@ -36,15 +36,16 @@ public class TestElementSpacing extends PApplet
 	
 	private static final long serialVersionUID = -893063477402437731L;
 	
-	private static final int NUM_SETTING_ELEMENTS = 5;
-	private static final int NUM_THEME_ELEMENTS = 5;
-	private static final int NUM_CHARACTER_ELEMENTS = 5;
+	private static final int NUM_SETTING_ELEMENTS = 2;
+	private static final int NUM_THEME_ELEMENTS = 2;
+	private static final int NUM_CHARACTER_ELEMENTS = 4;
 	private static HashMap<String, Integer> NUM_ELEMENTS_PER_CATEGORY; // constructed using the above constants ^
 	
-	private static final int NUM_NODES_TOTAL = 225;
-	private static final int MIN_NODES_EACH_ELEMENT_USED_IN = 25;
-	private static final int MAX_ELEMENTS_PER_NODE = 2;
-	private static final boolean CONTINUE_ADDING_ELEMENTS_RANDOMLY = false;
+	private static final int NUM_NODES_TOTAL = 120;
+	private static final float MIN_NODES_EACH_ELEMENT_USED_IN = 0.125f; // fraction of total nodes
+	private static final float MAX_NODES_EACH_ELEMENT_USED_IN = 0.16f; // fraction of total nodes
+	private static final boolean DETERMINE_MAX_RANDOMLY = true; // will choose value between given min and max
+	private static final int MAX_ELEMENTS_PER_NODE = 5;
 	
 	private static final int MAX_PROMINENCE_VALUE = 5; // a random value between 1 and this number will be assigned
 	
@@ -54,7 +55,7 @@ public class TestElementSpacing extends PApplet
 	
 	private static final boolean TEST_RANDOM_STORY = true; // true if story is randomly generated, false if story is read from existing file
 	
-	private static final PrioritizationType PRIORITIZATION_TYPE = PrioritizationType.sumOfCategoryMaximums; // just for visualizing one story
+	private static final PrioritizationType PRIORITIZATION_TYPE = PrioritizationType.eventBased; // just for visualizing one story
 	
 	private static final ObjectiveFunction.Type OBJECTIVE_FUNCTION_TYPE = ObjectiveFunction.Type.MemoryModel;
 	
@@ -64,7 +65,7 @@ public class TestElementSpacing extends PApplet
 	
 	private static final StoryRunSimulation.ChoiceType CHOICE_TYPE = StoryRunSimulation.ChoiceType.RandomChoice;
 	
-	private static final int PERCENT_OF_NODES_TO_CONSUME = 50;
+	private static final int PERCENT_OF_NODES_TO_CONSUME = 100;
 	
 	private static ElementSpacingVisualizer VISUALIZER;
 	private static boolean SHOW_MULTI_ELEMENT_NODES_IN_VISUALIZER = false;
@@ -157,7 +158,8 @@ public class TestElementSpacing extends PApplet
 						WEIGHT_CURVE_STRATEGY,
 						NUM_NODES_TOTAL, 	
 						MIN_NODES_EACH_ELEMENT_USED_IN,
-						CONTINUE_ADDING_ELEMENTS_RANDOMLY,
+						MAX_NODES_EACH_ELEMENT_USED_IN,
+						DETERMINE_MAX_RANDOMLY,
 						MAX_ELEMENTS_PER_NODE,
 						MAX_PROMINENCE_VALUE,
 						NUM_TOP_CHOICES, 
@@ -209,23 +211,28 @@ public class TestElementSpacing extends PApplet
 		{
 			story = 
 					RandomStory.getRandomStory(
-						NUM_ELEMENTS_PER_CATEGORY,
-						10,
-						WEIGHT_CURVE_STRATEGY,
-						NUM_NODES_TOTAL, 	
-						MIN_NODES_EACH_ELEMENT_USED_IN,
-						CONTINUE_ADDING_ELEMENTS_RANDOMLY,
-						MAX_ELEMENTS_PER_NODE,
-						MAX_PROMINENCE_VALUE,
-						NUM_TOP_CHOICES, 
-						PRIORITIZATION_TYPE);
+							NUM_ELEMENTS_PER_CATEGORY,
+							10,
+							WEIGHT_CURVE_STRATEGY,
+							NUM_NODES_TOTAL, 	
+							MIN_NODES_EACH_ELEMENT_USED_IN,
+							MAX_NODES_EACH_ELEMENT_USED_IN,
+							DETERMINE_MAX_RANDOMLY,
+							MAX_ELEMENTS_PER_NODE,
+							MAX_PROMINENCE_VALUE,
+							NUM_TOP_CHOICES, 
+							PRIORITIZATION_TYPE);
 			
 			// Export to XML for easy double checking of story generation
 			try
 			{
 				Serializer serializer = new Persister();
+				
 				File result = new File("./testData/testElementSpacing/testSpacing.xml");
 				serializer.write(story, result);
+				
+				result = new File("./testData/testElementSpacing/testSpacingElementCol.xml");
+				serializer.write(story.getElementCollection(), result);
 			}
 			catch (Exception e)
 			{
@@ -272,5 +279,10 @@ public class TestElementSpacing extends PApplet
 			TestElementSpacing.VISUALIZER = new ElementSpacingVisualizer(story, SHOW_MULTI_ELEMENT_NODES_IN_VISUALIZER);
 			PApplet.main(TestElementSpacing.class.getCanonicalName());
 		}
+		
+//		for (String elementID : story.getElementCollection().getMemoryValueIDs())
+//		{
+//			System.out.println(story.getMemoryFunctionForElement(elementID));
+//		}
 	}
 }
